@@ -23,9 +23,13 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Download ESLint config file from other repository
+        run: |
+          curl -o .eslintrc.yaml https://raw.githubusercontent.com/SRBConsultingTeam/SRB_UI5_QM/master/WorkflowConfig/.eslintrc.yaml
+
       - name: Install ESLint and dependencies
         run: |
           npm install eslint
 
       - name: Run ESLint
-        run: npx eslint . --config $GITHUB_WORKSPACE/WorkflowsConfig/.eslintrc.yaml
+        run: npx eslint . --config .eslintrc.yaml
