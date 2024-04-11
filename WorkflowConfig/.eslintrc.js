@@ -1,7 +1,11 @@
 module.exports = {
-  extends: "eslint:recommended",
+  root: true,
   parserOptions: {
     ecmaVersion: 12,
+  },
+  env: {
+    browser: true,
+    es2021: true,
   },
   globals: {
     sap: true,
