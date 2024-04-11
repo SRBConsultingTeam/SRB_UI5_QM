@@ -24,10 +24,6 @@ module.exports = {
       MetaTables: true,
     }
   },
-  env: {
-    browser: true,
-    es2021: true,
-  },
 
   rules: {
     // Possible errors
