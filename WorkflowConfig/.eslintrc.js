@@ -1,6 +1,8 @@
 module.exports = {
-  parserOptions: {
-    ecmaVersion: 12,
+  languageOptions: {
+    parserOptions: {
+      ecmaVersion: 12,
+    },
   },
   env: {
     browser: true,
