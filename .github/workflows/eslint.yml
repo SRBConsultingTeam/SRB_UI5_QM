@@ -1,14 +1,10 @@
 name: ESLint
 
 on:
-  push:
-    branches:
-      - main
-
   workflow_call:
 
 jobs:
-  eslint:
+  linter-job:
     runs-on: ubuntu-latest
 
     steps:
