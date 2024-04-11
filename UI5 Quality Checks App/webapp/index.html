@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <script
+      id="sap-ui-bootstrap"
+      type="text/javascript"
+      src="https://ui5.sap.com/1.96/resources/sap-ui-core.js"
+      data-sap-ui-theme="sap_fiori_3"
+      data-sap-ui-libs="sap.m,sap.f"
+      data-sap-ui-async="true"
+      data-sap-ui-resourceroots='{"srbUI5QualityChecks": ""}'
+      data-sap-ui-oninit="module:srbUI5QualityChecks/index"
+      data-sap-ui-bindingSyntax="complex"
+    ></script>
+
+    <script type="module">
+      import { Octokit } from "https://esm.sh/@octokit/rest";
+
+      window.Octokit = Octokit;
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body class="sapUiBody" id="content"></body>
+</html>

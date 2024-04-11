@@ -1,0 +1,159 @@
+<mvc:View controllerName="srbUI5QualityChecks.controller.startpage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Page id="startpage" showHeader="false">
+		<OverflowToolbar>
+			<Title text="SRB UI5 Apps Quality Checks" level="H2" />
+			<ToolbarSpacer />
+			<ToolbarSpacer />
+			<Label id="usernameLabel" />
+			<Avatar
+				id="myAvatar"
+				src="{/Woman01}"
+				displaySize="XS"
+				showBorder="true"
+				class="sapUiTinyMargin"
+				press="onPress"/>
+		</OverflowToolbar>
+		<Panel visible="false" id="filterPanel" width="auto" expandable="true" expanded="true">
+			<headerToolbar>
+				<Toolbar height="3rem">
+					<Title text="{i18n>filterAndSearch}"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<tnt:InfoLabel visible="false" id="filterInfo" text="{i18n>filterActive}" renderMode="Narrow" colorScheme="6"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button id="filterDelete" enabled="false" text="{i18n>deleteFilter}" press="filterDelete" type="Reject" icon="sap-icon://delete"/>
+				</Toolbar>
+			</headerToolbar>
+			<content>
+				<form:Form editable="true">
+					<form:layout>
+						<form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+													emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+					</form:layout>
+					<form:formContainers>
+						<form:FormContainer>
+							<form:formElements>
+								<form:FormElement label="{i18n>repoFilterLabel}">
+									<form:fields>
+										<MultiInput id="repoFilter" value="" submit="filterSubmit" showValueHelp="true" showClearIcon="true" change="filterSubmit"
+																	valueHelpRequest=".filters.repoFilter.valueHelpRequestRepoFilter" liveChange=".filters.repoFilter.liveChangeRepoFilter">
+											<layoutData>
+												<layout:GridData span="XL12 L12 M12 S12"/>
+											</layoutData>
+											<core:Item key="{name}" text="{name}" />
+										</MultiInput>
+									</form:fields>
+								</form:FormElement>
+							</form:formElements>
+						</form:FormContainer>
+					</form:formContainers>
+				</form:Form>
+			</content>
+		</Panel>
+		<Table visible="false" id="resultsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" 
+		items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'}, groupHeaderFactory: '.getGroupHeader'}" sticky="ColumnHeaders">
+			<headerToolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer />
+					<OverflowToolbarButton id="tableFilterButton" icon="sap-icon://filter" press="tableFilterButtonPressed"/>
+					<OverflowToolbarButton id="tableSortButton" icon="sap-icon://sort" press="tableSortButtonPressed"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column visible="false" width="20%" importance="High" customData:dataField="repo">
+					<Text text="Repository" />
+				</Column>
+				<Column visible="false" width="20%" importance="High" customData:dataField="owner">
+					<Text text="Owner" />
+				</Column>
+				<Column width="20%" importance="None" customData:dataField="filename">
+					<Text text="File" />
+				</Column>
+				<Column width="8em" importance="Low" customData:dataField="version">
+					<Text text="Version" />
+				</Column>
+				<Column width="8em" importance="Low" customData:dataField="isEvergreenBootstrap">
+					<Text text="Evergreen Bootstrapping" />
+				</Column>
+				<Column width="8em" importance="Low" customData:dataField="eocp">
+					<Text text="End of maintenance" />
+				</Column>
+				<Column width="8em" importance="Low" customData:dataField="eom">
+					<Text text="End of cloud provisioning" />
+				</Column>
+				<Column width="8em" importance="Low" customData:dataField="linter/conclusion">
+					<Text text="Linter Status" />
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle" type="Navigation" press="listItemPressed" highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }">
+					<cells>
+						<Text text="{repo}" />
+						<Text text="{owner}" />
+						<Text text="{filename}" />
+						<HBox>
+							<Text text="{version}" visible="{= ${detected} !== false }"  />
+							<ObjectStatus
+								class="sapUiSmallMarginBottom"
+								text="No specific version defined!"
+								icon="sap-icon://sys-enter-2"
+								state="Error"
+								visible="{= ${detected} === false }"
+								 />
+						</HBox>
+						<HBox >
+							<ObjectStatus
+								class="sapUiSmallMarginBottom"
+								text="Evergreen"
+								icon="sap-icon://sys-enter-2"
+								state="Success"
+								visible="{isEvergreenBootstrap}"
+								 />
+						</HBox>
+						<Text text="{eom}" />
+						<HBox>
+							<Text text="{eocp}" visible="{= ${eocp} !== true }"  />
+							<ObjectStatus
+								class="sapUiSmallMarginBottom"
+								text="Removed"
+								icon="sap-icon://status-error"
+								state="Error"
+								visible="{= ${eocp} === true }"
+								 />
+						</HBox>
+						<HBox>
+							<Text text="Not available" visible="{= ${linter} === undefined }"  />
+							<ObjectStatus
+								class="sapUiSmallMarginBottom"
+								text="{linter/conclusion}"
+								icon="sap-icon://sys-enter-2"
+								state="Success"
+								visible="{= ${linter} !== undefined }"
+								 />
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<FlexBox id="loginBox" alignItems="Center" fitContainer="false" justifyContent="Center" direction="Column">
+			<f:Card class="sapUiMediumMarginTop sapUiMediumMarginBottom barcodeCard" width="100%" height="100%" >
+				<f:header>
+				</f:header>
+				<f:content>
+					<FlexBox id="barcodeInputFlexbox" height="100%" width="100%" alignItems="Center" fitContainer="true" justifyContent="Center" direction="Column"
+						class="sapUiTinyMarginTop sapUiTinyMarginBottom">
+						<Label text="GitHub Access Token:" />
+						<Input
+						id="tokenInput"
+						type="Password"
+						width="300px"
+						value="" 
+						placeholder="GitHub Access Token" />
+						<Button type="Accept" press=".startPressed" text="Go go gadget" />
+					</FlexBox>
+				</f:content>
+			</f:Card>
+		</FlexBox>
+	</Page>
+</mvc:View>

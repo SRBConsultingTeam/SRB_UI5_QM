@@ -1,0 +1,31 @@
+env:
+  browser: true
+  es2021: true
+extends: "eslint:recommended"
+parserOptions:
+  ecmaVersion: 12
+
+globals:
+  sap: true
+  $: true
+  jQuery: true
+  SRBInfoAndSupport: true
+  SRBJSLogger: true
+
+rules:
+  no-unused-vars: off # disallow unused variables
+  default-case: error # require `default` cases in `switch` statements
+  default-case-last: error # enforce default clauses in switch statements to be last
+  eqeqeq: error # require the use of `===` and `!==`
+  no-alert: error # disallow the use of `alert`, `confirm`, and `prompt`
+  no-empty-function: warn # disallow empty functions
+  no-floating-decimal: error # disallow leading or trailing decimal points in numeric literals
+  no-constant-condition: warn # disallow constant expressions in conditions
+
+  # Styling conventions
+  no-sequences: error # disallow comma operators
+  camelcase: error # enforce camelcase naming convention
+  comma-dangle: error # require or disallow trailing commas
+  linebreak-style: error #enforce consistent linebreak style
+
+ignorePatterns: ["/docs/**", "/doc/**", "scripts/generate_build_no.js", "gruntfile.js", "/webapp/libs/ExternalLibs.js", "require.js"]

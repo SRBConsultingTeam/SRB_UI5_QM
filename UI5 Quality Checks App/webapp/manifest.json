@@ -1,0 +1,74 @@
+{
+  "_version": "1.7.1",
+  "_srbVersionInfo": {
+    "productName": "SRB UI5 Quality Checks",
+    "latestCommitHash": "5c1d467",
+    "copyright": "© Copyright 2022 SRB Consulting Team GmbH. All Rights Reserved.",
+    "licenses": { "SRB UI5 Quality Checks": "MIT" }
+  },
+  "sap.app": {
+    "id": "srbUI5QualityChecks",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": { "version": "1.0.0" },
+    "title": "{{title}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/SRBLP/LP_V2/",
+        "type": "OData",
+        "settings": { "odataVersion": "2.0", "localUri": "localService/metadata.xml", "sap-client": "100" }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": { "icon": "", "favIcon": "", "phone": "", "phone@2": "", "tablet": "", "tablet@2": "" },
+    "deviceTypes": { "desktop": true, "tablet": true, "phone": true },
+    "supportedThemes": ["sap_bluecrystal", "sap_hcb", "sap_belize", "sap_fiori_3"]
+  },
+  "sap.ui5": {
+    "rootView": { "viewName": "srbUI5QualityChecks.view.startpage", "type": "XML" },
+    "dependencies": {
+      "minUI5Version": "1.30.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.ushell": {},
+        "sap.collaboration": {},
+        "sap.ui.comp": {},
+        "sap.uxap": {}
+      }
+    },
+    "contentDensities": { "compact": true, "cozy": true },
+    "models": {
+      "i18n": { "type": "sap.ui.model.resource.ResourceModel", "settings": { "bundleName": "srbUI5QualityChecks.i18n.i18n" } }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "srbUI5QualityChecks.view",
+        "controlId": "App",
+        "clearTarget": false,
+        "controlAggregation": "pages",
+        "bypassedPage": { "target": ["startpage"] }
+      },
+      "routes": [{ "pattern": "", "name": "startpage", "target": ["startpage"] }],
+      "targets": {
+        "startpage": { "controlAggregation": "pages", "viewName": "startpage", "viewId": "startpage", "viewLevel": 1, "transition": "slide" }
+      }
+    },
+    "resources": {
+      "css": [{ "uri": "css/style.css" }],
+      "js": [
+        { "uri": "libs/SRBLib.js" },
+        { "uri": "libs/AppConfig.js" },
+        { "uri": "libs/ExternalLibs.js" },
+        { "uri": "libs/SRBGitHub.js" },
+        { "uri": "libs/TableUtils.js" }
+      ]
+    }
+  }
+}

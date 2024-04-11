@@ -1,0 +1,10 @@
+specVersion: "1.0"
+metadata:
+  name: herwig
+type: application
+# https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/
+server:
+
+resources:
+  configuration:
+    propertiesFileSourceEncoding: UTF-8

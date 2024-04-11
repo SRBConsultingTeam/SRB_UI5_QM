@@ -1,0 +1,21 @@
+{
+  "@sapui5/generator-sapui5-templates": {
+    "promptValues": {
+      "ApplicationTitle": "Testing",
+      "ApplicationDescription": "Testing usage of MS Visual Studio Code",
+      "FLP": false,
+      "ServiceBaseUri": "http://srbvmsap31.srb.at:8000/sap/opu/odata/sap/ZSRB_GW_CATS_SRV/",
+      "DatasourceUrl": "/",
+      "ObjectCollection": "TimeRecords",
+      "ObjectCollection_Key": "TimeRecords",
+      "Object_Identifier": "Longtext",
+      "Object_Number": "Duration",
+      "Object_UnitOfMeasure": "Unit",
+      "LineItemCollection": "TimeRecords",
+      "LineItemCollection_Key": "",
+      "LineItem_Identifier": "",
+      "LineItem_Number": "",
+      "LineItem_UnitOfMeasure": ""
+    }
+  }
+}
