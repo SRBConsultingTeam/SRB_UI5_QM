@@ -27,4 +27,4 @@ jobs:
           npm install --save-dev eslint-config-airbnb-base eslint-config-prettier eslint-plugin-import
 
       - name: Run ESLint
-        run: npx eslint . --config Workflows/.eslintrc.yaml
+        run: npx eslint . --config WorkflowsConfig/.eslintrc.yaml
