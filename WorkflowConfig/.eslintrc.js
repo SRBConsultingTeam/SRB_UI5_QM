@@ -3,31 +3,32 @@ module.exports = {
     parserOptions: {
       ecmaVersion: 12,
     },
+    globals: {
+      sap: true,
+      $: true,
+      jQuery: true,
+      SRBLib: true,
+      AppConfig: true,
+      HierarchyGenerator: true,
+      GroupGenerator: true,
+      SettingsHandler: true,
+      RouteHandler: true,
+      StyleAndAdoptionHandler: true,
+      SRBJSLogger: true,
+      ViewGenerator: true,
+      TileGenerator: true,
+      DataHandler: true,
+      TreeGenerator: true,
+      TechObjectSearchHelps: true,
+      StyleHandler: true,
+      MetaTables: true,
+    }
   },
   env: {
     browser: true,
     es2021: true,
   },
-  globals: {
-    sap: true,
-    $: true,
-    jQuery: true,
-    SRBLib: true,
-    AppConfig: true,
-    HierarchyGenerator: true,
-    GroupGenerator: true,
-    SettingsHandler: true,
-    RouteHandler: true,
-    StyleAndAdoptionHandler: true,
-    SRBJSLogger: true,
-    ViewGenerator: true,
-    TileGenerator: true,
-    DataHandler: true,
-    TreeGenerator: true,
-    TechObjectSearchHelps: true,
-    StyleHandler: true,
-    MetaTables: true,
-  },
+
   rules: {
     // Possible errors
     "no-unused-vars": "off", // disallow unused variables
