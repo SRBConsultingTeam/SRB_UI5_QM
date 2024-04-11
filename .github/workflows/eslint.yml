@@ -28,4 +28,4 @@ jobs:
           npm install eslint
 
       - name: Run ESLint
-        run: npx eslint . #--config WorkflowsConfig/.eslintrc.yaml
+        run: npx eslint . --config WorkflowsConfig/.eslintrc.yaml
