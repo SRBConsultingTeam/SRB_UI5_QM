@@ -1,0 +1,25 @@
+name: ESLint
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install ESLint and dependencies
+        run: npm install eslint eslint-plugin-react
+
+      - name: Run ESLint
+        run: npm run lint
