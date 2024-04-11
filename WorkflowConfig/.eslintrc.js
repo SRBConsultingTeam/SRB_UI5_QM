@@ -1,8 +1,5 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
+  root: true,
   extends: "eslint:recommended",
   parserOptions: {
     ecmaVersion: 12,
@@ -28,6 +25,7 @@ module.exports = {
     MetaTables: true,
   },
   rules: {
+    // Possible errors
     "no-unused-vars": "off", // disallow unused variables
     "default-case": "error", // require `default` cases in `switch` statements
     "default-case-last": "error", // enforce default clauses in switch statements to be last
