@@ -1,35 +1,50 @@
-name: ESLint
+module.exports = {
+  root: true,
+  parserOptions: {
+    ecmaVersion: 12,
+  },
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  globals: {
+    sap: true,
+    $: true,
+    jQuery: true,
+    SRBLib: true,
+    AppConfig: true,
+    HierarchyGenerator: true,
+    GroupGenerator: true,
+    SettingsHandler: true,
+    RouteHandler: true,
+    StyleAndAdoptionHandler: true,
+    SRBJSLogger: true,
+    ViewGenerator: true,
+    TileGenerator: true,
+    DataHandler: true,
+    TreeGenerator: true,
+    TechObjectSearchHelps: true,
+    StyleHandler: true,
+    MetaTables: true,
+  },
+  rules: {
+    // Possible errors
+    "no-unused-vars": "off", // disallow unused variables
+    "default-case": "error", // require `default` cases in `switch` statements
+    "default-case-last": "error", // enforce default clauses in switch statements to be last
+    eqeqeq: "error", // require the use of `===` and `!==`
+    "no-alert": "error", // disallow the use of `alert`, `confirm`, and `prompt`
+    "no-empty-function": "error", // disallow empty functions
+    "no-floating-decimal": "error", // disallow leading or trailing decimal points in numeric literals
+    "no-constant-condition": "warn", // disallow constant expressions in conditions
+    "no-useless-escape": "warn", // disallow unnecessary escapes
+    "no-undef": "warn", // variables must be defined
+    "no-unreachable": "warn", // unreachable code after return, throw, continue, and break statements
 
-on:
-  push:
-    branches:
-      - main
-
-  workflow_call:
-
-jobs:
-  eslint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js v20
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20"
-
-      - name: Download ESLint config file from QM repository
-        run: |
-          curl -o .eslintrc.js https://raw.githubusercontent.com/SRBConsultingTeam/SRB_UI5_QM/master/WorkflowConfig/.eslintrc.js
-
-      - name: Install ESLint and dependencies
-        run: |
-          npm install eslint
-
-      - name: Run ESLint
-        run: npx eslint . --config .eslintrc.js
+    // Styling conventions
+    "no-sequences": "error", // disallow comma operators
+    camelcase: "error", // enforce camelcase naming convention
+    "comma-dangle": "error", // require or disallow trailing commas
+    "linebreak-style": "error", // enforce consistent linebreak style
+  }
+};
