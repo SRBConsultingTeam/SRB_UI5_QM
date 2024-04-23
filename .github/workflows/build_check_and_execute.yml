@@ -22,30 +22,17 @@ jobs:
       - name: Install dependencies from package.json
         run: npm install
 
+      - name: Check for Build Step in package.json
+        id: build-check-step
+        run: |
+          build_script=$(jq -r '.scripts.build' package.json)
+          if [ -z "$build_script" ]; then
+            echo "No build script found in package.json"
+            exit 1
+          fi
+
       - name: Install the ui5 cli locally
-        run: npm install @ui5/cli
-
-      #- name: Check for Build Step in package.json
-      #  id: build-check-step
-      #  run: |
-      #    build_command=$(jq -r '.scripts.build' package.json)
-      #    echo "BUILD_COMMAND=$build_command" >> $GITHUB_ENV
-
-      - name: Printing directory
-        run:  |
-          pwd
-        working-directory: ./
-
-      - name: Listing directory
-        run:  |
-          ls -lha
-        working-directory: ./        
-
-      - name: Listing node_modules directory
-        run:  |
-          ls ./node_modules
-        working-directory: ./        
-
+        run: npm install @ui5/cli   
 
       - name: Run Build Step 
         run:  npm run build
