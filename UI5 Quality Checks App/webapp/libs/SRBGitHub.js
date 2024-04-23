@@ -265,7 +265,7 @@ var SRBGitHub = function () {
                     owner: owner || "SRBConsultingTeam",
                     repo: repo,
                     branch: branch || "develop",
-                    workflow_id: "lint.yml" //<-- workflow_id or worflow file name
+                    workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
                 }).then(
                     (workflowResults) => {
                         resolve(workflowResults.data.workflow_runs[0]);
