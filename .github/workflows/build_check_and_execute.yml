@@ -36,6 +36,17 @@ jobs:
           pwd
         working-directory: ./
 
+      - name: Listing directory
+        run:  |
+          ls -lha
+        working-directory: ./        
+
+      - name: Listing node_modules directory
+        run:  |
+          ls ./node_modules
+        working-directory: ./        
+
+
       - name: Run Build Step 
         run:  |
           build_command="${BUILD_COMMAND}"
