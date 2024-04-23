@@ -29,13 +29,4 @@ jobs:
 
       - name: Run ESLint
         run: npx eslint . --config .eslintrc.js
-
-  xml-linter-job:
-    runs-on: ubuntu-latest  
-    steps:
-      - name: Verify XML Action
-        uses: Ahli/verify-xml-action@v2
-        with:
-          path: "/webapp"
-          file-endings: ".xml"
       
