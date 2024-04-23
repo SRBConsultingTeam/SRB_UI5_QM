@@ -19,13 +19,11 @@ jobs:
       - name: Install jq
         run: |
           sudo apt-get update && sudo apt-get install jq -y
-        working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
-        working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Install dependencies from package.json
         run: |
