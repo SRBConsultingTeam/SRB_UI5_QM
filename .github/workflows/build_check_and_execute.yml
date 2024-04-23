@@ -20,9 +20,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies globally from package.json
-        run: |
-          npm install -g
-          echo "::add-path::$(npm prefix -g)/bin"  # Add global npm bin directory to PATH
+        run: npm install -g
+
+      - name: Set up environment
+        run: echo "::set-env name=PATH::$(npm prefix -g)/bin:$PATH"
 
       - name: Check for Build Step in package.json
         id: build-check-step
