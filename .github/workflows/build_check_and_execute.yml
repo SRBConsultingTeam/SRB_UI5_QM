@@ -19,15 +19,13 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies from package.json
-        run: npm install
+      - name: Install dependencies globally from package.json
+        run: npm install -g
 
       - name: Check for Build Step in package.json
         id: build-check-step
         run: |
           build_command=$(jq -r '.scripts.build' package.json)
-          # Replace 'ui5' with the correct path to ui5 command
-          build_command="${build_command/ui5/$(npm bin)/ui5}"
           echo "BUILD_COMMAND=$build_command" >> $GITHUB_ENV
 
       - name: Run Build Step
