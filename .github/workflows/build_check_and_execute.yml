@@ -27,10 +27,10 @@ jobs:
           build_command=$(jq -r '.scripts.build' package.json)
           if [ ! -z "$build_command" ]; then
             echo "Build step found in package.json: $build_command."
-            echo "::set-output name=build_command::$build_command"
+            echo "build_command=$build_command" >> $GITHUB_ENV
           else
             echo "No build step found in package.json. Skipping build."
-            echo "::set-output name=build_command::"  # Set empty output to skip build step in the next job
+            echo "build_command=" >> $GITHUB_ENV  # Set empty output to skip build step in the next job
           fi
 
   execute-build:
@@ -54,4 +54,4 @@ jobs:
         run: npm install
 
       - name: Run Build Step
-        run: ${{ needs.build-check.outputs.build_command }}
+        run: ${{ env.build_command }}
