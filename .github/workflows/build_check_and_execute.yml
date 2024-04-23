@@ -22,8 +22,8 @@ jobs:
       - name: Install dependencies globally from package.json
         run: npm install -g
 
-      - name: Install dependencies globally from package.json
-        run: npm install -g        
+      - name: Install the ui5 cli
+        run: npm install --global @ui5/cli      
 
       - name: Check for Build Step in package.json
         id: build-check-step
