@@ -31,6 +31,17 @@ jobs:
           build_command=$(jq -r '.scripts.build' package.json)
           echo "BUILD_COMMAND=$build_command" >> $GITHUB_ENV
 
+      - name: Printing directory
+        run:  |
+          pwd
+        working-directory: ./
+
+      - name: Run Build Step 
+        run:  |
+          build_command="${BUILD_COMMAND}"
+          eval "$build_command"
+        working-directory: ./
+
       - name: Run Build Step
         if: ${{ env.BUILD_COMMAND != '' }}
         run: |
