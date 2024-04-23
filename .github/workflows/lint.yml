@@ -36,6 +36,6 @@ jobs:
       - name: Verify XML Action
         uses: Ahli/verify-xml-action@v2
         with:
-          path: "webapp/"
+          path: "/webapp"
           file-endings: ".xml"
       
