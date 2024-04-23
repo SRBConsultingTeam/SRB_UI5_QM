@@ -2,6 +2,11 @@ name: Build Check and Execution
 
 on:
   workflow_call:
+    inputs:
+      working-directory:
+        description: 'Working directory for running the build'
+        required: false
+        default: './'
 
 jobs:
   build_check_and_execute:
@@ -13,14 +18,17 @@ jobs:
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install jq -y
+        working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+        working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Install dependencies from package.json
         run: npm install
+        working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Check for Build Step in package.json
         id: build-check-step
@@ -30,7 +38,8 @@ jobs:
             echo "No build script found in package.json"
             exit 1
           fi
+        working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Run Build Step 
         run:  npm run build
-        working-directory: ./
+        working-directory: ${{ github.event.inputs.working-directory }}
