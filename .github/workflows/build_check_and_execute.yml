@@ -26,10 +26,12 @@ jobs:
         id: build-check-step
         run: |
           build_command=$(jq -r '.scripts.build' package.json)
+          # Replace 'ui5' with the correct path to ui5 command
+          build_command="${build_command/ui5/$(npm bin)/ui5}"
           echo "BUILD_COMMAND=$build_command" >> $GITHUB_ENV
 
       - name: Run Build Step
         if: ${{ env.BUILD_COMMAND != '' }}
         run: |
           build_command="${BUILD_COMMAND}"
-          eval "$(npm bin)/ui5 $build_command"
+          eval "$build_command"
