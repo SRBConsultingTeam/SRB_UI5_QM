@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies globally from package.json
         run: npm install -g
 
-      - name: Set up environment
-        run: echo "::set-env name=PATH::$(npm prefix -g)/bin:$PATH"
-
       - name: Check for Build Step in package.json
         id: build-check-step
         run: |
@@ -35,4 +32,4 @@ jobs:
         if: ${{ env.BUILD_COMMAND != '' }}
         run: |
           build_command="${BUILD_COMMAND}"
-          eval "$build_command"
+          export PATH="$(npm prefix -g)/bin:$PATH" && eval "$build_command"
