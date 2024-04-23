@@ -2,10 +2,16 @@ name: Build Check and Execution
 
 on:
   workflow_call:
+    inputs:
+      ui5app_path:
+        description: 'Path to the UI5 app'
+        default: './'  # Standardwert, falls keine Eingabe bereitgestellt wird
+
 
 jobs:
   build_check_and_execute:
     runs-on: ubuntu-latest
+
 
     steps:
       - name: Checkout Repository
@@ -33,4 +39,4 @@ jobs:
 
       - name: Run Build Step 
         run:  npm run build
-        working-directory: ./
+        working-directory: ${{ inputs.ui5app_path }}
