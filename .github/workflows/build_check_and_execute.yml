@@ -1,0 +1,54 @@
+name: Build Check and Execution
+
+on:
+  workflow_call:
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq -y
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Change Node.js version as needed
+
+      - name: Check for Build Step in package.json
+        id: build-check-step
+        run: |
+          build_command=$(jq -r '.scripts.build' package.json)
+          if [ ! -z "$build_command" ]; then
+            echo "Build step found in package.json: $build_command."
+            echo "::set-output name=build_command::$build_command"
+          else
+            echo "No build step found in package.json. Skipping build."
+            echo "::set-output name=build_command::"  # Set empty output to skip build step in the next job
+          fi
+
+  execute-build:
+    needs: build-check
+    runs-on: ubuntu-latest
+    if: ${{ needs.build-check.outputs.build_command != '' }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'  # Change Node.js version as needed
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run Build Step
+        run: ${{ needs.build-check.outputs.build_command }}
