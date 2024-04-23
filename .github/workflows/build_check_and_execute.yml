@@ -5,8 +5,8 @@ on:
     inputs:
       ui5app_path:
         description: 'Path to the UI5 app'
+        type: string
         default: './'  # Standardwert, falls keine Eingabe bereitgestellt wird
-
 
 jobs:
   build_check_and_execute:
