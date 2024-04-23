@@ -100,6 +100,7 @@ jobs:
         run:  npm run build
         working-directory: ${{ inputs.ui5app_path }}
 
+```
 
 ## Using the ESLint Job in Your Repository
 
