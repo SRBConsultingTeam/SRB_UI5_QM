@@ -4,7 +4,7 @@ on:
   workflow_call:
 
 jobs:
-  build_check:
+  build_check_and_execute:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,39 +21,18 @@ jobs:
         with:
           node-version: '20'  # Change Node.js version as needed
 
+      - name: Install SAPUI5 CLI
+        run: |
+          npm install -g @ui5/cli
+
       - name: Check for Build Step in package.json
         id: build-check-step
         run: |
           build_command=$(jq -r '.scripts.build' package.json)
-          if [ ! -z "$build_command" ]; then
-            echo "Build step found in package.json: $build_command."
-            echo "::set-output name=build_command::$build_command"
-          else
-            echo "No build step found in package.json. Skipping build."
-            echo "::set-output name=build_command::"  # Set empty output to skip build step in the next job
-          fi
-
-  execute_build:
-    needs: build_check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Debug build_command
-        run: echo "build_command: ${{ needs.build_check.outputs.build_command }}"
-      
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'  # Change Node.js version as needed
-
-      - name: Install SAPUI5 CLI
-        run: npm install -g @ui5/cli
-
-      - name: Install npm dependencies
-        run: npm install
+          echo "BUILD_COMMAND=$build_command" >> $GITHUB_ENV
 
       - name: Run Build Step
-        run: ${{ needs.build_check.outputs.build_command }}
+        if: ${{ env.BUILD_COMMAND != '' }}
+        run: |
+          build_command="${BUILD_COMMAND}"
+          eval "$build_command"
