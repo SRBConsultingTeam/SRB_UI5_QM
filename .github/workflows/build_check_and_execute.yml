@@ -31,9 +31,6 @@ jobs:
             exit 1
           fi
 
-      - name: Install the ui5 cli locally
-        run: npm install @ui5/cli   
-
       - name: Run Build Step 
         run:  npm run build
         working-directory: ./
