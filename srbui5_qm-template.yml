@@ -1,0 +1,35 @@
+# Copy this file into your .github/workflows folder,
+# Name it srbui5_qm.yaml
+
+name: SRB UI5 QM Workflow
+on:
+  push:
+
+jobs:
+  # Linter jobs by component
+  srb-reuse-linter-detail-component:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/lint.yml@master
+    with:
+      ui5app_path: ./UIComponents/DetailComponent
+  srb-reuse-linter-worklist-component:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/lint.yml@master
+    with:
+      ui5app_path: ./UIComponents/WorklistComponent
+  srb-reuse-linter-new-notif-component:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/lint.yml@master
+    with:
+      ui5app_path: ./UIComponents/NewNotificationComponent
+
+  # Builder jobs by component
+  srb-reuse-builder-detail-component:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/build_check_and_execute.yml@master
+    with:
+      ui5app_path: ./UIComponents/DetailComponent
+  srb-reuse-builder-worklist-component:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/build_check_and_execute.yml@master
+    with:
+      ui5app_path: ./UIComponents/WorklistComponent
+  srb-reuse-builder-new-notif-component:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/build_check_and_execute.yml@master
+    with:
+      ui5app_path: ./UIComponents/NewNotificationComponent
