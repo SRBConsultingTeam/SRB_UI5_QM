@@ -7,6 +7,13 @@ This repository houses automated tests and a quality assurance (QA) application 
 - **WorkflowConfig:** Contains configuration files for various workflows.
 - **.github/workflows/eslint.yml:** Configuration file for the ESLint job, responsible for linting JavaScript files.
 - **.github/workflows/build_check_and_execute.yml:** Configuration file for the Build Check and Execution job, responsible for checking and executing build steps.
+- **srbui5_qm-template.yml:** Template file for reusing the workflows.
+
+
+
+Find a template file for reusing the workflows [here](https://github.com/SRBConsultingTeam/SRB_UI5_QM/blob/master/srbui5_qm-template.yml).
+
+
 
 ## ESLint Job Configuration
 
