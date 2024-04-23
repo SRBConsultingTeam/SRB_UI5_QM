@@ -26,17 +26,21 @@ jobs:
         run: |
           build_command=$(jq -r '.scripts.build' package.json)
           if [ ! -z "$build_command" ]; then
+            echo "Build step found in package.json: $build_command."
             echo "::set-output name=build_command::$build_command"
           else
+            echo "No build step found in package.json. Skipping build."
             echo "::set-output name=build_command::"  # Set empty output to skip build step in the next job
           fi
 
   execute_build:
     needs: build_check
     runs-on: ubuntu-latest
-    if: ${{ needs.build_check.outputs.build_command != '' }}
 
     steps:
+      - name: Debug build_command
+        run: echo "build_command: ${{ needs.build_check.outputs.build_command }}"
+      
       - name: Checkout Repository
         uses: actions/checkout@v2
 
