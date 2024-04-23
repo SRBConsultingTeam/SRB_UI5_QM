@@ -1,4 +1,4 @@
-# SRB Automated Testing and Quality Assurance Repository
+# Automated Testing and Quality Assurance Repository
 
 This repository houses automated tests and a quality assurance (QA) application to ensure the quality and reliability of our software. Below, you'll find details on the structure of the repository, configuration files, and instructions on running tests.
 
@@ -49,6 +49,22 @@ This job runs on an Ubuntu latest environment and performs the following steps:
 3. Downloads the ESLint configuration file from the QM repository.
 4. Installs ESLint and its dependencies.
 5. Runs ESLint with the specified configuration.
+
+## Using the Lint Job in Your Repository
+
+To utilize the linting job from this repository in your own, you can include the following configuration in your workflow file:
+
+```yaml
+name: SRB UI5 QM Workflow
+on:
+  push:
+
+jobs:
+  srb-reuse-linter:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/eslint.yml@master
+```
+
+This configuration will trigger the linting job defined in this repository whenever a push event occurs in your repository. Make sure to adjust the triggers and any other parameters according to your project's requirements.
 
 ## Future Additions
 
