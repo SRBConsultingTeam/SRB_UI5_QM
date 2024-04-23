@@ -4,9 +4,9 @@ on:
   workflow_call:
     inputs:
       ui5app_path:
-        description: 'Path to the UI5 app'
+        description: 'Path to the UI5 app' # Where the package.json is located
         type: string
-        default: './'  # Standardwert, falls keine Eingabe bereitgestellt wird
+        default: './'  # Default value
 
 jobs:
   build_check_and_execute:
@@ -38,7 +38,7 @@ jobs:
             exit 1
           fi
         working-directory: ${{ inputs.ui5app_path }}
-                
+
       - name: Run Build Step 
         run:  npm run build
         working-directory: ${{ inputs.ui5app_path }}

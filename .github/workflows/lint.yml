@@ -2,6 +2,11 @@ name: ESLint
 
 on:
   workflow_call:
+    inputs:
+      ui5app_path:
+        description: 'Path to the UI5 app' # Where the package.json is located
+        type: string
+        default: './'  # Default value
 
 jobs:
   js-linter-job:
@@ -20,13 +25,16 @@ jobs:
           node-version: "20"
 
       - name: Download ESLint config file from QM repository
+        working-directory: ${{ inputs.ui5app_path }}
         run: |
           curl -o .eslintrc.js https://raw.githubusercontent.com/SRBConsultingTeam/SRB_UI5_QM/master/WorkflowConfig/.eslintrc.js
 
       - name: Install ESLint and dependencies
+        working-directory: ${{ inputs.ui5app_path }}
         run: |
           npm install eslint@8.7.0
 
       - name: Run ESLint
+        working-directory: ${{ inputs.ui5app_path }}
         run: npx eslint . --config .eslintrc.js
       
