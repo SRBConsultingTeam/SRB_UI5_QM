@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
-        working-directory: ${{ github.event.inputs.working-directory }}
+        #working-directory: ${{ github.event.inputs.working-directory }}
 
       - name: Install dependencies from package.json
         run: npm install
