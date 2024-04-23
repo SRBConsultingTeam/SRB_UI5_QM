@@ -47,6 +47,9 @@ jobs:
         with:
           node-version: '20'  # Change Node.js version as needed
 
+      - name: Install SAPUI5 CLI
+        run: npm install -g @ui5/cli
+
       - name: Install npm dependencies
         run: npm install
 
