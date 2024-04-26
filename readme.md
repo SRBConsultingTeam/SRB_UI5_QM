@@ -109,6 +109,23 @@ jobs:
 
 ```
 
+## Using the ESLint & Build Job in Your Repository ( Minimal Setup )
+
+To utilize the ESLint and the Build job from this repository in your own, you can include the following configuration in your workflow file:
+
+```yaml
+name: SRB UI5 QM Workflow
+on:
+  push:
+
+jobs:
+  srb-reuse-linter:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/lint.yml@master
+  srb-reuse-builder:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/build_check_and_execute.yml@master
+```
+
+
 ## Using the ESLint Job in Your Repository
 
 To utilize the ESLint job from this repository in your own, you can include the following configuration in your workflow file:
@@ -142,6 +159,7 @@ jobs:
 ```
 
 This configuration will trigger the build job defined in this repository whenever a push event occurs in your repository. You can adjust the `ui5app_path` parameter according to the directory structure of your project.
+
 
 ## Future Additions
 
