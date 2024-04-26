@@ -1,0 +1,44 @@
+name: Build Check and Execution
+
+on:
+  workflow_call:
+    inputs:
+      ui5app_path:
+        description: 'Path to the UI5 app' # Where the package.json is located
+        type: string
+        default: './'  # Default value
+
+jobs:
+  build_check_and_execute:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install jq -y
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies from package.json
+        run: npm install
+        working-directory: ${{ inputs.ui5app_path }}
+
+      - name: Check for Build Step in package.json
+        id: build-check-step
+        run: |
+          build_script=$(jq -r '.scripts.build' package.json)
+          if [ -z "$build_script" ]; then
+            echo "No build script found in package.json"
+            exit 1
+          fi
+        working-directory: ${{ inputs.ui5app_path }}
+
+      - name: Run Build Step 
+        run:  npm run build
+        working-directory: ${{ inputs.ui5app_path }}
