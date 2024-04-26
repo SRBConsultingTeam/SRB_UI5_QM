@@ -16,7 +16,8 @@ module.exports = {
     "Chart.js",
     "*strapdown*",
     "jquery",
-    "*wapa*"
+    "*wapa*",
+    "*DrawerJS*"
   ],
 
   overrides: [
