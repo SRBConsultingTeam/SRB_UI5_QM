@@ -34,11 +34,7 @@
         "sap.ui.core": {},
         "sap.f": {},
         "sap.m": {},
-        "sap.ui.layout": {},
-        "sap.ushell": {},
-        "sap.collaboration": {},
-        "sap.ui.comp": {},
-        "sap.uxap": {}
+        "sap.ui.layout": {}
       }
     },
     "contentDensities": { "compact": true, "cozy": true },

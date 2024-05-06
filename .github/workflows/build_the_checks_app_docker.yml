@@ -1,0 +1,23 @@
+name: Docker Build and Publish the SRB UI5 Quality Check APp
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t SRB_UI5_QUALITY_CHECKS_APP:latest .
+
+      - name: Save Docker image as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: SRB_UI5_QUALITY_CHECKS_APP
+          path: /var/lib/docker/image/overlay2/imagedb/content/sha256

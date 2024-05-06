@@ -12,7 +12,7 @@ var SRBGitHub = function () {
         setup: function (accessToken) {
             this.octokit = new Octokit({ auth: accessToken });
             //this.octokit.rest.users.getAuthenticated()
-            var versionsPath = jQuery.sap.getModulePath("srbUI5QualityChecks", "/model/versionoverview.json");
+            var versionsPath = "/versionoverview.json";
 
             return new Promise(function (resolve, reject) {
 

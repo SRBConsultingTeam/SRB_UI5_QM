@@ -1,6 +1,6 @@
 specVersion: "1.0"
 metadata:
-  name: herwig
+  name: SRB_UI5_QUALITY_CHECKS
 type: application
 # https://sap.github.io/ui5-tooling/pages/extensibility/CustomServerMiddleware/
 server:

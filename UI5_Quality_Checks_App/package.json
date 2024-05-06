@@ -1,11 +1,14 @@
 {
   "name": "SRB_UI5_QUALITY_CHECKS",
-  "description": "",
+  "description": "SRB UI5 Quality Checks App",
+  "author": "Michael Henninger @ SRB Consulting Team GmbH",
+  "main": "server.js",
   "scripts": {
     "build": "node ./scripts/generate_build_no.js && browserify ./webapp/require.js | npx uglifyjs > ./webapp/libs/ExternalLibs.js && ui5 build",
     "test": "ui5 serve -o index.html",
     "lint": "./node_modules/.bin/eslint ./webapp",
-    "pretty": "npx prettier --write ."
+    "pretty": "npx prettier --write .",
+    "start": "node server.js"
   },
   "devDependencies": {
     "@ui5/cli": "^2.10.0",
@@ -24,6 +27,10 @@
     "html2canvas": "^1.4.1",
     "srbinfoandsupportjs": "^1.0.8",
     "srbjslogger": "^1.5.1",
-    "uglify-js": "^3.17.4"
+    "uglify-js": "^3.17.4",
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.1",
+    "puppeteer": "^13.1.0"
   }
 }

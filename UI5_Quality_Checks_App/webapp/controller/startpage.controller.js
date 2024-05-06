@@ -12,7 +12,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
   return Controller.extend("srbUI5QualityChecks.controller.startpage", {
 
-
     /**
      * This method is called upon initialization of the View. The controller can perform its internal setup in this hook.
      * @public
@@ -24,11 +23,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       this.oRouter.getTarget("startpage").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 
       SRBInfoAndSupport.init(this.getOwnerComponent());
-
-      var sPath = jQuery.sap.getModulePath("srbUI5QualityChecks", "/model/versionoverview.json");
-      this.availableVersionsModel = new sap.ui.model.json.JSONModel();
-      this.availableVersionsModel.loadData(sPath);
-
     },
 
     /**
@@ -50,18 +44,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
      */
     onAfterRendering: function () {
       var that = this;
-
       document.title = SRBLib.checkI18n("i18n:title", AppConfig.i18n.bundleName);
-
-
     },
 
     getInfoForVersion: function (version) {
-
       return {
-
       };
-
     },
 
     getRepo: function (oContext) {
@@ -334,7 +322,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
             })
           }.bind(this));
-
 
         }
       }
