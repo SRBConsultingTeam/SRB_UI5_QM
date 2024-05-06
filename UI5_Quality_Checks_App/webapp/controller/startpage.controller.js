@@ -26,17 +26,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
     },
 
     /**
-     * This method is called every time the user navigates to this view
-     * @public
-     * @param {Object} oEvent - Event which is triggered after navigation to this view
-     * @memberOf srbUI5QualityChecks.controller.startpage
-     * @author Manuel Bogner - SRB Consulting Team
-     */
-    handleRouteMatched: function (oEvent) {
-      // Dummy
-    },
-
-    /**
      * This method is called every time the View is rendered, after the HTML is placed in the DOM-Tree. It can be used to apply additional changes to the DOM after the Renderer has finished.
      * @public
      * @memberOf srbUI5QualityChecks.controller.startpage
