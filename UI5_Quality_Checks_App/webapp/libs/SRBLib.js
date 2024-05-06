@@ -2,7 +2,6 @@
  * @fileOverview SRBLib - Function libary of SRB Consulting Team GmbH
  * @module SRBLib
  */
-/* global AppConfig:true */
 /* global SignaturePad:true */
 /* global PDFObject:true */
 var SRBLib = (function () {

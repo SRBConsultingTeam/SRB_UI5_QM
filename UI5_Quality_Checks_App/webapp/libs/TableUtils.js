@@ -2,8 +2,6 @@
  * @fileOverview TableUtils - UI generator utils
  * @module TableUtils
  */
-/* global AppConfig:true */
-/* global SRBLib:true */
 var TableUtils = (function () {
     return {
         sort: {

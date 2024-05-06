@@ -2,8 +2,6 @@
  * @fileOverview startpage.controller.js - JS Contoller for the startpage
  * @class srbUI5QualityChecks.controller.startpage
  */
-/* global SRBLib:true */
-/* global AppConfig:true */
 /* global DataHandler:true */
 /* global TreeGenerator:true */
 /* global BreadcrumbsGenerator:true */

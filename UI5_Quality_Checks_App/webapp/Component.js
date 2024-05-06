@@ -2,7 +2,6 @@
  * @fileOverview Component.js - JS component to initialize the application
  * @class srbUI5QualityChecks.Component
  */
-/* global SRBLib:true */
 sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "srbUI5QualityChecks/model/models"], function (UIComponent, Device, models) {
   "use strict";
 

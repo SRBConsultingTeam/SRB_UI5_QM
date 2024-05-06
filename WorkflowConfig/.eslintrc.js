@@ -13,6 +13,8 @@ module.exports = {
     $: true,
     jQuery: true,
     SRBLib: true,
+    SRBInfoAndSupport: true,
+    AppConfig: true
     // ...
   },
   ignorePatterns: [
