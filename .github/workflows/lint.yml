@@ -1,12 +1,11 @@
-name: ESLint
-
+name: "Reusable: ESLint"
 on:
   workflow_call:
     inputs:
       ui5app_path:
-        description: 'Path to the UI5 app' # Where the package.json is located
+        description: "Path to the UI5 app" # Where the package.json is located
         type: string
-        default: './'  # Default value
+        default: "./" # Default value
 
 jobs:
   js-linter-job:
@@ -37,4 +36,3 @@ jobs:
       - name: Run ESLint
         working-directory: ${{ inputs.ui5app_path }}
         run: npx eslint . --config .eslintrc.js
-      
