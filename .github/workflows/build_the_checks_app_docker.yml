@@ -12,16 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check files
-        run: ls ${{ github.workspace }}/UI5_Quality_Checks_App
-
       - name: Build Docker image
         run: |
           cd ${{ github.workspace }}/UI5_Quality_Checks_App 
           docker build -t srb-ui5-quality-checks-app .
 
-      - name: Save Docker image as artifact
+      - name: Save Docker image as TAR archive
+        run: docker save srb-ui5-quality-checks-app > image_quality_checks_app.tar
+
+      - name: Upload TAR archive as artifact
         uses: actions/upload-artifact@v2
         with:
           name: srb-ui5-quality-checks-app
-          path: /var/lib/docker/image/overlay2/imagedb/content/sha256
+          path: image_quality_checks_app.tar
