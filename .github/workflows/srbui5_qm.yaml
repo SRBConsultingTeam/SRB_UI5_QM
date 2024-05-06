@@ -2,7 +2,7 @@ name: "UI5 Quality Check App: SRB UI5 QM Workflow"
 on:
   push:
     paths:
-      - "./UI5_Quality_Checks_App/**"
+      - "UI5_Quality_Checks_App/**"
 jobs:
   # Linter jobs for the quality checks app
   srb-reuse-linter:
