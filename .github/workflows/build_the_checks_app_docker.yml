@@ -17,8 +17,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          cd ${{ github.workspace }}/UI5_Quality_Checks_App
-          docker build -t srb-ui5-quality-checks-app
+          cd ${{ github.workspace }}/UI5_Quality_Checks_App 
+          docker build -t srb-ui5-quality-checks-app .
 
       - name: Save Docker image as artifact
         uses: actions/upload-artifact@v2
