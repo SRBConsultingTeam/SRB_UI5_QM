@@ -32,7 +32,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
      * @author Manuel Bogner - SRB Consulting Team
      */
     onAfterRendering: function () {
-      var that = this;
       document.title = SRBLib.checkI18n("i18n:title", AppConfig.i18n.bundleName);
     },
 
