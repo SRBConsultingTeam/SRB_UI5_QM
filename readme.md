@@ -171,11 +171,12 @@ Additionally, this repository contains a quality assurance (QA) application, whi
 
 ### How to run the Quality Assurance App 
 
-1. Get the latest Docker image
-2. Load the docker image into your docker environment with `sudo docker load -i image_quality_checks_app.tar`
-3. Create a container with that image `sudo docker container create -i -t -P --name srb-qual-checks-app srb-ui5-quality-checks-app:latest`. Don't forget to set the port mapping yourself. the `-P` in this example uses a random port!!
-4. Open the app, with `<HOSTNAME>:<PORT>`
-5. Done!
+1. Get the latest Docker image. For example from one of our latest build artefacts: https://github.com/SRBConsultingTeam/SRB_UI5_QM/actions/runs/8966916550
+2. Unzip this artefact file. You should then have a tar archive.
+3. Load the docker image into your docker environment with `sudo docker load -i image_quality_checks_app.tar`
+4. Create a container with that image `sudo docker container create -i -t -P --name srb-qual-checks-app srb-ui5-quality-checks-app:latest`. Don't forget to set the port mapping yourself. the `-P` in this example uses a random port!!
+5. Open the app, with `<HOSTNAME>:<PORT>`
+6. Done!
 
 
 
