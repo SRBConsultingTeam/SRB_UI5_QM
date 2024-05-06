@@ -167,8 +167,6 @@ var SRBGitHub = function () {
 
             checkSetup();
 
-
-
             return new Promise(function (resolve, reject) {
 
                 const parser = new DOMParser();
