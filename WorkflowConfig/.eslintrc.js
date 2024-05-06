@@ -2,6 +2,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12
   },
+  env: {
+    browser: true,
+    node: true
+  },
   globals: {
     sap: true,
     $: true,
@@ -17,7 +21,8 @@ module.exports = {
     "*strapdown*",
     "jquery",
     "*wapa*",
-    "DrawerJS.js"
+    "DrawerJS.js",
+    "ExternalLibs.js"
   ],
 
   overrides: [
