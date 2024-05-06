@@ -1,4 +1,4 @@
-name: Docker Build and Publish the SRB UI5 Quality Check App
+name: "UI5 Quality Check App: Docker Build and Publish"
 
 on:
   push:
@@ -14,6 +14,9 @@ jobs:
 
       - name: Check files
         run: ls /home/runner/work/SRB_UI5_QM/SRB_UI5_QM/UI5_Quality_Checks_App
+
+      - name: Check files 2
+        run: less /home/runner/work/SRB_UI5_QM/SRB_UI5_QM/UI5_Quality_Checks_App/Dockerfile
 
       - name: Build Docker image
         run: |
