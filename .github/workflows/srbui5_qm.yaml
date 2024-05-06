@@ -7,10 +7,10 @@ jobs:
   srb-reuse-linter-detail-component:
     uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/lint.yml@master
     with:
-      ui5app_path: ./UI5\ Quality\ Checks\ App/
+      ui5app_path: ./UI5_Quality_Checks_App
 
   # Builder jobs for the quality checks app
   srb-reuse-builder-detail-component:
     uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/build_check_and_execute.yml@master
     with:
-      ui5app_path: ./UI5\ Quality\ Checks\ App/
+      ui5app_path: ./UI5_Quality_Checks_App
