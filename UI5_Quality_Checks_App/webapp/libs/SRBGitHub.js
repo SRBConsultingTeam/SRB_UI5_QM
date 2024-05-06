@@ -1,7 +1,8 @@
+/* global Octokit:true */
 var SRBGitHub = function () {
     var checkSetup = function () {
         if (!window.Octokit) {
-            alert("You have to import Octokit first!")
+            console.alert("You have to import Octokit first!")
         }
     };
 
@@ -48,6 +49,7 @@ var SRBGitHub = function () {
                     .code({
                         q: cdnAQuery,
                         type: "code",
+                        // eslint-disable-next-line camelcase
                         per_page: 1000
                     })
                     .then((response) => {
@@ -102,13 +104,13 @@ var SRBGitHub = function () {
                 var groups = [];
                 var versionString;
 
-                groups = fileContentText.match("https:\/\/sapui5\.hana\.ondemand\.com\/(.*)(\/resources)");
+                groups = fileContentText.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
 
                 if (groups) {
                     versionString = groups[1];
                     detected = true;
                 } else {
-                    groups = fileContentText.match("https:\/\/ui5\.sap\.com\/(.*)(\/resources)");
+                    groups = fileContentText.match("https://ui5.sap.com/(.*)(/resources)");
 
                     if (groups) {
                         versionString = groups[1];
@@ -142,7 +144,7 @@ var SRBGitHub = function () {
                                 eocp = "reached"; // <-- Write true because it has beed removed
                             }
                             else {
-                                eocp = patch.eocp === true ? "reached" : path.eocp; // <-- Write the provided eocp date
+                                eocp = patch.eocp === true ? "reached" : patch.eocp; // <-- Write the provided eocp date
                             }
 
                         }
@@ -189,18 +191,18 @@ var SRBGitHub = function () {
                     var tag = scriptTags[i];
                     var src = tag.getAttribute("src");
 
-                    if (src != null) {
+                    if (src !== null) {
                         console.log("This is not a UI5 src tag");
 
 
 
-                        groups = src.match("https:\/\/sapui5\.hana\.ondemand\.com\/(.*)(\/resources)");
+                        groups = src.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
 
                         if (groups) {
                             versionString = groups[1];
                             detected = true;
                         } else {
-                            groups = src.match("https:\/\/ui5\.sap\.com\/(.*)(\/resources)");
+                            groups = src.match("https://ui5.sap.com/(.*)(/resources)");
 
                             if (groups) {
                                 versionString = groups[1];
@@ -265,6 +267,7 @@ var SRBGitHub = function () {
                     owner: owner || "SRBConsultingTeam",
                     repo: repo,
                     branch: branch || "develop",
+                    // eslint-disable-next-line camelcase
                     workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
                 }).then(
                     (workflowResults) => {

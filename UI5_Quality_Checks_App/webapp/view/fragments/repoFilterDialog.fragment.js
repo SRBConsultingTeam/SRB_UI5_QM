@@ -1,3 +1,4 @@
+/* global SRBGitHub:true */
 sap.ui.define(["sap/m/SelectDialog", "sap/m/StandardListItem", "sap/ui/model/Filter", "sap/ui/model/FilterOperator"], function (SelectDialog, StandardListItem, Filter, FilterOperator) {
     return {
         createContent: function (oController) {

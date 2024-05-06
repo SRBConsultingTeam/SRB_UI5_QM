@@ -52,10 +52,6 @@ var TableUtils = (function () {
                     TableUtils.sort.performSort(table, sortConfig);
                 });
 
-                this.sortSettingsDialog.attachReset({}, function (oEvent) {
-
-                });
-
                 this.sortSettingsDialog.open();
 
             },
@@ -195,10 +191,6 @@ var TableUtils = (function () {
                         filterItems: filterItems,
                         filterString: filterString
                     });
-
-                });
-
-                this.filterSettingsDialog.attachReset({}, function (oEvent) {
 
                 });
 

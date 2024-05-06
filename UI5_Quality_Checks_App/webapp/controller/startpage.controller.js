@@ -7,6 +7,8 @@
 /* global DataHandler:true */
 /* global TreeGenerator:true */
 /* global BreadcrumbsGenerator:true */
+/* global SRBGitHub:true */
+/* global TableUtils:true */
 sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
   "use strict";
 
@@ -38,7 +40,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
      * @memberOf srbUI5QualityChecks.controller.startpage
      * @author Manuel Bogner - SRB Consulting Team
      */
-    handleRouteMatched: function (oEvent) { },
+    handleRouteMatched: function (oEvent) {
+      // Dummy
+    },
 
     /**
      * This method is called every time the View is rendered, after the HTML is placed in the DOM-Tree. It can be used to apply additional changes to the DOM after the Renderer has finished.
@@ -82,7 +86,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       var filterPanel = this.getView().byId("filterPanel");
       var resultsTable = this.getView().byId("resultsTable");
 
-      var resultsTable = this.getView().byId("resultsTable");
       var resultsModel = new sap.ui.model.json.JSONModel({
         results: []
       });
@@ -106,7 +109,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
         },
         (error) => {
-
+          // Dummy
         });
 
       var process = function (addRow, doneCb) {
@@ -259,11 +262,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
     getRepoDialogContent: function (listRecord) {
       return new sap.m.VBox({
-        fitContainer: true,
         alignItems: "Stretch",
         alignContent: "Stretch",
         fitContainer: false,
-
         width: "100%",
         items: [
           new sap.m.ObjectHeader({
@@ -336,9 +337,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
             })
           }.bind(this));
 
-
-        },
-        liveChangeRepoFilter: function (oEvent) {
 
         }
       }
