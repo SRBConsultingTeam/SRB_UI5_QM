@@ -18,7 +18,7 @@ jobs:
           docker build -t srb-ui5-quality-checks-app .
 
       - name: Save Docker image as TAR archive
-        run: docker save srb-ui5-quality-checks-app > image_quality_checks_app.tar
+        run: docker save srb-ui5-quality-checks-app -o image_quality_checks_app.tar
 
       - name: Upload TAR archive as artifact
         uses: actions/upload-artifact@v2

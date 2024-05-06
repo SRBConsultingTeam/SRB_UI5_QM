@@ -38,6 +38,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
     getInfoForVersion: function (version) {
       return {
       };
+
     },
 
     getRepo: function (oContext) {
