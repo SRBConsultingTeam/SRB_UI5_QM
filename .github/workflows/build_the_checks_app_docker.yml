@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check files
-        run: ls /home/runner/work/SRB_UI5_QM/SRB_UI5_QM/Dockerfile
+        run: ls /home/runner/work/SRB_UI5_QM
 
       - name: Build Docker image
         run: |
