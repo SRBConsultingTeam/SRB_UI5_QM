@@ -20,7 +20,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
      */
     onInit: function () {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      this.oRouter.getTarget("startpage").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 
       SRBInfoAndSupport.init(this.getOwnerComponent());
     },
