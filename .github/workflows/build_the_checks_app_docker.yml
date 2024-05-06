@@ -3,7 +3,7 @@ name: "UI5 Quality Check App: Docker Build and Publish"
 on:
   push:
     paths:
-      - "UI5_Quality_Checks_App"
+      - "./UI5_Quality_Checks_App/**"
 jobs:
   build:
     runs-on: ubuntu-latest
