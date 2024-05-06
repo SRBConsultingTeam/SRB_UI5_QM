@@ -14,10 +14,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t SRB_UI5_QUALITY_CHECKS_APP:latest .
+          docker build -t srbUi5QualityCheckApp:latest .
 
       - name: Save Docker image as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: SRB_UI5_QUALITY_CHECKS_APP
+          name: srbUi5QualityCheckApp
           path: /var/lib/docker/image/overlay2/imagedb/content/sha256
