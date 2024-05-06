@@ -169,4 +169,14 @@ We plan to add more predefined GitHub Actions workflows in the future to enhance
 
 Additionally, this repository contains a quality assurance (QA) application, which plays a crucial role in ensuring the overall quality and reliability of our software.
 
+### How to run the Quality Assurance App 
+
+1. Get the latest Docker image
+2. Load the docker image into your docker environment with `sudo docker load -i image_quality_checks_app.tar`
+3. Create a container with that image `sudo docker container create -i -t -P --name srb-qual-checks-app srb-ui5-quality-checks-app:latest`. Don't forget to set the port mapping yourself. the `-P` in this example uses a random port!!
+4. Open the app, with `<HOSTNAME>:<PORT>`
+5. Done!
+
+
+
 For any further inquiries or assistance, please feel free to reach out to the repository maintainers. Happy coding! 🚀
