@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check files
-        run: ls ${{ github.workspace }}
+        run: ls ${{ github.workspace }}/UI5_Quality_Checks_App
 
       - name: Build Docker image
         run: |
-          cd ${{ github.workspace }}
-          docker build -t srb-ui5-quality-checks-app ./UI5_Quality_Checks_App/Dockerfile
+          cd ${{ github.workspace }}/UI5_Quality_Checks_App
+          docker build -t srb-ui5-quality-checks-app
 
       - name: Save Docker image as artifact
         uses: actions/upload-artifact@v2
