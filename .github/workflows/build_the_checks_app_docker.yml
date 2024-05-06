@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check files
-        run: ls /home/runner/work/SRB_UI5_QM/SRB_UI5_QM
+        run: ls /home/runner/work/SRB_UI5_QM/SRB_UI5_QM/UI5_Quality_Checks_App
 
       - name: Build Docker image
         run: |
-          docker build -t srb-ui5-quality-checks-app /home/runner/work/SRB_UI5_QM/SRB_UI5_QM/Dockerfile
+          docker build -t srb-ui5-quality-checks-app /home/runner/work/SRB_UI5_QM/SRB_UI5_QM/UI5_Quality_Checks_App/Dockerfile
 
       - name: Save Docker image as artifact
         uses: actions/upload-artifact@v2
