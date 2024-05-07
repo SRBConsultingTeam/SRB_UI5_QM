@@ -1,0 +1,15 @@
+# Copy this file into your .github/workflows folder,
+# Name it srbui5_qm.yaml
+
+name: SRB UI5 QM Workflow
+on:
+  push:
+
+jobs:
+  # Linter job
+  srb-reuse-linter:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/lint.yml@master
+
+  # Builder job
+  srb-reuse-builder:
+    uses: SRBConsultingTeam/SRB_UI5_QM/.github/workflows/build_check_and_execute.yml@master
