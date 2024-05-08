@@ -22,3 +22,7 @@ APIExternalProducer.js
 .*/APIExternalProducer.js
 /mta_archives/
 /node_modules
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
