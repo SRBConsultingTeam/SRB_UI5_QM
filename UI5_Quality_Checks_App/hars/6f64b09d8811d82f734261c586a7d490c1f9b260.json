@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "74908f63501d42b4dd99e0460bc2d11f6b6bcca6",
+  "size": 876,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_Workspaces_Extension/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_Workspaces_Extension/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_Workspaces_Extension/git/blobs/74908f63501d42b4dd99e0460bc2d11f6b6bcca6",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_Workspaces_Extension/develop/webapp/index.html?token=AEM7VFWRNUHHT6M6NAH4XHLGIMAGE",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgog\nICAgCiAgICA8dGl0bGU+U1JCIFdvcmtzcGFjZXM8L3RpdGxlPgoKICAgIDxz\nY3JpcHQKICAgICAgaWQ9InNhcC11aS1ib290c3RyYXAiCiAgICAgIHR5cGU9\nInRleHQvamF2YXNjcmlwdCIKICAgICAgc3JjPSJodHRwczovL3VpNS5zYXAu\nY29tLzEuOTYvcmVzb3VyY2VzL3NhcC11aS1jb3JlLmpzIgogICAgICBkYXRh\nLXNhcC11aS10aGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAgIGRhdGEtc2FwLXVp\nLWxpYnM9InNhcC5tLCBzYXAudG50LCBzYXAuc3VpdGUudWkubWljcm9jaGFy\ndCIKICAgICAgZGF0YS1zYXAtdWktYXN5bmM9InRydWUiCiAgICAgIGRhdGEt\nc2FwLXVpLXJlc291cmNlcm9vdHM9J3sic3JiTGF1bmNocGFkIjogIiJ9Jwog\nICAgICBkYXRhLXNhcC11aS1vbmluaXQ9Im1vZHVsZTpzcmJMYXVuY2hwYWQv\naW5kZXgiCiAgICA+PC9zY3JpcHQ+CgogICAgPGxpbmsgcmVsPSJzdHlsZXNo\nZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyIgLz4K\nCiAgPC9oZWFkPgogIDxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJjb250\nZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_Workspaces_Extension/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_Workspaces_Extension/git/blobs/74908f63501d42b4dd99e0460bc2d11f6b6bcca6",
+    "html": "https://github.com/SRBConsultingTeam/OMV_Workspaces_Extension/blob/develop/webapp/index.html"
+  }
+}

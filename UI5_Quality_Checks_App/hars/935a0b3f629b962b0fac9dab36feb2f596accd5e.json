@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "dc02b6ddfa82c56278f335fd25615079cb84d3fc",
+  "size": 1021,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/git/blobs/dc02b6ddfa82c56278f335fd25615079cb84d3fc",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/develop/webapp/index.html?token=AEM7VFVHXXLAARI2PBDEPXLGIMAFW",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxsaW5rIGhyZWY9Ii4vcmVzc291cmNlcy9pbWFnZXMvZmF2aWNvbi5p\nY28iIHJlbD0ic2hvcnRjdXQgaWNvbiIgdHlwZT0iaW1hZ2UveC1pY29uIiAv\nPgoKICAgIDx0aXRsZT52b2VzdGFscGluZSBaSVBPPC90aXRsZT4KCiAgICA8\nc2NyaXB0CiAgICAgIGlkPSJzYXAtdWktYm9vdHN0cmFwIgogICAgICB0eXBl\nPSJ0ZXh0L2phdmFzY3JpcHQiCiAgICAgIHNyYz0iaHR0cHM6Ly91aTUuc2Fw\nLmNvbS8xLjEwOC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCiAgICAgIGRh\ndGEtc2FwLXVpLXRoZW1lPSJzYXBfZmlvcmlfMyIKICAgICAgZGF0YS1zYXAt\ndWktbGlicz0ic2FwLm0sIHNhcC50bnQsIHNhcC5zdWl0ZS51aS5taWNyb2No\nYXJ0IgogICAgICBkYXRhLXNhcC11aS1hc3luYz0idHJ1ZSIKICAgICAgZGF0\nYS1zYXAtdWktcmVzb3VyY2Vyb290cz0neyJzcmJMYXVuY2hwYWQiOiAiIn0n\nCiAgICAgIGRhdGEtc2FwLXVpLW9uaW5pdD0ibW9kdWxlOnNyYkxhdW5jaHBh\nZC9pbmRleCIKICAgICAgZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5bnRheD0i\nY29tcGxleCIKICAgICAgCiAgICA+PC9zY3JpcHQ+CgogICAgPGxpbmsgcmVs\nPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxl\nLmNzcyIgLz4KCgogIDwvaGVhZD4KICA8Ym9keSBjbGFzcz0ic2FwVWlCb2R5\nIiBpZD0iY29udGVudCI+PC9ib2R5Pgo8L2h0bWw+Cg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/git/blobs/dc02b6ddfa82c56278f335fd25615079cb84d3fc",
+    "html": "https://github.com/SRBConsultingTeam/VA_Workspaces_ZIPO_Extension/blob/develop/webapp/index.html"
+  }
+}

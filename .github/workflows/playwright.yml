@@ -1,0 +1,35 @@
+name: Playwright Tests
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  app-startup-test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./UI5_Quality_Checks_App
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+        working-directory: ./UI5_Quality_Checks_App
+
+      - name: Run Playwright tests
+        run: npx playwright test appStartup.spec.ts
+        working-directory: ./UI5_Quality_Checks_App
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: ./UI5_Quality_Checks_App/playwright-report/
+          retention-days: 30

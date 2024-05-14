@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "ui5/src/webapp/index.html",
+  "sha": "f63bf76f48e0a5d0255122d93ee27fc7ebf943d2",
+  "size": 1274,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/QuickOrderFallstudie21/contents/ui5/src/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/QuickOrderFallstudie21/blob/main/ui5/src/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/QuickOrderFallstudie21/git/blobs/f63bf76f48e0a5d0255122d93ee27fc7ebf943d2",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/QuickOrderFallstudie21/main/ui5/src/webapp/index.html?token=AEM7VFRCMW2ONIC3TJTD3TTGIL7GA",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxzY3JpcHQKICAgICAgaWQ9InNhcC11aS1ib290c3RyYXAiCiAgICAg\nIHNyYz0iaHR0cHM6Ly9zYXB1aTUuaGFuYS5vbmRlbWFuZC5jb20vMS43MS40\nOC9yZXNvdXJjZXMvc2FwLXVpLWNhY2hlYnVzdGVyL3NhcC11aS1jb3JlLmpz\nIgogICAgICBkYXRhLXNhcC11aS1saWJzPSJzYXAubSwgc2FwLnRudCIKICAg\nICAgZGF0YS1zYXAtdWktdGhlbWU9InNhcF9maW9yaV8zIgogICAgICBkYXRh\nLXNhcC11aS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBlbiIKICAgICAg\nZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5bnRheD0iY29tcGxleCIKICAgICAg\nZGF0YS1zYXAtdWktY29tcGF0VmVyc2lvbj0iZWRnZSIKICAgICAgZGF0YS1z\nYXAtdWktcHJlbG9hZD0iYXN5bmMiCiAgICAgIHNhcC11aS14eC1jb21wb25l\nbnRQcmVsb2FkPSJvZmYiCiAgICAgIGRhdGEtc2FwLXVpLWFwcENhY2hlQnVz\ndGVyPSIuLyIKICAgICAgZGF0YS1zYXAtdWktcmVzb3VyY2Vyb290cz0neyJu\nYW1lc3BhY2UiOiAiIn0nCiAgICA+PC9zY3JpcHQ+CgogICAgPGxpbmsgcmVs\nPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxl\nLmNzcyIgLz4KCiAgICA8c2NyaXB0PgogICAgICBzYXAudWkuZ2V0Q29yZSgp\nLmF0dGFjaEluaXQoZnVuY3Rpb24gKCkgewogICAgICAgIG5ldyBzYXAubS5T\naGVsbCh7CiAgICAgICAgICBhcHBXaWR0aExpbWl0ZWQ6IGZhbHNlLAogICAg\nICAgICAgYXBwOiBuZXcgc2FwLnVpLmNvcmUuQ29tcG9uZW50Q29udGFpbmVy\nKHsKICAgICAgICAgICAgaGVpZ2h0OiAiMTAwJSIsCiAgICAgICAgICAgIG5h\nbWU6ICJuYW1lc3BhY2UiCiAgICAgICAgICB9KQogICAgICAgIH0pLnBsYWNl\nQXQoImNvbnRlbnQiKTsKICAgICAgfSk7CiAgICA8L3NjcmlwdD4KICA8L2hl\nYWQ+CiAgPGJvZHkgY2xhc3M9InNhcFVpQm9keSIgaWQ9ImNvbnRlbnQiPjwv\nYm9keT4KPC9odG1sPgo=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/QuickOrderFallstudie21/contents/ui5/src/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/QuickOrderFallstudie21/git/blobs/f63bf76f48e0a5d0255122d93ee27fc7ebf943d2",
+    "html": "https://github.com/SRBConsultingTeam/QuickOrderFallstudie21/blob/main/ui5/src/webapp/index.html"
+  }
+}

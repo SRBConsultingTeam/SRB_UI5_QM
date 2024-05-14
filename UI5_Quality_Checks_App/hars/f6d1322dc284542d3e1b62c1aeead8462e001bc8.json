@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "ec95346908f550600a01686eec02214b537440db",
+  "size": 904,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/git/blobs/ec95346908f550600a01686eec02214b537440db",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/master/webapp/index.html?token=AEM7VFSNDZXFBGTBVSRB6GTGIMAGG",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxzY3JpcHQKICAgICAgaWQ9InNhcC11aS1ib290c3RyYXAiCiAgICAg\nIHR5cGU9InRleHQvamF2YXNjcmlwdCIKICAgICAgc3JjPSJodHRwczovL3Vp\nNS5zYXAuY29tLzEuMTA4L3Jlc291cmNlcy9zYXAtdWktY29yZS5qcyIKICAg\nICAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVkTGFuZ3VhZ2VzPSJkZSwgZW4i\nCiAgICAgIGRhdGEtc2FwLXVpLXRoZW1lPSJzYXBfZmlvcmlfMyIKICAgICAg\nZGF0YS1zYXAtdWktbGlicz0ic2FwLm0iCiAgICAgIGRhdGEtc2FwLXVpLWFz\neW5jPSJ0cnVlIgogICAgICBkYXRhLXNhcC11aS14eC1iaW5kaW5nU3ludGF4\nPSJjb21wbGV4IgogICAgICBkYXRhLXNhcC11aS1yZXNvdXJjZXJvb3RzPSd7\nInZvZXN0YWxwaW5lLWRsemsiOiAiIn0nCiAgICAgIGRhdGEtc2FwLXVpLW9u\naW5pdD0ibW9kdWxlOnZvZXN0YWxwaW5lLWRsemsvaW5kZXgiPgogICAgPC9z\nY3JpcHQ+CgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0\nL2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyIgLz4KICA8L2hlYWQ+CiAgPGJv\nZHkgY2xhc3M9InNhcFVpQm9keSIgaWQ9ImNvbnRlbnQiPjwvYm9keT4KPC9o\ndG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/git/blobs/ec95346908f550600a01686eec02214b537440db",
+    "html": "https://github.com/SRBConsultingTeam/VA_IAM_DienstleistungsZukauf/blob/master/webapp/index.html"
+  }
+}

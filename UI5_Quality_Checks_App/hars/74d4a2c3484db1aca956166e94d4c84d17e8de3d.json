@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "3bf6d99927fdb0b82c4df404c6cfa4fc13f466e7",
+  "size": 955,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Active_Permits/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_WCM_Active_Permits/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Active_Permits/git/blobs/3bf6d99927fdb0b82c4df404c6cfa4fc13f466e7",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_WCM_Active_Permits/master/webapp/index.html?token=AEM7VFTXWX4CTTS5LSI6EADGIMAFW",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+T01WIFdNQyBB\nY3RpdmUgUGVybWl0czwvdGl0bGU+CgkJCgkJPHNjcmlwdCBpZD0ic2FwLXVp\nLWJvb3RzdHJhcCIKCQkJc3JjPSJyZXNvdXJjZXMvc2FwLXVpLWNhY2hlYnVz\ndGVyL3NhcC11aS1jb3JlLmpzIgoJCQlkYXRhLXNhcC11aS1saWJzPSJzYXAu\nbSwgc2FwLmYsIHNhcC51aS50YWJsZSwgc2FwLnVpLmZsIgoJCQlkYXRhLXNh\ncC11aS10aGVtZT0ic2FwX2JlbGl6ZSIKICAgICAgICAgICAgZGF0YS1zYXAt\ndWkteHgtc3VwcG9ydGVkTGFuZ3VhZ2VzPSJkZSwgZW4iCgkJCWRhdGEtc2Fw\nLXVpLWNvbXBhdFZlcnNpb249ImVkZ2UiCgkJCWRhdGEtc2FwLXVpLW9uaW5p\ndD0ibW9kdWxlOnNhcC91aS9jb3JlL0NvbXBvbmVudFN1cHBvcnQiCgkJCWRh\ndGEtc2FwLXVpLWFzeW5jPSJ0cnVlIgoJCQlkYXRhLXNhcC11aS1yZXNvdXJj\nZXJvb3RzPSd7CgkJCQkib212V2NtQWN0aXZlUGVybWl0cyI6ICIuLyIKCQkJ\nfScKCQkJZGF0YS1zYXAtdWktZnJhbWVPcHRpb25zPSJ0cnVzdGVkIgoJCQlk\nYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iPgoJCTwvc2NyaXB0PgoK\nCQk8bGluayByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiBocmVm\nPSJjc3Mvc3R5bGUuY3NzIj4KCgk8L2hlYWQ+Cgk8Ym9keSBjbGFzcz0ic2Fw\nVWlCb2R5Ij4KCQk8ZGl2IGRhdGEtc2FwLXVpLWNvbXBvbmVudCBkYXRhLWlk\nPSJvbXZXY21BY3RpdmVQZXJtaXRzX2NvbnRhaW5lciIgZGF0YS1uYW1lPSJv\nbXZXY21BY3RpdmVQZXJtaXRzIiBkYXRhLXNldHRpbmdzPSd7ImlkIiA6ICJv\nbXZXY21BY3RpdmVQZXJtaXRzX2NvbXBvbmVudCJ9Jz48L2Rpdj4KCTwvYm9k\neT4KPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Active_Permits/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Active_Permits/git/blobs/3bf6d99927fdb0b82c4df404c6cfa4fc13f466e7",
+    "html": "https://github.com/SRBConsultingTeam/OMV_WCM_Active_Permits/blob/master/webapp/index.html"
+  }
+}

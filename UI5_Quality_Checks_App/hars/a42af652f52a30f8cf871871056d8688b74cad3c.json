@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "2617231692447b6717f88a559c9b05d070b7f82b",
+  "size": 770,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_eAAOP_UI5/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_eAAOP_UI5/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_eAAOP_UI5/git/blobs/2617231692447b6717f88a559c9b05d070b7f82b",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_eAAOP_UI5/master/webapp/index.html?token=AEM7VFTSEFZRQVRJ6Q7GJNDGIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgo8aGVhZD4KCTxtZXRhIGNoYXJzZXQ9\nInV0Zi04Ij4KCTxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0\naD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KCTx0aXRsZT5P\nTVY8L3RpdGxlPgoKCTxzY3JpcHQgaWQ9InNhcC11aS1ib290c3RyYXAiCgkJ\nCXNyYz0icmVzb3VyY2VzL3NhcC11aS1jYWNoZWJ1c3Rlci9zYXAtdWktY29y\nZS5qcyIgCgkJCWRhdGEtc2FwLXVpLXRoZW1lPSJzYXBfaG9yaXpvbiIKCQkJ\nZGF0YS1zYXAtdWktcmVzb3VyY2Vyb290cz0newoJCQkJImNvbS5vbXYuc2Fw\nZWFhb3AuT01WX0FpckFuYWx5c2lzIjogIi4vIgoJCQl9JwoJCQlkYXRhLXNh\ncC11aS1vbmluaXQ9Im1vZHVsZTpzYXAvdWkvY29yZS9Db21wb25lbnRTdXBw\nb3J0IgoJCQlkYXRhLXNhcC11aS1jb21wYXRWZXJzaW9uPSJlZGdlIgoJCQlk\nYXRhLXNhcC11aS1hc3luYz0idHJ1ZSIKCQkJZGF0YS1zYXAtdWktZnJhbWVP\ncHRpb25zPSJ0cnVzdGVkIgoJCQlkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rl\ncj0iLi8iPgoJPC9zY3JpcHQ+CjwvaGVhZD4KPGJvZHkgY2xhc3M9InNhcFVp\nQm9keSI+Cgk8ZGl2IGRhdGEtc2FwLXVpLWNvbXBvbmVudCBkYXRhLWlkPSJj\nb21fb212X3NhcGVhYW9wX2NvbnRhaW5lciIgZGF0YS1uYW1lPSJjb20ub212\nLnNhcGVhYW9wLk9NVl9BaXJBbmFseXNpcyIgZGF0YS1zZXR0aW5ncz0neyJp\nZCIgOiAic2FwZWFhb3BfY29tcG9uZW50In0nPjwvZGl2Pgo8L2JvZHk+Cjwv\naHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_eAAOP_UI5/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_eAAOP_UI5/git/blobs/2617231692447b6717f88a559c9b05d070b7f82b",
+    "html": "https://github.com/SRBConsultingTeam/OMV_eAAOP_UI5/blob/master/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "3e697b3c0edbd887c5e1294b9cbb973e995d9c22",
+  "size": 1177,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_MobileCATS_UI5/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_MobileCATS_UI5/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_MobileCATS_UI5/git/blobs/3e697b3c0edbd887c5e1294b9cbb973e995d9c22",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_MobileCATS_UI5/master/webapp/index.html?token=AEM7VFWU2QP3FXIPEFDF3WTGIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgog\nICAgCgk8bGluayByZWw9InNob3J0Y3V0IGljb24iIHR5cGU9ImltYWdlL3gt\naWNvbiIgIGhyZWY9Ii4vcmVzc291cmNlcy9pbWFnZXMvZmF2aWNvbnMvZmF2\naWNvbl9kYXJrTW9kZS5pY28iIGlkPSJkYXJrLXNjaGVtZS1pY29uIj4KCTxs\naW5rIHJlbD0ic2hvcnRjdXQgaWNvbiIgdHlwZT0iaW1hZ2UveC1pY29uIiAg\naHJlZj0iLi9yZXNzb3VyY2VzL2ltYWdlcy9mYXZpY29ucy9mYXZpY29uLmlj\nbyIgaWQ9ImxpZ2h0LXNjaGVtZS1pY29uIj4KICAgICAgIAogICAgPHRpdGxl\nPlNSQiBDQVRTPC90aXRsZT4KCiAgICA8c2NyaXB0CiAgICAgIGlkPSJzYXAt\ndWktYm9vdHN0cmFwIgogICAgICB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiCiAg\nICAgIHNyYz0iaHR0cHM6Ly91aTUuc2FwLmNvbS8xLjEwOC9yZXNvdXJjZXMv\nc2FwLXVpLWNvcmUuanMiCiAgICAgIGRhdGEtc2FwLXVpLXRoZW1lPSJzYXBf\nZmlvcmlfMyIKCSAgZGF0YS1zYXAtdWktbGlicz0ic2FwLm0sc2FwLnRudCxz\nYXAuZiIKCSAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVkTGFuZ3VhZ2VzPSJk\nZSwgZW4iCiAgICAgIGRhdGEtc2FwLXVpLWFzeW5jPSJ0cnVlIgogICAgICBk\nYXRhLXNhcC11aS14eC1iaW5kaW5nU3ludGF4PSJjb21wbGV4IgogICAgICBk\nYXRhLXNhcC11aS1yZXNvdXJjZXJvb3RzPSd7ImNhdHMiOiAiIn0nCiAgICAg\nIGRhdGEtc2FwLXVpLW9uaW5pdD0ibW9kdWxlOmNhdHMvaW5kZXgiPgogICAg\nPC9zY3JpcHQ+CgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0\nZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyIgLz4KICA8L2hlYWQ+CiAg\nPGJvZHkgY2xhc3M9InNhcFVpQm9keSIgaWQ9ImNvbnRlbnQiPjwvYm9keT4K\nPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_MobileCATS_UI5/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_MobileCATS_UI5/git/blobs/3e697b3c0edbd887c5e1294b9cbb973e995d9c22",
+    "html": "https://github.com/SRBConsultingTeam/SRB_MobileCATS_UI5/blob/master/webapp/index.html"
+  }
+}

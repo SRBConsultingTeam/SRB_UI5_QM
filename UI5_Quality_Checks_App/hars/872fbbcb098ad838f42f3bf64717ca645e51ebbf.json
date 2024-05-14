@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "556de15de83584125f435b74076c4b0df0eac98e",
+  "size": 851,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_MobIH_FaultLog/contents/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_MobIH_FaultLog/blob/main/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_MobIH_FaultLog/git/blobs/556de15de83584125f435b74076c4b0df0eac98e",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_MobIH_FaultLog/main/webapp/index.html?token=AEM7VFWLDBQSGXGMLRFCKBDGIMAFW",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoJCTxtZXRhIGh0dHAtZXF1aXY9\nIkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sO2NoYXJzZXQ9VVRG\nLTgiLz4KCQk8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC1jYXBh\nYmxlIiBjb250ZW50PSJ5ZXMiPgoJCTxtZXRhIG5hbWU9Im1vYmlsZS13ZWIt\nYXBwLWNhcGFibGUiIGNvbnRlbnQ9InllcyI+CgoJCTxzY3JpcHQgaWQ9InNh\ncC11aS1ib290c3RyYXAiCgkJCXNyYz0iaHR0cHM6Ly91aTUuc2FwLmNvbS8x\nLjEwOC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJCWRhdGEtc2FwLXVp\nLWxpYnM9InNhcC5tLCBzYXAudG50IgoJCQlkYXRhLXNhcC11aS10aGVtZT0i\nc2FwX2Zpb3JpXzMiCiAgICAgICAgICAgIGRhdGEtc2FwLXVpLXh4LXN1cHBv\ncnRlZExhbmd1YWdlcz0iZGUsIGVuLCBmciwgbmwsIHN2IgogICAgCQlkYXRh\nLXNhcC11aS1hc3luYz0idHJ1ZSIKICAgIAkJZGF0YS1zYXAtdWkteHgtYmlu\nZGluZ1N5bnRheD0iY29tcGxleCIKCQkJZGF0YS1zYXAtdWktcmVzb3VyY2Vy\nb290cz0neyJtb2JJSEZhdWx0TG9nIjogIiJ9JwoJCQlkYXRhLXNhcC11aS1v\nbmluaXQ9Im1vZHVsZTptb2JJSEZhdWx0TG9nL2luZGV4Ij4KCQk8L3Njcmlw\ndD4KCgkJPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIg\naHJlZj0iY3NzL3N0eWxlLmNzcyI+Cgk8L2hlYWQ+Cgk8Ym9keSBjbGFzcz0i\nc2FwVWlCb2R5IiBpZD0iY29udGVudCI+Cgk8L2JvZHk+CjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_MobIH_FaultLog/contents/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_MobIH_FaultLog/git/blobs/556de15de83584125f435b74076c4b0df0eac98e",
+    "html": "https://github.com/SRBConsultingTeam/VA_MobIH_FaultLog/blob/main/webapp/index.html"
+  }
+}

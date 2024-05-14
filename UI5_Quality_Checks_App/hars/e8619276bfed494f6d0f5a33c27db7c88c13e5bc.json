@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "f3549a6d889cdafa2d6ef38d2788a9fb1e8c3afb",
+  "size": 1013,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_Workshop/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_UI5_Workshop/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_Workshop/git/blobs/f3549a6d889cdafa2d6ef38d2788a9fb1e8c3afb",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_UI5_Workshop/master/webapp/index.html?token=AEM7VFT5XFWAOXFRMZNM5P3GIMAFW",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+QXBwLVRpdGVs\nPC90aXRsZT4KCgkJPHNjcmlwdCBpZD0ic2FwLXVpLWJvb3RzdHJhcCIKCQkJ\nc3JjPSJodHRwczovL3NhcHVpNS5oYW5hLm9uZGVtYW5kLmNvbS8xLjcxLjQ4\nL3Jlc291cmNlcy9zYXAtdWktY29yZS5qcyIKCQkJZGF0YS1zYXAtdWktbGli\ncz0ic2FwLm0iCgkJCWRhdGEtc2FwLXVpLXRoZW1lPSJzYXBfYmVsaXplIgog\nICAgICAgICAgICBkYXRhLXNhcC11aS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9\nImRlLCBlbiIKICAgICAgICAgICAgZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5\nbnRheD0iY29tcGxleCIKCQkJZGF0YS1zYXAtdWktY29tcGF0VmVyc2lvbj0i\nZWRnZSIKCQkJZGF0YS1zYXAtdWktcHJlbG9hZD0iYXN5bmMiCgkJCXNhcC11\naS14eC1jb21wb25lbnRQcmVsb2FkPW9mZgoJCQlkYXRhLXNhcC11aS1hcHBD\nYWNoZUJ1c3Rlcj0iLi8iCgkJCWRhdGEtc2FwLXVpLXJlc291cmNlcm9vdHM9\nJ3siYmFzaWNzYXB1aTUiOiAiIn0nPgoJCTwvc2NyaXB0PgoKCQk8bGluayBy\nZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiBocmVmPSJjc3Mvc3R5\nbGUuY3NzIj4KCgkJPHNjcmlwdD4KCQkJc2FwLnVpLmdldENvcmUoKS5hdHRh\nY2hJbml0KGZ1bmN0aW9uKCkgewoJCQkJCW5ldyBzYXAubS5TaGVsbCh7CgkJ\nCQkJCWFwcFdpZHRoTGltaXRlZDogZmFsc2UsCgkJCQkJCWFwcDogbmV3IHNh\ncC51aS5jb3JlLkNvbXBvbmVudENvbnRhaW5lcih7CgkJCQkJCQloZWlnaHQg\nOiAiMTAwJSIsCgkJCQkJCQluYW1lIDogImJhc2ljc2FwdWk1IgoJCQkJCQl9\nKQoJCQkJCX0pLnBsYWNlQXQoImNvbnRlbnQiKTsKCQkJfSk7CgkJPC9zY3Jp\ncHQ+Cgk8L2hlYWQ+Cgk8Ym9keSBjbGFzcz0ic2FwVWlCb2R5IiBpZD0iY29u\ndGVudCI+Cgk8L2JvZHk+CjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_Workshop/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_Workshop/git/blobs/f3549a6d889cdafa2d6ef38d2788a9fb1e8c3afb",
+    "html": "https://github.com/SRBConsultingTeam/SRB_UI5_Workshop/blob/master/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "c7caaa587f5d85d5e8b166bf613184880400fff3",
+  "size": 1009,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/WB_Picking-UI5/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/WB_Picking-UI5/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/WB_Picking-UI5/git/blobs/c7caaa587f5d85d5e8b166bf613184880400fff3",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/WB_Picking-UI5/master/webapp/index.html?token=AEM7VFQM4PRCOAWA2D2GJALGIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJPGhlYWQ+CgkJPG1ldGEgaHR0cC1l\ncXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAvPgoJ\nCTxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KCiAgICAgICAgPHRpdGxlPldpZW5l\ncmJlcmdlcjwvdGl0bGU+CgoJCTxzY3JpcHQgaWQ9InNhcC11aS1ib290c3Ry\nYXAiCgkJCXNyYz0iaHR0cHM6Ly9zYXB1aTUuaGFuYS5vbmRlbWFuZC5jb20v\nMS40MC4xNy9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJCWRhdGEtc2Fw\nLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11aS10aGVtZT0ic2FwX2Js\ndWVjcnlzdGFsIgogICAgICAgICAgICBkYXRhLXNhcC11aS14eC1zdXBwb3J0\nZWRMYW5ndWFnZXM9ImRlLCBlbiIKICAgICAgICAgICAgZGF0YS1zYXAtdWkt\neHgtYmluZGluZ1N5bnRheD0iY29tcGxleCIKCQkJZGF0YS1zYXAtdWktY29t\ncGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAtdWktcHJlbG9hZD0iYXN5\nbmMiCgkJCWRhdGEtc2FwLXVpLWFwcENhY2hlQnVzdGVyPSIuLyIKCQkJc2Fw\nLXVpLXh4LWNvbXBvbmVudFByZWxvYWQ9b2ZmCgkJCWRhdGEtc2FwLXVpLXJl\nc291cmNlcm9vdHM9J3sid2llbmVyYmVyZ2VyLnBpY2tpbmdhcHAiOiAiLiJ9\nJz4KCQk8L3NjcmlwdD4KCQkKCQk8c2NyaXB0PgoJCQlzYXAudWkuZ2V0Q29y\nZSgpLmF0dGFjaEluaXQoZnVuY3Rpb24oKSB7CgkJCQlzYXAudWkucmVxdWly\nZSgKCQkJCQluZXcgc2FwLm0uU2hlbGwoewoJCQkJCQlhcHBXaWR0aExpbWl0\nZWQ6IGZhbHNlLAoJCQkJCQlhcHA6IG5ldyBzYXAudWkuY29yZS5Db21wb25l\nbnRDb250YWluZXIoewoJCQkJCQkJaGVpZ2h0IDogIjEwMCUiLAoJCQkJCQkJ\nbmFtZSA6ICJ3aWVuZXJiZXJnZXIucGlja2luZ2FwcCIKCQkJCQkJfSkKCQkJ\nCQl9KS5wbGFjZUF0KCJjb250ZW50IikpOwoJCQl9KTsKCQk8L3NjcmlwdD4K\nCTwvaGVhZD4KCTxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJjb250ZW50\nIj4KCTwvYm9keT4KPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/WB_Picking-UI5/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/WB_Picking-UI5/git/blobs/c7caaa587f5d85d5e8b166bf613184880400fff3",
+    "html": "https://github.com/SRBConsultingTeam/WB_Picking-UI5/blob/master/webapp/index.html"
+  }
+}

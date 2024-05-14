@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "www/index.html",
+  "sha": "e0d088d3d9e65c8ad228db23def3455f107793b7",
+  "size": 1302,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_Tasker/contents/www/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_IoT_Tasker/blob/master/www/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_Tasker/git/blobs/e0d088d3d9e65c8ad228db23def3455f107793b7",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_IoT_Tasker/master/www/index.html?token=AEM7VFSKPF6O7HUUX6NF3XDGIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoKPGhlYWQ+CiAgPG1ldGEgaHR0cC1l\ncXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAvPgog\nIDxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KCgogIDx0aXRsZT5TUkIgSW9UIFRh\nc2tlcjwvdGl0bGU+CgogIDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0\nIiBjaGFyc2V0PSJ1dGYtOCIgc3JjPSJjb3Jkb3ZhLmpzIj48L3NjcmlwdD4K\nCiAgPCEtLSBCb290c3RyYXAgdGhlIFNSQiBsaWJyYXJpZXMgLS0+CiAgPHNj\ncmlwdCBpZD0iU1JCTGliIiBzcmM9ImNvbmZpZy9TUkJBcHBDb25maWcuanMi\nPjwvc2NyaXB0PgogIDxzY3JpcHQgaWQ9IlNSQkxpYiIgc3JjPSJsaWJzL1NS\nQkxpYi5qcyI+PC9zY3JpcHQ+CiAgPHNjcmlwdCBpZD0iU1JCVmlld0xpYiIg\nc3JjPSJsaWJzL1NSQlZpZXdMaWIuanMiPjwvc2NyaXB0PgogIDxzY3JpcHQg\naWQ9IlNSQkpvYkxpYiIgc3JjPSJsaWJzL1NSQkpvYkxpYi5qcyI+PC9zY3Jp\ncHQ+CgogIDwhLS0gTGlicmFyeSBmb3IgY3JlYXRpbmcgcXIgY29kZXMgLS0+\nCiAgPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0ibGlicy9x\ncmNvZGUubWluLmpzIj48L3NjcmlwdD4KCiAgPCEtLSBCb290c3RyYXAgVUk1\nLS0+CiAgPHNjcmlwdCBpZD0ic2FwLXVpLWJvb3RzdHJhcCIgc3JjPSJsaWJz\nL3VpNS8xLjQwLjgvcmVzb3VyY2VzL3NhcC11aS1jb3JlLmpzIiBkYXRhLXNh\ncC11aS1saWJzPSJzYXAubSIgZGF0YS1zYXAtdWktdGhlbWU9InNhcF9iZWxp\nemUiIGRhdGEtc2FwLXVpLXh4LXN1cHBvcnRlZExhbmd1YWdlcz0iZGUsZW4i\nIGRhdGEtc2FwLXVpLWNvbXBhdFZlcnNpb249ImVkZ2UiIGRhdGEtc2FwLXVp\nLXJlc291cmNlcm9vdHM9J3sic3JiaW90dGFza2VyIjogIiJ9Jz4KICA8L3Nj\ncmlwdD4KCgogIDwhLS0gQm9vdHN0cmFwIFNBUCBJb1QgbGlicmFyeSAtLT4K\nICA8c2NyaXB0IGlkPSJJT1QiIHNyYz0ibGlicy9JT1QuanMiPjwvc2NyaXB0\nPgoKICA8IS0tIEluY2x1ZGUgdGhlIHN0eWxlc2hlZXQgdG8gdGhlIGRvY3Vt\nZW50LS0+CiAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2Nz\ncyIgaHJlZj0iY3NzL3N0eWxlLmNzcyI+CgogIDwhLS0gUmVnaXN0ZXIgY29y\nZG92YSBldmVudHMgYW5kIGJvb3RyYXBwaW5nIHN0dWZmIC0tPgogIDxzY3Jp\ncHQgaWQ9ImV2ZW50c2V0dXAiIHNyYz0iRXZlbnRTZXR1cC5qcyI+PC9zY3Jp\ncHQ+Cgo8L2hlYWQ+Cgo8Ym9keSBjbGFzcz0ic2FwVWlCb2R5IiBpZD0iY29u\ndGVudCIgb25sb2FkPSJvbkxvYWQoKSI+CjwvYm9keT4KCjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_Tasker/contents/www/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_Tasker/git/blobs/e0d088d3d9e65c8ad228db23def3455f107793b7",
+    "html": "https://github.com/SRBConsultingTeam/SRB_IoT_Tasker/blob/master/www/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "1d7d7c035db81d4e47fb0bb8c2f070a90a92a09d",
+  "size": 1302,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/git/blobs/1d7d7c035db81d4e47fb0bb8c2f070a90a92a09d",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/develop/webapp/index.html?token=AEM7VFVUXCBWOWJ4P57X3LTGIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxzY3JpcHQKICAgICAgaWQ9InNhcC11aS1ib290c3RyYXAiCiAgICAg\nIHNyYz0iaHR0cHM6Ly9zYXB1aTUuaGFuYS5vbmRlbWFuZC5jb20vMS45MC43\nL3Jlc291cmNlcy9zYXAtdWktY29yZS5qcyIKICAgICAgZGF0YS1zYXAtdWkt\nbGlicz0ic2FwLm0sIHNhcC50bnQiCiAgICAgIGRhdGEtc2FwLXVpLXRoZW1l\nPSJzYXBfZmlvcmlfMyIKICAgICAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVk\nTGFuZ3VhZ2VzPSJkZSwgZW4iCiAgICAgIGRhdGEtc2FwLXVpLXh4LWJpbmRp\nbmdTeW50YXg9ImNvbXBsZXgiCiAgICAgIGRhdGEtc2FwLXVpLWNvbXBhdFZl\ncnNpb249ImVkZ2UiCiAgICAgIGRhdGEtc2FwLXVpLXByZWxvYWQ9ImFzeW5j\nIgogICAgICBzYXAtdWkteHgtY29tcG9uZW50UHJlbG9hZD0ib2ZmIgogICAg\nICBkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCiAgICAgIGRhdGEt\nc2FwLXVpLXJlc291cmNlcm9vdHM9J3siTWFpbnRlbmFuY2VTY2hlZHVsaW5n\nQm9hcmREaXNwbGF5IjogIiJ9JwogICAgPjwvc2NyaXB0PgoKICAgIDxsaW5r\nIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNzcy9z\ndHlsZS5jc3MiIC8+CgogICAgPHNjcmlwdD4KICAgICAgc2FwLnVpLmdldENv\ncmUoKS5hdHRhY2hJbml0KGZ1bmN0aW9uICgpIHsKICAgICAgICBuZXcgc2Fw\nLm0uU2hlbGwoewogICAgICAgICAgYXBwV2lkdGhMaW1pdGVkOiBmYWxzZSwK\nICAgICAgICAgIGFwcDogbmV3IHNhcC51aS5jb3JlLkNvbXBvbmVudENvbnRh\naW5lcih7CiAgICAgICAgICAgIGhlaWdodDogIjEwMCUiLAogICAgICAgICAg\nICBuYW1lOiAiTWFpbnRlbmFuY2VTY2hlZHVsaW5nQm9hcmREaXNwbGF5Igog\nICAgICAgICAgfSkKICAgICAgICB9KS5wbGFjZUF0KCJjb250ZW50Iik7CiAg\nICAgIH0pOwogICAgPC9zY3JpcHQ+CiAgPC9oZWFkPgogIDxib2R5IGNsYXNz\nPSJzYXBVaUJvZHkiIGlkPSJjb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/git/blobs/1d7d7c035db81d4e47fb0bb8c2f070a90a92a09d",
+    "html": "https://github.com/SRBConsultingTeam/VA_Maintenance_Scheduling_Board/blob/develop/webapp/index.html"
+  }
+}

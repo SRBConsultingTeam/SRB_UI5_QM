@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "e9d8c38e4a94c7e7cceedd51f55096518b00daae",
+  "size": 1459,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_G3F_MASTER/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_G3F_MASTER/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_G3F_MASTER/git/blobs/e9d8c38e4a94c7e7cceedd51f55096518b00daae",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_G3F_MASTER/master/webapp/index.html?token=AEM7VFQVSJ4RYD637YMUT5DGIL7GC",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoJCTxtZXRhIGh0dHAtZXF1aXY9\nIkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sO2NoYXJzZXQ9VVRG\nLTgiLz4KCQk8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC1jYXBh\nYmxlIiBjb250ZW50PSJ5ZXMiPgoJCTxtZXRhIG5hbWU9Im1vYmlsZS13ZWIt\nYXBwLWNhcGFibGUiIGNvbnRlbnQ9InllcyI+CgoJCTxsaW5rIHJlbD0ic2hv\ncnRjdXQgaWNvbiIgdHlwZT0iaW1hZ2UveC1pY29uIiAgaHJlZj0iLi9yZXNz\nb3VyY2VzL2ltYWdlcy9mYXZpY29ucy9mYXZpY29uLmljbyIgaWQ9ImxpZ2h0\nLXNjaGVtZS1pY29uIj4KCQk8bGluayByZWw9InNob3J0Y3V0IGljb24iIHR5\ncGU9ImltYWdlL3gtaWNvbiIgIGhyZWY9Ii4vcmVzc291cmNlcy9pbWFnZXMv\nZmF2aWNvbnMvZmF2aWNvbl9kYXJrTW9kZS5pY28iIGlkPSJkYXJrLXNjaGVt\nZS1pY29uIj4KCgkJPHRpdGxlPlNSQiBHM0Y8L3RpdGxlPgoKCQk8c2NyaXB0\nIGlkPSJzYXAtdWktYm9vdHN0cmFwIgoJCQlzcmM9Imh0dHBzOi8vc2FwdWk1\nLmhhbmEub25kZW1hbmQuY29tLzEuNjkuMC9yZXNvdXJjZXMvc2FwLXVpLWNv\ncmUuanMiCgkJCWRhdGEtc2FwLXVpLWxpYnM9InNhcC5tLCBzYXAudG50IgoJ\nCQlkYXRhLXNhcC11aS10aGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAgICAgICAg\nIGRhdGEtc2FwLXVpLXh4LXN1cHBvcnRlZExhbmd1YWdlcz0iZGUsIGVuIgog\nICAgICAgICAgICBkYXRhLXNhcC11aS14eC1iaW5kaW5nU3ludGF4PSJjb21w\nbGV4IgoJCQlkYXRhLXNhcC11aS1jb21wYXRWZXJzaW9uPSJlZGdlIgoJCQlk\nYXRhLXNhcC11aS1wcmVsb2FkPSJhc3luYyIKCQkJc2FwLXVpLXh4LWNvbXBv\nbmVudFByZWxvYWQ9b2ZmCgkJCWRhdGEtc2FwLXVpLWFwcENhY2hlQnVzdGVy\nPSIuLyIKCQkJZGF0YS1zYXAtdWktcmVzb3VyY2Vyb290cz0neyJzcmJfZzNm\nX21hc3RlciI6ICIifSc+CgkJPC9zY3JpcHQ+CgoJCTxsaW5rIHJlbD0ic3R5\nbGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNzcy9zdHlsZS5jc3Mi\nPgoKCQk8c2NyaXB0PgoJCQlzYXAudWkuZ2V0Q29yZSgpLmF0dGFjaEluaXQo\nZnVuY3Rpb24oKSB7CgkJCQkJbmV3IHNhcC5tLlNoZWxsKHsKCQkJCQkJYXBw\nV2lkdGhMaW1pdGVkOiBmYWxzZSwKCQkJCQkJYXBwOiBuZXcgc2FwLnVpLmNv\ncmUuQ29tcG9uZW50Q29udGFpbmVyKHsKCQkJCQkJCWhlaWdodCA6ICIxMDAl\nIiwKCQkJCQkJCW5hbWUgOiAic3JiX2czZl9tYXN0ZXIiCgkJCQkJCX0pCgkJ\nCQkJfSkucGxhY2VBdCgiY29udGVudCIpOwoJCQl9KTsKCQk8L3NjcmlwdD4K\nCTwvaGVhZD4KCTxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJjb250ZW50\nIj4KCTwvYm9keT4KPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_G3F_MASTER/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_G3F_MASTER/git/blobs/e9d8c38e4a94c7e7cceedd51f55096518b00daae",
+    "html": "https://github.com/SRBConsultingTeam/SRB_G3F_MASTER/blob/master/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "ui5/src/webapp/index.html",
+  "sha": "401759727a70c371591d10dcc2f40a7fca32784c",
+  "size": 1161,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/GPI_Tools_App/contents/ui5/src/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/GPI_Tools_App/blob/develop/ui5/src/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/GPI_Tools_App/git/blobs/401759727a70c371591d10dcc2f40a7fca32784c",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/GPI_Tools_App/develop/ui5/src/webapp/index.html?token=AEM7VFVKURAOACG6J4EZFF3GIMAFU",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgog\nICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9InVzZXItc2NhbGFi\nbGU9bm8sIHdpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAs\nIG1heGltdW0tc2NhbGU9MS4wIiAvPgoKICAgIDxsaW5rIGhyZWY9Ii4vcmVz\nc291cmNlcy9pbWFnZXMvZmF2aWNvbl9zcmIuaWNvIiByZWw9InNob3J0Y3V0\nIGljb24iIHR5cGU9ImltYWdlL3gtaWNvbiIgLz4KCiAgICA8c2NyaXB0CiAg\nICAgIGlkPSJzYXAtdWktYm9vdHN0cmFwIgogICAgICB0eXBlPSJ0ZXh0L2ph\ndmFzY3JpcHQiCiAgICAgIHNyYz0iaHR0cHM6Ly91aTUuc2FwLmNvbS8xLjEw\nOC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCiAgICAgIGRhdGEtc2FwLXVp\nLXRoZW1lPSJzYXBfZmlvcmlfMyIKICAgICAgZGF0YS1zYXAtdWktbGlicz0i\nc2FwLm0sIHNhcC50bnQiCiAgICAgIGRhdGEtc2FwLXVpLWFzeW5jPSJ0cnVl\nIgogICAgICBkYXRhLXNhcC11aS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9ImRl\nLCBlbiwgc2gsIGNzIgogICAgICBkYXRhLXNhcC11aS14eC1iaW5kaW5nU3lu\ndGF4PSJjb21wbGV4IgogICAgICBkYXRhLXNhcC11aS1yZXNvdXJjZXJvb3Rz\nPSd7ImdwaVRvb2xzQXBwIjogIiJ9JwogICAgICBkYXRhLXNhcC11aS1hcHBD\nYWNoZUJ1c3Rlcj0iLi8iCiAgICAgIGRhdGEtc2FwLXVpLW9uaW5pdD0ibW9k\ndWxlOmdwaVRvb2xzQXBwL2luZGV4IgogICAgPjwvc2NyaXB0PgoKICAgIDxs\naW5rIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNz\ncy9zdHlsZS5jc3MiIC8+CiAgPC9oZWFkPgogIDxib2R5IGNsYXNzPSJzYXBV\naUJvZHkiIGlkPSJjb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/GPI_Tools_App/contents/ui5/src/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/GPI_Tools_App/git/blobs/401759727a70c371591d10dcc2f40a7fca32784c",
+    "html": "https://github.com/SRBConsultingTeam/GPI_Tools_App/blob/develop/ui5/src/webapp/index.html"
+  }
+}

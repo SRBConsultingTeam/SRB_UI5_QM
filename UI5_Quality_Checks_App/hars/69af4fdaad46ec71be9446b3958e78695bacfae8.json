@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "1849d47f33b79795b0653a22e1500db112c4392d",
+  "size": 757,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_Infoscreen/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen/git/blobs/1849d47f33b79795b0653a22e1500db112c4392d",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_Infoscreen/master/webapp/index.html?token=AEM7VFXQZB5OL2ATLNFOG73GIMAFY",
+  "type": "file",
+  "content": "PGh0bWw+Cgk8aGVhZD4KCQk8bWV0YSBodHRwLWVxdWl2PSJYLVVBLUNvbXBh\ndGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+CgoJCTxtZXRhIGNoYXJzZXQ9\nIlVURi04Ij4KCgkJPHRpdGxlPlNSQiBJbmZvc2NyZWVuPC90aXRsZT4KCQkK\nICAgICAgICA8c2NyaXB0IGlkPSJzYXAtdWktYm9vdHN0cmFwIgoJCQlzcmM9\nImh0dHBzOi8vc2FwdWk1LmhhbmEub25kZW1hbmQuY29tLzEuNDQuMTUvcmVz\nb3VyY2VzL3NhcC11aS1jb3JlLmpzIgoJCQlkYXRhLXNhcC11aS1saWJzPSJz\nYXAubSIKCQkJZGF0YS1zYXAtdWktdGhlbWU9InNhcF9iZWxpemUiCgkJCWRh\ndGEtc2FwLXVpLWNvbXBhdFZlcnNpb249ImVkZ2UiCiAgICAgICAgICAgIGRh\ndGEtc2FwLXVpLXJlc291cmNlcm9vdHM9J3siaW5mb3NjcmVlbiI6ICIifSc+\nCiAgICAgICAgPC9zY3JpcHQ+CiAgICAgICAgCiAgCQk8c2NyaXB0PgoJCQlz\nYXAudWkuZ2V0Q29yZSgpLmF0dGFjaEluaXQoZnVuY3Rpb24oKSB7CgkJCQlu\nZXcgc2FwLm0uU2hlbGwoewoJCQkJCWFwcFdpZHRoTGltaXRlZDogZmFsc2Us\nCgkJCQkJYXBwOiBuZXcgc2FwLnVpLmNvcmUuQ29tcG9uZW50Q29udGFpbmVy\nKHsKCQkJCQkJaGVpZ2h0IDogIjEwMCUiLAoJCQkJCQluYW1lIDogImluZm9z\nY3JlZW4iCgkJCQkJfSkKCQkJCX0pLnBsYWNlQXQoImNvbnRlbnQiKTsKCQkJ\nfSk7CgkJPC9zY3JpcHQ+Cgk8L2hlYWQ+CgoJPGJvZHkgY2xhc3M9InNhcFVp\nQm9keSIgaWQ9ImNvbnRlbnQiPgoJPC9ib2R5PgoKPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen/git/blobs/1849d47f33b79795b0653a22e1500db112c4392d",
+    "html": "https://github.com/SRBConsultingTeam/SRB_Infoscreen/blob/master/webapp/index.html"
+  }
+}
