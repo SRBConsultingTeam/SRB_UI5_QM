@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "ui5/src/webapp/index.html",
+  "sha": "a925d224539ec830395d1c5917cc2b21c1b64f93",
+  "size": 1254,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/contents/ui5/src/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/blob/main/ui5/src/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/git/blobs/a925d224539ec830395d1c5917cc2b21c1b64f93",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/main/ui5/src/webapp/index.html?token=AEM7VFTPIMPTKBOHMHWEVODGIMAGE",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxzY3JpcHQKICAgICAgaWQ9InNhcC11aS1ib290c3RyYXAiCiAgICAg\nIHNyYz0iaHR0cHM6Ly9zYXB1aTUuaGFuYS5vbmRlbWFuZC5jb20vMS44Ny4w\nL3Jlc291cmNlcy9zYXAtdWktY29yZS5qcyIKICAgICAgZGF0YS1zYXAtdWkt\nbGlicz0ic2FwLm0sIHNhcC50bnQiCiAgICAgIGRhdGEtc2FwLXVpLXRoZW1l\nPSJzYXBfZmlvcmlfMyIKICAgICAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVk\nTGFuZ3VhZ2VzPSJkZSwgZW4iCiAgICAgIGRhdGEtc2FwLXVpLXh4LWJpbmRp\nbmdTeW50YXg9ImNvbXBsZXgiCiAgICAgIGRhdGEtc2FwLXVpLWNvbXBhdFZl\ncnNpb249ImVkZ2UiCiAgICAgIGRhdGEtc2FwLXVpLXByZWxvYWQ9ImFzeW5j\nIgogICAgICBzYXAtdWkteHgtY29tcG9uZW50UHJlbG9hZD0ib2ZmIgogICAg\nICBkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCiAgICAgIGRhdGEt\nc2FwLXVpLXJlc291cmNlcm9vdHM9J3sibmFtZXNwYWNlIjogIiJ9JwogICAg\nPjwvc2NyaXB0PgoKICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgdHlwZT0i\ndGV4dC9jc3MiIGhyZWY9ImNzcy9zdHlsZS5jc3MiIC8+CgogICAgPHNjcmlw\ndD4KICAgICAgc2FwLnVpLmdldENvcmUoKS5hdHRhY2hJbml0KGZ1bmN0aW9u\nICgpIHsKICAgICAgICBuZXcgc2FwLm0uU2hlbGwoewogICAgICAgICAgYXBw\nV2lkdGhMaW1pdGVkOiBmYWxzZSwKICAgICAgICAgIGFwcDogbmV3IHNhcC51\naS5jb3JlLkNvbXBvbmVudENvbnRhaW5lcih7CiAgICAgICAgICAgIGhlaWdo\ndDogIjEwMCUiLAogICAgICAgICAgICBuYW1lOiAibmFtZXNwYWNlIgogICAg\nICAgICAgfSkKICAgICAgICB9KS5wbGFjZUF0KCJjb250ZW50Iik7CiAgICAg\nIH0pOwogICAgPC9zY3JpcHQ+CiAgPC9oZWFkPgogIDxib2R5IGNsYXNzPSJz\nYXBVaUJvZHkiIGlkPSJjb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/contents/ui5/src/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/git/blobs/a925d224539ec830395d1c5917cc2b21c1b64f93",
+    "html": "https://github.com/SRBConsultingTeam/OMV_CPI_Salesforce_Scripts/blob/main/ui5/src/webapp/index.html"
+  }
+}

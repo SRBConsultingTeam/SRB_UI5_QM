@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "07b45e856750715b5e71723b767682125ad2b61e",
+  "size": 801,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen_Admin/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_Infoscreen_Admin/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen_Admin/git/blobs/07b45e856750715b5e71723b767682125ad2b61e",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_Infoscreen_Admin/master/webapp/index.html?token=AEM7VFS62PUTYLULAZG5T43GIMAFU",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoKCTxoZWFkPgoJCTxtZXRhIGh0dHAt\nZXF1aXY9IlgtVUEtQ29tcGF0aWJsZSIgY29udGVudD0iSUU9ZWRnZSIgLz4K\nCQk8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CgoJCTx0aXRsZT5TUkIgSW5mb3Nj\ncmVlbiBBZG1pbmlzdHJhdGlvbjwvdGl0bGU+CgoJCTxzY3JpcHQgaWQ9InNh\ncC11aS1ib290c3RyYXAiCgkJCXNyYz0iLi4vLi4vcmVzb3VyY2VzL3NhcC11\naS1jb3JlLmpzIgoJCQlkYXRhLXNhcC11aS1saWJzPSJzYXAubSIKCQkJZGF0\nYS1zYXAtdWktdGhlbWU9InNhcF9iZWxpemUiCgkJCWRhdGEtc2FwLXVpLWNv\nbXBhdFZlcnNpb249ImVkZ2UiCgkJCWRhdGEtc2FwLXVpLXJlc291cmNlcm9v\ndHM9J3sic3JiaW5mb3NjcmVlbmFkbWluIjogIiJ9Jz4KCQk8L3NjcmlwdD4K\nCgkJPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJl\nZj0iY3NzL3N0eWxlLmNzcyI+CgoJCTxzY3JpcHQ+CgkJCXNhcC51aS5nZXRD\nb3JlKCkuYXR0YWNoSW5pdChmdW5jdGlvbigpIHsKCQkJCW5ldyBzYXAubS5T\naGVsbCh7CgkJCQkJYXBwV2lkdGhMaW1pdGVkOiBmYWxzZSwKCQkJCQlhcHA6\nIG5ldyBzYXAudWkuY29yZS5Db21wb25lbnRDb250YWluZXIoewoJCQkJCQlo\nZWlnaHQgOiAiMTAwJSIsCgkJCQkJCW5hbWUgOiAic3JiaW5mb3NjcmVlbmFk\nbWluIiwKCQkJCQl9KQoJCQkJfSkucGxhY2VBdCgiY29udGVudCIpOwoJCQl9\nKTsKCQk8L3NjcmlwdD4KCTwvaGVhZD4KCgk8Ym9keSBjbGFzcz0ic2FwVWlC\nb2R5IiBpZD0iY29udGVudCI+Cgk8L2JvZHk+Cgo8L2h0bWw+\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen_Admin/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_Infoscreen_Admin/git/blobs/07b45e856750715b5e71723b767682125ad2b61e",
+    "html": "https://github.com/SRBConsultingTeam/SRB_Infoscreen_Admin/blob/master/webapp/index.html"
+  }
+}

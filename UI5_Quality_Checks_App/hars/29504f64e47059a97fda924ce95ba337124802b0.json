@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "2789561434940a15b8f478ddea5723eb55f9fd9e",
+  "size": 845,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_ProgressVisualizer/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_ProgressVisualizer/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_ProgressVisualizer/git/blobs/2789561434940a15b8f478ddea5723eb55f9fd9e",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_ProgressVisualizer/develop/webapp/index.html?token=AEM7VFSBDU4TL3QE66HE5SDGIL7GI",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgo8aGVhZD4KCTxtZXRhIGNoYXJzZXQ9\nInV0Zi04Ij4KCTxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0\naD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KCQk8dGl0bGU+\nT01WIFByb2dyZXNzIFZpc3VhbGl6ZXI8L3RpdGxlPgoKCTxzY3JpcHQgaWQ9\nInNhcC11aS1ib290c3RyYXAiCgkJCXNyYz0icmVzb3VyY2VzL3NhcC11aS1j\nYWNoZWJ1c3Rlci9zYXAtdWktY29yZS5qcyIgCgkJCWRhdGEtc2FwLXVpLXRo\nZW1lPSJzYXBfaG9yaXpvbiIKCQkJZGF0YS1zYXAtdWktbGlicz0ic2FwLm0s\nIHNhcC5uZGMsIHNhcC5mIgoJCQlkYXRhLXNhcC11aS1yZXNvdXJjZXJvb3Rz\nPSd7CgkJCQkiUHJvZ3Jlc3NWaXN1YWxpemVyIjogIi4vIgoJCQl9JwoJCQlk\nYXRhLXNhcC11aS1vbmluaXQ9Im1vZHVsZTpzYXAvdWkvY29yZS9Db21wb25l\nbnRTdXBwb3J0IgoJCQlkYXRhLXNhcC11aS1jb21wYXRWZXJzaW9uPSJlZGdl\nIgoJCQlkYXRhLXNhcC11aS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBl\nbiIKCQkJZGF0YS1zYXAtdWktYXN5bmM9InRydWUiCgkJCWRhdGEtc2FwLXVp\nLWZyYW1lT3B0aW9ucz0idHJ1c3RlZCIKCQkJZGF0YS1zYXAtdWktYXBwQ2Fj\naGVCdXN0ZXI9Ii4vIj4KCTwvc2NyaXB0Pgo8L2hlYWQ+Cjxib2R5IGNsYXNz\nPSJzYXBVaUJvZHkiPgoJPGRpdiBkYXRhLXNhcC11aS1jb21wb25lbnQgZGF0\nYS1pZD0icHJvZ3Jlc3NfY29udGFpbmVyIiBkYXRhLW5hbWU9IlByb2dyZXNz\nVmlzdWFsaXplciIgZGF0YS1zZXR0aW5ncz0neyJpZCIgOiAicHJvZ3Jlc3Nf\nY29tcG9uZW50In0nPjwvZGl2Pgo8L2JvZHk+CjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_ProgressVisualizer/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_ProgressVisualizer/git/blobs/2789561434940a15b8f478ddea5723eb55f9fd9e",
+    "html": "https://github.com/SRBConsultingTeam/OMV_ProgressVisualizer/blob/develop/webapp/index.html"
+  }
+}

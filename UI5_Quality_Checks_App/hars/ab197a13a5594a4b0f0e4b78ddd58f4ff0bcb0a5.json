@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "c85030d0876dd09e4367da10584e10e5bd4c2017",
+  "size": 1163,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/git/blobs/c85030d0876dd09e4367da10584e10e5bd4c2017",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/master/webapp/index.html?token=AEM7VFU6J472LLGJ56X2WGDGIMAGG",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoKCTxoZWFkPgoJCTxtZXRhIGh0dHAt\nZXF1aXY9IlgtVUEtQ29tcGF0aWJsZSIgY29udGVudD0iSUU9ZWRnZSIgLz4K\nCQk8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CgoJCTx0aXRsZT5TUkIgU1BFRUQt\nQ09NUEFSSVNPTjwvdGl0bGU+CgkJCgkJPGxpbmsgaHJlZj0iLi9yZXNzb3Vy\nY2VzL2ltYWdlcy9TUkJfbG9nbzcyeDcycG5nLnBuZyIgcmVsPSJzaG9ydGN1\ndCBpY29uIiB0eXBlPSJpbWFnZS94LWljb24iIC8+CgoJCTxzY3JpcHQgaWQ9\nInNhcC11aS1ib290c3RyYXAiCgkJCXNyYz0iaHR0cHM6Ly9zYXB1aTUuaGFu\nYS5vbmRlbWFuZC5jb20vMS40NC4xNS9yZXNvdXJjZXMvc2FwLXVpLWNvcmUu\nanMiCgkJCWRhdGEtc2FwLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11\naS10aGVtZT0ic2FwX2JsdWVjcnlzdGFsIgogICAgICAgICAgICBkYXRhLXNh\ncC11aS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBlbiIKICAgICAgICAg\nICAgZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5bnRheD0iY29tcGxleCIKCQkJ\nZGF0YS1zYXAtdWktY29tcGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAt\ndWktcHJlbG9hZD0iYXN5bmMiCgkJCXNhcC11aS14eC1jb21wb25lbnRQcmVs\nb2FkPW9mZgoJCQlkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCgkJ\nCWRhdGEtc2FwLXVpLXJlc291cmNlcm9vdHM9J3sic3BlZWQtY29tcGFyaXNv\nbiI6ICIifSc+CgkJPC9zY3JpcHQ+CgoJCTxsaW5rIHJlbD0ic3R5bGVzaGVl\ndCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNzcy9zdHlsZS5jc3MiPgoKCQk8\nc2NyaXB0PgoJCQlzYXAudWkuZ2V0Q29yZSgpLmF0dGFjaEluaXQoZnVuY3Rp\nb24oKSB7CgkJCQlzYXAudWkucmVxdWlyZSgKCQkJCQluZXcgc2FwLm0uU2hl\nbGwoewoJCQkJCQlhcHBXaWR0aExpbWl0ZWQ6IGZhbHNlLAoJCQkJCQlhcHA6\nIG5ldyBzYXAudWkuY29yZS5Db21wb25lbnRDb250YWluZXIoewoJCQkJCQkJ\naGVpZ2h0IDogIjEwMCUiLAoJCQkJCQkJbmFtZSA6ICJzcGVlZC1jb21wYXJp\nc29uIgoJCQkJCQl9KQoJCQkJCX0pLnBsYWNlQXQoImNvbnRlbnQiKSk7CgkJ\nCX0pOwoJCTwvc2NyaXB0PgoJPC9oZWFkPgoKCTxib2R5IGNsYXNzPSJzYXBV\naUJvZHkiIGlkPSJjb250ZW50Ij4KCTwvYm9keT4KCjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/git/blobs/c85030d0876dd09e4367da10584e10e5bd4c2017",
+    "html": "https://github.com/SRBConsultingTeam/SRB_Tools_OData_Speed_Comparison/blob/master/webapp/index.html"
+  }
+}

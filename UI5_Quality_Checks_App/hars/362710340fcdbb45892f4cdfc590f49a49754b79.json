@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "00f0942538b0548b18fc4a829f628fb81ea882b5",
+  "size": 932,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Reporting/contents/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_WCM_Reporting/blob/main/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Reporting/git/blobs/00f0942538b0548b18fc4a829f628fb81ea882b5",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_WCM_Reporting/main/webapp/index.html?token=AEM7VFW6BDI7BD75OJMLVT3GIMAGE",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+T01WIFdDTSBS\nZXBvcnRpbmc8L3RpdGxlPgoKCQk8c2NyaXB0IGlkPSJzYXAtdWktYm9vdHN0\ncmFwIgoJCQlzcmM9InJlc291cmNlcy9zYXAtdWktY2FjaGVidXN0ZXIvc2Fw\nLXVpLWNvcmUuanMiCgkJCWRhdGEtc2FwLXVpLWxpYnM9InNhcC5tLCBzYXAu\nZiwgc2FwLnVpLnRhYmxlLCBzYXAudWkuZmwiCgkJCWRhdGEtc2FwLXVpLXRo\nZW1lPSJzYXBfYmVsaXplIgogICAgICAgICAgICBkYXRhLXNhcC11aS14eC1z\ndXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBlbiIKCQkJZGF0YS1zYXAtdWktY29t\ncGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAtdWktb25pbml0PSJtb2R1\nbGU6c2FwL3VpL2NvcmUvQ29tcG9uZW50U3VwcG9ydCIKCQkJZGF0YS1zYXAt\ndWktYXN5bmM9InRydWUiCgkJCWRhdGEtc2FwLXVpLXJlc291cmNlcm9vdHM9\nJ3sKCQkJCSJvbXZXY21SZXBvcnRpbmciOiAiLi8iCgkJCX0nCgkJCWRhdGEt\nc2FwLXVpLWZyYW1lT3B0aW9ucz0idHJ1c3RlZCIKCQkJZGF0YS1zYXAtdWkt\nYXBwQ2FjaGVCdXN0ZXI9Ii4vIj4KCQk8L3NjcmlwdD4KCgkJPGxpbmsgcmVs\nPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxl\nLmNzcyI+CgoJPC9oZWFkPgoJPGJvZHkgY2xhc3M9InNhcFVpQm9keSI+CgkJ\nPGRpdiBkYXRhLXNhcC11aS1jb21wb25lbnQgZGF0YS1pZD0ib212V2NtUmVw\nb3J0aW5nX2NvbnRhaW5lciIgZGF0YS1uYW1lPSJvbXZXY21SZXBvcnRpbmci\nIGRhdGEtc2V0dGluZ3M9J3siaWQiIDogIm9tdldjbVJlcG9ydGluZ19jb21w\nb25lbnQifSc+PC9kaXY+Cgk8L2JvZHk+CjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Reporting/contents/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_WCM_Reporting/git/blobs/00f0942538b0548b18fc4a829f628fb81ea882b5",
+    "html": "https://github.com/SRBConsultingTeam/OMV_WCM_Reporting/blob/main/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "a058371af9b7a909ae90450d8072cdd598c5573c",
+  "size": 1219,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/WB_WM_Picasso/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/WB_WM_Picasso/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/WB_WM_Picasso/git/blobs/a058371af9b7a909ae90450d8072cdd598c5573c",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/WB_WM_Picasso/master/webapp/index.html?token=AEM7VFUF6IIK7VLCHKSTA53GIMAFU",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+UGlwZWxpZmUg\nV00gTW9iaWxlIFNvbHV0aW9uPC90aXRsZT4KCQoJCQoJCTwhLS0gc3JjPSJo\ndHRwczovL3NhcHVpNS5oYW5hLm9uZGVtYW5kLmNvbS8xLjM4LjE1L3Jlc291\ncmNlcy9zYXAtdWktY29yZS5qcyIgLS0+CgkJPCEtLSBSZXBsYWNlIHNyYyB3\naXRoID5zcmM9InJlc291cmNlcy9zYXAtdWktY29yZS5qcyI8IG9uIGRlcGxv\neW1lbnQgb24gZ2F0ZXdheSAgLS0+CgkJPHNjcmlwdCBpZD0ic2FwLXVpLWJv\nb3RzdHJhcCIKCQkJIHNyYz0iaHR0cHM6Ly9zYXB1aTUuaGFuYS5vbmRlbWFu\nZC5jb20vMS4zOC42Mi9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJCWRh\ndGEtc2FwLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11aS10aGVtZT0i\nc2FwX2JsdWVjcnlzdGFsIgogICAgICAgICAgICBkYXRhLXNhcC11aS14eC1z\ndXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBlbiIKICAgICAgICAgICAgZGF0YS1z\nYXAtdWkteHgtYmluZGluZ1N5bnRheD0iY29tcGxleCIKCQkJZGF0YS1zYXAt\ndWktY29tcGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAtdWktcHJlbG9h\nZD0iYXN5bmMiCgkJCXNhcC11aS14eC1jb21wb25lbnRQcmVsb2FkPW9mZgoJ\nCQlkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCgkJCWRhdGEtc2Fw\nLXVpLXJlc291cmNlcm9vdHM9J3sicGlwZWxpZmVOb3JkaWNzIjogIiJ9Jz4K\nCQk8L3NjcmlwdD4KCgkJPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0\nZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyI+CgoJCTxzY3JpcHQ+CgkJ\nCXNhcC51aS5nZXRDb3JlKCkuYXR0YWNoSW5pdChmdW5jdGlvbigpIHsKCQkJ\nCQluZXcgc2FwLm0uU2hlbGwoewoJCQkJCQlhcHBXaWR0aExpbWl0ZWQ6IGZh\nbHNlLAoJCQkJCQlhcHA6IG5ldyBzYXAudWkuY29yZS5Db21wb25lbnRDb250\nYWluZXIoewoJCQkJCQkJaGVpZ2h0IDogIjEwMCUiLAoJCQkJCQkJbmFtZSA6\nICJwaXBlbGlmZU5vcmRpY3MiCgkJCQkJCX0pCgkJCQkJfSkucGxhY2VBdCgi\nY29udGVudCIpOwoJCQl9KTsKCQk8L3NjcmlwdD4KCTwvaGVhZD4KCTxib2R5\nIGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJjb250ZW50Ij4KCTwvYm9keT4KPC9o\ndG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/WB_WM_Picasso/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/WB_WM_Picasso/git/blobs/a058371af9b7a909ae90450d8072cdd598c5573c",
+    "html": "https://github.com/SRBConsultingTeam/WB_WM_Picasso/blob/master/webapp/index.html"
+  }
+}

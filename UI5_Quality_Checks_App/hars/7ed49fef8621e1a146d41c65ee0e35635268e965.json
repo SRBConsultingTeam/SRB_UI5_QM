@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "UI5/webapp/index.html",
+  "sha": "c0afdd9f92056c700999ec7cfd70c7afd4b13652",
+  "size": 727,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/OMV_eFSOP/contents/UI5/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/OMV_eFSOP/blob/develop/UI5/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/OMV_eFSOP/git/blobs/c0afdd9f92056c700999ec7cfd70c7afd4b13652",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/OMV_eFSOP/develop/UI5/webapp/index.html?token=AEM7VFQVAK7N5L654T4Y6RTGIMAGE",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgoJPGhlYWQ+CgkJPG1ldGEgY2hhcnNl\ndD0idXRmLTgiPgoJICAgIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50\nPSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KCQk8\ndGl0bGU+T01WIFF1ZXN0aW9ubmFpcmU8L3RpdGxlPgoJCTxzY3JpcHQgaWQ9\nInNhcC11aS1ib290c3RyYXAiCgkJCXNyYz0icmVzb3VyY2VzL3NhcC11aS1j\nYWNoZWJ1c3Rlci9zYXAtdWktY29yZS5qcyIKCQkJZGF0YS1zYXAtdWktdGhl\nbWU9InNhcF9maW9yaV8zIgoJCQlkYXRhLXNhcC11aS1yZXNvdXJjZXJvb3Rz\nPSd7ImNvbS5vbXYuc2FwZWZzb3AiOiAiLi8ifScKCQkJZGF0YS1zYXAtdWkt\nY29tcGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAtdWktb25pbml0PSJt\nb2R1bGU6c2FwL3VpL2NvcmUvQ29tcG9uZW50U3VwcG9ydCIKCQkJZGF0YS1z\nYXAtdWktYXN5bmM9InRydWUiCgkJCWRhdGEtc2FwLXVpLWZyYW1lT3B0aW9u\ncz0idHJ1c3RlZCIKCQkJZGF0YS1zYXAtdWktYXBwQ2FjaGVCdXN0ZXI9Ii4v\nIj4KCQk8L3NjcmlwdD4KCTwvaGVhZD4KCTxib2R5IGNsYXNzPSJzYXBVaUJv\nZHkiPgoJCTxkaXYgZGF0YS1zYXAtdWktY29tcG9uZW50IGRhdGEtbmFtZT0i\nY29tLm9tdi5zYXBlZnNvcCIgZGF0YS1pZD0iY29udGFpbmVyIiBkYXRhLXNl\ndHRpbmdzPSd7ImlkIiA6ICJzYXBlZnNvcCJ9Jz48L2Rpdj4KCTwvYm9keT4K\nPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/OMV_eFSOP/contents/UI5/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/OMV_eFSOP/git/blobs/c0afdd9f92056c700999ec7cfd70c7afd4b13652",
+    "html": "https://github.com/SRBConsultingTeam/OMV_eFSOP/blob/develop/UI5/webapp/index.html"
+  }
+}

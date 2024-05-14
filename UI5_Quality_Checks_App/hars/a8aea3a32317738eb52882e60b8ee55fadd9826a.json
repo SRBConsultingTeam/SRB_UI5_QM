@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "ui5/src/webapp/index.html",
+  "sha": "439101bc360d61ac5233e7aa295444880718e7a2",
+  "size": 801,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_ProdDev_Template/contents/ui5/src/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_Tools_ProdDev_Template/blob/main/ui5/src/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_ProdDev_Template/git/blobs/439101bc360d61ac5233e7aa295444880718e7a2",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_Tools_ProdDev_Template/main/ui5/src/webapp/index.html?token=AEM7VFVSCK5VTL4ZZSUFK53GIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxzY3JpcHQKICAgICAgaWQ9InNhcC11aS1ib290c3RyYXAiCiAgICAg\nIHR5cGU9InRleHQvamF2YXNjcmlwdCIKICAgICAgc3JjPSJodHRwczovL3Vp\nNS5zYXAuY29tLzEuOTYvcmVzb3VyY2VzL3NhcC11aS1jb3JlLmpzIgogICAg\nICBkYXRhLXNhcC11aS10aGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAgIGRhdGEt\nc2FwLXVpLWxpYnM9InNhcC5tIgogICAgICBkYXRhLXNhcC11aS1hc3luYz0i\ndHJ1ZSIKICAgICAgZGF0YS1zYXAtdWktcmVzb3VyY2Vyb290cz0neyJuYW1l\nc3BhY2UiOiAiIn0nCiAgICAgIGRhdGEtc2FwLXVpLW9uaW5pdD0ibW9kdWxl\nOm5hbWVzcGFjZS9pbmRleCIKICAgID48L3NjcmlwdD4KCiAgICA8bGluayBy\nZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3NzIiBocmVmPSJjc3Mvc3R5\nbGUuY3NzIiAvPgogICAgCiAgPC9oZWFkPgogIDxib2R5IGNsYXNzPSJzYXBV\naUJvZHkiIGlkPSJjb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_ProdDev_Template/contents/ui5/src/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_ProdDev_Template/git/blobs/439101bc360d61ac5233e7aa295444880718e7a2",
+    "html": "https://github.com/SRBConsultingTeam/SRB_Tools_ProdDev_Template/blob/main/ui5/src/webapp/index.html"
+  }
+}

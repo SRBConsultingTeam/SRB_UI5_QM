@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "a79b4bbc7f56cd0c5373c47f9c28402f83e85619",
+  "size": 1015,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_NumberToText/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_UI5_NumberToText/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_NumberToText/git/blobs/a79b4bbc7f56cd0c5373c47f9c28402f83e85619",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_UI5_NumberToText/develop/webapp/index.html?token=AEM7VFTFRCNI2ZRVW4ND7HTGIMAFY",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+QXBwLVRpdGVs\nPC90aXRsZT4KCgkJPHNjcmlwdCBpZD0ic2FwLXVpLWJvb3RzdHJhcCIKCQkJ\nc3JjPSJodHRwczovL3NhcHVpNS5oYW5hLm9uZGVtYW5kLmNvbS8xLjcxLjQ4\nL3Jlc291cmNlcy9zYXAtdWktY29yZS5qcyIKCQkJZGF0YS1zYXAtdWktbGli\ncz0ic2FwLm0iCgkJCWRhdGEtc2FwLXVpLXRoZW1lPSJzYXBfYmVsaXplIgog\nICAgICAgICAgICBkYXRhLXNhcC11aS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9\nImRlLCBlbiIKICAgICAgICAgICAgZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5\nbnRheD0iY29tcGxleCIKCQkJZGF0YS1zYXAtdWktY29tcGF0VmVyc2lvbj0i\nZWRnZSIKCQkJZGF0YS1zYXAtdWktcHJlbG9hZD0iYXN5bmMiCgkJCXNhcC11\naS14eC1jb21wb25lbnRQcmVsb2FkPW9mZgoJCQlkYXRhLXNhcC11aS1hcHBD\nYWNoZUJ1c3Rlcj0iLi8iCgkJCWRhdGEtc2FwLXVpLXJlc291cmNlcm9vdHM9\nJ3sibnVtYmVyVG9UZXh0IjogIiJ9Jz4KCQk8L3NjcmlwdD4KCgkJPGxpbmsg\ncmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0\neWxlLmNzcyI+CgoJCTxzY3JpcHQ+CgkJCXNhcC51aS5nZXRDb3JlKCkuYXR0\nYWNoSW5pdChmdW5jdGlvbigpIHsKCQkJCQluZXcgc2FwLm0uU2hlbGwoewoJ\nCQkJCQlhcHBXaWR0aExpbWl0ZWQ6IGZhbHNlLAoJCQkJCQlhcHA6IG5ldyBz\nYXAudWkuY29yZS5Db21wb25lbnRDb250YWluZXIoewoJCQkJCQkJaGVpZ2h0\nIDogIjEwMCUiLAoJCQkJCQkJbmFtZSA6ICJudW1iZXJUb1RleHQiCgkJCQkJ\nCX0pCgkJCQkJfSkucGxhY2VBdCgiY29udGVudCIpOwoJCQl9KTsKCQk8L3Nj\ncmlwdD4KCTwvaGVhZD4KCTxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJj\nb250ZW50Ij4KCTwvYm9keT4KPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_NumberToText/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_UI5_NumberToText/git/blobs/a79b4bbc7f56cd0c5373c47f9c28402f83e85619",
+    "html": "https://github.com/SRBConsultingTeam/SRB_UI5_NumberToText/blob/develop/webapp/index.html"
+  }
+}
