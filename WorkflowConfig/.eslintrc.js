@@ -26,7 +26,10 @@ module.exports = {
     "jquery",
     "*wapa*",
     "DrawerJS.js",
-    "ExternalLibs.js"
+    "ExternalLibs.js",
+    "/docs/**,
+    "/doc/**",
+    "gruntfile.js"
   ],
 
   overrides: [
