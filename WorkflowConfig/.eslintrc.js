@@ -27,7 +27,7 @@ module.exports = {
     "*wapa*",
     "DrawerJS.js",
     "ExternalLibs.js",
-    "/docs/**,
+    "/docs/**",
     "/doc/**",
     "gruntfile.js"
   ],
