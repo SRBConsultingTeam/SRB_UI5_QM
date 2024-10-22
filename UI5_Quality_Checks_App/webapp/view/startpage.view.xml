@@ -93,14 +93,8 @@
 						<Text text="{owner}" />
 						<Text text="{filename}" />
 						<HBox>
-							<Text text="{version}" visible="{= ${detected} !== false }"  />
-							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="No specific version defined!"
-								icon="sap-icon://sys-enter-2"
-								state="Error"
-								visible="{= ${detected} === false }"
-								 />
+							<Text text="{version}" visible="{= ${isMinVersion} !== true }"  />
+							<Text text="mind. {version}" visible="{= ${isMinVersion} !== false }"  />
 						</HBox>
 						<HBox >
 							<ObjectStatus

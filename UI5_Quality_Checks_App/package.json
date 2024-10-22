@@ -12,11 +12,11 @@
   },
   "devDependencies": {
     "@ui5/cli": "^2.10.0",
+    "browserify": "*",
     "eslint": "^7.22.0",
     "nwabap-ui5uploader": "^1.1.0",
     "prettier": "2.2.1",
-    "ui5-middleware-simpleproxy": "^0.2.1",
-    "browserify": "*"
+    "ui5-middleware-simpleproxy": "^0.2.1"
   },
   "ui5": {
     "dependencies": [
@@ -24,13 +24,14 @@
     ]
   },
   "dependencies": {
-    "html2canvas": "^1.4.1",
-    "srbinfoandsupportjs": "^1.0.8",
-    "srbjslogger": "^1.5.1",
-    "uglify-js": "^3.17.4",
     "axios": "^0.24.0",
     "body-parser": "^1.19.1",
     "express": "^4.17.1",
-    "puppeteer": "^13.1.0"
+    "html2canvas": "^1.4.1",
+    "nodemon": "^3.1.7",
+    "puppeteer": "^13.1.0",
+    "srbinfoandsupportjs": "^1.0.8",
+    "srbjslogger": "^1.5.1",
+    "uglify-js": "^3.17.4"
   }
 }
