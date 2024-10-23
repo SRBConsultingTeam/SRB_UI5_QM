@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "Worklist/ui5/src/webapp/index.html",
+  "sha": "e06dee1b4cc9287974464c35f11fd77cd2524cd8",
+  "size": 1085,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/contents/Worklist/ui5/src/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/blob/develop/Worklist/ui5/src/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/git/blobs/e06dee1b4cc9287974464c35f11fd77cd2524cd8",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/develop/Worklist/ui5/src/webapp/index.html?token=AEM7VFRSYZML4RNTHRYB2OTGIMAGI",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxsaW5rIHJlbD0ic2hvcnRjdXQgaWNvbiIgdHlwZT0iaW1hZ2UveC1p\nY29uIiBocmVmPSIuL3Jlc3NvdXJjZXMvaW1hZ2VzL2Zhdmljb25zL2Zhdmlj\nb24uaWNvIiBpZD0ibGlnaHQtc2NoZW1lLWljb24iIC8+CgogICAgPHNjcmlw\ndAogICAgICBpZD0ic2FwLXVpLWJvb3RzdHJhcCIKICAgICAgdHlwZT0idGV4\ndC9qYXZhc2NyaXB0IgogICAgICBzcmM9Imh0dHBzOi8vdWk1LnNhcC5jb20v\nMS4xMDgvcmVzb3VyY2VzL3NhcC11aS1jb3JlLmpzIgogICAgICBkYXRhLXNh\ncC11aS10aGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAgIGRhdGEtc2FwLXVpLWxp\nYnM9InNhcC5tLCBzYXAudG50IgogICAgICBkYXRhLXNhcC11aS1hc3luYz0i\ndHJ1ZSIKICAgICAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVkTGFuZ3VhZ2Vz\nPSJkZSwgZW4sIHNoLCBjcyIKICAgICAgZGF0YS1zYXAtdWkteHgtYmluZGlu\nZ1N5bnRheD0iY29tcGxleCIKICAgICAgZGF0YS1zYXAtdWktcmVzb3VyY2Vy\nb290cz0neyJzcmJfcGNvX3dvcmtsaXN0IjogIiJ9JwogICAgICBkYXRhLXNh\ncC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCiAgICAgIGRhdGEtc2FwLXVpLW9u\naW5pdD0ibW9kdWxlOnNyYl9wY29fd29ya2xpc3QvaW5kZXgiCiAgICA+PC9z\nY3JpcHQ+CgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0\nL2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyIgLz4KICA8L2hlYWQ+CiAgPGJv\nZHkgY2xhc3M9InNhcFVpQm9keSIgaWQ9ImNvbnRlbnQiPjwvYm9keT4KPC9o\ndG1sPgo=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/contents/Worklist/ui5/src/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/git/blobs/e06dee1b4cc9287974464c35f11fd77cd2524cd8",
+    "html": "https://github.com/SRBConsultingTeam/WN_Maintenance_Cockpit_Extensions/blob/develop/Worklist/ui5/src/webapp/index.html"
+  }
+}

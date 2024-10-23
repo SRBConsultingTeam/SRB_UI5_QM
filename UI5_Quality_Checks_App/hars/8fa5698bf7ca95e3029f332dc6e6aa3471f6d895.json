@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "f23fe3db98a78d3123c762ad0490ab1bf5679996",
+  "size": 845,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_Template/contents/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_Template/blob/main/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_Template/git/blobs/f23fe3db98a78d3123c762ad0490ab1bf5679996",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_Template/main/webapp/index.html?token=AEM7VFWZN5GGV53AJVO7TRLGIMAGG",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoJCTxtZXRhIGh0dHAtZXF1aXY9\nIkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sO2NoYXJzZXQ9VVRG\nLTgiLz4KCQk8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC1jYXBh\nYmxlIiBjb250ZW50PSJ5ZXMiPgoJCTxtZXRhIG5hbWU9Im1vYmlsZS13ZWIt\nYXBwLWNhcGFibGUiIGNvbnRlbnQ9InllcyI+CgoJCTxzY3JpcHQgaWQ9InNh\ncC11aS1ib290c3RyYXAiCgkJCXNyYz0iaHR0cHM6Ly91aTUuc2FwLmNvbS8x\nLjEwOC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJCWRhdGEtc2FwLXVp\nLWxpYnM9InNhcC5tLCBzYXAudG50IgoJCQlkYXRhLXNhcC11aS10aGVtZT0i\nc2FwX2Zpb3JpXzMiCiAgICAgICAgICAgIGRhdGEtc2FwLXVpLXh4LXN1cHBv\ncnRlZExhbmd1YWdlcz0iZGUsIGVuLCBmciwgbmwsIHN2IgogICAgCQlkYXRh\nLXNhcC11aS1hc3luYz0idHJ1ZSIKICAgIAkJZGF0YS1zYXAtdWkteHgtYmlu\nZGluZ1N5bnRheD0iY29tcGxleCIKCQkJZGF0YS1zYXAtdWktcmVzb3VyY2Vy\nb290cz0neyJ2YVRlbXBsYXRlIjogIiJ9JwoJCQlkYXRhLXNhcC11aS1vbmlu\naXQ9Im1vZHVsZTp2YVRlbXBsYXRlL2luZGV4Ij4KCQk8L3NjcmlwdD4KCgkJ\nPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0i\nY3NzL3N0eWxlLmNzcyI+Cgk8L2hlYWQ+Cgk8Ym9keSBjbGFzcz0ic2FwVWlC\nb2R5IiBpZD0iY29udGVudCI+Cgk8L2JvZHk+CjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_Template/contents/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_Template/git/blobs/f23fe3db98a78d3123c762ad0490ab1bf5679996",
+    "html": "https://github.com/SRBConsultingTeam/VA_Template/blob/main/webapp/index.html"
+  }
+}

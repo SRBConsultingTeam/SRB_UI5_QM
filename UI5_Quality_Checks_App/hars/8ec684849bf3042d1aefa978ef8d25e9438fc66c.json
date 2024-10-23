@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "bdca615db98fc09803258842a469f690a98341a2",
+  "size": 1119,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/git/blobs/bdca615db98fc09803258842a469f690a98341a2",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/master/webapp/index.html?token=AEM7VFQF66QBIBQTYJ3CV6DGIL7GA",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+dm9lc3RhbHBp\nbmUgTW9iaWxlLUlIPC90aXRsZT4KCQkKCQk8IS0tIFJlcGxhY2Ugc3JjIHdp\ndGggPnNyYz0icmVzb3VyY2VzL3NhcC11aS1jb3JlLmpzIjwgb24gZGVwbG95\nbWVudCBvbiBnYXRld2F5ICAtLT4KCQk8c2NyaXB0IGlkPSJzYXAtdWktYm9v\ndHN0cmFwIgoJCQlzcmM9Imh0dHBzOi8vc2FwdWk1LmhhbmEub25kZW1hbmQu\nY29tLzEuNjkuMC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJCWRhdGEt\nc2FwLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11aS10aGVtZT0ic2Fw\nX2JlbGl6ZSIKICAgICAgICAgICAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVk\nTGFuZ3VhZ2VzPSJkZSwgZW4sIGZyLCBubCwgc3YiCiAgICAgICAgICAgIGRh\ndGEtc2FwLXVpLXh4LWJpbmRpbmdTeW50YXg9ImNvbXBsZXgiCgkJCWRhdGEt\nc2FwLXVpLWNvbXBhdFZlcnNpb249ImVkZ2UiCgkJCWRhdGEtc2FwLXVpLXBy\nZWxvYWQ9ImFzeW5jIgoJCQlzYXAtdWkteHgtY29tcG9uZW50UHJlbG9hZD1v\nZmYKCQkJZGF0YS1zYXAtdWktYXBwQ2FjaGVCdXN0ZXI9Ii4vIgoJCQlkYXRh\nLXNhcC11aS1yZXNvdXJjZXJvb3RzPSd7Im1vYmlsZUlIIjogIiJ9Jz4KCQk8\nL3NjcmlwdD4KCgkJPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0\nL2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyI+CgoJCTxzY3JpcHQ+CgkJCXNh\ncC51aS5nZXRDb3JlKCkuYXR0YWNoSW5pdChmdW5jdGlvbigpIHsKCQkJCQlu\nZXcgc2FwLm0uU2hlbGwoewoJCQkJCQlhcHBXaWR0aExpbWl0ZWQ6IGZhbHNl\nLAoJCQkJCQlhcHA6IG5ldyBzYXAudWkuY29yZS5Db21wb25lbnRDb250YWlu\nZXIoewoJCQkJCQkJaGVpZ2h0IDogIjEwMCUiLAoJCQkJCQkJbmFtZSA6ICJt\nb2JpbGVJSCIKCQkJCQkJfSkKCQkJCQl9KS5wbGFjZUF0KCJjb250ZW50Iik7\nCgkJCX0pOwoJCTwvc2NyaXB0PgoJPC9oZWFkPgoJPGJvZHkgY2xhc3M9InNh\ncFVpQm9keSIgaWQ9ImNvbnRlbnQiPgoJPC9ib2R5Pgo8L2h0bWw+\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/git/blobs/bdca615db98fc09803258842a469f690a98341a2",
+    "html": "https://github.com/SRBConsultingTeam/VA_IAM_ArbeitsvorratApp/blob/master/webapp/index.html"
+  }
+}

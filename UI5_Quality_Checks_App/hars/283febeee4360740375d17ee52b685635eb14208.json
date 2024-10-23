@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "UIComponents/WorklistComponent/webapp/index.html",
+  "sha": "a8b2da61d4743a05a521e3fad310a6bea95f2ed4",
+  "size": 1167,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Maintenance_Cockpit/contents/UIComponents/WorklistComponent/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_Maintenance_Cockpit/blob/develop/UIComponents/WorklistComponent/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Maintenance_Cockpit/git/blobs/a8b2da61d4743a05a521e3fad310a6bea95f2ed4",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_Maintenance_Cockpit/develop/UIComponents/WorklistComponent/webapp/index.html?token=AEM7VFUV7FTMCPP4X535CW3GIMAGI",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgog\nICAgPG1ldGEgbmFtZT0idGhlbWUtY29sb3IiIGNvbnRlbnQ9IiMxYzFkNGQi\nIC8+CgogICAgPGxpbmsgcmVsPSJzaG9ydGN1dCBpY29uIiB0eXBlPSJpbWFn\nZS94LWljb24iIGhyZWY9Ii4vcmVzc291cmNlcy9pbWFnZXMvZmF2aWNvbnMv\nZmF2aWNvbi5pY28iIGlkPSJsaWdodC1zY2hlbWUtaWNvbiIgLz4KCiAgICA8\nbGluayBocmVmPSIuL3Jlc3NvdXJjZXMvaW1hZ2VzL2xvZ29zL3NyYl9sb2dv\nLnBuZyIgcmVsPSJzaG9ydGN1dCBpY29uIiB0eXBlPSJpbWFnZS94LWljb24i\nIC8+CgogICAgPHNjcmlwdAogICAgICBpZD0ic2FwLXVpLWJvb3RzdHJhcCIK\nICAgICAgdHlwZT0idGV4dC9qYXZhc2NyaXB0IgogICAgICBzcmM9Imh0dHBz\nOi8vdWk1LnNhcC5jb20vMS4xMDgvcmVzb3VyY2VzL3NhcC11aS1jb3JlLmpz\nIgogICAgICBkYXRhLXNhcC11aS10aGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAg\nIGRhdGEtc2FwLXVpLWxpYnM9InNhcC5tLCBzYXAudG50IgogICAgICBkYXRh\nLXNhcC11aS1hc3luYz0idHJ1ZSIKICAgICAgZGF0YS1zYXAtdWkteHgtc3Vw\ncG9ydGVkTGFuZ3VhZ2VzPSJkZSwgZW4sIHNoLCBjcyIKICAgICAgZGF0YS1z\nYXAtdWkteHgtYmluZGluZ1N5bnRheD0iY29tcGxleCIKICAgICAgZGF0YS1z\nYXAtdWktcmVzb3VyY2Vyb290cz0neyJzcmJfcGNvX3dvcmtsaXN0IjogIiJ9\nJwogICAgICBkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCiAgICAg\nIGRhdGEtc2FwLXVpLW9uaW5pdD0ibW9kdWxlOnNyYl9wY29fd29ya2xpc3Qv\naW5kZXgiCiAgICA+PC9zY3JpcHQ+CiAgPC9oZWFkPgogIDxib2R5IGNsYXNz\nPSJzYXBVaUJvZHkiIGlkPSJjb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_Maintenance_Cockpit/contents/UIComponents/WorklistComponent/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_Maintenance_Cockpit/git/blobs/a8b2da61d4743a05a521e3fad310a6bea95f2ed4",
+    "html": "https://github.com/SRBConsultingTeam/SRB_Maintenance_Cockpit/blob/develop/UIComponents/WorklistComponent/webapp/index.html"
+  }
+}

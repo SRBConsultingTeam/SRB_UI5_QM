@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "NewNotificationCFVersion/webapp/index.html",
+  "sha": "d38284e8f00c0f488ed5eb559500164261052f54",
+  "size": 1107,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/contents/NewNotificationCFVersion/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/blob/develop/NewNotificationCFVersion/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/git/blobs/d38284e8f00c0f488ed5eb559500164261052f54",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/develop/NewNotificationCFVersion/webapp/index.html?token=AEM7VFXKHZDDJQLHDFKRYPDGIL7GI",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CgogICAgPHRpdGxlPlN0\nw7ZydW5nc2VyZmFzc3VuZzwvdGl0bGU+CgogICAgPHNjcmlwdAogICAgICBp\nZD0ic2FwLXVpLWJvb3RzdHJhcCIKICAgICAgdHlwZT0idGV4dC9qYXZhc2Ny\naXB0IgogICAgICBzcmM9Imh0dHBzOi8vdWk1LnNhcC5jb20vMS4xMDgvcmVz\nb3VyY2VzL3NhcC11aS1jb3JlLmpzIgogICAgICBkYXRhLXNhcC11aS10aGVt\nZT0ic2FwX2Zpb3JpXzMiCiAgICAgIGRhdGEtc2FwLXVpLWxpYnM9InNhcC5t\nLCBzYXAudG50IgogICAgICBkYXRhLXNhcC11aS1hc3luYz0idHJ1ZSIKICAg\nICAgZGF0YS1zYXAtdWkteHgtc3VwcG9ydGVkTGFuZ3VhZ2VzPSJkZSwgZW4s\nIHNoLCBjcyIKICAgICAgZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5bnRheD0i\nY29tcGxleCIKICAgICAgZGF0YS1zYXAtdWktcmVzb3VyY2Vyb290cz0neyJz\ncmJfcGNvX25ld19ub3RpZiI6ICIifScKICAgICAgZGF0YS1zYXAtdWktYXBw\nQ2FjaGVCdXN0ZXI9Ii4vIgogICAgICBkYXRhLXNhcC11aS1vbmluaXQ9Im1v\nZHVsZTpzcmJfcGNvX25ld19ub3RpZi9pbmRleCIKICAgID48L3NjcmlwdD4K\nCiAgICA8bGluayBocmVmPSIuL3Jlc3NvdXJjZXMvaW1hZ2VzL2xvZ29zL3Ny\nYi1sb2dvLnBuZyIgcmVsPSJzaG9ydGN1dCBpY29uIiB0eXBlPSJpbWFnZS94\nLWljb24iIC8+CiAgICA8bGluayByZWw9InNob3J0Y3V0IGljb24iIHR5cGU9\nImltYWdlL3gtaWNvbiIgaHJlZj0iLi9yZXNzb3VyY2VzL2ltYWdlcy9mYXZp\nY29ucy9mYXZpY29uX3NyYi5pY28iIGlkPSJsaWdodC1zY2hlbWUtaWNvbiIg\nLz4KCiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQvY3Nz\nIiBocmVmPSJjc3Mvc3R5bGUuY3NzIiAvPgoKICAgIDxsaW5rIHJlbD0ic3R5\nbGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNzcy9kcmF3ZXJKcy5j\nc3MiIC8+CiAgPC9oZWFkPgogIDxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlk\nPSJjb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/contents/NewNotificationCFVersion/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/git/blobs/d38284e8f00c0f488ed5eb559500164261052f54",
+    "html": "https://github.com/SRBConsultingTeam/GPI_Maintenance_Cockpit_Extensions/blob/develop/NewNotificationCFVersion/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "913eda6eac978a630828a669d2a83094f38b5bad",
+  "size": 1057,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_InventoryManager/contents/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_InventoryManager/blob/master/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_InventoryManager/git/blobs/913eda6eac978a630828a669d2a83094f38b5bad",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_InventoryManager/master/webapp/index.html?token=AEM7VFWNNPQ3QTDVCFP7FC3GIL7GI",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+Vm9lc3RhbHBp\nbmUgSW52ZW50b3J5IE1hbmFnZXI8L3RpdGxlPgoKCQk8c2NyaXB0IGlkPSJz\nYXAtdWktYm9vdHN0cmFwIgoJCQlzcmM9Imh0dHBzOi8vc2FwdWk1LmhhbmEu\nb25kZW1hbmQuY29tLzEuNTIuNi9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMi\nCgkJCWRhdGEtc2FwLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11aS10\naGVtZT0ic2FwX2JsdWVjcnlzdGFsIgogICAgICAgICAgICBkYXRhLXNhcC11\naS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBlbiIKICAgICAgICAgICAg\nZGF0YS1zYXAtdWkteHgtYmluZGluZ1N5bnRheD0iY29tcGxleCIKCQkJZGF0\nYS1zYXAtdWktY29tcGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAtdWkt\ncHJlbG9hZD0iYXN5bmMiCgkJCXNhcC11aS14eC1jb21wb25lbnRQcmVsb2Fk\nPW9mZgoJCQlkYXRhLXNhcC11aS1hcHBDYWNoZUJ1c3Rlcj0iLi8iCgkJCWRh\ndGEtc2FwLXVpLXJlc291cmNlcm9vdHM9J3sidm9lc3RhbHBpbmUtaW52ZW50\nb3J5IjogIiJ9Jz4KCQk8L3NjcmlwdD4KCgkJPGxpbmsgcmVsPSJzdHlsZXNo\nZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyI+CgoJ\nCTxzY3JpcHQ+CgkJCXNhcC51aS5nZXRDb3JlKCkuYXR0YWNoSW5pdChmdW5j\ndGlvbigpIHsKCQkJCQluZXcgc2FwLm0uU2hlbGwoewoJCQkJCQlhcHBXaWR0\naExpbWl0ZWQ6IGZhbHNlLAoJCQkJCQlhcHA6IG5ldyBzYXAudWkuY29yZS5D\nb21wb25lbnRDb250YWluZXIoewoJCQkJCQkJaGVpZ2h0IDogIjEwMCUiLAoJ\nCQkJCQkJbmFtZSA6ICJ2b2VzdGFscGluZS1pbnZlbnRvcnkiCgkJCQkJCX0p\nCgkJCQkJfSkucGxhY2VBdCgiY29udGVudCIpOwoJCQl9KTsKCQk8L3Njcmlw\ndD4KCTwvaGVhZD4KCTxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJjb250\nZW50Ij4KCTwvYm9keT4KPC9odG1sPg==\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_InventoryManager/contents/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_InventoryManager/git/blobs/913eda6eac978a630828a669d2a83094f38b5bad",
+    "html": "https://github.com/SRBConsultingTeam/VA_InventoryManager/blob/master/webapp/index.html"
+  }
+}

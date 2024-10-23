@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "2c01a3d79d4652be8fe5f344681d501bc041c82d",
+  "size": 815,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/WN_Status_Overview/contents/webapp/index.html?ref=main",
+  "html_url": "https://github.com/SRBConsultingTeam/WN_Status_Overview/blob/main/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/WN_Status_Overview/git/blobs/2c01a3d79d4652be8fe5f344681d501bc041c82d",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/WN_Status_Overview/main/webapp/index.html?token=AEM7VFRFFC7QRVPMR5GPRYTGIMAGG",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CgogICAgPHRpdGxlPldh\nY2tlciBOZXVzb24gUE0gU3RhdHVzIE92ZXJpdmV3PC90aXRsZT4KCiAgICA8\nc2NyaXB0CiAgICAgIGlkPSJzYXAtdWktYm9vdHN0cmFwIgogICAgICB0eXBl\nPSJ0ZXh0L2phdmFzY3JpcHQiCiAgICAgIHNyYz0iaHR0cHM6Ly91aTUuc2Fw\nLmNvbS8xLjEwOC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCiAgICAgIGRh\ndGEtc2FwLXVpLXRoZW1lPSJzYXBfZmlvcmlfMyIKICAgICAgZGF0YS1zYXAt\ndWktbGlicz0ic2FwLm0sIHNhcC50bnQiCiAgICAgIGRhdGEtc2FwLXVpLWFz\neW5jPSJ0cnVlIgogICAgICBkYXRhLXNhcC11aS14eC1zdXBwb3J0ZWRMYW5n\ndWFnZXM9ImRlLCBlbiwgc2gsIGNzIgogICAgICBkYXRhLXNhcC11aS14eC1i\naW5kaW5nU3ludGF4PSJjb21wbGV4IgogICAgICBkYXRhLXNhcC11aS1yZXNv\ndXJjZXJvb3RzPSd7InduU3RhdHVzT3ZlcnZpZXciOiAiIn0nCiAgICAgIGRh\ndGEtc2FwLXVpLWFwcENhY2hlQnVzdGVyPSIuLyIKICAgICAgZGF0YS1zYXAt\ndWktb25pbml0PSJtb2R1bGU6d25TdGF0dXNPdmVydmlldy9pbmRleCI+PC9z\nY3JpcHQ+CgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0\nL2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNzcyIgLz4KICA8L2hlYWQ+CiAgPGJv\nZHkgY2xhc3M9InNhcFVpQm9keSIgaWQ9ImNvbnRlbnQiPjwvYm9keT4KPC9o\ndG1sPgo=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/WN_Status_Overview/contents/webapp/index.html?ref=main",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/WN_Status_Overview/git/blobs/2c01a3d79d4652be8fe5f344681d501bc041c82d",
+    "html": "https://github.com/SRBConsultingTeam/WN_Status_Overview/blob/main/webapp/index.html"
+  }
+}

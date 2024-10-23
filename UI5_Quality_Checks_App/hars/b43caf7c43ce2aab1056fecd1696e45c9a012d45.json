@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "example/TestingApp/webapp/index.html",
+  "sha": "0d9cc0301b5928900eda2fc936c51693dcd22a43",
+  "size": 1029,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_MapGenerator/contents/example/TestingApp/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_Tools_MapGenerator/blob/master/example/TestingApp/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_MapGenerator/git/blobs/0d9cc0301b5928900eda2fc936c51693dcd22a43",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_Tools_MapGenerator/master/example/TestingApp/webapp/index.html?token=AEM7VFXFPY7PA4JMBVBP7ATGIL7GA",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoKCQk8dGl0bGU+U1JCIE1hcCBH\nZW5lcmF0b3IgVGVzdGluZyBBcHA8L3RpdGxlPgoKCQk8c2NyaXB0IGlkPSJz\nYXAtdWktYm9vdHN0cmFwIgoJCQlzcmM9Imh0dHBzOi8vc2FwdWk1LmhhbmEu\nb25kZW1hbmQuY29tLzEuNjUuMi9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMi\nCgkJCWRhdGEtc2FwLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11aS10\naGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAgICAgICAgIGRhdGEtc2FwLXVpLXh4\nLXN1cHBvcnRlZExhbmd1YWdlcz0iZGUsIGVuIgogICAgICAgICAgICBkYXRh\nLXNhcC11aS14eC1iaW5kaW5nU3ludGF4PSJjb21wbGV4IgoJCQlkYXRhLXNh\ncC11aS1jb21wYXRWZXJzaW9uPSJlZGdlIgoJCQlkYXRhLXNhcC11aS1wcmVs\nb2FkPSJhc3luYyIKCQkJc2FwLXVpLXh4LWNvbXBvbmVudFByZWxvYWQ9b2Zm\nCgkJCWRhdGEtc2FwLXVpLWFwcENhY2hlQnVzdGVyPSIuLyIKCQkJZGF0YS1z\nYXAtdWktcmVzb3VyY2Vyb290cz0neyJuYW1lc3BhY2UiOiAiIn0nPgoJCTwv\nc2NyaXB0PgoKCQk8bGluayByZWw9InN0eWxlc2hlZXQiIHR5cGU9InRleHQv\nY3NzIiBocmVmPSJjc3Mvc3R5bGUuY3NzIj4KCgkJPHNjcmlwdD4KCQkJc2Fw\nLnVpLmdldENvcmUoKS5hdHRhY2hJbml0KGZ1bmN0aW9uKCkgewoJCQkJCW5l\ndyBzYXAubS5TaGVsbCh7CgkJCQkJCWFwcFdpZHRoTGltaXRlZDogZmFsc2Us\nCgkJCQkJCWFwcDogbmV3IHNhcC51aS5jb3JlLkNvbXBvbmVudENvbnRhaW5l\ncih7CgkJCQkJCQloZWlnaHQgOiAiMTAwJSIsCgkJCQkJCQluYW1lIDogIm5h\nbWVzcGFjZSIKCQkJCQkJfSkKCQkJCQl9KS5wbGFjZUF0KCJjb250ZW50Iik7\nCgkJCX0pOwoJCTwvc2NyaXB0PgoJPC9oZWFkPgoJPGJvZHkgY2xhc3M9InNh\ncFVpQm9keSIgaWQ9ImNvbnRlbnQiPgoJPC9ib2R5Pgo8L2h0bWw+\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_MapGenerator/contents/example/TestingApp/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_Tools_MapGenerator/git/blobs/0d9cc0301b5928900eda2fc936c51693dcd22a43",
+    "html": "https://github.com/SRBConsultingTeam/SRB_Tools_MapGenerator/blob/master/example/TestingApp/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "abaee1c3d188a8790cd59581a8f74afaf86c458a",
+  "size": 833,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_Zartinfo/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_Zartinfo/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_Zartinfo/git/blobs/abaee1c3d188a8790cd59581a8f74afaf86c458a",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_Zartinfo/develop/webapp/index.html?token=AEM7VFU5MP2P4LUX6NBNY43GIMAGE",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoJCgk8aGVhZD4KCQk8bWV0YSBodHRw\nLWVxdWl2PSJYLVVBLUNvbXBhdGlibGUiIGNvbnRlbnQ9IklFPWVkZ2UiIC8+\nCgkJPG1ldGEgY2hhcnNldD0iVVRGLTgiPgoJCTxtZXRhIGh0dHAtZXF1aXY9\nIkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sO2NoYXJzZXQ9VVRG\nLTgiLz4KCQk8bWV0YSBuYW1lPSJhcHBsZS1tb2JpbGUtd2ViLWFwcC1jYXBh\nYmxlIiBjb250ZW50PSJ5ZXMiPgoJCTxtZXRhIG5hbWU9Im1vYmlsZS13ZWIt\nYXBwLWNhcGFibGUiIGNvbnRlbnQ9InllcyI+CgoJCTxzY3JpcHQgaWQ9InNh\ncC11aS1ib290c3RyYXAiCgkJCXNyYz0iaHR0cHM6Ly91aTUuc2FwLmNvbS8x\nLjEwOC9yZXNvdXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJCWRhdGEtc2FwLXVp\nLWxpYnM9InNhcC5tLCBzYXAudG50IgoJCQlkYXRhLXNhcC11aS10aGVtZT0i\nc2FwX2Zpb3JpXzMiCiAgICAgICAgICAgIGRhdGEtc2FwLXVpLXh4LXN1cHBv\ncnRlZExhbmd1YWdlcz0iZGUsIGVuLCBzdiIKICAgIAkJZGF0YS1zYXAtdWkt\nYXN5bmM9InRydWUiCiAgICAJCWRhdGEtc2FwLXVpLXh4LWJpbmRpbmdTeW50\nYXg9ImNvbXBsZXgiCgkJCWRhdGEtc2FwLXVpLXJlc291cmNlcm9vdHM9J3si\nemFydGluZm8iOiAiIn0nCgkJCWRhdGEtc2FwLXVpLW9uaW5pdD0ibW9kdWxl\nOnphcnRpbmZvL2luZGV4Ij4KCQk8L3NjcmlwdD4KCgkJPGxpbmsgcmVsPSJz\ndHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgaHJlZj0iY3NzL3N0eWxlLmNz\ncyI+Cgk8L2hlYWQ+Cgk8Ym9keSBjbGFzcz0ic2FwVWlCb2R5IiBpZD0iY29u\ndGVudCI+Cgk8L2JvZHk+CjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_Zartinfo/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_Zartinfo/git/blobs/abaee1c3d188a8790cd59581a8f74afaf86c458a",
+    "html": "https://github.com/SRBConsultingTeam/VA_Zartinfo/blob/develop/webapp/index.html"
+  }
+}

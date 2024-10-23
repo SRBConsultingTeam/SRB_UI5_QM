@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "webapp/index.html",
+  "sha": "96e4e42222e8d7f047fbf055637f589049938e57",
+  "size": 1014,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/contents/webapp/index.html?ref=develop",
+  "html_url": "https://github.com/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/blob/develop/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/git/blobs/96e4e42222e8d7f047fbf055637f589049938e57",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/develop/webapp/index.html?token=AEM7VFQSYCD5SB3AVSULARTGIMAFW",
+  "type": "file",
+  "content": "PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0\ncC1lcXVpdj0iWC1VQS1Db21wYXRpYmxlIiBjb250ZW50PSJJRT1lZGdlIiAv\nPgogICAgPG1ldGEgY2hhcnNldD0iVVRGLTgiIC8+CiAgICA8bWV0YSBodHRw\nLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDtjaGFy\nc2V0PVVURi04IiAvPgogICAgPG1ldGEgbmFtZT0iYXBwbGUtbW9iaWxlLXdl\nYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgogICAgPG1ldGEgbmFt\nZT0ibW9iaWxlLXdlYi1hcHAtY2FwYWJsZSIgY29udGVudD0ieWVzIiAvPgoK\nICAgIDxsaW5rIGhyZWY9Ii4vcmVzc291cmNlcy9pbWFnZXMvZmF2aWNvbi5p\nY28iIHJlbD0ic2hvcnRjdXQgaWNvbiIgdHlwZT0iaW1hZ2UveC1pY29uIiAv\nPgoKICAgIDx0aXRsZT52b2VzdGFscGluZSBFdmVudFJlcG9ydDwvdGl0bGU+\nCgogICAgPHNjcmlwdAogICAgICBpZD0ic2FwLXVpLWJvb3RzdHJhcCIKICAg\nICAgdHlwZT0idGV4dC9qYXZhc2NyaXB0IgogICAgICBzcmM9Imh0dHBzOi8v\ndWk1LnNhcC5jb20vMS4xMDgvcmVzb3VyY2VzL3NhcC11aS1jb3JlLmpzIgog\nICAgICBkYXRhLXNhcC11aS10aGVtZT0ic2FwX2Zpb3JpXzMiCiAgICAgIGRh\ndGEtc2FwLXVpLWxpYnM9InNhcC5tLCBzYXAudG50LCBzYXAuc3VpdGUudWku\nbWljcm9jaGFydCIKICAgICAgZGF0YS1zYXAtdWktYXN5bmM9InRydWUiCiAg\nICAgIGRhdGEtc2FwLXVpLXJlc291cmNlcm9vdHM9J3sic3JiTGF1bmNocGFk\nIjogIiJ9JwogICAgICBkYXRhLXNhcC11aS1vbmluaXQ9Im1vZHVsZTpzcmJM\nYXVuY2hwYWQvaW5kZXgiCiAgICAgIGRhdGEtc2FwLXVpLXh4LWJpbmRpbmdT\neW50YXg9ImNvbXBsZXgiPjwvc2NyaXB0PgoKICAgIDxsaW5rIHJlbD0ic3R5\nbGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNzcy9zdHlsZS5jc3Mi\nIC8+CiAgPC9oZWFkPgogIDxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJj\nb250ZW50Ij48L2JvZHk+CjwvaHRtbD4K\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/contents/webapp/index.html?ref=develop",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/git/blobs/96e4e42222e8d7f047fbf055637f589049938e57",
+    "html": "https://github.com/SRBConsultingTeam/VA_Workspaces_EventReport_Extension/blob/develop/webapp/index.html"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "index.html",
+  "path": "application/industrialservice/webapp/index.html",
+  "sha": "53dd177661dd0f90fcb71c537fd9be83bd35997a",
+  "size": 1001,
+  "url": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/contents/application/industrialservice/webapp/index.html?ref=master",
+  "html_url": "https://github.com/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/blob/master/application/industrialservice/webapp/index.html",
+  "git_url": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/git/blobs/53dd177661dd0f90fcb71c537fd9be83bd35997a",
+  "download_url": "https://raw.githubusercontent.com/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/master/application/industrialservice/webapp/index.html?token=AEM7VFVCO6AH5T7IV2VA4ALGIMAFW",
+  "type": "file",
+  "content": "PCFET0NUWVBFIEhUTUw+CjxodG1sPgoKCTxoZWFkPgoJCTxtZXRhIGh0dHAt\nZXF1aXY9IlgtVUEtQ29tcGF0aWJsZSIgY29udGVudD0iSUU9ZWRnZSIgLz4K\nCQk8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CgkJCgkJPGxpbmsgaHJlZj0iLi9p\nbWcvU1JCX2xvZ283Mng3MnBuZy5wbmciIHJlbD0ic2hvcnRjdXQgaWNvbiIg\ndHlwZT0iaW1hZ2UveC1pY29uIiAvPgoJCQoJCTx0aXRsZT5TUkIgSW5kdXN0\ncmlhbCBTZXJ2aWNlPC90aXRsZT4KCgkJPHNjcmlwdCBpZD0ic2FwLXVpLWJv\nb3RzdHJhcCIKCQkJc3JjPSIuLi8uLi9yZXNvdXJjZXMvc2FwLXVpLWNvcmUu\nanMiCgkJCWRhdGEtc2FwLXVpLWxpYnM9InNhcC5tIgoJCQlkYXRhLXNhcC11\naS14eC1zdXBwb3J0ZWRMYW5ndWFnZXM9ImRlLCBlbiIKCQkJZGF0YS1zYXAt\ndWktdGhlbWU9InNhcF9ibHVlY3J5c3RhbCIKCQkJZGF0YS1zYXAtdWktY29t\ncGF0VmVyc2lvbj0iZWRnZSIKCQkJZGF0YS1zYXAtdWktcmVzb3VyY2Vyb290\ncz0neyJMZWdvQmFnZ2VyIjogIiJ9Jz4KCQk8L3NjcmlwdD4KCQkKCQk8IS0t\nCgkJc3JjPSJodHRwczovL3NhcHVpNS5oYW5hLm9uZGVtYW5kLmNvbS9yZXNv\ndXJjZXMvc2FwLXVpLWNvcmUuanMiCgkJLS0+CgoJCTxsaW5rIHJlbD0ic3R5\nbGVzaGVldCIgdHlwZT0idGV4dC9jc3MiIGhyZWY9ImNzcy9zdHlsZS5jc3Mi\nPgoKCQk8c2NyaXB0PgoJCQlzYXAudWkuZ2V0Q29yZSgpLmF0dGFjaEluaXQo\nZnVuY3Rpb24oKSB7CgkJCQluZXcgc2FwLm0uU2hlbGwoewoJCQkJCWFwcFdp\nZHRoTGltaXRlZCA6IGZhbHNlLAoJCQkJCWFwcDogbmV3IHNhcC51aS5jb3Jl\nLkNvbXBvbmVudENvbnRhaW5lcih7CgkJCQkJCWhlaWdodCA6ICIxMDAlIiwK\nCQkJCQkJbmFtZSA6ICJMZWdvQmFnZ2VyIgoJCQkJCX0pCgkJCQl9KS5wbGFj\nZUF0KCJjb250ZW50Iik7CgkJCX0pOwoJCTwvc2NyaXB0PgoJPC9oZWFkPgoK\nCTxib2R5IGNsYXNzPSJzYXBVaUJvZHkiIGlkPSJjb250ZW50Ij4KCTwvYm9k\neT4KCjwvaHRtbD4=\n",
+  "encoding": "base64",
+  "_links": {
+    "self": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/contents/application/industrialservice/webapp/index.html?ref=master",
+    "git": "https://api.github.com/repos/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/git/blobs/53dd177661dd0f90fcb71c537fd9be83bd35997a",
+    "html": "https://github.com/SRBConsultingTeam/SRB_IoT_industrial-service-showcase-lego/blob/master/application/industrialservice/webapp/index.html"
+  }
+}
