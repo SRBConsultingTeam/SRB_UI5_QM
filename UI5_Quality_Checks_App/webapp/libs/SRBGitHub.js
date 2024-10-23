@@ -43,26 +43,6 @@ var SRBGitHub = (function () {
       });
 
       return { results: response.data.items, headers: response.headers };
-
-      // return new Promise(function (resolve, reject) {
-      //   var cdnAQuery = "/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
-      //   //var cdnBQuery = "https://ui5.sap.com in:file OR resources/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
-      //   //var cdnCQuery = "resources/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
-
-      //   that.octokit.rest.search
-      //     .code({
-      //       q: cdnAQuery,
-      //       type: "code",
-      //       // eslint-disable-next-line camelcase
-      //       per_page: 15
-      //     })
-      //     .then((response) => {
-      //       var resultsA = response.data.items;
-      //       //var finalResults = resultsA.concat(resultsB);
-
-      //       resolve(resultsA);
-      //     });
-      // });
     },
 
     getUI5ManifestFile: async function (repos, page) {
@@ -192,14 +172,10 @@ var SRBGitHub = (function () {
       var isMinVersion = false;
 
       for (var i = 0; i < scriptTags.length; i++) {
-        var tag = scriptTags[i];
-        var src = tag.getAttribute("src");
-
-        if (src !== null) {
-          // console.log("This is not a UI5 src tag");
+        var src = scriptTags[i].getAttribute("src");
+        if (src) {
           groups = src.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
           if (groups) {
-            // console.log(groups);
             versionString = groups[1];
             detected = true;
           } else {
@@ -213,8 +189,6 @@ var SRBGitHub = (function () {
                 detected = true;
                 isMinVersion = true;
               }
-              // console.log(tag);
-              // console.log(src);
             }
           }
 
@@ -223,27 +197,16 @@ var SRBGitHub = (function () {
           }
 
           if (evergreen === true) {
-            versions.forEach(function (versionEntry) {
-              var major = versionEntry.version.split(".")[0];
-              var minor = versionEntry.version.split(".")[1];
-              var compareVersion = major + "." + minor;
-
-              if (versionString === compareVersion) {
-                eocp = versionEntry.eocp;
-                eom = versionEntry.eom === true ? "Reached" : versionEntry.eom;
-              }
-            });
+            var { eocp, eom } = that.checkForVersionSupport(versions, versionString);
+            eocp = eocp;
+            eom = eom;
           } else {
-            patches.forEach(function (patch) {
-              if (patch.version === versionString) {
-                if (patch.removed === true) {
-                  eocp = "Reached"; // <-- Write true because it has beed removed
-                  eom = "Reached";
-                } else {
-                  eocp = patch.eocp; // <-- Write the provided eocp date
-                }
-              }
-            });
+            var checks = that.checkForPatchSupport(patches, versionString);
+            if (checks) {
+              var { eocp, eom } = checks;
+              eocp = eocp;
+              eom = eom;
+            }
           }
         }
       }
@@ -255,6 +218,31 @@ var SRBGitHub = (function () {
         eocp: eocp, // <-- If true, it has already been removed
         eom: eom
       };
+    },
+
+    checkForVersionSupport: function (versions, currentVersion) {
+      if (!versions) versions = availableVersionsModel.getData().versions;
+      var returnValues;
+      versions.forEach((versionEntry) => {
+        var splittedVersion = versionEntry.version.split(".");
+        var compareVersion = `${splittedVersion[0]}.${splittedVersion[1]}`;
+        if (currentVersion === compareVersion) {
+          returnValues = { eocp: versionEntry.eocp, eom: versionEntry.eom === true ? "Reached" : versionEntry.eom };
+        }
+      });
+      return returnValues;
+    },
+
+    checkForPatchSupport: function (patches, currentVersion) {
+      if (!patches) patches = availableVersionsModel.getData().patches;
+      var returnValues;
+      patches.forEach((patch) => {
+        if (patch.version === currentVersion) {
+          if (patch.removed === true) returnValues = { eocp: "Reached", eom: "Reached" };
+          else returnValues = { eocp: patch.eocp, eom: "" };
+        }
+      });
+      return returnValues;
     },
 
     detectUI5VersionInManifestFile: async function (fileContent) {

@@ -124,6 +124,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
         var minVersion = await SRBGitHub.detectUI5VersionInManifestFile(file);
 
         version.version = minVersion;
+
+        if (version.isEvergreenBootstrap === true) {
+          var versionCheck = SRBGitHub.checkForVersionSupport(undefined, minVersion);
+          version.eocp = versionCheck.eocp;
+          version.eom = versionCheck.eom;
+        } else {
+          var patchCheck = SRBGitHub.checkForPatchSupport(undefined, minVersion);
+          if (patchCheck) {
+            version.eocp = patchCheck.eocp;
+            version.eom = patchCheck.eom;
+          }
+        }
         that.setResultData(resultRecord, version, file, true);
 
         that.addRow(resultsModel, resultRecord);
@@ -170,42 +182,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       resultsTable.setVisible(true);
       loginBox.setVisible(false);
 
-      // const repoData = await that.fetchData();
-
-      // repoData.forEach((repo) => {
-      //   var tableData = resultsModel.getProperty("/results");
-      //   tableData.push(repo);
-      //   resultsModel.setProperty("/results", tableData);
-      //   sap.ui.core.BusyIndicator.hide();
-      // });
-
       this.fetchData(resultsModel);
-
-      // console.log(resultsModel.getProperty("/results"));
-
-      //   Promise.allSettled([getVersionData, getLinterstatus]).then(() => {
-      //     addRow(resultRecord);
-
-      //     responseCounter++;
-
-      //     if (doneCb && numberOfBootstraps === responseCounter) {
-      //       doneCb();
-      //     }
-      //   });
-      // });
-
-      // Add row to table. A row with all its meta has been loaded successfully
-      // function (tableRowData) {
-      //   var tableData = resultsModel.getProperty("/results");
-      //   tableData.push(tableRowData);
-      //   resultsModel.setProperty("/results", tableData);
-      //   sap.ui.core.BusyIndicator.hide();
-      // },
-      // // Processing done
-      // function () {
-      //   console.log(resultsModel.getProperty("/results"));
-      //   sap.ui.core.BusyIndicator.hide();
-      // }
     },
 
     showSupportDialogPressed: function () {
