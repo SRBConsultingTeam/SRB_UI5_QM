@@ -9,105 +9,92 @@ var SRBGitHub = (function () {
   var availableVersionsModel = new sap.ui.model.json.JSONModel();
 
   return {
-    setup: function (accessToken) {
+    setup: async function (accessToken) {
       this.octokit = new Octokit({ auth: accessToken });
       //this.octokit.rest.users.getAuthenticated()
       var versionsPath = "/versionoverview.json";
 
-      return new Promise(function (resolve, reject) {
-        availableVersionsModel.loadData(versionsPath).then((resolveOverviewLoad) => {
-          resolve();
-        });
-      });
+      await availableVersionsModel.loadData(versionsPath);
     },
 
-    getLoginData: function () {
+    getLoginData: async function () {
       var that = this;
 
       checkSetup();
 
-      return new Promise(function (resolve, reject) {
-        that.octokit.request("/user").then(
-          (response) => {
-            resolve(response.data);
-          },
-          (error) => {
-            reject();
-          }
-        );
-      });
+      var response = await that.octokit.request("/user");
+
+      return response.data;
     },
 
-    getUI5BootstrappingFiles: function () {
+    getUI5BootstrappingFiles: async function (page) {
       var that = this;
 
       checkSetup();
 
-      return new Promise(function (resolve, reject) {
-        var cdnAQuery = "/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
-        //var cdnBQuery = "https://ui5.sap.com in:file OR resources/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
-        //var cdnCQuery = "resources/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
+      var cdnAQuery = "/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
 
-        that.octokit.rest.search
-          .code({
-            q: cdnAQuery,
-            type: "code",
-            // eslint-disable-next-line camelcase
-            per_page: 1000
-          })
-          .then((response) => {
-            var resultsA = response.data.items;
-            //var finalResults = resultsA.concat(resultsB);
-
-            resolve(resultsA);
-          });
+      const response = await that.octokit.rest.search.code({
+        q: cdnAQuery,
+        type: "code",
+        // eslint-disable-next-line camelcase
+        per_page: 100,
+        page: page
       });
+
+      return { results: response.data.items, headers: response.headers };
+
+      // return new Promise(function (resolve, reject) {
+      //   var cdnAQuery = "/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
+      //   //var cdnBQuery = "https://ui5.sap.com in:file OR resources/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
+      //   //var cdnCQuery = "resources/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
+
+      //   that.octokit.rest.search
+      //     .code({
+      //       q: cdnAQuery,
+      //       type: "code",
+      //       // eslint-disable-next-line camelcase
+      //       per_page: 15
+      //     })
+      //     .then((response) => {
+      //       var resultsA = response.data.items;
+      //       //var finalResults = resultsA.concat(resultsB);
+
+      //       resolve(resultsA);
+      //     });
+      // });
     },
 
-    getUI5ManifestFile: function (repo) {
+    getUI5ManifestFile: async function (repos, page) {
       var that = this;
 
       checkSetup();
 
-      return new Promise(function (resolve, reject) {
-        var cdnAQuery = `minUI5Version in:file repo:SRBConsultingTeam/${repo} filename:/manifest.json`;
+      var repoQuery = repos.map((repoName) => `repo:SRBConsultingTeam/${repoName}`).join(" OR ");
 
-        that.octokit.rest.search
-          .code({
-            q: cdnAQuery,
-            type: "code",
-            // eslint-disable-next-line camelcase
-            per_page: 1000
-          })
-          .then((response) => {
-            var resultsA = response.data.items;
-            //var finalResults = resultsA.concat(resultsB);
+      var cdnAQuery = `minUI5Version in:file ${repoQuery} filename:/manifest.json`;
 
-            resolve(resultsA);
-          });
+      var response = await that.octokit.rest.search.code({
+        q: cdnAQuery,
+        type: "code"
+        // eslint-disable-next-line camelcase
       });
+
+      return { result: response.data.items };
     },
 
-    getFileOfRepo: function (repo, path, owner) {
+    getFileOfRepo: async function (repo, path, owner) {
       var that = this;
 
       checkSetup();
 
-      return new Promise(function (resolve, reject) {
-        that.octokit.repos
-          .getContent({
-            owner: owner,
-            repo: repo,
-            path: path
-          })
-          .then((result) => {
-            try {
-              resolve(atob(result.data.content));
-            } catch {
-              reject();
-            }
-          });
+      var response = await that.octokit.repos.getContent({
+        owner: owner,
+        repo: repo,
+        path: path
       });
+
+      return atob(response.data.content);
     },
 
     detectUI5VersionInFile: function (fileContentText, repo) {
@@ -181,131 +168,114 @@ var SRBGitHub = (function () {
       });
     },
 
-    detectUI5VersionInFileV2: function (fileContentText, repo) {
+    detectUI5VersionInFileV2: async function (fileContentText, repo) {
       var that = this;
       // console.log(fileContentText);
 
       checkSetup();
 
-      return new Promise(function (resolve, reject) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(fileContentText, "text/html");
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(fileContentText, "text/html");
 
-        var scriptTags = doc.head.getElementsByTagName("script");
-        var overviewData = availableVersionsModel.getData();
-        var patches = overviewData.patches;
-        var versions = overviewData.versions;
+      var scriptTags = doc.head.getElementsByTagName("script");
+      var overviewData = availableVersionsModel.getData();
+      var patches = overviewData.patches;
+      var versions = overviewData.versions;
 
-        var detected = false;
-        var evergreen = false;
-        var eocp;
-        var eom;
+      var detected = false;
+      var evergreen = false;
+      var eocp;
+      var eom;
 
-        var groups = [];
-        var versionString;
-        var isMinVersion = false;
+      var groups = [];
+      var versionString;
+      var isMinVersion = false;
 
-        for (var i = 0; i < scriptTags.length; i++) {
-          var tag = scriptTags[i];
-          var src = tag.getAttribute("src");
+      for (var i = 0; i < scriptTags.length; i++) {
+        var tag = scriptTags[i];
+        var src = tag.getAttribute("src");
 
-          if (src !== null) {
-            // console.log("This is not a UI5 src tag");
-            groups = src.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
+        if (src !== null) {
+          // console.log("This is not a UI5 src tag");
+          groups = src.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
+          if (groups) {
+            // console.log(groups);
+            versionString = groups[1];
+            detected = true;
+          } else {
+            groups = src.match("https://ui5.sap.com/(.*)(/resources)");
+
             if (groups) {
-              // console.log(groups);
               versionString = groups[1];
               detected = true;
             } else {
-              groups = src.match("https://ui5.sap.com/(.*)(/resources)");
-
-              if (groups) {
-                versionString = groups[1];
+              if (!versionString) {
                 detected = true;
-              } else {
-                if (!versionString) {
-                  detected = true;
-                  isMinVersion = true;
-                }
-                // console.log(tag);
-                // console.log(src);
+                isMinVersion = true;
               }
-            }
-
-            if (versionString) {
-              evergreen = versionString.split(".").length <= 2;
-            }
-
-            if (evergreen === true) {
-              versions.forEach(function (versionEntry) {
-                var major = versionEntry.version.split(".")[0];
-                var minor = versionEntry.version.split(".")[1];
-                var compareVersion = major + "." + minor;
-
-                if (versionString === compareVersion) {
-                  eocp = versionEntry.eocp;
-                  eom = versionEntry.eom === true ? "Reached" : versionEntry.eom;
-                }
-              });
-            } else {
-              patches.forEach(function (patch) {
-                if (patch.version === versionString) {
-                  if (patch.removed === true) {
-                    eocp = "Reached"; // <-- Write true because it has beed removed
-                    eom = "Reached";
-                  } else {
-                    eocp = patch.eocp; // <-- Write the provided eocp date
-                  }
-                }
-              });
+              // console.log(tag);
+              // console.log(src);
             }
           }
+
+          if (versionString) {
+            evergreen = versionString.split(".").length <= 2;
+          }
+
+          if (evergreen === true) {
+            versions.forEach(function (versionEntry) {
+              var major = versionEntry.version.split(".")[0];
+              var minor = versionEntry.version.split(".")[1];
+              var compareVersion = major + "." + minor;
+
+              if (versionString === compareVersion) {
+                eocp = versionEntry.eocp;
+                eom = versionEntry.eom === true ? "Reached" : versionEntry.eom;
+              }
+            });
+          } else {
+            patches.forEach(function (patch) {
+              if (patch.version === versionString) {
+                if (patch.removed === true) {
+                  eocp = "Reached"; // <-- Write true because it has beed removed
+                  eom = "Reached";
+                } else {
+                  eocp = patch.eocp; // <-- Write the provided eocp date
+                }
+              }
+            });
+          }
         }
-
-        resolve({
-          detected: detected,
-          isMinVersion: isMinVersion,
-          version: versionString,
-          isEvergreenBootstrap: evergreen,
-          eocp: eocp, // <-- If true, it has already been removed
-          eom: eom
-        });
-      });
+      }
+      return {
+        detected: detected,
+        isMinVersion: isMinVersion,
+        version: versionString,
+        isEvergreenBootstrap: evergreen,
+        eocp: eocp, // <-- If true, it has already been removed
+        eom: eom
+      };
     },
 
-    detectUI5VersionInManifestFile: function (fileContent, repo) {
+    detectUI5VersionInManifestFile: async function (fileContent) {
       var that = this;
 
-      return new Promise(function (resolve, reject) {
-        var jsonContent = JSON.parse(fileContent);
+      var jsonContent = JSON.parse(fileContent);
 
-        resolve(jsonContent["sap.ui5"].dependencies.minUI5Version);
-      });
+      return jsonContent["sap.ui5"].dependencies.minUI5Version;
     },
 
-    getLatestLintWorkflowRun: function (repo, branch, owner) {
-      var that = this;
-
-      checkSetup();
-
-      return new Promise(function (resolve, reject, branch) {
-        that.octokit.rest.actions
-          .listWorkflowRuns({
-            owner: owner || "SRBConsultingTeam",
-            repo: repo,
-            branch: branch || "develop",
-            // eslint-disable-next-line camelcase
-            workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
-          })
-          .then(
-            (workflowResults) => {
-              resolve(workflowResults.data.workflow_runs[0]);
-            },
-            () => {
-              reject();
-            }
-          );
-      });
+    getLatestLintWorkflowRun: async function (repo, branch, owner) {
+      // var that = this;
+      // checkSetup();
+      // var response = await that.octokit.rest.actions.listWorkflowRuns({
+      //   owner: owner || "SRBConsultingTeam",
+      //   repo: repo,
+      //   branch: branch || "develop",
+      //   // eslint-disable-next-line camelcase
+      //   workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
+      // });
+      // return response.data.workflow_runs[0];
     },
 
     getAvailableRepos: function () {

@@ -21,6 +21,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
       SRBInfoAndSupport.init(this.getOwnerComponent());
+
+      this.currentPage = 1;
     },
 
     /**
@@ -72,9 +74,73 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       }
 
       resultRecord["problematic"] = problematic;
+
+      return resultRecord;
     },
 
-    startPressed: function () {
+    fetchLinterStatus: async function () {},
+
+    fetchData: async function (resultsModel) {
+      var that = this;
+      var { results, headers } = await SRBGitHub.getUI5BootstrappingFiles(that.currentPage);
+      var noVersionFound = [];
+      var minVersions = [];
+
+      console.log(headers);
+
+      for (const repoResult of results) {
+        var resultRecord = {
+          repo: repoResult.repository.name,
+          repoUrl: "https://github.com/" + repoResult.repository.owner.login + "/" + repoResult.repository.name,
+          filename: repoResult.path,
+          fileUrl: repoResult.html_url,
+          owner: repoResult.repository.owner.login
+        };
+
+        var file = await SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login);
+        var version = await SRBGitHub.detectUI5VersionInFileV2(file, repoResult.repository.name);
+
+        if (version.isMinVersion === true) {
+          noVersionFound.push(repoResult.repository.name);
+          minVersions.push(version);
+        } else {
+          that.setResultData(resultRecord, version, file, false);
+          that.addRow(resultsModel, resultRecord);
+        }
+      }
+
+      var { result: manifestFiles } = await SRBGitHub.getUI5ManifestFile(noVersionFound);
+      for (const manifestResult of manifestFiles) {
+        var resultRecord = {
+          repo: manifestResult.repository.name,
+          repoUrl: "https://github.com/" + manifestResult.repository.owner.login + "/" + manifestResult.repository.name,
+          filename: manifestResult.path,
+          fileUrl: manifestResult.html_url,
+          owner: manifestResult.repository.owner.login
+        };
+
+        var file = await SRBGitHub.getFileOfRepo(manifestResult.repository.name, manifestResult.path, manifestResult.repository.owner.login);
+        var version = await SRBGitHub.detectUI5VersionInFileV2(file, manifestResult.repository.name);
+        var minVersion = await SRBGitHub.detectUI5VersionInManifestFile(file);
+
+        version.version = minVersion;
+        that.setResultData(resultRecord, version, file, true);
+
+        that.addRow(resultsModel, resultRecord);
+      }
+      that.currentPage++;
+    },
+
+    addRow: function (resultsModel, resultRecord) {
+      var tableData = resultsModel.getProperty("/results");
+      if (tableData.map(({ fileUrl }) => fileUrl).includes(resultRecord["fileUrl"]) === false) {
+        tableData.push(resultRecord);
+        resultsModel.setProperty("/results", tableData);
+        sap.ui.core.BusyIndicator.hide();
+      }
+    },
+
+    startPressed: async function () {
       var that = this;
       var userNameLabel = this.getView().byId("usernameLabel");
       var userAvatar = this.getView().byId("myAvatar");
@@ -94,118 +160,52 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       var tokenInput = this.getView().byId("tokenInput");
       var tokenValue = tokenInput.getValue().trim();
 
-      SRBGitHub.setup(tokenValue);
-      SRBGitHub.getLoginData().then(
-        (userData) => {
-          userNameLabel.setText(userData.login);
-          userAvatar.setSrc(userData.avatar_url);
+      await SRBGitHub.setup(tokenValue);
+      var userData = await SRBGitHub.getLoginData();
 
-          filterPanel.setVisible(true);
-          resultsTable.setVisible(true);
-          loginBox.setVisible(false);
-        },
-        (error) => {
-          // Dummy
-        }
-      );
+      userNameLabel.setText(userData.login);
+      userAvatar.setSrc(userData.avatar_url);
 
-      var process = function (addRow, doneCb) {
-        // SRBGitHub.getUI5ManifestFile().then(function (repoResult) {
-        //   repoResult.forEach(function (result) {
-        //     SRBGitHub.getFileOfRepo(result.repository.name, result.path, result.repository.owner.login).then(function (fileContent) {
-        //       console.log(fileContent);
-        //     });
-        //   });
-        // });
-        SRBGitHub.getUI5BootstrappingFiles().then(function (repoResults) {
-          // console.log(repoResults);
-          var numberOfBootstraps = repoResults.length;
-          var responseCounter = 0;
+      filterPanel.setVisible(true);
+      resultsTable.setVisible(true);
+      loginBox.setVisible(false);
 
-          repoResults.forEach(function (repoResult) {
-            var problematic = false;
+      // const repoData = await that.fetchData();
 
-            var resultRecord = {
-              repo: repoResult.repository.name,
-              repoUrl: "https://github.com/" + repoResult.repository.owner.login + "/" + repoResult.repository.name,
-              filename: repoResult.path,
-              fileUrl: repoResult.html_url,
-              owner: repoResult.repository.owner.login
-            };
+      // repoData.forEach((repo) => {
+      //   var tableData = resultsModel.getProperty("/results");
+      //   tableData.push(repo);
+      //   resultsModel.setProperty("/results", tableData);
+      //   sap.ui.core.BusyIndicator.hide();
+      // });
 
-            var getVersionData = new Promise(function (versionResolve, versionReject) {
-              SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login).then(function (fileContent) {
-                SRBGitHub.detectUI5VersionInFileV2(fileContent, repoResult.repository.name).then(function (versionInfo) {
-                  // console.log(versionInfo);
-                  if (versionInfo.isMinVersion == true) {
-                    SRBGitHub.getUI5ManifestFile(repoResult.repository.name).then(function (manifestResult) {
-                      resultRecord.filename = manifestResult[0].path;
-                      SRBGitHub.getFileOfRepo(
-                        manifestResult[0].repository.name,
-                        manifestResult[0].path,
-                        manifestResult[0].repository.owner.login
-                      ).then(function (manifestContent) {
-                        SRBGitHub.detectUI5VersionInManifestFile(manifestContent).then(function (minVersion) {
-                          versionInfo.version = minVersion;
-                          that.setResultData(resultRecord, versionInfo, fileContent, true);
-                          versionResolve();
-                        });
-                      });
-                    });
-                  } else {
-                    that.setResultData(resultRecord, versionInfo, fileContent, false);
-                    versionResolve();
-                  }
-                });
-              });
-            });
+      this.fetchData(resultsModel);
 
-            var getLinterstatus = new Promise(function (linterResolve, linterReject) {
-              SRBGitHub.getLatestLintWorkflowRun(repoResult.repository.name, "develop", repoResult.repository.owner.login).then(
-                function (latestLinterResult) {
-                  resultRecord["linter"] = latestLinterResult;
+      // console.log(resultsModel.getProperty("/results"));
 
-                  if (latestLinterResult.conclusion !== "success") {
-                    problematic = true;
-                  }
+      //   Promise.allSettled([getVersionData, getLinterstatus]).then(() => {
+      //     addRow(resultRecord);
 
-                  resultRecord["problematic"] = problematic;
+      //     responseCounter++;
 
-                  linterResolve();
-                },
-                function () {
-                  linterReject();
-                }
-              );
-            });
+      //     if (doneCb && numberOfBootstraps === responseCounter) {
+      //       doneCb();
+      //     }
+      //   });
+      // });
 
-            Promise.allSettled([getVersionData, getLinterstatus]).then(() => {
-              addRow(resultRecord);
-
-              responseCounter++;
-
-              if (doneCb && numberOfBootstraps === responseCounter) {
-                doneCb();
-              }
-            });
-          });
-        });
-      };
-
-      process(
-        // Add row to table. A row with all its meta has been loaded successfully
-        function (tableRowData) {
-          var tableData = resultsModel.getProperty("/results");
-          tableData.push(tableRowData);
-          resultsModel.setProperty("/results", tableData);
-          sap.ui.core.BusyIndicator.hide();
-        },
-        // Processing done
-        function () {
-          console.log(resultsModel.getProperty("/results"));
-          sap.ui.core.BusyIndicator.hide();
-        }
-      );
+      // Add row to table. A row with all its meta has been loaded successfully
+      // function (tableRowData) {
+      //   var tableData = resultsModel.getProperty("/results");
+      //   tableData.push(tableRowData);
+      //   resultsModel.setProperty("/results", tableData);
+      //   sap.ui.core.BusyIndicator.hide();
+      // },
+      // // Processing done
+      // function () {
+      //   console.log(resultsModel.getProperty("/results"));
+      //   sap.ui.core.BusyIndicator.hide();
+      // }
     },
 
     showSupportDialogPressed: function () {
