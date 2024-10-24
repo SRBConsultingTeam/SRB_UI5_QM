@@ -64,25 +64,22 @@
 				<Column visible="false" width="20%" importance="High" customData:dataField="repo">
 					<Text text="Repository" />
 				</Column>
-				<Column visible="false" width="20%" importance="High" customData:dataField="owner">
-					<Text text="Owner" />
-				</Column>
 				<Column width="20%" importance="None" customData:dataField="filename">
 					<Text text="File" />
 				</Column>
-				<Column width="8em" importance="Low" customData:dataField="version">
+				<Column width="8em" importance="Low" customData:dataField="version" hAlign="Center">
 					<Text text="Version" />
 				</Column>
-				<Column width="8em" importance="Low" customData:dataField="isEvergreenBootstrap">
+				<Column width="8em" importance="Low" customData:dataField="isEvergreenBootstrap" hAlign="Center">
 					<Text text="Evergreen Bootstrapping" />
 				</Column>
-				<Column width="8em" importance="Low" customData:dataField="eocp">
+				<Column width="8em" importance="Low" customData:dataField="eocp" hAlign="Center">
 					<Text text="End of maintenance" />
 				</Column>
-				<Column width="8em" importance="Low" customData:dataField="eom">
+				<Column width="8em" importance="Low" customData:dataField="eom" hAlign="Center">
 					<Text text="End of cloud provisioning" />
 				</Column>
-				<Column width="8em" importance="Low" customData:dataField="linter/conclusion">
+				<Column width="8em" importance="Low" customData:dataField="linter/conclusion" hAlign="Center">
 					<Text text="Linter Status" />
 				</Column>
 			</columns>
@@ -90,33 +87,58 @@
 				<ColumnListItem vAlign="Middle" type="Navigation" press="listItemPressed" highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }">
 					<cells>
 						<Text text="{repo}" />
-						<Text text="{owner}" />
 						<Text text="{filename}" />
-						<HBox>
+						<HBox justifyContent="Center">
 							<Text text="{version}" visible="{= ${isMinVersion} !== true }"  />
 							<Text text="mind. {version}" visible="{= ${isMinVersion} !== false }"  />
 						</HBox>
-						<HBox >
+						<HBox justifyContent="Center" >
 							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="Evergreen"
-								icon="sap-icon://sys-enter-2"
 								state="Success"
-								visible="{isEvergreenBootstrap}"
+								icon= "sap-icon://sys-enter-2"
+								visible="{= ${isEvergreenBootstrap} === true}"
+								 />
+								 <ObjectStatus
+								icon="sap-icon://error"
+								state="Error"
+								visible="{= ${isEvergreenBootstrap} === false}"
 								 />
 						</HBox>
-						<Text text="{eom}" />
-						<HBox>
-							<Text text="{eocp}" visible="{= ${eocp} !== true }"  />
+						<HBox justifyContent="Center">
 							<ObjectStatus
-								class="sapUiSmallMarginBottom"
+								text="{eom}"
+								visible="{= ${eom} !== true &amp;&amp; ${eom} !== 'Reached' }"
+								 />
+							<ObjectStatus
 								text="Removed"
-								icon="sap-icon://status-error"
+								state="Error"
+								visible="{= ${eom} === true }"
+								 />
+							<ObjectStatus
+								text="{eom}"
+								state="Warning"
+								visible="{= ${eom} === 'Reached' }"
+								 />
+
+						</HBox>
+						<HBox justifyContent="Center">
+							<ObjectStatus
+								text="{eom}"
+								visible="{= ${eocp} !== true &amp;&amp; ${eocp} !== 'Reached'}"
+								 />
+							<ObjectStatus
+								text="Removed"
 								state="Error"
 								visible="{= ${eocp} === true }"
 								 />
+							<ObjectStatus
+								text="{eom}"
+								state="Warning"
+								visible="{= ${eocp} === 'Reached' }"
+								 />
+
 						</HBox>
-						<HBox>
+						<HBox justifyContent="Center">
 							<Text text="Not available" visible="{= ${linter} === undefined }"  />
 							<ObjectStatus
 								class="sapUiSmallMarginBottom"

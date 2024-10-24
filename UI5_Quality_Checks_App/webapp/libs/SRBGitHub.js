@@ -27,7 +27,7 @@ var SRBGitHub = (function () {
       return response.data;
     },
 
-    getUI5BootstrappingFiles: async function (page) {
+    getUI5BootstrappingFiles: async function () {
       var that = this;
 
       checkSetup();
@@ -38,14 +38,13 @@ var SRBGitHub = (function () {
         q: cdnAQuery,
         type: "code",
         // eslint-disable-next-line camelcase
-        per_page: 100,
-        page: page
+        per_page: 100
       });
 
       return { results: response.data.items, headers: response.headers };
     },
 
-    getUI5ManifestFile: async function (repos, page) {
+    getUI5ManifestFile: async function (repos) {
       var that = this;
 
       checkSetup();
@@ -75,77 +74,6 @@ var SRBGitHub = (function () {
       });
 
       return atob(response.data.content);
-    },
-
-    detectUI5VersionInFile: function (fileContentText, repo) {
-      var that = this;
-
-      checkSetup();
-
-      return new Promise(function (resolve, reject) {
-        var overviewData = availableVersionsModel.getData();
-        var patches = overviewData.patches;
-        var versions = overviewData.versions;
-
-        var detected = false;
-        var evergreen = false;
-        var eocp;
-        var eom;
-
-        var groups = [];
-        var versionString;
-
-        groups = fileContentText.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
-
-        if (groups) {
-          versionString = groups[1];
-          detected = true;
-        } else {
-          groups = fileContentText.match("https://ui5.sap.com/(.*)(/resources)");
-
-          if (groups) {
-            versionString = groups[1];
-            detected = true;
-          } else {
-            console.log("Hello");
-          }
-        }
-
-        if (versionString) {
-          evergreen = versionString.split(".").length <= 2;
-        }
-
-        if (evergreen === true) {
-          versions.forEach(function (versionEntry) {
-            var major = versionEntry.version.split(".")[0];
-            var minor = versionEntry.version.split(".")[1];
-            var compareVersion = major + "." + minor;
-
-            if (versionString === compareVersion) {
-              eocp = versionEntry.eocp;
-              eom = versionEntry.eom;
-            }
-          });
-        } else {
-          patches.forEach(function (patch) {
-            if (patch.version === versionString) {
-              if (patch.removed === true) {
-                eocp = "reached"; // <-- Write true because it has beed removed
-              } else {
-                eocp = patch.eocp === true ? "reached" : patch.eocp; // <-- Write the provided eocp date
-              }
-            }
-          });
-        }
-
-        resolve({
-          detected: detected,
-          version: versionString,
-          isEvergreenBootstrap: evergreen,
-          eocp: eocp, // <-- If true, it has already been removed
-          eom: eom
-        });
-      });
     },
 
     detectUI5VersionInFileV2: async function (fileContentText, repo) {
@@ -201,12 +129,9 @@ var SRBGitHub = (function () {
             eocp = eocp;
             eom = eom;
           } else {
-            var checks = that.checkForPatchSupport(patches, versionString);
-            if (checks) {
-              var { eocp, eom } = checks;
-              eocp = eocp;
-              eom = eom;
-            }
+            var { eocp, eom } = that.checkForPatchSupport(patches, versionString);
+            eocp = eocp;
+            eom = eom;
           }
         }
       }
@@ -235,13 +160,14 @@ var SRBGitHub = (function () {
 
     checkForPatchSupport: function (patches, currentVersion) {
       if (!patches) patches = availableVersionsModel.getData().patches;
-      var returnValues;
+      var returnValues = undefined;
       patches.forEach((patch) => {
         if (patch.version === currentVersion) {
           if (patch.removed === true) returnValues = { eocp: "Reached", eom: "Reached" };
-          else returnValues = { eocp: patch.eocp, eom: "" };
+          else returnValues = { eocp: patch.eocp, eom: "No Information found" };
         }
       });
+      if (returnValues === undefined) returnValues = { eocp: true, eom: true };
       return returnValues;
     },
 

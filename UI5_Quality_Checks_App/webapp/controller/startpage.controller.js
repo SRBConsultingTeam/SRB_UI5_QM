@@ -22,7 +22,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
       SRBInfoAndSupport.init(this.getOwnerComponent());
 
-      this.currentPage = 1;
+      this.resultsModel = new sap.ui.model.json.JSONModel({
+        results: []
+      });
     },
 
     /**
@@ -49,45 +51,50 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       });
     },
 
-    setResultData: function (resultRecord, versionInfo, fileContent, isMin) {
-      var problematic = false;
+    startPressed: async function () {
+      var that = this;
+      var userNameLabel = this.getView().byId("usernameLabel");
+      var userAvatar = this.getView().byId("myAvatar");
+      var loginBox = this.getView().byId("loginBox");
 
-      resultRecord["fileContent"] = fileContent;
-      resultRecord["version"] = versionInfo.version;
-      resultRecord["isMinVersion"] = isMin;
+      var filterPanel = this.getView().byId("filterPanel");
+      var resultsTable = this.getView().byId("resultsTable");
 
-      // else resultRecord["version"] = `mind. ${versionInfo.version}`;
-      resultRecord["isEvergreenBootstrap"] = versionInfo.isEvergreenBootstrap;
-      resultRecord["eocp"] = versionInfo.eocp;
-      resultRecord["eom"] = versionInfo.eom;
-      resultRecord["detected"] = versionInfo.detected;
+      sap.ui.core.BusyIndicator.show(0);
 
-      // console.log(resultRecord);
-      if (versionInfo.eocp === "removed") {
-        //<-- This version is out of maintainance
-        problematic = true;
-      }
+      resultsTable.setModel(that.resultsModel);
 
-      if (versionInfo.isEvergreenBootstrap !== true) {
-        //<-- This version is out of maintainance
-        problematic = true;
-      }
+      var tokenInput = this.getView().byId("tokenInput");
+      var tokenValue = tokenInput.getValue().trim();
 
-      resultRecord["problematic"] = problematic;
+      await SRBGitHub.setup(tokenValue);
+      var userData = await SRBGitHub.getLoginData();
 
-      return resultRecord;
+      userNameLabel.setText(userData.login);
+      userAvatar.setSrc(userData.avatar_url);
+
+      filterPanel.setVisible(true);
+      resultsTable.setVisible(true);
+      loginBox.setVisible(false);
+
+      this.fetchData();
     },
 
     fetchLinterStatus: async function () {},
 
-    fetchData: async function (resultsModel) {
+    fetchData: async function () {
       var that = this;
-      var { results, headers } = await SRBGitHub.getUI5BootstrappingFiles(that.currentPage);
+
+      var { results, headers } = await SRBGitHub.getUI5BootstrappingFiles();
+      var noVersionsFound = await that.fetchIndexData(results);
+
+      var { result: manifestFiles } = await SRBGitHub.getUI5ManifestFile(noVersionsFound);
+      await that.fetchManifestData(manifestFiles);
+    },
+
+    fetchIndexData: async function (results) {
+      var that = this;
       var noVersionFound = [];
-      var minVersions = [];
-
-      console.log(headers);
-
       for (const repoResult of results) {
         var resultRecord = {
           repo: repoResult.repository.name,
@@ -102,14 +109,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
         if (version.isMinVersion === true) {
           noVersionFound.push(repoResult.repository.name);
-          minVersions.push(version);
         } else {
           that.setResultData(resultRecord, version, file, false);
-          that.addRow(resultsModel, resultRecord);
+          that.addRow(resultRecord);
         }
       }
+      return noVersionFound;
+    },
 
-      var { result: manifestFiles } = await SRBGitHub.getUI5ManifestFile(noVersionFound);
+    fetchManifestData: async function (manifestFiles) {
+      var that = this;
       for (const manifestResult of manifestFiles) {
         var resultRecord = {
           repo: manifestResult.repository.name,
@@ -126,63 +135,53 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
         version.version = minVersion;
 
         if (version.isEvergreenBootstrap === true) {
-          var versionCheck = SRBGitHub.checkForVersionSupport(undefined, minVersion);
-          version.eocp = versionCheck.eocp;
-          version.eom = versionCheck.eom;
+          var { eocp, eom } = SRBGitHub.checkForVersionSupport(undefined, minVersion);
+          version.eocp = eocp;
+          version.eom = eom;
         } else {
-          var patchCheck = SRBGitHub.checkForPatchSupport(undefined, minVersion);
-          if (patchCheck) {
-            version.eocp = patchCheck.eocp;
-            version.eom = patchCheck.eom;
-          }
+          var { eocp, eom } = SRBGitHub.checkForPatchSupport(undefined, minVersion);
+          version.eocp = eocp;
+          version.eom = eom;
         }
         that.setResultData(resultRecord, version, file, true);
 
-        that.addRow(resultsModel, resultRecord);
+        that.addRow(resultRecord);
       }
-      that.currentPage++;
     },
 
-    addRow: function (resultsModel, resultRecord) {
-      var tableData = resultsModel.getProperty("/results");
+    setResultData: function (resultRecord, versionInfo, fileContent, isMin) {
+      var problematic = false;
+
+      resultRecord["fileContent"] = fileContent;
+      resultRecord["version"] = versionInfo.version;
+      resultRecord["isMinVersion"] = isMin;
+
+      resultRecord["isEvergreenBootstrap"] = versionInfo.isEvergreenBootstrap;
+      resultRecord["eocp"] = versionInfo.eocp;
+      resultRecord["eom"] = versionInfo.eom;
+      resultRecord["detected"] = versionInfo.detected;
+
+      if (versionInfo.eocp === "removed") {
+        problematic = true;
+      }
+
+      if (versionInfo.isEvergreenBootstrap !== true) {
+        problematic = true;
+      }
+
+      resultRecord["problematic"] = problematic;
+
+      return resultRecord;
+    },
+
+    addRow: function (resultRecord) {
+      var that = this;
+      var tableData = that.resultsModel.getProperty("/results");
       if (tableData.map(({ fileUrl }) => fileUrl).includes(resultRecord["fileUrl"]) === false) {
         tableData.push(resultRecord);
-        resultsModel.setProperty("/results", tableData);
+        that.resultsModel.setProperty("/results", tableData);
         sap.ui.core.BusyIndicator.hide();
       }
-    },
-
-    startPressed: async function () {
-      var that = this;
-      var userNameLabel = this.getView().byId("usernameLabel");
-      var userAvatar = this.getView().byId("myAvatar");
-      var loginBox = this.getView().byId("loginBox");
-
-      var filterPanel = this.getView().byId("filterPanel");
-      var resultsTable = this.getView().byId("resultsTable");
-
-      var resultsModel = new sap.ui.model.json.JSONModel({
-        results: []
-      });
-
-      sap.ui.core.BusyIndicator.show(0);
-
-      resultsTable.setModel(resultsModel);
-
-      var tokenInput = this.getView().byId("tokenInput");
-      var tokenValue = tokenInput.getValue().trim();
-
-      await SRBGitHub.setup(tokenValue);
-      var userData = await SRBGitHub.getLoginData();
-
-      userNameLabel.setText(userData.login);
-      userAvatar.setSrc(userData.avatar_url);
-
-      filterPanel.setVisible(true);
-      resultsTable.setVisible(true);
-      loginBox.setVisible(false);
-
-      this.fetchData(resultsModel);
     },
 
     showSupportDialogPressed: function () {
