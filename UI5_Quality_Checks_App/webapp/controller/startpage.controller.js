@@ -77,22 +77,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       resultsTable.setVisible(true);
       loginBox.setVisible(false);
 
-      this.fetchData();
+      var linter = await SRBGitHub.getLatestLintWorkflowRun();
+      this.fetchData(linter);
     },
 
-    fetchLinterStatus: async function () {},
 
-    fetchData: async function () {
+    fetchData: async function (linter) {
       var that = this;
 
       var { results, headers } = await SRBGitHub.getUI5BootstrappingFiles();
-      var noVersionsFound = await that.fetchIndexData(results);
+      var noVersionsFound = await that.fetchIndexData(results, linter);
 
       var { result: manifestFiles } = await SRBGitHub.getUI5ManifestFile(noVersionsFound);
-      await that.fetchManifestData(manifestFiles);
+      await that.fetchManifestData(manifestFiles, linter);
     },
 
-    fetchIndexData: async function (results) {
+    fetchIndexData: async function (results, linter) {
       var that = this;
       var noVersionFound = [];
       for (const repoResult of results) {
@@ -105,8 +105,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
         };
 
         var file = await SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login);
-        var version = await SRBGitHub.detectUI5VersionInFileV2(file, repoResult.repository.name);
+        var version = await SRBGitHub.detectUI5VersionInFileV2(file);
 
+        linter.forEach((lint) => {
+          if (lint) {
+            if (repoResult.repository.name === lint.head_repository.name) version.linter = lint.conclusion;
+          }
+        });
         if (version.isMinVersion === true) {
           noVersionFound.push(repoResult.repository.name);
         } else {
@@ -117,7 +122,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       return noVersionFound;
     },
 
-    fetchManifestData: async function (manifestFiles) {
+    fetchManifestData: async function (manifestFiles, linter) {
       var that = this;
       for (const manifestResult of manifestFiles) {
         var resultRecord = {
@@ -129,20 +134,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
         };
 
         var file = await SRBGitHub.getFileOfRepo(manifestResult.repository.name, manifestResult.path, manifestResult.repository.owner.login);
-        var version = await SRBGitHub.detectUI5VersionInFileV2(file, manifestResult.repository.name);
-        var minVersion = await SRBGitHub.detectUI5VersionInManifestFile(file);
+        var version = await SRBGitHub.detectUI5VersionInManifestFile(file);
 
-        version.version = minVersion;
-
-        if (version.isEvergreenBootstrap === true) {
-          var { eocp, eom } = SRBGitHub.checkForVersionSupport(undefined, minVersion);
-          version.eocp = eocp;
-          version.eom = eom;
-        } else {
-          var { eocp, eom } = SRBGitHub.checkForPatchSupport(undefined, minVersion);
-          version.eocp = eocp;
-          version.eom = eom;
-        }
+        linter.forEach((lint) => {
+          if (lint) {
+            if (manifestResult.repository.name === lint.head_repository.name) version.linter = lint.conclusion;
+          }
+        });
         that.setResultData(resultRecord, version, file, true);
 
         that.addRow(resultRecord);
@@ -159,9 +157,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       resultRecord["isEvergreenBootstrap"] = versionInfo.isEvergreenBootstrap;
       resultRecord["eocp"] = versionInfo.eocp;
       resultRecord["eom"] = versionInfo.eom;
-      resultRecord["detected"] = versionInfo.detected;
+      resultRecord["linter"] = versionInfo.linter;
 
-      if (versionInfo.eocp === "removed") {
+      if (versionInfo.eocp === true) {
         problematic = true;
       }
 

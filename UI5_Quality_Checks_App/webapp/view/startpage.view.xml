@@ -139,13 +139,19 @@
 
 						</HBox>
 						<HBox justifyContent="Center">
-							<Text text="Not available" visible="{= ${linter} === undefined }"  />
-							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="{linter/conclusion}"
+						<ObjectStatus
+								icon="sap-icon://error"
+								state="Error"
+								visible="{= ${linter} === 'failure' }"
+								 />
+						<ObjectStatus
 								icon="sap-icon://sys-enter-2"
 								state="Success"
-								visible="{= ${linter} !== undefined }"
+								visible="{= ${linter} === 'success' }"
+								 />
+						<ObjectStatus
+								text="Not available"
+								visible="{= ${linter} === undefined }"
 								 />
 						</HBox>
 					</cells>

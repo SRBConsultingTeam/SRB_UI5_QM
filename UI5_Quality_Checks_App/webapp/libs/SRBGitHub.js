@@ -76,7 +76,7 @@ var SRBGitHub = (function () {
       return atob(response.data.content);
     },
 
-    detectUI5VersionInFileV2: async function (fileContentText, repo) {
+    detectUI5VersionInFileV2: async function (fileContentText) {
       var that = this;
       // console.log(fileContentText);
 
@@ -90,7 +90,6 @@ var SRBGitHub = (function () {
       var patches = overviewData.patches;
       var versions = overviewData.versions;
 
-      var detected = false;
       var evergreen = false;
       var eocp;
       var eom;
@@ -105,16 +104,13 @@ var SRBGitHub = (function () {
           groups = src.match("https://sapui5.hana.ondemand.com/(.*)(/resources)");
           if (groups) {
             versionString = groups[1];
-            detected = true;
           } else {
             groups = src.match("https://ui5.sap.com/(.*)(/resources)");
 
             if (groups) {
               versionString = groups[1];
-              detected = true;
             } else {
               if (!versionString) {
-                detected = true;
                 isMinVersion = true;
               }
             }
@@ -136,12 +132,12 @@ var SRBGitHub = (function () {
         }
       }
       return {
-        detected: detected,
         isMinVersion: isMinVersion,
         version: versionString,
         isEvergreenBootstrap: evergreen,
         eocp: eocp, // <-- If true, it has already been removed
-        eom: eom
+        eom: eom,
+        linter: undefined
       };
     },
 
@@ -175,21 +171,46 @@ var SRBGitHub = (function () {
       var that = this;
 
       var jsonContent = JSON.parse(fileContent);
+      var minVersion = jsonContent["sap.ui5"].dependencies.minUI5Version;
 
-      return jsonContent["sap.ui5"].dependencies.minUI5Version;
+      var { eocp, eom } = that.checkForPatchSupport(undefined, minVersion);
+
+      return {
+        isMinVersion: true,
+        version: minVersion,
+        isEvergreenBootstrap: false,
+        eocp: eocp, // <-- If true, it has already been removed
+        eom: eom,
+        linter: undefined
+      };
     },
 
-    getLatestLintWorkflowRun: async function (repo, branch, owner) {
-      // var that = this;
-      // checkSetup();
-      // var response = await that.octokit.rest.actions.listWorkflowRuns({
-      //   owner: owner || "SRBConsultingTeam",
-      //   repo: repo,
-      //   branch: branch || "develop",
-      //   // eslint-disable-next-line camelcase
-      //   workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
-      // });
-      // return response.data.workflow_runs[0];
+    getLatestLintWorkflowRun: async function (repos, branch, owner) {
+      var that = this;
+      checkSetup();
+
+      var allResponses = [];
+      var cdnAQuery = `org:SRBConsultingTeam filename:/srbui5_qm.yaml`;
+
+      var exists = await that.octokit.rest.search.code({
+        q: cdnAQuery,
+        type: "code"
+        // eslint-disable-next-line camelcase
+      });
+
+      for (const file of exists.data.items) {
+        var response = await that.octokit.rest.actions.listWorkflowRuns({
+          owner: owner || "SRBConsultingTeam",
+          repo: file.repository.name,
+          branch: branch || "develop",
+          // eslint-disable-next-line camelcase
+          workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
+        });
+
+        allResponses.push(response.data.workflow_runs[0]);
+      }
+
+      return allResponses;
     },
 
     getAvailableRepos: function () {
