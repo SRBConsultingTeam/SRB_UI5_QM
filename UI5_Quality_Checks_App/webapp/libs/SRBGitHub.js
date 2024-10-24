@@ -151,6 +151,8 @@ var SRBGitHub = (function () {
           returnValues = { eocp: versionEntry.eocp, eom: versionEntry.eom === true ? "Reached" : versionEntry.eom };
         }
       });
+      var splitCheck = returnValues.eom.split(",");
+      if (splitCheck.length === 2) returnValues.eom = `LTM. ${splitCheck[1]}`;
       return returnValues;
     },
 
@@ -160,7 +162,10 @@ var SRBGitHub = (function () {
       patches.forEach((patch) => {
         if (patch.version === currentVersion) {
           if (patch.removed === true) returnValues = { eocp: "Reached", eom: "Reached" };
-          else returnValues = { eocp: patch.eocp, eom: "No Information found" };
+          else {
+            if (patch.extended_eocp) returnValues = { eocp: patch.extended_eocp, eom: "N/A" };
+            else returnValues = { eocp: patch.eocp, eom: "N/A" };
+          }
         }
       });
       if (returnValues === undefined) returnValues = { eocp: true, eom: true };
@@ -172,7 +177,6 @@ var SRBGitHub = (function () {
 
       var jsonContent = JSON.parse(fileContent);
       var minVersion = jsonContent["sap.ui5"].dependencies.minUI5Version;
-      console.log(minVersion);
 
       var { eocp, eom } = that.checkForPatchSupport(undefined, minVersion);
 

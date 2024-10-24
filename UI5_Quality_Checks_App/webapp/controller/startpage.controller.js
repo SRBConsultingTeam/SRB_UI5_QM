@@ -108,7 +108,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
         linter.forEach((lint) => {
           if (lint) {
-            if (repoResult.repository.name === lint.head_repository.name) version.linter = lint.conclusion;
+            if (repoResult.repository.name === lint.head_repository.name) version.linter = lint;
           }
         });
         if (version.isMinVersion === true) {
@@ -137,7 +137,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
         linter.forEach((lint) => {
           if (lint) {
-            if (manifestResult.repository.name === lint.head_repository.name) version.linter = lint.conclusion;
+            if (manifestResult.repository.name === lint.head_repository.name) version.linter = lint;
           }
         });
         that.setResultData(resultRecord, version, file, true);

@@ -8,15 +8,3 @@
   font-size: 90%;
   font-weight: bold;
 }
-
-.successText {
-  color: #5cb85c;
-}
-
-.warningText {
-  color: #ff5f15;
-}
-
-.errorText {
-  color: #ff0000;
-}
