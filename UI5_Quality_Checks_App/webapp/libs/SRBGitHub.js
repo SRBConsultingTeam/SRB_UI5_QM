@@ -172,6 +172,7 @@ var SRBGitHub = (function () {
 
       var jsonContent = JSON.parse(fileContent);
       var minVersion = jsonContent["sap.ui5"].dependencies.minUI5Version;
+      console.log(minVersion);
 
       var { eocp, eom } = that.checkForPatchSupport(undefined, minVersion);
 

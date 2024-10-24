@@ -21,10 +21,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 
       SRBInfoAndSupport.init(this.getOwnerComponent());
+      var resultsList = this.getView().byId("list");
 
       this.resultsModel = new sap.ui.model.json.JSONModel({
         results: []
       });
+      resultsList.setModel(this.resultsModel);
     },
 
     /**
@@ -56,13 +58,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       var userNameLabel = this.getView().byId("usernameLabel");
       var userAvatar = this.getView().byId("myAvatar");
       var loginBox = this.getView().byId("loginBox");
+      var resultsList = this.getView().byId("list");
 
       var filterPanel = this.getView().byId("filterPanel");
-      var resultsTable = this.getView().byId("resultsTable");
 
       sap.ui.core.BusyIndicator.show(0);
-
-      resultsTable.setModel(that.resultsModel);
 
       var tokenInput = this.getView().byId("tokenInput");
       var tokenValue = tokenInput.getValue().trim();
@@ -74,13 +74,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       userAvatar.setSrc(userData.avatar_url);
 
       filterPanel.setVisible(true);
-      resultsTable.setVisible(true);
+      resultsList.setVisible(true);
       loginBox.setVisible(false);
 
       var linter = await SRBGitHub.getLatestLintWorkflowRun();
       this.fetchData(linter);
     },
-
 
     fetchData: async function (linter) {
       var that = this;

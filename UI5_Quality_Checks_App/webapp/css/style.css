@@ -1,1 +1,22 @@
 /* Enter your custom styles here */
+.titleText {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.lowerTitleText {
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.successText {
+  color: #5cb85c;
+}
+
+.warningText {
+  color: #ff5f15;
+}
+
+.errorText {
+  color: #ff0000;
+}

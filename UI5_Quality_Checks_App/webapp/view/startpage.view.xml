@@ -51,7 +51,44 @@
 				</form:Form>
 			</content>
 		</Panel>
-		<Table visible="false" id="resultsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" 
+		<List id="list" width="auto" class="sapFDynamicPageAlignContent"
+				items="{ path: '/results' }" growing="true" growingScrollToLoad="true">
+			<CustomListItem id="masterItemTemplate" type="Navigation"
+					highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }">
+						<HBox class="sapUiSmallMarginBegin sapUiMediumMarginTop sapUiMediumMarginBottom" width="100%">
+							<VBox width="100%">
+							 	<Title text="{repo}" class="titleText" />
+								<Text text="{filename}" class="sapUiSmallMarginTop"/>
+								<Text text="Version: {version}"/>
+							</VBox>
+							<HBox width="100%" alignItems="Center">
+								<ObjectStatus text="Evergreen Bootstrap detected" state="Success" icon="sap-icon://sys-enter-2" visible="{= ${isEvergreenBootstrap} === true}" />
+								<ObjectStatus text="Evergreen Bootstrap not detected" icon="sap-icon://error" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
+							</HBox>
+							<VBox width="100%" justifyContent="Center">
+								<HBox width="100%">
+									<ObjectStatus class="lowerTitleText" text="End of maintenance: " />
+									<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" visible="{= ${eom} !== true &amp;&amp; ${eom} !== 'Reached' }" />
+									<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eom} === true }" />
+									<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" state="Warning" visible="{= ${eom} === 'Reached' }"/>
+								</HBox>
+								<HBox width="100%" class="sapUiTinyMarginTop" >
+									<ObjectStatus class="lowerTitleText" text="End of cloud provisioning: " />
+									<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" visible="{= ${eocp} !== true &amp;&amp; ${eocp} !== 'Reached' }" />
+									<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eocp} === true }" />
+									<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" state="Warning" visible="{= ${eocp} === 'Reached' }"/>
+								</HBox>
+							</VBox>
+							<VBox justifyContent="Center" width="100%" alignItems="Center">
+								<ObjectStatus class="lowerTitleText sapUiTinyMarginBottom" text="Linter Status" />
+								<ObjectStatus icon="sap-icon://error" state="Error" visible="{= ${linter} === 'failure' }"/>
+								<ObjectStatus icon="sap-icon://sys-enter-2" state="Success" visible="{= ${linter} === 'success' }" />
+								<ObjectStatus text="N/A" visible="{= ${linter} === undefined }"/>
+							</VBox>
+						</HBox>
+			</CustomListItem>
+		</List>
+		<!-- <Table visible="false" id="resultsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" 
 		items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'}, groupHeaderFactory: '.getGroupHeader'}" sticky="ColumnHeaders">
 			<headerToolbar>
 				<OverflowToolbar>
@@ -157,7 +194,7 @@
 					</cells>
 				</ColumnListItem>
 			</items>
-		</Table>
+		</Table> -->
 		<FlexBox id="loginBox" alignItems="Center" fitContainer="false" justifyContent="Center" direction="Column">
 			<f:Card class="sapUiMediumMarginTop sapUiMediumMarginBottom barcodeCard" width="100%" height="100%" >
 				<f:header>
