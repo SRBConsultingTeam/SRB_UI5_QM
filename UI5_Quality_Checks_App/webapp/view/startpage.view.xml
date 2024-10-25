@@ -53,54 +53,72 @@
 		</Panel>
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" >
+			<headerToolbar>
+				<OverflowToolbar justifyContent="Center">
+					<SearchField liveChange=".onSearch" placeholder="Search for Repository" width="100%" />
+				</OverflowToolbar>
+			</headerToolbar>
 			<CustomListItem id="masterItemTemplate" type="Navigation"
-					highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }">
-						<FlexBox class="sapUiSmallMarginBegin sapUiMediumMarginTop sapUiMediumMarginBottom" width="100%">
-							<VBox width="100%" class="sapUiTinyMarginEnd" justifyContent="Center">
-								<Text text="{filename}" class="sapUiSmallMarginTop"/>
-								<Text text="Version: {version}"/>
-							</VBox>
-							<VBox width="100%" justifyContent="Center">
-								<HBox width="100%" class="sapUiSmallMarginTop">
-									<ObjectStatus class="lowerTitleText sapUiSmallMarginBottom" text="Evergreen Bootstrap" state="Success" visible="{= ${isEvergreenBootstrap} === true}" />
-									<ObjectStatus class="lowerTitleText sapUiSmallMarginBottom" text="Evergreen Bootstrap" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
-									<ObjectStatus class="sapUiTinyMarginBegin" state="Success" icon="sap-icon://sys-enter-2" visible="{= ${isEvergreenBootstrap} === true}" />
-									<ObjectStatus class="sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
-								</HBox>
-								<HBox width="100%">
-									<ObjectStatus class="lowerTitleText" text="End of maintenance: " />
-									<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" visible="{= ${eom} !== true &amp;&amp; ${eom} !== 'Reached' }" />
-									<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eom} === true }" />
-									<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" state="Warning" visible="{= ${eom} === 'Reached' }"/>
-								</HBox>
-								<HBox width="100%" class="sapUiSmallMarginTop" >
-									<ObjectStatus class="lowerTitleText" text="End of cloud provisioning: " />
-									<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" visible="{= ${eocp} !== true &amp;&amp; ${eocp} !== 'Reached' }" />
-									<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eocp} === true }" />
-									<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" state="Warning" visible="{= ${eocp} === 'Reached' }"/>
-								</HBox>
-							</VBox>
-							<VBox justifyContent="Center" width="100%">
-								<HBox width="100%" class="sapUiSmallMarginTop">
-									<ObjectStatus class="lowerTitleText" text="Linter Status: " visible="{= ${linter/conclusion} === undefined }"/>
-									<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Success" visible="{= ${linter/conclusion} === 'success' }"/>
-									<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Error" visible="{= ${linter/conclusion} === 'failure' }"/>
-									<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${linter/conclusion} === 'failure' }"/>
-									<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://sys-enter-2" state="Success" visible="{= ${linter/conclusion} === 'success' }" />
-									<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined }"/>
-								</HBox >
-								<HBox width="100%" class="sapUiSmallMarginTop">
-									<ObjectStatus class="lowerTitleText" text="Linter Title: " />
-									<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/display_title}" visible="{= ${linter/conclusion} !== undefined  }"/>
-									<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined }" />
-								</HBox>
-								<HBox width="100%" class="sapUiSmallMarginTop">
-									<ObjectStatus class="lowerTitleText" text="Head Branch: " />
-									<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/head_branch}" visible="{= ${linter/conclusion} !== undefined  }" />
-									<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined  }" />
-								</HBox>
-							</VBox>
-						</FlexBox>
+					highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }" width="100%">
+						<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiMediumMarginTop sapUiMediumMarginBottom gridWrapper" width="100%" height="100%"> 
+							<layout:Grid containerQuery="true" width="100%" defaultSpan="XL6 L6 M12 S12">
+								<VBox class="sapUiSmallMarginTop">
+									<Text text="{repository/description}" visible="{= ${repository/description} !== undefined}"/>
+									<Text text="No description found" visible="{= ${repository/description} === null}"/>
+									<Text text="{filename}" class="sapUiSmallMarginTop"/>
+									<Text text="Version: {version} or higher" visible="{= ${isMinVersion} === true}"/>
+									<Text text="Version: {version}" visible="{= ${isMinVersion} === false}"/>
+									<HBox width="100%" class="sapUiMediumMarginTop sapUiSmallMarginBottom">
+										<ObjectStatus class="lowerTitleText" text="Evergreen Bootstrap" state="Success" visible="{= ${isEvergreenBootstrap} === true}" />
+										<ObjectStatus class="lowerTitleText" text="Evergreen Bootstrap" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
+										<ObjectStatus class="sapUiTinyMarginBegin" state="Success" icon="sap-icon://sys-enter-2" visible="{= ${isEvergreenBootstrap} === true}" />
+										<ObjectStatus class="sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
+									</HBox>
+									<HBox width="100%">
+										<ObjectStatus class="lowerTitleText" text="End of maintenance: " />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" visible="{= ${eom} !== true &amp;&amp; ${eom} !== 'Reached' }" />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eom} === true }" />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" state="Warning" visible="{= ${eom} === 'Reached' }"/>
+									</HBox>
+									<HBox width="100%" >
+										<ObjectStatus class="lowerTitleText" text="End of cloud provisioning: " />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" visible="{= ${eocp} !== true &amp;&amp; ${eocp} !== 'Reached' }" />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eocp} === true }" />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" state="Warning" visible="{= ${eocp} === 'Reached' }"/>
+									</HBox>
+								</VBox>
+								<VBox>
+									<HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+										<ObjectStatus class="lowerTitleText" text="Linter Status: " visible="{= ${linter/conclusion} === undefined }"/>
+										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Success" visible="{= ${linter/conclusion} === 'success' }"/>
+										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Error" visible="{= ${linter/conclusion} === 'failure' }"/>
+										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${linter/conclusion} === 'failure' }"/>
+										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://sys-enter-2" state="Success" visible="{= ${linter/conclusion} === 'success' }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined }"/>
+									</HBox >
+									<HBox width="100%">
+										<ObjectStatus class="lowerTitleText" text="Linter Build Jobs: "  />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="Exist" state="Success" visible="{= ${allBuildJobs}.length !== 0 }" />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="Not found" state="Error" visible="{= ${allBuildJobs}.length === 0 }" />
+									</HBox>
+									<HBox width="100%">
+										<ObjectStatus class="lowerTitleText" text="Linter Lint Jobs: "  />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="Exist" state="Success" visible="{= ${allLintJobs}.length !== 0 }" />
+										<ObjectStatus class="sapUiTinyMarginBegin" text="Not found" state="Error" visible="{= ${allLintJobs}.length === 0 }" />
+									</HBox>
+									<HBox width="100%" class="sapUiMediumMarginTop">
+										<ObjectStatus class="lowerTitleText" text="Linter Title: " />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/display_title}" visible="{= ${linter/conclusion} !== undefined  }"/>
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined }" />
+									</HBox>
+									<HBox width="100%">
+										<ObjectStatus class="lowerTitleText" text="Head Branch: " />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/head_branch}" visible="{= ${linter/conclusion} !== undefined  }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined  }" />
+									</HBox>
+								</VBox>
+							</layout:Grid>
+						</layout:VerticalLayout>
 			</CustomListItem>
 		</List>
 		<!-- <Table visible="false" id="resultsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" 

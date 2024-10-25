@@ -41,6 +41,8 @@ var SRBGitHub = (function () {
         per_page: 100
       });
 
+      console.log(response);
+
       return { results: response.data.items, headers: response.headers };
     },
 
@@ -137,7 +139,11 @@ var SRBGitHub = (function () {
         isEvergreenBootstrap: evergreen,
         eocp: eocp, // <-- If true, it has already been removed
         eom: eom,
-        linter: undefined
+        linter: undefined,
+        allBuildJobs: [],
+        buildSuccess: undefined,
+        lintSuccess: undefined,
+        allLintJobs: []
       };
     },
 
@@ -186,7 +192,9 @@ var SRBGitHub = (function () {
         isEvergreenBootstrap: false,
         eocp: eocp, // <-- If true, it has already been removed
         eom: eom,
-        linter: undefined
+        linter: undefined,
+        allBuildJobs: [],
+        allLintJobs: []
       };
     },
 
@@ -215,7 +223,20 @@ var SRBGitHub = (function () {
         allResponses.push(response.data.workflow_runs[0]);
       }
 
+      // console.log(allResponses);
+
       return allResponses;
+    },
+
+    getLatestLintWorkflowJob: async function (repoName, runId) {
+      var that = this;
+      var job = await that.octokit.rest.actions.listJobsForWorkflowRun({
+        owner: "SRBConsultingTeam",
+        repo: repoName,
+        run_id: runId
+      });
+
+      return job.data.jobs;
     },
 
     getAvailableRepos: function () {

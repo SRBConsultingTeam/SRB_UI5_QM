@@ -77,8 +77,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       resultsList.setVisible(true);
       loginBox.setVisible(false);
 
-      var linter = await SRBGitHub.getLatestLintWorkflowRun();
-      this.fetchData(linter);
+      var allResponses = await SRBGitHub.getLatestLintWorkflowRun();
+      this.fetchData(allResponses);
     },
 
     fetchData: async function (linter) {
@@ -100,17 +100,25 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
           repoUrl: "https://github.com/" + repoResult.repository.owner.login + "/" + repoResult.repository.name,
           filename: repoResult.path,
           fileUrl: repoResult.html_url,
-          owner: repoResult.repository.owner.login
+          owner: repoResult.repository.owner.login,
+          repository: repoResult.repository
         };
 
         var file = await SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login);
         var version = await SRBGitHub.detectUI5VersionInFileV2(file);
 
-        linter.forEach((lint) => {
+        for (const lint of linter) {
           if (lint) {
-            if (repoResult.repository.name === lint.head_repository.name) version.linter = lint;
+            if (repoResult.repository.name === lint.head_repository.name) {
+              version.linter = lint;
+              var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(repoResult.repository.name, lint.id);
+              for (const job of latestJobs) {
+                if (job.name.includes("linter")) version.allLintJobs.push(job);
+                else if (job.name.includes("build")) version.allBuildJobs.push(job);
+              }
+            }
           }
-        });
+        }
         if (version.isMinVersion === true) {
           noVersionFound.push(repoResult.repository.name);
         } else {
@@ -118,28 +126,38 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
           that.addRow(resultRecord);
         }
       }
+
       return noVersionFound;
     },
 
     fetchManifestData: async function (manifestFiles, linter) {
       var that = this;
+
       for (const manifestResult of manifestFiles) {
         var resultRecord = {
           repo: manifestResult.repository.name,
           repoUrl: "https://github.com/" + manifestResult.repository.owner.login + "/" + manifestResult.repository.name,
           filename: manifestResult.path,
           fileUrl: manifestResult.html_url,
-          owner: manifestResult.repository.owner.login
+          owner: manifestResult.repository.owner.login,
+          repository: manifestResult.repository
         };
 
         var file = await SRBGitHub.getFileOfRepo(manifestResult.repository.name, manifestResult.path, manifestResult.repository.owner.login);
         var version = await SRBGitHub.detectUI5VersionInManifestFile(file);
 
-        linter.forEach((lint) => {
+        for (const lint of linter) {
           if (lint) {
-            if (manifestResult.repository.name === lint.head_repository.name) version.linter = lint;
+            if (manifestResult.repository.name === lint.head_repository.name) {
+              version.linter = lint;
+              var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(manifestResult.repository.name, lint.id);
+              for (const job of latestJobs) {
+                if (job.name.includes("linter")) version.allLintJobs.push(job);
+                else if (job.name.includes("build")) version.allBuildJobs.push(job);
+              }
+            }
           }
-        });
+        }
         that.setResultData(resultRecord, version, file, true);
 
         that.addRow(resultRecord);
@@ -157,6 +175,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       resultRecord["eocp"] = versionInfo.eocp;
       resultRecord["eom"] = versionInfo.eom;
       resultRecord["linter"] = versionInfo.linter;
+      resultRecord["allBuildJobs"] = versionInfo.allBuildJobs;
+      resultRecord["allLintJobs"] = versionInfo.allLintJobs;
+
+      // console.log(resultRecord);
 
       if (versionInfo.eocp === true) {
         problematic = true;
@@ -216,14 +238,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       });
     },
 
-    tableFilterButtonPressed: function (oEvent) {
-      var resultsTable = this.getView().byId("resultsTable");
-      TableUtils.filter.openFilterDialog(resultsTable);
-    },
-
     tableSortButtonPressed: function (oEvent) {
-      var resultsTable = this.getView().byId("resultsTable");
-      TableUtils.sort.openSortDialog(resultsTable, oEvent.getSource());
+      var resultsList = this.getView().byId("list");
+      TableUtils.sort.openSortDialog(this.resultsModel, oEvent.getSource());
     },
 
     getRepoDialogContent: function (listRecord) {
@@ -302,6 +319,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
           );
         }
       }
+    },
+
+    onSearch: function (oEvent) {
+      var aFilters = [];
+      var query = oEvent.getSource().getValue();
+      if (query && query.length > 0) {
+        var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
+        aFilters.push(filter);
+      }
+
+      var list = this.getView().byId("list");
+      list.getBinding("items").filter(aFilters, "Application");
     }
   });
 });
