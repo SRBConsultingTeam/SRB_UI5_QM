@@ -15,7 +15,7 @@
 				class="sapUiTinyMargin"
 				press="onPress"/>
 		</OverflowToolbar>
-		<Panel visible="false" id="filterPanel" width="auto" expandable="true" expanded="true">
+		<!-- <Panel visible="false" id="filterPanel" width="auto" expandable="true" expanded="true">
 			<headerToolbar>
 				<Toolbar height="3rem">
 					<Title text="{i18n>filterAndSearch}"/>
@@ -50,7 +50,7 @@
 					</form:formContainers>
 				</form:Form>
 			</content>
-		</Panel>
+		</Panel> -->
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" >
 			<headerToolbar>
@@ -106,16 +106,27 @@
 										<ObjectStatus class="sapUiTinyMarginBegin" text="Exist" state="Success" visible="{= ${allLintJobs}.length !== 0 }" />
 										<ObjectStatus class="sapUiTinyMarginBegin" text="Not found" state="Error" visible="{= ${allLintJobs}.length === 0 }" />
 									</HBox>
-									<HBox width="100%" class="sapUiMediumMarginTop">
+									<HBox width="100%" class="sapUiMediumMarginTop sapUiSmallMarginBottom">
+										<ObjectStatus class="lowerTitleText" text="Triggered by: " />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/triggering_actor/login}" visible="{= ${linter/triggering_actor/login} !== undefined  }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/triggering_actor/login} === undefined  }" />
+									</HBox>
+									<HBox width="100%">
 										<ObjectStatus class="lowerTitleText" text="Linter Title: " />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/display_title}" visible="{= ${linter/conclusion} !== undefined  }"/>
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/display_title}" visible="{= ${linter/display_title} !== undefined  }"/>
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/display_title} === undefined }" />
 									</HBox>
 									<HBox width="100%">
 										<ObjectStatus class="lowerTitleText" text="Head Branch: " />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/head_branch}" visible="{= ${linter/conclusion} !== undefined  }" />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined  }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/head_branch}" visible="{= ${linter/head_branch} !== undefined  }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/head_branch} === undefined  }" />
 									</HBox>
+								</VBox>
+								<VBox width="100%" alignItems="End">
+									<Button type="Emphasized" icon="sap-icon://pdf-attachment" press="onCreatePdf" />
+									<layoutData>
+										<layout:GridData span="XL12 L12 M12 S12"/>
+									</layoutData>
 								</VBox>
 							</layout:Grid>
 						</layout:VerticalLayout>

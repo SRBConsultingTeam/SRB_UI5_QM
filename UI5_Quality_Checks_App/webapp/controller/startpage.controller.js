@@ -60,7 +60,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       var loginBox = this.getView().byId("loginBox");
       var resultsList = this.getView().byId("list");
 
-      var filterPanel = this.getView().byId("filterPanel");
+      // var filterPanel = this.getView().byId("filterPanel");
 
       sap.ui.core.BusyIndicator.show(0);
 
@@ -73,7 +73,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
       userNameLabel.setText(userData.login);
       userAvatar.setSrc(userData.avatar_url);
 
-      filterPanel.setVisible(true);
+      // filterPanel.setVisible(true);
       resultsList.setVisible(true);
       loginBox.setVisible(false);
 
@@ -331,6 +331,12 @@ sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
 
       var list = this.getView().byId("list");
       list.getBinding("items").filter(aFilters, "Application");
+    },
+
+    onCreatePdf: function (oEvent) {
+      var oSource = oEvent.getSource();
+      var selectedObject = oSource.getBindingContext().getObject();
+      console.log(selectedObject);
     }
   });
 });
