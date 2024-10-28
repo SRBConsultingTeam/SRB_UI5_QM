@@ -227,7 +227,7 @@ sap.ui.define(
         var selectedObject = oSource.getBindingContext().getObject();
 
         var { header, content, footer } = PdfCreation.create(selectedObject);
-        pdfMake.createPdf({ header: header, content: content, footer: footer }).open({}, window.open());
+        pdfMake.createPdf({ header: header, content: content, footer: footer, pageMargins: [40, 60, 40, 60] }).open({}, window.open());
       },
 
       onItemDialogOpen: function (oEvent) {
