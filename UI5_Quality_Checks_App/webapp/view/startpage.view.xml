@@ -52,7 +52,7 @@
 			</content>
 		</Panel> -->
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
-				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" >
+				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
 			<headerToolbar>
 				<OverflowToolbar justifyContent="Center">
 					<SearchField liveChange=".onSearch" placeholder="Search for Repository" width="100%" />
