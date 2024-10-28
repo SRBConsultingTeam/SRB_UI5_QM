@@ -9,6 +9,8 @@
 
 // const { text } = require("body-parser");
 
+// const { text } = require("body-parser");
+
 /* global TableUtils:true */
 sap.ui.define(
   ["sap/ui/core/mvc/Controller", "sap/m/Dialog", "sap/m/Button", "sap/m/library", "sap/m/Text", "sap/ui/core/library"],
@@ -208,124 +210,6 @@ sap.ui.define(
         }
       },
 
-      showSupportDialogPressed: function () {
-        SRBInfoAndSupport.showSupportDialog("Support dialog", {
-          captureScreenshot: true
-        });
-      },
-
-      showOverviewDialogPressed: function () {
-        SRBInfoAndSupport.showOverviewDialog("Overview dialog");
-      },
-
-      listItemPressed: function (oEvent) {
-        var that = this;
-        var listItem = oEvent.getSource();
-        var ctx = listItem.getBindingContext();
-        var model = ctx.getModel();
-        var path = ctx.getPath();
-
-        var listRecord = model.getProperty(path);
-
-        SRBLib.showDialog("Details", "Information", "", {
-          beforeOpen: function (oEvent) {
-            var dialog = oEvent.getSource();
-
-            dialog.insertContent(that.getRepoDialogContent(listRecord));
-
-            dialog.setVerticalScrolling(false);
-
-            dialog.setContentHeight("50%");
-            dialog.setContentWidth("50%");
-            dialog.setStretch(true);
-            dialog.addStyleClass("sapUiNoContentPadding");
-          }
-        });
-      },
-
-      tableSortButtonPressed: function (oEvent) {
-        var resultsList = this.getView().byId("list");
-        TableUtils.sort.openSortDialog(this.resultsModel, oEvent.getSource());
-      },
-
-      getRepoDialogContent: function (listRecord) {
-        return new sap.m.VBox({
-          alignItems: "Stretch",
-          alignContent: "Stretch",
-          fitContainer: false,
-          width: "100%",
-          items: [
-            new sap.m.ObjectHeader({
-              width: "100%",
-              responsive: true,
-              fullScreenOptimized: true,
-              //icon=""
-              intro: listRecord.filename,
-              introActive: true,
-              introPress: function (oEvent) {
-                window.open(listRecord.fileUrl, "_blank");
-              },
-              title: listRecord.repo,
-              titleActive: true,
-              titlePress: function (oEvent) {
-                window.open(listRecord.repoUrl, "_blank");
-              },
-              backgroundDesign: "Translucent"
-            }).addStyleClass("sapUiResponsivePadding--header"),
-            new sap.f.GridContainer({
-              //layout: sap.f.GridContainerSettings({
-              //  rowSize: "84px", columnSize: "84px", gap: "8px"
-              //}),
-              items: [
-                new sap.m.GenericTile({
-                  header: "Manage Activity Master Data Type",
-                  subheader: "Subtitle",
-                  layoutData: new sap.f.GridContainerItemLayoutData({ minRows: 2, columns: 2 }),
-                  content: new sap.m.TileContent()
-                })
-              ]
-            })
-          ]
-        });
-      },
-
-      filters: {
-        repoFilter: {
-          valueHelpRequestRepoFilter: function (oEvent) {
-            var resultsTable = this.getView().byId("resultsTable");
-            var repoFilterMultiInput = oEvent.getSource();
-
-            this.loadFragment({
-              name: "srbUI5QualityChecks.view.fragments.repoFilterDialog",
-              type: "JS"
-            }).then(
-              function (valueHelpDialog) {
-                this.getView().addDependent(valueHelpDialog);
-                valueHelpDialog.open();
-
-                valueHelpDialog.attachConfirm({}, function (oEvent) {
-                  var selCtxs = oEvent.getParameter("selectedContexts");
-
-                  selCtxs.forEach(function (ctx) {
-                    var model = ctx.getModel();
-                    var path = ctx.getPath();
-
-                    var prop = model.getProperty(path);
-
-                    repoFilterMultiInput.addToken(
-                      new sap.m.Token({
-                        text: prop.name,
-                        key: prop.name
-                      })
-                    );
-                  });
-                });
-              }.bind(this)
-            );
-          }
-        }
-      },
-
       onSearch: function (oEvent) {
         var aFilters = [];
         var query = oEvent.getSource().getValue();
@@ -341,11 +225,12 @@ sap.ui.define(
       onCreatePdf: function (oEvent) {
         var oSource = oEvent.getSource();
         var selectedObject = oSource.getBindingContext().getObject();
-        console.log(selectedObject);
+
+        var { content, footer } = PdfCreation.create(selectedObject);
+        pdfMake.createPdf({ content: content, footer: footer }).open({}, window.open());
       },
 
       onItemDialogOpen: function (oEvent) {
-        var oSource = oEvent.getSource();
         var selectedObject = oEvent.getParameter("listItem").getBindingContext().getObject();
 
         var buildJobs = DialogBuild.getAllJobInfos(selectedObject.allBuildJobs);

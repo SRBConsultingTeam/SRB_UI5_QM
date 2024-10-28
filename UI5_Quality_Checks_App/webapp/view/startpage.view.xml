@@ -122,7 +122,7 @@
 										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/head_branch} === undefined  }" />
 									</HBox>
 								</VBox>
-								<VBox width="100%" alignItems="End">
+								<VBox width="100%" alignItems="End" visible="{=${linter/conclusion} === 'success'}">
 									<Button type="Emphasized" icon="sap-icon://pdf-attachment" press="onCreatePdf" />
 									<layoutData>
 										<layout:GridData span="XL12 L12 M12 S12"/>

@@ -27,6 +27,26 @@ var SRBLib = (function () {
       return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
     },
 
+    loadJsonFileAsync: function (url, successCb, errorCb) {
+      jQuery.ajax({
+        type: "GET",
+
+        async: true,
+        url: url,
+
+        success: function (data) {
+          if (successCb !== undefined) {
+            successCb(data);
+          }
+        },
+        error: function (error) {
+          if (errorCb !== undefined) {
+            errorCb(error);
+          }
+        }
+      });
+    },
+
     /**
      * Method is used to create a global variable with a given name and value
      * @public
@@ -742,8 +762,7 @@ var SRBLib = (function () {
      * @returns {Boolean} - true if the value is a valid rgb(a) expression, else false
      */
     isValidRgb: function (rgbString) {
-      var regExRgb =
-        /([R][G][B][A]?[(]\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\s*,\s*((0\.[0-9]{1})|(1\.0)|(1)))?[)])/i;
+      var regExRgb = /([R][G][B][A]?[(]\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\s*,\s*([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\s*,\s*((0\.[0-9]{1})|(1\.0)|(1)))?[)])/i;
       return regExRgb.test(rgbString);
     },
 
@@ -903,12 +922,12 @@ var SRBLib = (function () {
         options.pdfOpenParams = pdfOptions.pdfOpenParams
           ? pdfOptions.pdfOpenParams
           : {
-            pagemode: "thumbs",
-            navpanes: 0,
-            toolbar: 0,
-            statusbar: 0,
-            view: "FitV"
-          };
+              pagemode: "thumbs",
+              navpanes: 0,
+              toolbar: 0,
+              statusbar: 0,
+              view: "FitV"
+            };
       }
 
       $(selector).css("height", height);
@@ -949,8 +968,8 @@ var SRBLib = (function () {
 
       $(id).append(
         "<iframe src='" +
-        pdfOptions.pdfStaticUrl +
-        "' class='pdfobject-container' type='application/pdf' style='width: 100%; height: 100%;' frameborder='0' scrolling='no'><p>It appears your web browser doesn't support iframes.</p></iframe>"
+          pdfOptions.pdfStaticUrl +
+          "' class='pdfobject-container' type='application/pdf' style='width: 100%; height: 100%;' frameborder='0' scrolling='no'><p>It appears your web browser doesn't support iframes.</p></iframe>"
       );
     },
 

@@ -55,8 +55,6 @@ var DialogBuild = (function () {
       this.messageDialog = new sap.m.Dialog({
         type: sap.m.Dialog.Message,
         title: repoName,
-        // state: coreLibrary.ValueState.Information,
-        // new Text({ text: [JSON.stringify(selectedObject, null, 1)] })
         content: new sap.m.VBox({
           items: [
             new sap.m.Title({
