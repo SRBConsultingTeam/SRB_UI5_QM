@@ -13,3 +13,15 @@
   font-weight: bold;
 }
 
+.marginTop {
+  margin-top: 5px;
+}
+
+.marginBottom {
+  margin-bottom: 20px;
+}
+
+.marginRight {
+  margin-right: 5px;
+  font-weight: bold;
+}
