@@ -15,42 +15,6 @@
 				class="sapUiTinyMargin"
 				press="onPress"/>
 		</OverflowToolbar>
-		<!-- <Panel visible="false" id="filterPanel" width="auto" expandable="true" expanded="true">
-			<headerToolbar>
-				<Toolbar height="3rem">
-					<Title text="{i18n>filterAndSearch}"/>
-					<ToolbarSpacer></ToolbarSpacer>
-					<tnt:InfoLabel visible="false" id="filterInfo" text="{i18n>filterActive}" renderMode="Narrow" colorScheme="6"/>
-					<ToolbarSpacer></ToolbarSpacer>
-					<Button id="filterDelete" enabled="false" text="{i18n>deleteFilter}" press="filterDelete" type="Reject" icon="sap-icon://delete"/>
-				</Toolbar>
-			</headerToolbar>
-			<content>
-				<form:Form editable="true">
-					<form:layout>
-						<form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
-													emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
-					</form:layout>
-					<form:formContainers>
-						<form:FormContainer>
-							<form:formElements>
-								<form:FormElement label="{i18n>repoFilterLabel}">
-									<form:fields>
-										<MultiInput id="repoFilter" value="" submit="filterSubmit" showValueHelp="true" showClearIcon="true" change="filterSubmit"
-																	valueHelpRequest=".filters.repoFilter.valueHelpRequestRepoFilter" liveChange=".filters.repoFilter.liveChangeRepoFilter">
-											<layoutData>
-												<layout:GridData span="XL12 L12 M12 S12"/>
-											</layoutData>
-											<core:Item key="{name}" text="{name}" />
-										</MultiInput>
-									</form:fields>
-								</form:FormElement>
-							</form:formElements>
-						</form:FormContainer>
-					</form:formContainers>
-				</form:Form>
-			</content>
-		</Panel> -->
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
 			<headerToolbar>
@@ -132,113 +96,6 @@
 						</layout:VerticalLayout>
 			</CustomListItem>
 		</List>
-		<!-- <Table visible="false" id="resultsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" 
-		items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'}, groupHeaderFactory: '.getGroupHeader'}" sticky="ColumnHeaders">
-			<headerToolbar>
-				<OverflowToolbar>
-					<ToolbarSpacer />
-					<OverflowToolbarButton id="tableFilterButton" icon="sap-icon://filter" press="tableFilterButtonPressed"/>
-					<OverflowToolbarButton id="tableSortButton" icon="sap-icon://sort" press="tableSortButtonPressed"/>
-				</OverflowToolbar>
-			</headerToolbar>
-			<columns>
-				<Column visible="false" width="20%" importance="High" customData:dataField="repo">
-					<Text text="Repository" />
-				</Column>
-				<Column width="20%" importance="None" customData:dataField="filename">
-					<Text text="File" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="version" hAlign="Center">
-					<Text text="Version" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="isEvergreenBootstrap" hAlign="Center">
-					<Text text="Evergreen Bootstrapping" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="eocp" hAlign="Center">
-					<Text text="End of maintenance" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="eom" hAlign="Center">
-					<Text text="End of cloud provisioning" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="linter/conclusion" hAlign="Center">
-					<Text text="Linter Status" />
-				</Column>
-			</columns>
-			<items>
-				<ColumnListItem vAlign="Middle" type="Navigation" press="listItemPressed" highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }">
-					<cells>
-						<Text text="{repo}" />
-						<Text text="{filename}" />
-						<HBox justifyContent="Center">
-							<Text text="{version}" visible="{= ${isMinVersion} !== true }"  />
-							<Text text="mind. {version}" visible="{= ${isMinVersion} !== false }"  />
-						</HBox>
-						<HBox justifyContent="Center" >
-							<ObjectStatus
-								state="Success"
-								icon= "sap-icon://sys-enter-2"
-								visible="{= ${isEvergreenBootstrap} === true}"
-								 />
-								 <ObjectStatus
-								icon="sap-icon://error"
-								state="Error"
-								visible="{= ${isEvergreenBootstrap} === false}"
-								 />
-						</HBox>
-						<HBox justifyContent="Center">
-							<ObjectStatus
-								text="{eom}"
-								visible="{= ${eom} !== true &amp;&amp; ${eom} !== 'Reached' }"
-								 />
-							<ObjectStatus
-								text="Removed"
-								state="Error"
-								visible="{= ${eom} === true }"
-								 />
-							<ObjectStatus
-								text="{eom}"
-								state="Warning"
-								visible="{= ${eom} === 'Reached' }"
-								 />
-
-						</HBox>
-						<HBox justifyContent="Center">
-							<ObjectStatus
-								text="{eom}"
-								visible="{= ${eocp} !== true &amp;&amp; ${eocp} !== 'Reached'}"
-								 />
-							<ObjectStatus
-								text="Removed"
-								state="Error"
-								visible="{= ${eocp} === true }"
-								 />
-							<ObjectStatus
-								text="{eom}"
-								state="Warning"
-								visible="{= ${eocp} === 'Reached' }"
-								 />
-
-						</HBox>
-						<HBox justifyContent="Center">
-						<ObjectStatus
-								icon="sap-icon://error"
-								state="Error"
-								visible="{= ${linter} === 'failure' }"
-								 />
-						<ObjectStatus
-								icon="sap-icon://sys-enter-2"
-								state="Success"
-								visible="{= ${linter} === 'success' }"
-								 />
-						<ObjectStatus
-								text="Not available"
-								visible="{= ${linter} === undefined }"
-								 />
-						</HBox>
-					</cells>
-				</ColumnListItem>
-			</items>
-		</Table> -->
 		<FlexBox id="loginBox" alignItems="Center" fitContainer="false" justifyContent="Center" direction="Column">
 			<f:Card class="sapUiMediumMarginTop sapUiMediumMarginBottom barcodeCard" width="100%" height="100%" >
 				<f:header>
@@ -253,7 +110,7 @@
 						width="300px"
 						value="" 
 						placeholder="GitHub Access Token" />
-						<Button type="Accept" press=".startPressed" text="Go go gadget" />
+						<Button type="Accept" press=".startPressed" text="Fetch GitHub repos" />
 					</FlexBox>
 				</f:content>
 			</f:Card>
