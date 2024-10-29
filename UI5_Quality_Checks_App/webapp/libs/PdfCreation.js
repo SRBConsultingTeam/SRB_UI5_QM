@@ -70,7 +70,6 @@ var PdfCreation = (function () {
       });
 
       var allCheckValues = [evergreenText.passed, detectedVersion.passed, linterText.passed, allBuildJobsPassed.passed, allLintJobsPassed.passed];
-      console.log(allCheckValues.length);
 
       var header = [
         {

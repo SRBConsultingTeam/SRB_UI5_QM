@@ -200,10 +200,11 @@ var SRBGitHub = (function () {
       };
     },
 
-    getLatestLintWorkflowRun: async function (repos, branch, owner) {
+    getLatestLintWorkflowRun: async function (branch, owner) {
       var that = this;
       checkSetup();
 
+      var branches = ["develop", "master"];
       var allResponses = [];
       var cdnAQuery = `org:SRBConsultingTeam filename:/srbui5_qm.yaml`;
 
@@ -213,19 +214,21 @@ var SRBGitHub = (function () {
         // eslint-disable-next-line camelcase
       });
 
+      console.log(exists.data.items);
+
       for (const file of exists.data.items) {
-        var response = await that.octokit.rest.actions.listWorkflowRuns({
-          owner: owner || "SRBConsultingTeam",
-          repo: file.repository.name,
-          branch: branch || "develop",
-          // eslint-disable-next-line camelcase
-          workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
-        });
+        for (const branch of branches) {
+          var response = await that.octokit.rest.actions.listWorkflowRuns({
+            owner: owner || "SRBConsultingTeam",
+            repo: file.repository.name,
+            branch: branch,
+            // eslint-disable-next-line camelcase
+            workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
+          });
 
-        allResponses.push(response.data.workflow_runs[0]);
+          if (response.data.workflow_runs.length !== 0) allResponses.push(response.data.workflow_runs[0]);
+        }
       }
-
-      // console.log(allResponses);
 
       return allResponses;
     },
