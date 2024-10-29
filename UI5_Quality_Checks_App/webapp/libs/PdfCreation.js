@@ -71,12 +71,26 @@ var PdfCreation = (function () {
 
       var allCheckValues = [evergreenText.passed, detectedVersion.passed, linterText.passed, allBuildJobsPassed.passed, allLintJobsPassed.passed];
 
+      var dateString = `${new Date().toLocaleDateString()} / ${new Date().toLocaleTimeString()}`;
+
       var header = [
         {
-          image: global.images.logo,
-          fit: [40, 40],
-          alignment: "right",
-          margin: [0, 10, 10, 0]
+          columns: [
+            {
+              width: "60%",
+              text: dateString,
+              alignment: "left",
+              margin: [20, 20, 0, 0],
+              fontSize: 8
+            },
+            {
+              width: "40%",
+              image: global.images.logo,
+              fit: [40, 40],
+              alignment: "right",
+              margin: [0, 10, 10, 0]
+            }
+          ]
         }
       ];
       var content = [
@@ -85,7 +99,7 @@ var PdfCreation = (function () {
           bold: true,
           fontSize: 20,
           alignment: "center",
-          margin: [0, 0, 0, 0]
+          margin: [0, 10, 0, 0]
         },
         {
           text: "Description:",
@@ -116,41 +130,41 @@ var PdfCreation = (function () {
         {
           columns: [
             {
-              with: "20%",
+              width: "20%",
               stack: [
-                { svg: evergreenText.icon, margin: [0, 40, 0, 0] },
+                { svg: evergreenText.icon, margin: [0, 25, 0, 0] },
                 { text: "Evergreen Bootstrap", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             },
             {
-              with: "20%",
+              width: "20%",
               stack: [
-                { svg: detectedVersion.icon, margin: [0, 40, 0, 0] },
+                { svg: detectedVersion.icon, margin: [0, 25, 0, 0] },
                 { text: "Specific Version", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             },
             {
-              with: "20%",
+              width: "20%",
               stack: [
-                { svg: allBuildJobsPassed.icon, margin: [0, 40, 0, 0] },
+                { svg: allBuildJobsPassed.icon, margin: [0, 25, 0, 0] },
                 { text: "Passed Build Checks", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             },
             {
-              with: "20%",
+              width: "20%",
               stack: [
-                { svg: allLintJobsPassed.icon, margin: [0, 40, 0, 0] },
+                { svg: allLintJobsPassed.icon, margin: [0, 25, 0, 0] },
                 { text: "Passed Lint Checks", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             },
             {
-              with: "20%",
+              width: "20%",
               stack: [
-                { svg: linterText.icon, margin: [0, 40, 0, 0] },
+                { svg: linterText.icon, margin: [0, 25, 0, 0] },
                 { text: "Code Standard Quality", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
