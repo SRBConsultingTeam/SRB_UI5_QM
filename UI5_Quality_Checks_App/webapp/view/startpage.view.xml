@@ -53,12 +53,10 @@
 								</VBox>
 								<VBox>
 									<HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom">
-										<ObjectStatus class="lowerTitleText" text="Linter Status: " visible="{= ${linter/conclusion} === undefined }"/>
-										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Success" visible="{= ${linter/conclusion} === 'success' }"/>
-										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Error" visible="{= ${linter/conclusion} === 'failure' }"/>
-										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${linter/conclusion} === 'failure' }"/>
-										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://sys-enter-2" state="Success" visible="{= ${linter/conclusion} === 'success' }" />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/conclusion} === undefined }"/>
+										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Success" visible="{= ${hasPassed} === true }"/>
+										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Error" visible="{= ${hasPassed} === false }"/>
+										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://sys-enter-2" state="Success" visible="{= ${hasPassed} === true }" />
+										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${hasPassed} === false }"/>
 									</HBox >
 									<HBox width="100%">
 										<ObjectStatus class="lowerTitleText" text="Linter Build Jobs: "  />
@@ -86,7 +84,7 @@
 										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/head_branch} === undefined  }" />
 									</HBox>
 								</VBox>
-								<VBox width="100%" alignItems="End" visible="{=${linter/conclusion} === 'success'}">
+								<VBox width="100%" alignItems="End">
 									<Button type="Emphasized" icon="sap-icon://pdf-attachment" press="onCreatePdf" />
 									<layoutData>
 										<layout:GridData span="XL12 L12 M12 S12"/>

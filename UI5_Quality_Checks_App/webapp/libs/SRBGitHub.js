@@ -143,7 +143,8 @@ var SRBGitHub = (function () {
         allBuildJobs: [],
         buildSuccess: undefined,
         lintSuccess: undefined,
-        allLintJobs: []
+        allLintJobs: [],
+        hasPassed: false
       };
     },
 
@@ -194,7 +195,8 @@ var SRBGitHub = (function () {
         eom: eom,
         linter: undefined,
         allBuildJobs: [],
-        allLintJobs: []
+        allLintJobs: [],
+        hasPassed: false
       };
     },
 

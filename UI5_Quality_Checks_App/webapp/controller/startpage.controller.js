@@ -118,6 +118,7 @@ sap.ui.define(
             if (lint) {
               if (repoResult.repository.name === lint.head_repository.name) {
                 version.linter = lint;
+                if (lint.conclusion === "success") version.hasPassed = true;
                 var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(repoResult.repository.name, lint.id);
                 for (const job of latestJobs) {
                   if (job.name.includes("linter")) version.allLintJobs.push(job);
@@ -157,6 +158,7 @@ sap.ui.define(
             if (lint) {
               if (manifestResult.repository.name === lint.head_repository.name) {
                 version.linter = lint;
+                if (lint.conclusion === "success") version.hasPassed = true;
                 var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(manifestResult.repository.name, lint.id);
                 for (const job of latestJobs) {
                   if (job.name.includes("linter")) version.allLintJobs.push(job);
@@ -182,6 +184,7 @@ sap.ui.define(
         resultRecord["eocp"] = versionInfo.eocp;
         resultRecord["eom"] = versionInfo.eom;
         resultRecord["linter"] = versionInfo.linter;
+        resultRecord["hasPassed"] = versionInfo.hasPassed;
         resultRecord["allBuildJobs"] = versionInfo.allBuildJobs;
         resultRecord["allLintJobs"] = versionInfo.allLintJobs;
 
@@ -227,7 +230,7 @@ sap.ui.define(
         var selectedObject = oSource.getBindingContext().getObject();
 
         var { header, content, footer } = PdfCreation.create(selectedObject);
-        pdfMake.createPdf({ header: header, content: content, footer: footer, pageMargins: [40, 60, 40, 60] }).open({}, window.open());
+        pdfMake.createPdf({ header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] }).open({}, window.open());
       },
 
       onItemDialogOpen: function (oEvent) {
