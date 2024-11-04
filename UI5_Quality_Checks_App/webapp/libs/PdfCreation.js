@@ -71,7 +71,10 @@ var PdfCreation = (function () {
 
       var allCheckValues = [evergreenText.passed, detectedVersion.passed, linterText.passed, allBuildJobsPassed.passed, allLintJobsPassed.passed];
 
-      var dateString = `${new Date().toLocaleDateString()} / ${new Date().toLocaleTimeString()}`;
+      var dateString = `${new Date().toLocaleDateString()} / ${new Date().toLocaleTimeString(navigator.language, {
+        hour: "2-digit",
+        minute: "2-digit"
+      })}Uhr`;
 
       var header = [
         {
@@ -200,7 +203,9 @@ var PdfCreation = (function () {
         }
       ];
 
-      return { header, content, footer };
+      var info = { title: `qualityVerification${objData.repo}`, author: "SRBConsultingTeam" };
+
+      return { info, header, content, footer };
     }
   };
 })();

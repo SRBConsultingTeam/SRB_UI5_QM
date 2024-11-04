@@ -1,5 +1,5 @@
 <mvc:View controllerName="srbUI5QualityChecks.controller.startpage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
 	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<Page id="startpage" showHeader="false">
 		<OverflowToolbar>
@@ -15,11 +15,52 @@
 				class="sapUiTinyMargin"
 				press="onPress"/>
 		</OverflowToolbar>
+						<fb:FilterBar showGoButton="false" id="filterbar" visible="false" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem name="version" label="Specific Version" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox
+											id="version"
+											name="version"
+											change="onSelectionChange"
+										>
+											<core:Item key="0" text="Found"/>
+											<core:Item key="1" text="Not found"/>
+										</ComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="bootstrap" label="Evergreen Bootstrap" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox
+											id="bootstrap"
+											name="bootstrap"
+											change="onSelectionChange"
+										>
+											<core:Item key="0" text="Found"/>
+											<core:Item key="1" text="Not found"/>
+										</ComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="lintJobs" label="Workflow Jobs" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox
+											id="lintJobs"
+											name="lintJobs"
+											change="onSelectionChange"
+										>
+											<core:Item key="0" text="Passed"/>
+											<core:Item key="1" text="Not Passed"/>
+											<core:Item key="2" text="Not found"/>
+										</ComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+							</fb:filterGroupItems>
+						</fb:FilterBar>
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
 			<headerToolbar>
 				<OverflowToolbar justifyContent="Center">
-					<SearchField liveChange=".onSearch" placeholder="Search for Repository" width="100%" />
+					<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%" />
 				</OverflowToolbar>
 			</headerToolbar>
 			<CustomListItem id="masterItemTemplate" type="Navigation"

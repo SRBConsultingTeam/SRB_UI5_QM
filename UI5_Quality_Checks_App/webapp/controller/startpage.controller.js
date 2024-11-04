@@ -26,6 +26,7 @@ sap.ui.define(
        */
       onInit: function () {
         this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        this.aFilters = [];
 
         SRBInfoAndSupport.init(this.getOwnerComponent());
         var resultsList = this.getView().byId("list");
@@ -34,6 +35,8 @@ sap.ui.define(
           results: []
         });
         resultsList.setModel(this.resultsModel);
+
+        this.getView().setModel(this.resultsModel);
       },
 
       /**
@@ -66,6 +69,7 @@ sap.ui.define(
         var userAvatar = this.getView().byId("myAvatar");
         var loginBox = this.getView().byId("loginBox");
         var resultsList = this.getView().byId("list");
+        var filterBar = this.getView().byId("filterbar");
 
         // var filterPanel = this.getView().byId("filterPanel");
 
@@ -83,6 +87,7 @@ sap.ui.define(
         // filterPanel.setVisible(true);
         resultsList.setVisible(true);
         loginBox.setVisible(false);
+        filterBar.setVisible(true);
 
         var allResponses = await SRBGitHub.getLatestLintWorkflowRun();
         this.fetchData(allResponses);
@@ -118,6 +123,7 @@ sap.ui.define(
             if (lint) {
               if (repoResult.repository.name === lint.head_repository.name) {
                 version.linter = lint;
+                version.foundWorkflows = true;
                 if (lint.conclusion === "success") version.hasPassed = true;
                 var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(repoResult.repository.name, lint.id);
                 for (const job of latestJobs) {
@@ -158,6 +164,7 @@ sap.ui.define(
             if (lint) {
               if (manifestResult.repository.name === lint.head_repository.name) {
                 version.linter = lint;
+                version.foundWorkflows = true;
                 if (lint.conclusion === "success") version.hasPassed = true;
                 var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(manifestResult.repository.name, lint.id);
                 for (const job of latestJobs) {
@@ -187,6 +194,7 @@ sap.ui.define(
         resultRecord["hasPassed"] = versionInfo.hasPassed;
         resultRecord["allBuildJobs"] = versionInfo.allBuildJobs;
         resultRecord["allLintJobs"] = versionInfo.allLintJobs;
+        resultRecord["foundWorkflows"] = versionInfo.foundWorkflows;
 
         // console.log(resultRecord);
 
@@ -209,28 +217,23 @@ sap.ui.define(
         if (tableData.map(({ fileUrl }) => fileUrl).includes(resultRecord["fileUrl"]) === false) {
           tableData.push(resultRecord);
           that.resultsModel.setProperty("/results", tableData);
+          this.getView().getModel().setProperty("/results", tableData);
           sap.ui.core.BusyIndicator.hide();
         }
       },
 
       onSearch: function (oEvent) {
-        var aFilters = [];
-        var query = oEvent.getSource().getValue();
-        if (query && query.length > 0) {
-          var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
-          aFilters.push(filter);
-        }
-
-        var list = this.getView().byId("list");
-        list.getBinding("items").filter(aFilters, "Application");
+        this.setFilter();
       },
 
       onCreatePdf: function (oEvent) {
         var oSource = oEvent.getSource();
         var selectedObject = oSource.getBindingContext().getObject();
 
-        var { header, content, footer } = PdfCreation.create(selectedObject);
-        pdfMake.createPdf({ header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] }).open({}, window.open());
+        console.log(this.resultsModel.getProperty("/results"));
+
+        var { info, header, content, footer } = PdfCreation.create(selectedObject);
+        pdfMake.createPdf({ info: info, header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] }).open({}, window.open());
       },
 
       onItemDialogOpen: function (oEvent) {
@@ -241,6 +244,63 @@ sap.ui.define(
 
         if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog().open();
         else DialogBuild.getInfoDialog(selectedObject.repo, buildJobs, linterJobs).open();
+      },
+
+      onSelectionChange: function (oEvent) {
+        this.setFilter();
+      },
+
+      setFilter: function () {
+        var query = this.getView().byId("searchField").getValue();
+        var versionFilter = this.getView().byId("version").getProperty("value");
+        var bootstrapFilter = this.getView().byId("bootstrap").getProperty("value");
+        var jobsFilter = this.getView().byId("lintJobs").getProperty("value");
+        var list = this.getView().byId("list");
+
+        if (query && query.length > 0) {
+          var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
+          this.aFilters.push(filter);
+        }
+        if (versionFilter) {
+          if (versionFilter === "Found") {
+            var filter = new sap.ui.model.Filter("isMinVersion", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("isMinVersion", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (bootstrapFilter) {
+          if (bootstrapFilter === "Found") {
+            var filter = new sap.ui.model.Filter("isEvergreenBootstrap", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("isEvergreenBootstrap", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (jobsFilter) {
+          if (jobsFilter === "Passed") {
+            var filter = new sap.ui.model.Filter("hasPassed", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          } else if (jobsFilter === "Not Passed") {
+            var filter = new sap.ui.model.Filter({
+              filters: [
+                new sap.ui.model.Filter("hasPassed", sap.ui.model.FilterOperator.EQ, false),
+                new sap.ui.model.Filter("foundWorkflows", sap.ui.model.FilterOperator.EQ, true)
+              ],
+              and: true
+            });
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("foundWorkflows", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          }
+        }
+        list.getBinding("items").filter(this.aFilters, "Application");
+        this.aFilters = [];
       }
     });
   }

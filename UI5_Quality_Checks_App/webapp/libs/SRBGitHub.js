@@ -139,11 +139,12 @@ var SRBGitHub = (function () {
         isEvergreenBootstrap: evergreen,
         eocp: eocp, // <-- If true, it has already been removed
         eom: eom,
-        linter: undefined,
+        linter: [],
         allBuildJobs: [],
         buildSuccess: undefined,
         lintSuccess: undefined,
         allLintJobs: [],
+        foundWorkflows: false,
         hasPassed: false
       };
     },
@@ -193,9 +194,10 @@ var SRBGitHub = (function () {
         isEvergreenBootstrap: false,
         eocp: eocp, // <-- If true, it has already been removed
         eom: eom,
-        linter: undefined,
+        linter: [],
         allBuildJobs: [],
         allLintJobs: [],
+        foundWorkflows: false,
         hasPassed: false
       };
     },
