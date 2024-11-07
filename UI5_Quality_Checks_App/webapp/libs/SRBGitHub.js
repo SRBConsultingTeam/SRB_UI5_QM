@@ -34,7 +34,7 @@ var SRBGitHub = (function () {
 
       var cdnAQuery = "/sap-ui-core.js in:file org:SRBConsultingTeam filename:/index.html";
 
-      const response = await that.octokit.rest.search.code({
+      var response = await that.octokit.rest.search.code({
         q: cdnAQuery,
         type: "code",
         // eslint-disable-next-line camelcase
@@ -145,7 +145,8 @@ var SRBGitHub = (function () {
         lintSuccess: undefined,
         allLintJobs: [],
         foundWorkflows: false,
-        hasPassed: false
+        hasPassed: false,
+        issues: []
       };
     },
 
@@ -198,7 +199,8 @@ var SRBGitHub = (function () {
         allBuildJobs: [],
         allLintJobs: [],
         foundWorkflows: false,
-        hasPassed: false
+        hasPassed: false,
+        issues: []
       };
     },
 
@@ -244,14 +246,14 @@ var SRBGitHub = (function () {
       return job.data.jobs;
     },
 
-    getAvailableRepos: function () {
+    getIssues: async function (repoName) {
       var that = this;
-
-      return new Promise((resolve, reject) => {
-        that.octokit.paginate("GET /orgs/SRBConsultingTeam/repos", { org: "SRBConsultingTeam" }).then((repos) => {
-          resolve(repos);
-        });
+      var issues = await that.octokit.rest.issues.listForRepo({
+        owner: "SRBConsultingTeam",
+        repo: repoName
       });
+
+      return issues;
     }
   };
 })();

@@ -139,6 +139,8 @@ sap.ui.define(
           if (version.isMinVersion === true) {
             noVersionFound.push(repoResult.repository.name);
           } else {
+            var issues = await SRBGitHub.getIssues(repoResult.repository.name);
+            version.issues = issues.data;
             that.setResultData(resultRecord, version, file, false);
             that.addRow(resultRecord);
           }
@@ -177,6 +179,9 @@ sap.ui.define(
               }
             }
           }
+
+          var issues = await SRBGitHub.getIssues(manifestResult.repository.name);
+          version.issues = issues.data;
           that.setResultData(resultRecord, version, file, true);
 
           that.addRow(resultRecord);
@@ -198,6 +203,7 @@ sap.ui.define(
         resultRecord["allBuildJobs"] = versionInfo.allBuildJobs;
         resultRecord["allLintJobs"] = versionInfo.allLintJobs;
         resultRecord["foundWorkflows"] = versionInfo.foundWorkflows;
+        resultRecord["issues"] = versionInfo.issues;
 
         // console.log(resultRecord);
 
@@ -259,9 +265,10 @@ sap.ui.define(
 
         var buildJobs = DialogBuild.getAllJobInfos(selectedObject.allBuildJobs);
         var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
+        var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
 
-        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog().open();
-        else DialogBuild.getInfoDialog(selectedObject.repo, buildJobs, linterJobs).open();
+        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject.repo,issue).open();
+        else DialogBuild.getInfoDialog(selectedObject.repo, buildJobs, linterJobs, issue).open();
       },
 
       onSelectionChange: function (oEvent) {
