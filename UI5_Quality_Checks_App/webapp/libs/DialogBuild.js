@@ -49,7 +49,7 @@ var DialogBuild = (function () {
       openIssues.forEach((oIssue) => {
         var asignees = [new sap.m.Text({ text: "No one is assigned to this Issue" })];
         var labels = [new sap.m.Text({ text: "There are no labels assigned to this Issue" })];
-        var body;
+        var body = "<p>There is no description setup in this Issue</p>";
 
         if (oIssue.body) {
           body = marked.parse(oIssue.body);
@@ -77,7 +77,7 @@ var DialogBuild = (function () {
               }),
               new sap.m.HBox({
                 items: [new sap.m.Text({ text: "Labels: ", layoutData: new sap.m.FlexItemData({ styleClass: "marginRight" }) }), labels],
-                layoutData: new sap.m.FlexItemData({ styleClass: "marginBottom marginTop" })
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
               }),
               new sap.m.VBox({
                 items: [
@@ -87,7 +87,6 @@ var DialogBuild = (function () {
                       var bodyDialog = new sap.m.Dialog({
                         type: sap.m.Dialog.Message,
                         title: "Issue description",
-                        contentWidth: "100%",
                         content: new sap.ui.core.HTML({ content: body }),
                         beginButton: new sap.m.Button({
                           text: "OK",
