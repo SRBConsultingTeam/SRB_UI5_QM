@@ -43,7 +43,7 @@ var SRBGitHub = (function () {
 
       console.log(response);
 
-      return { results: response.data.items, headers: response.headers };
+      return { results: response.data.items, data: response.data };
     },
 
     getUI5ManifestFile: async function (repos) {
@@ -215,8 +215,6 @@ var SRBGitHub = (function () {
         type: "code"
         // eslint-disable-next-line camelcase
       });
-
-      console.log(exists.data.items);
 
       for (const file of exists.data.items) {
         for (const branch of branches) {

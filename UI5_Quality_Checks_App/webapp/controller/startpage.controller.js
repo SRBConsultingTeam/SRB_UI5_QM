@@ -32,8 +32,10 @@ sap.ui.define(
         var resultsList = this.getView().byId("list");
 
         this.resultsModel = new sap.ui.model.json.JSONModel({
+          stillFetching: { status: true, indicationText: "", fetchedPercentage: 0 },
           results: []
         });
+
         resultsList.setModel(this.resultsModel);
 
         this.getView().setModel(this.resultsModel);
@@ -96,7 +98,8 @@ sap.ui.define(
       fetchData: async function (linter) {
         var that = this;
 
-        var { results, headers } = await SRBGitHub.getUI5BootstrappingFiles();
+        var { results, data } = await SRBGitHub.getUI5BootstrappingFiles();
+        that.totalEntries = data.total_count;
         var noVersionsFound = await that.fetchIndexData(results, linter);
 
         var { result: manifestFiles } = await SRBGitHub.getUI5ManifestFile(noVersionsFound);
@@ -219,6 +222,23 @@ sap.ui.define(
           that.resultsModel.setProperty("/results", tableData);
           this.getView().getModel().setProperty("/results", tableData);
           sap.ui.core.BusyIndicator.hide();
+          if (tableData.length === that.totalEntries) {
+            this.getView()
+              .getModel()
+              .setProperty("/stillFetching", {
+                status: false,
+                indicationText: `(${tableData.length} / ${that.totalEntries})`,
+                fetchedPercentage: 100
+              });
+          } else {
+            this.getView()
+              .getModel()
+              .setProperty("/stillFetching", {
+                status: true,
+                indicationText: `(${tableData.length} / ${that.totalEntries})`,
+                fetchedPercentage: Math.round((tableData.length / that.totalEntries) * 100)
+              });
+          }
         }
       },
 
@@ -229,8 +249,6 @@ sap.ui.define(
       onCreatePdf: function (oEvent) {
         var oSource = oEvent.getSource();
         var selectedObject = oSource.getBindingContext().getObject();
-
-        console.log(this.resultsModel.getProperty("/results"));
 
         var { info, header, content, footer } = PdfCreation.create(selectedObject);
         pdfMake.createPdf({ info: info, header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] }).open({}, window.open());
