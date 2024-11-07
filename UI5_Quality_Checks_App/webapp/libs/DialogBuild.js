@@ -46,10 +46,14 @@ var DialogBuild = (function () {
 
       openIssues = openIssues.sort((a, b) => a.number - b.number);
 
-      console.log(openIssues);
       openIssues.forEach((oIssue) => {
         var asignees = [new sap.m.Text({ text: "No one is assigned to this Issue" })];
         var labels = [new sap.m.Text({ text: "There are no labels assigned to this Issue" })];
+        var body;
+
+        if (oIssue.body) {
+          body = marked.parse(oIssue.body);
+        }
         if (oIssue.assignees.length !== 0) {
           asignees = [new sap.m.Text({ text: oIssue.assignees.map(({ login }) => login).toString() })];
         }
@@ -73,6 +77,28 @@ var DialogBuild = (function () {
               }),
               new sap.m.HBox({
                 items: [new sap.m.Text({ text: "Labels: ", layoutData: new sap.m.FlexItemData({ styleClass: "marginRight" }) }), labels],
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginBottom marginTop" })
+              }),
+              new sap.m.VBox({
+                items: [
+                  new sap.m.Button({
+                    text: "Content",
+                    press: function () {
+                      var bodyDialog = new sap.m.Dialog({
+                        type: sap.m.Dialog.Message,
+                        title: "Issue description",
+                        contentWidth: "100%",
+                        content: new sap.ui.core.HTML({ content: body }),
+                        beginButton: new sap.m.Button({
+                          text: "OK",
+                          press: function () {
+                            bodyDialog.close();
+                          }.bind(this)
+                        })
+                      }).open();
+                    }
+                  })
+                ],
                 layoutData: new sap.m.FlexItemData({ styleClass: "marginBottom marginTop" })
               })
             ]
