@@ -238,10 +238,11 @@ sap.ui.define(
           {
             version: !versionInfo.isMinVersion,
             bootstrap: versionInfo.isEvergreenBootstrap,
-            passed: versionInfo.hasPassed,
             buildJobs: allBuildJobsPassed,
             lintJobs: allLintJobsPassed,
-            issues: !versionInfo.foundIssues
+            issues: !versionInfo.foundIssues,
+            buildExist: versionInfo.allBuildJobs.length > 0,
+            lintExist: versionInfo.allLintJobs.length > 0
           }
         ];
 
@@ -324,7 +325,7 @@ sap.ui.define(
         var buildJobs = DialogBuild.getAllJobInfos(selectedObject.allBuildJobs);
         var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
         var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
-        var improvements = DialogBuild.getImproveHelp(selectedObject.allChecks);
+        var improvements = DialogBuild.getImproveHelp(selectedObject.allChecks, selectedObject.repo);
 
         if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject, issue, improvements).open();
         else DialogBuild.getInfoDialog(selectedObject, buildJobs, linterJobs, issue, improvements).open();

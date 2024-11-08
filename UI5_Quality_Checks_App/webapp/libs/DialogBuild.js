@@ -113,7 +113,7 @@ var DialogBuild = (function () {
       return issueData;
     },
 
-    getImproveHelp: function (checks) {
+    getImproveHelp: function (checks, repoName) {
       var improvments = [];
       console.log(checks);
       if (!checks[0].version) {
@@ -161,6 +161,144 @@ var DialogBuild = (function () {
             layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
           })
         );
+      }
+
+      if (!checks[0].lintExist) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({
+                text: "Setup Lint Jobs / Create srbui5_qm.yaml file",
+                titleStyle: sap.ui.core.TitleLevel.H4
+              }),
+              new sap.m.Text({
+                text: "Currently there are no Linter Jobs setup or there is no srbui5_qm.yaml file in this repository",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Text({
+                text: "Check if a srbui5_qm.yaml file exists in this repository and create lint checks (Example below):",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTopExtra marginBottom" })
+              }),
+              new sap.m.Link({
+                text: "https://github.com/SRBConsultingTeam/SRB_UI5_QM/blob/master/.github/workflows/srbui5_qm.yaml",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop boldText" })
+              }),
+              new sap.m.Text({
+                text: "=> If there is no such file then create one ;)",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginBottomExtra" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+          })
+        );
+      }
+
+      if (!checks[0].buildExist) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({
+                text: "Setup Build Jobs / Create srbui5_qm.yaml file",
+                titleStyle: sap.ui.core.TitleLevel.H4
+              }),
+              new sap.m.Text({
+                text: "Currently there are no Build Jobs setup or there is no srbui5_qm.yaml file in this repository",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Text({
+                text: "Check if a srbui5_qm.yaml file exists in this repository and create build checks (Example below):",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTopExtra marginBottom" })
+              }),
+              new sap.m.Link({
+                text: "https://github.com/SRBConsultingTeam/SRB_UI5_QM/blob/master/.github/workflows/srbui5_qm.yaml",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop boldText" })
+              }),
+              new sap.m.Text({
+                text: "=> If there is no such file then create one ;)",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginBottomExtra" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+          })
+        );
+      }
+
+      if (!checks[0].bootstrap) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({
+                text: "Follow the same instructions as in the 'Set a specific Version' section",
+                titleStyle: sap.ui.core.TitleLevel.H4
+              }),
+              new sap.m.Text({
+                text: "Currently this app was unable to determin the usage of Evergreen Bootstrap",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Text({
+                text: "Specify a fixed UI5 Version to fix this issue",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTopExtra marginBottomExtra" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+          })
+        );
+      }
+
+      if (checks[0].buildExist && !checks[0].buildJobs) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({
+                text: "Visit the Action Part of this Repo and check the Build Errors",
+                titleStyle: sap.ui.core.TitleLevel.H4
+              }),
+              new sap.m.Text({
+                text: "Currently the code in this repository does not pass the created build checks",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Text({
+                text: "Check the build part of the latest WorkFlow run of this Repository under this link:",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTopExtra marginBottom" })
+              }),
+              new sap.m.Link({
+                text: `https://github.com/SRBConsultingTeam/${repoName}/actions`,
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginBottomExtra boldText" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+          })
+        );
+      }
+
+      if (checks[0].lintExist && !checks[0].lintJobs) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({
+                text: "Visit the Action Part of this Repo and check the Lint Errors",
+                titleStyle: sap.ui.core.TitleLevel.H4
+              }),
+              new sap.m.Text({
+                text: "Currently the code in this repository does not pass the created lint checks",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Text({
+                text: "Check the lint part of the latest WorkFlow run of this Repository under this link:",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTopExtra marginBottom" })
+              }),
+              new sap.m.Link({
+                text: `https://github.com/SRBConsultingTeam/${repoName}/actions`,
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginBottomExtra boldText" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+          })
+        );
+      }
+
+      if (improvments.length === 0) {
+        improvments.push(new sap.m.Text({ text: "This Repository meets our code standards and does not need improvements" }));
       }
 
       return improvments;
