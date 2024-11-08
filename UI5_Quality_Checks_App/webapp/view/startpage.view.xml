@@ -144,9 +144,6 @@
 										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/head_branch}" visible="{= ${linter/head_branch} !== undefined  }" />
 										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/head_branch} === undefined  }" />
 									</HBox>
-									<HBox width="100%" class="sapUiSmallMarginTop sapUiSmallMarginBottom">
-										<Button type="Emphasized" icon="sap-icon://pdf-attachment" press="onCreatePdf" />
-									</HBox>
 								</VBox>
 							</layout:Grid>
 						</layout:VerticalLayout>

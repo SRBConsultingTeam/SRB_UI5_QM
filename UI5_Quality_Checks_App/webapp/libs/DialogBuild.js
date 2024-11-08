@@ -113,19 +113,23 @@ var DialogBuild = (function () {
       return issueData;
     },
 
-    getErrorDialog: function (repoName, issues) {
+    getErrorDialog: function (selectedObject, issues) {
       this.error = new sap.m.Dialog({
         type: sap.m.Dialog.Message,
-        title: repoName,
-        content: new sap.m.IconTabBar({
+        title: selectedObject.repo,
+        content: new sap.m.HBox({
           items: [
-            new sap.m.IconTabFilter({
-              text: "GitHub WorkFlows", // Titel des Tabs
-              content: [new sap.m.Text({ text: "Some Workflows where not found in the Repository" })]
-            }),
-            new sap.m.IconTabFilter({
-              text: "GitHub Issues", // Titel des Tabs
-              content: [issues]
+            new sap.m.IconTabBar({
+              items: [
+                new sap.m.IconTabFilter({
+                  text: "GitHub WorkFlows",
+                  content: [new sap.m.Text({ text: "Some Workflows where not found in the Repository" })]
+                }),
+                new sap.m.IconTabFilter({
+                  text: "GitHub Issues",
+                  content: [issues]
+                })
+              ]
             })
           ]
         }),
@@ -134,17 +138,26 @@ var DialogBuild = (function () {
           press: function () {
             this.error.close();
           }.bind(this)
+        }),
+        endButton: new sap.m.Button({
+          icon: "sap-icon://pdf-attachment",
+          press: function () {
+            var { info, header, content, footer } = PdfCreation.create(selectedObject);
+            pdfMake
+              .createPdf({ info: info, header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] })
+              .open({}, window.open());
+          }.bind(this)
         })
       });
       return this.error;
     },
 
-    getInfoDialog: function (repoName, buildJobs, linterJobs, issues) {
+    getInfoDialog: function (selectedObject, buildJobs, linterJobs, issues) {
       this.messageDialog = new sap.m.Dialog({
         resizable: true,
         contentWidth: "70%",
         type: sap.m.Dialog.Message,
-        title: repoName,
+        title: selectedObject.repo,
         content: new sap.m.IconTabBar({
           items: [
             new sap.m.IconTabFilter({
@@ -186,6 +199,15 @@ var DialogBuild = (function () {
           text: "OK",
           press: function () {
             this.messageDialog.close();
+          }.bind(this)
+        }),
+        endButton: new sap.m.Button({
+          icon: "sap-icon://pdf-attachment",
+          press: function () {
+            var { info, header, content, footer } = PdfCreation.create(selectedObject);
+            pdfMake
+              .createPdf({ info: info, header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] })
+              .open({}, window.open());
           }.bind(this)
         })
       });

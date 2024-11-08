@@ -294,8 +294,8 @@ sap.ui.define(
         var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
         var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
 
-        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject.repo, issue).open();
-        else DialogBuild.getInfoDialog(selectedObject.repo, buildJobs, linterJobs, issue).open();
+        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject, issue).open();
+        else DialogBuild.getInfoDialog(selectedObject, buildJobs, linterJobs, issue).open();
       },
 
       onSelectionChange: function (oEvent) {
