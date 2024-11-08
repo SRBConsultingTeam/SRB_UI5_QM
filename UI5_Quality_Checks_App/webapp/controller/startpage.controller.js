@@ -116,7 +116,8 @@ sap.ui.define(
             filename: repoResult.path,
             fileUrl: repoResult.html_url,
             owner: repoResult.repository.owner.login,
-            repository: repoResult.repository
+            repository: repoResult.repository,
+            qualityCheck: 0
           };
 
           var file = await SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login);
@@ -160,7 +161,8 @@ sap.ui.define(
             filename: manifestResult.path,
             fileUrl: manifestResult.html_url,
             owner: manifestResult.repository.owner.login,
-            repository: manifestResult.repository
+            repository: manifestResult.repository,
+            qualityCheck: 0
           };
 
           var file = await SRBGitHub.getFileOfRepo(manifestResult.repository.name, manifestResult.path, manifestResult.repository.owner.login);
@@ -192,6 +194,27 @@ sap.ui.define(
 
       setResultData: function (resultRecord, versionInfo, fileContent, isMin) {
         var problematic = false;
+        var allBuildJobsPassed = false;
+        var allLintJobsPassed = false;
+
+        versionInfo.allBuildJobs.forEach(({ conclusion }) => {
+          if (conclusion !== "success") false;
+          else allBuildJobsPassed = true;
+        });
+
+        versionInfo.allLintJobs.forEach(({ conclusion }) => {
+          if (conclusion !== "success") allLintJobsPassed = false;
+          else allLintJobsPassed = true;
+        });
+
+        var allChecks = [
+          !versionInfo.isMinVersion,
+          versionInfo.isEvergreenBootstrap,
+          versionInfo.hasPassed,
+          allBuildJobsPassed,
+          allLintJobsPassed,
+          !versionInfo.foundIssues
+        ];
 
         resultRecord["fileContent"] = fileContent;
         resultRecord["version"] = versionInfo.version;
@@ -207,6 +230,7 @@ sap.ui.define(
         resultRecord["foundWorkflows"] = versionInfo.foundWorkflows;
         resultRecord["issues"] = versionInfo.issues;
         resultRecord["foundIssues"] = versionInfo.foundIssues;
+        resultRecord["qualityCheck"] = Math.round((allChecks.filter((el) => el).length / allChecks.length) * 100);
 
         // console.log(resultRecord);
 

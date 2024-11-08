@@ -149,7 +149,7 @@ var PdfCreation = (function () {
             {
               width: "16%",
               stack: [
-                { svg: evergreenText.icon, margin: [0, 25, 0, 0] },
+                { svg: evergreenText.icon, margin: [0, 15, 0, 0] },
                 { text: "Evergreen Bootstrap", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
@@ -157,7 +157,7 @@ var PdfCreation = (function () {
             {
               width: "16%",
               stack: [
-                { svg: issuesText.icon, margin: [0, 25, 0, 0] },
+                { svg: issuesText.icon, margin: [0, 15, 0, 0] },
                 { text: "No open Issues", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
@@ -165,7 +165,7 @@ var PdfCreation = (function () {
             {
               width: "16%",
               stack: [
-                { svg: detectedVersion.icon, margin: [0, 25, 0, 0] },
+                { svg: detectedVersion.icon, margin: [0, 15, 0, 0] },
                 { text: "Specific Version", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
@@ -173,7 +173,7 @@ var PdfCreation = (function () {
             {
               width: "16%",
               stack: [
-                { svg: allBuildJobsPassed.icon, margin: [0, 25, 0, 0] },
+                { svg: allBuildJobsPassed.icon, margin: [0, 15, 0, 0] },
                 { text: "Build Checks", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
@@ -181,7 +181,7 @@ var PdfCreation = (function () {
             {
               width: "16%",
               stack: [
-                { svg: allLintJobsPassed.icon, margin: [0, 25, 0, 0] },
+                { svg: allLintJobsPassed.icon, margin: [0, 15, 0, 0] },
                 { text: "Lint Checks", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
@@ -189,7 +189,7 @@ var PdfCreation = (function () {
             {
               width: "16%",
               stack: [
-                { svg: linterText.icon, margin: [0, 25, 0, 0] },
+                { svg: linterText.icon, margin: [0, 15, 0, 0] },
                 { text: "Code Quality", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
@@ -202,7 +202,7 @@ var PdfCreation = (function () {
             (allCheckValues.filter((el) => el).length / allCheckValues.length) * 100
           )}% in our intern code quality check`,
           alignment: "center",
-          margin: [0, 30, 0, 0],
+          margin: [0, 20, 0, 0],
           bold: true,
           italics: true
         }
