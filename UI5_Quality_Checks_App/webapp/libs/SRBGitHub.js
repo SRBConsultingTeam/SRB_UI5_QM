@@ -145,6 +145,7 @@ var SRBGitHub = (function () {
         lintSuccess: undefined,
         allLintJobs: [],
         foundWorkflows: false,
+        foundIssues: false,
         hasPassed: false,
         issues: []
       };
@@ -199,6 +200,7 @@ var SRBGitHub = (function () {
         allBuildJobs: [],
         allLintJobs: [],
         foundWorkflows: false,
+        foundIssues: false,
         hasPassed: false,
         issues: []
       };

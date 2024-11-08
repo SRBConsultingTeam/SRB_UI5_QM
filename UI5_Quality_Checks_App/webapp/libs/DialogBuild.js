@@ -51,6 +51,7 @@ var DialogBuild = (function () {
         var labels = [new sap.m.Text({ text: "There are no labels assigned to this Issue" })];
         var body = "<p>There is no description setup in this Issue</p>";
 
+        // console.log(oIssue);
         if (oIssue.body) {
           body = marked.parse(oIssue.body);
         }
@@ -82,7 +83,7 @@ var DialogBuild = (function () {
               new sap.m.VBox({
                 items: [
                   new sap.m.Button({
-                    text: "Content",
+                    text: "Show the Issue description",
                     press: function () {
                       var bodyDialog = new sap.m.Dialog({
                         type: sap.m.Dialog.Message,

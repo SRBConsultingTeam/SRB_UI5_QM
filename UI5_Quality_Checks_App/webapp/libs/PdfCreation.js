@@ -59,6 +59,12 @@ var PdfCreation = (function () {
         ? { text: "The code in this repository passed our intern code standards for UI5 applications", icon: global.icons.checkMark, passed: true }
         : { text: "At this stage the code in this repository has not passed out intern checks", icon: global.icons.decline, passed: false };
 
+      console.log(objData.foundIssues);
+
+      var issuesText = !objData.foundIssues
+        ? { text: "This repository currently has no open Issues that need to be worked on", icon: global.icons.checkMark, passed: true }
+        : { text: "This repository currently has open Issues that we work on", icon: global.icons.decline, passed: false };
+
       objData.allBuildJobs.forEach(({ conclusion }) => {
         if (conclusion !== "success") allBuildJobsPassed = { icon: global.icons.decline, passed: false };
         else allBuildJobsPassed = { icon: global.icons.checkMark, passed: true };
@@ -69,7 +75,14 @@ var PdfCreation = (function () {
         else allLintJobsPassed = { icon: global.icons.checkMark, passed: true };
       });
 
-      var allCheckValues = [evergreenText.passed, detectedVersion.passed, linterText.passed, allBuildJobsPassed.passed, allLintJobsPassed.passed];
+      var allCheckValues = [
+        evergreenText.passed,
+        detectedVersion.passed,
+        linterText.passed,
+        allBuildJobsPassed.passed,
+        allLintJobsPassed.passed,
+        issuesText.passed
+      ];
 
       var dateString = `${new Date().toLocaleDateString()} / ${new Date().toLocaleTimeString(navigator.language, {
         hour: "2-digit",
@@ -125,7 +138,8 @@ var PdfCreation = (function () {
           ul: [
             { text: evergreenText.text, fontSize: 10, margin: [0, 5, 0, 0] },
             { text: detectedVersion.text, fontSize: 10, margin: [0, 5, 0, 0] },
-            { text: linterText.text, fontSize: 10, margin: [0, 5, 0, 0] }
+            { text: linterText.text, fontSize: 10, margin: [0, 5, 0, 0] },
+            { text: issuesText.text, fontSize: 10, margin: [0, 5, 0, 0] }
           ]
         },
         buildContent,
@@ -133,7 +147,7 @@ var PdfCreation = (function () {
         {
           columns: [
             {
-              width: "20%",
+              width: "16%",
               stack: [
                 { svg: evergreenText.icon, margin: [0, 25, 0, 0] },
                 { text: "Evergreen Bootstrap", fontSize: 9, margin: [0, 5, 0, 0] }
@@ -141,7 +155,15 @@ var PdfCreation = (function () {
               alignment: "center"
             },
             {
-              width: "20%",
+              width: "16%",
+              stack: [
+                { svg: issuesText.icon, margin: [0, 25, 0, 0] },
+                { text: "No open Issues", fontSize: 9, margin: [0, 5, 0, 0] }
+              ],
+              alignment: "center"
+            },
+            {
+              width: "16%",
               stack: [
                 { svg: detectedVersion.icon, margin: [0, 25, 0, 0] },
                 { text: "Specific Version", fontSize: 9, margin: [0, 5, 0, 0] }
@@ -149,35 +171,36 @@ var PdfCreation = (function () {
               alignment: "center"
             },
             {
-              width: "20%",
+              width: "16%",
               stack: [
                 { svg: allBuildJobsPassed.icon, margin: [0, 25, 0, 0] },
-                { text: "Passed Build Checks", fontSize: 9, margin: [0, 5, 0, 0] }
+                { text: "Build Checks", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             },
             {
-              width: "20%",
+              width: "16%",
               stack: [
                 { svg: allLintJobsPassed.icon, margin: [0, 25, 0, 0] },
-                { text: "Passed Lint Checks", fontSize: 9, margin: [0, 5, 0, 0] }
+                { text: "Lint Checks", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             },
             {
-              width: "20%",
+              width: "16%",
               stack: [
                 { svg: linterText.icon, margin: [0, 25, 0, 0] },
-                { text: "Code Standard Quality", fontSize: 9, margin: [0, 5, 0, 0] }
+                { text: "Code Quality", fontSize: 9, margin: [0, 5, 0, 0] }
               ],
               alignment: "center"
             }
           ]
         },
+
         {
-          text: `This application reaches ${
+          text: `This application reaches ${Math.round(
             (allCheckValues.filter((el) => el).length / allCheckValues.length) * 100
-          }% in our intern code quality check`,
+          )}% in our intern code quality check`,
           alignment: "center",
           margin: [0, 30, 0, 0],
           bold: true,

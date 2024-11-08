@@ -57,13 +57,25 @@
 										</ComboBox>
 									</fb:control>
 								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="issuesItem" label="Open Issues" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox
+											id="issues"
+											name="issues"
+											change="onSelectionChange"
+										>
+											<core:Item key="0" text="Found"/>
+											<core:Item key="1" text="Not found"/>
+										</ComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
 							</fb:filterGroupItems>
 						</fb:FilterBar>
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
 			<headerToolbar>
 				<OverflowToolbar justifyContent="Center">
-					<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%" visible="{=${/stillFetching/status} === false}" />
+					<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%"  />
 				</OverflowToolbar>
 			</headerToolbar>
 			<CustomListItem id="masterItemTemplate" type="Navigation"

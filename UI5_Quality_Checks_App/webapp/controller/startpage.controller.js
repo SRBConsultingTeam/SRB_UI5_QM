@@ -141,6 +141,7 @@ sap.ui.define(
           } else {
             var issues = await SRBGitHub.getIssues(repoResult.repository.name);
             version.issues = issues.data;
+            if (issues.data.length !== 0) version.foundIssues = true;
             that.setResultData(resultRecord, version, file, false);
             that.addRow(resultRecord);
           }
@@ -182,6 +183,7 @@ sap.ui.define(
 
           var issues = await SRBGitHub.getIssues(manifestResult.repository.name);
           version.issues = issues.data;
+          if (issues.data.length !== 0) version.foundIssues = true;
           that.setResultData(resultRecord, version, file, true);
 
           that.addRow(resultRecord);
@@ -204,6 +206,7 @@ sap.ui.define(
         resultRecord["allLintJobs"] = versionInfo.allLintJobs;
         resultRecord["foundWorkflows"] = versionInfo.foundWorkflows;
         resultRecord["issues"] = versionInfo.issues;
+        resultRecord["foundIssues"] = versionInfo.foundIssues;
 
         // console.log(resultRecord);
 
@@ -267,7 +270,7 @@ sap.ui.define(
         var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
         var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
 
-        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject.repo,issue).open();
+        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject.repo, issue).open();
         else DialogBuild.getInfoDialog(selectedObject.repo, buildJobs, linterJobs, issue).open();
       },
 
@@ -280,6 +283,7 @@ sap.ui.define(
         var versionFilter = this.getView().byId("version").getProperty("value");
         var bootstrapFilter = this.getView().byId("bootstrap").getProperty("value");
         var jobsFilter = this.getView().byId("lintJobs").getProperty("value");
+        var issueFilter = this.getView().byId("issues").getProperty("value");
         var list = this.getView().byId("list");
 
         if (query && query.length > 0) {
@@ -302,6 +306,16 @@ sap.ui.define(
             this.aFilters.push(filter);
           } else {
             var filter = new sap.ui.model.Filter("isEvergreenBootstrap", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (issueFilter) {
+          if (issueFilter === "Found") {
+            var filter = new sap.ui.model.Filter("foundIssues", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("foundIssues", sap.ui.model.FilterOperator.EQ, false);
             this.aFilters.push(filter);
           }
         }
