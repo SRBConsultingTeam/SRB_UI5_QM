@@ -1,5 +1,5 @@
 <mvc:View controllerName="srbUI5QualityChecks.controller.startpage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
 	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<Page id="startpage" showHeader="false">
 		<OverflowToolbar>
@@ -18,60 +18,61 @@
 				class="sapUiTinyMargin"
 				press="onPress"/>
 		</OverflowToolbar>
-						<CheckBox id="myIssues" text="Only show Repos where I have assigned Issues" select="onSelectionChange" visible="false"/>
-						<fb:FilterBar showGoButton="false" id="filterbar" visible="false" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
-							<fb:filterGroupItems>
-								<fb:FilterGroupItem name="version" label="Specific Version" groupName="Group1" visibleInFilterBar="true">
-									<fb:control>
-										<ComboBox
-											id="version"
-											name="version"
-											change="onSelectionChange"
-										>
-											<core:Item key="0" text="Found"/>
-											<core:Item key="1" text="Not found"/>
-										</ComboBox>
-									</fb:control>
-								</fb:FilterGroupItem>
-								<fb:FilterGroupItem name="bootstrap" label="Evergreen Bootstrap" groupName="Group1" visibleInFilterBar="true">
-									<fb:control>
-										<ComboBox
-											id="bootstrap"
-											name="bootstrap"
-											change="onSelectionChange"
-										>
-											<core:Item key="0" text="Found"/>
-											<core:Item key="1" text="Not found"/>
-										</ComboBox>
-									</fb:control>
-								</fb:FilterGroupItem>
-								<fb:FilterGroupItem name="lintJobs" label="Workflow Jobs" groupName="Group1" visibleInFilterBar="true">
-									<fb:control>
-										<ComboBox
-											id="lintJobs"
-											name="lintJobs"
-											change="onSelectionChange"
-										>
-											<core:Item key="0" text="Passed"/>
-											<core:Item key="1" text="Not Passed"/>
-											<core:Item key="2" text="Not found"/>
-										</ComboBox>
-									</fb:control>
-								</fb:FilterGroupItem>
-								<fb:FilterGroupItem name="issuesItem" label="Open Issues" groupName="Group1" visibleInFilterBar="true">
-									<fb:control>
-										<ComboBox
-											id="issues"
-											name="issues"
-											change="onSelectionChange"
-										>
-											<core:Item key="0" text="Found"/>
-											<core:Item key="1" text="Not found"/>
-										</ComboBox>
-									</fb:control>
-								</fb:FilterGroupItem>
-							</fb:filterGroupItems>
-						</fb:FilterBar>
+		<CheckBox id="myIssues" text="Only show Repos where I have assigned Issues" select="onSelectionChange" visible="false"/>
+		<fb:FilterBar showGoButton="false" id="filterbar" visible="false" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+		 		<fb:filterGroupItems>
+					<fb:FilterGroupItem name="version" label="Specific Version" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="version"
+								name="version"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Found"/>
+								<core:Item key="1" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="bootstrap" label="Evergreen Bootstrap" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="bootstrap"
+								name="bootstrap"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Found"/>
+								<core:Item key="1" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="lintJobs" label="Workflow Jobs" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="lintJobs"
+								name="lintJobs"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Passed"/>
+								<core:Item key="1" text="Not Passed"/>
+								<core:Item key="2" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="issuesItem" label="Open Issues" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="issues"
+								name="issues"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Found"/>
+								<core:Item key="1" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+		</fb:FilterBar>
+						
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
 			<headerToolbar>
@@ -79,76 +80,7 @@
 					<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%"  />
 				</OverflowToolbar>
 			</headerToolbar>
-			<CustomListItem id="masterItemTemplate" type="Navigation"
-					highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }" width="100%">
-						<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiMediumMarginTop sapUiMediumMarginBottom gridWrapper" width="100%" height="100%"> 
-							<layout:Grid containerQuery="true" width="100%" defaultSpan="XL6 L6 M12 S12">
-								<VBox class="sapUiSmallMarginTop">
-									<Text text="{repository/description}" visible="{= ${repository/description} !== undefined}"/>
-									<Text text="No description found" visible="{= ${repository/description} === null}"/>
-									<Text text="{filename}" class="sapUiSmallMarginTop"/>
-									<Text text="Version: {version} or higher" visible="{= ${isMinVersion} === true}"/>
-									<Text text="Version: {version}" visible="{= ${isMinVersion} === false}"/>
-									<HBox width="100%" class="sapUiMediumMarginTop sapUiSmallMarginBottom">
-										<ObjectStatus class="lowerTitleText" text="Evergreen Bootstrap" state="Success" visible="{= ${isEvergreenBootstrap} === true}" />
-										<ObjectStatus class="lowerTitleText" text="Evergreen Bootstrap" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
-										<ObjectStatus class="sapUiTinyMarginBegin" state="Success" icon="sap-icon://sys-enter-2" visible="{= ${isEvergreenBootstrap} === true}" />
-										<ObjectStatus class="sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${isEvergreenBootstrap} === false}" />
-									</HBox>
-									<HBox width="100%">
-										<ObjectStatus class="lowerTitleText" text="End of maintenance: " />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" visible="{= ${eom} !== true &amp;&amp; ${eom} !== 'Reached' }" />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eom} === true }" />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="{eom}" state="Warning" visible="{= ${eom} === 'Reached' }"/>
-									</HBox>
-									<HBox width="100%" >
-										<ObjectStatus class="lowerTitleText" text="End of cloud provisioning: " />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" visible="{= ${eocp} !== true &amp;&amp; ${eocp} !== 'Reached' }" />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="Removed" state="Error" visible="{= ${eocp} === true }" />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="{eocp}" state="Warning" visible="{= ${eocp} === 'Reached' }"/>
-									</HBox>
-									<HBox width="100%" class="sapUiMediumMarginTop sapUiSmallMarginBottom">
-										<ObjectStatus class="lowerTitleText" text="Quality Check: {qualityCheck}%" state="Error" visible="{=${qualityCheck} &lt; 50}" />
-										<ObjectStatus class="lowerTitleText" text="Quality Check: {qualityCheck}%" state="Warning" visible="{=${qualityCheck} &gt; 49 &amp;&amp; ${qualityCheck} &lt; 80}" />
-										<ObjectStatus class="lowerTitleText" text="Quality Check: {qualityCheck}%" state="Success" visible="{=${qualityCheck}  &gt; 79}" />
-									</HBox>
-								</VBox>
-								<VBox>
-									<HBox class="sapUiSmallMarginTop sapUiSmallMarginBottom">
-										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Success" visible="{= ${hasPassed} === true }"/>
-										<ObjectStatus class="lowerTitleText" text="Linter Status: " state="Error" visible="{= ${hasPassed} === false }"/>
-										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://sys-enter-2" state="Success" visible="{= ${hasPassed} === true }" />
-										<ObjectStatus class=" sapUiTinyMarginBegin" icon="sap-icon://error" state="Error" visible="{= ${hasPassed} === false }"/>
-									</HBox >
-									<HBox width="100%">
-										<ObjectStatus class="lowerTitleText" text="Linter Build Jobs: "  />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="Exist" state="Success" visible="{= ${allBuildJobs}.length !== 0 }" />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="Not found" state="Error" visible="{= ${allBuildJobs}.length === 0 }" />
-									</HBox>
-									<HBox width="100%">
-										<ObjectStatus class="lowerTitleText" text="Linter Lint Jobs: "  />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="Exist" state="Success" visible="{= ${allLintJobs}.length !== 0 }" />
-										<ObjectStatus class="sapUiTinyMarginBegin" text="Not found" state="Error" visible="{= ${allLintJobs}.length === 0 }" />
-									</HBox>
-									<HBox width="100%" class="sapUiMediumMarginTop sapUiSmallMarginBottom">
-										<ObjectStatus class="lowerTitleText" text="Triggered by: " />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/triggering_actor/login}" visible="{= ${linter/triggering_actor/login} !== undefined  }" />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/triggering_actor/login} === undefined  }" />
-									</HBox>
-									<HBox width="100%">
-										<ObjectStatus class="lowerTitleText" text="Linter Title: " />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/display_title}" visible="{= ${linter/display_title} !== undefined  }"/>
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/display_title} === undefined }" />
-									</HBox>
-									<HBox width="100%">
-										<ObjectStatus class="lowerTitleText" text="Head Branch: " />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="{linter/head_branch}" visible="{= ${linter/head_branch} !== undefined  }" />
-										<ObjectStatus class=" sapUiTinyMarginBegin" text="N/A" visible="{= ${linter/head_branch} === undefined  }" />
-									</HBox>
-								</VBox>
-							</layout:Grid>
-						</layout:VerticalLayout>
-			</CustomListItem>
+				<core:Fragment fragmentName="srbUI5QualityChecks.view.fragments.listItem" type="XML" />
 		</List>
 		<FlexBox id="loginBox" alignItems="Center" fitContainer="false" justifyContent="Center" direction="Column">
 			<f:Card class="sapUiMediumMarginTop sapUiMediumMarginBottom barcodeCard" width="100%" height="100%" >
