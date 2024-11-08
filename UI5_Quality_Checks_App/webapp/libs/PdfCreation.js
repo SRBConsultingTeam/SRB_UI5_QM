@@ -59,8 +59,6 @@ var PdfCreation = (function () {
         ? { text: "The code in this repository passed our intern code standards for UI5 applications", icon: global.icons.checkMark, passed: true }
         : { text: "At this stage the code in this repository has not passed out intern checks", icon: global.icons.decline, passed: false };
 
-      console.log(objData.foundIssues);
-
       var issuesText = !objData.foundIssues
         ? { text: "This repository currently has no open Issues that need to be worked on", icon: global.icons.checkMark, passed: true }
         : { text: "This repository currently has open Issues that we work on", icon: global.icons.decline, passed: false };
@@ -228,7 +226,7 @@ var PdfCreation = (function () {
 
       var info = { title: `qualityVerification${objData.repo}`, author: "SRBConsultingTeam" };
 
-      return { info, header, content, footer };
+      return { info, header, content, footer};
     }
   };
 })();

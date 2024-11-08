@@ -119,7 +119,8 @@ sap.ui.define(
             fileUrl: repoResult.html_url,
             owner: repoResult.repository.owner.login,
             repository: repoResult.repository,
-            qualityCheck: 0
+            qualityCheck: 0,
+            allChecks: []
           };
 
           var file = await SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login);
@@ -171,7 +172,8 @@ sap.ui.define(
             fileUrl: manifestResult.html_url,
             owner: manifestResult.repository.owner.login,
             repository: manifestResult.repository,
-            qualityCheck: 0
+            qualityCheck: 0,
+            allChecks: []
           };
 
           var file = await SRBGitHub.getFileOfRepo(manifestResult.repository.name, manifestResult.path, manifestResult.repository.owner.login);
@@ -232,6 +234,17 @@ sap.ui.define(
           !versionInfo.foundIssues
         ];
 
+        var allChecksImprove = [
+          {
+            version: !versionInfo.isMinVersion,
+            bootstrap: versionInfo.isEvergreenBootstrap,
+            passed: versionInfo.hasPassed,
+            buildJobs: allBuildJobsPassed,
+            lintJobs: allLintJobsPassed,
+            issues: !versionInfo.foundIssues
+          }
+        ];
+
         resultRecord["fileContent"] = fileContent;
         resultRecord["version"] = versionInfo.version;
         resultRecord["isMinVersion"] = isMin;
@@ -248,6 +261,7 @@ sap.ui.define(
         resultRecord["foundIssues"] = versionInfo.foundIssues;
         resultRecord["qualityCheck"] = Math.round((allChecks.filter((el) => el).length / allChecks.length) * 100);
         resultRecord["isAssigned"] = versionInfo.isAssigned;
+        resultRecord["allChecks"] = allChecksImprove;
 
         // console.log(resultRecord);
 
@@ -310,9 +324,10 @@ sap.ui.define(
         var buildJobs = DialogBuild.getAllJobInfos(selectedObject.allBuildJobs);
         var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
         var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
+        var improvements = DialogBuild.getImproveHelp(selectedObject.allChecks);
 
-        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject, issue).open();
-        else DialogBuild.getInfoDialog(selectedObject, buildJobs, linterJobs, issue).open();
+        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject, issue, improvements).open();
+        else DialogBuild.getInfoDialog(selectedObject, buildJobs, linterJobs, issue, improvements).open();
       },
 
       onSelectionChange: function (oEvent) {

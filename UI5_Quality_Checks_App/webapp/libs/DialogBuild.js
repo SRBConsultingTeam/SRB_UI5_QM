@@ -113,7 +113,71 @@ var DialogBuild = (function () {
       return issueData;
     },
 
-    getErrorDialog: function (selectedObject, issues) {
+    getTutorialDialog: function (title, helpText, tutorialText, tutorialHelpText) {
+      this.tutorial = new sap.m.Dialog({
+        type: sap.m.Dialog.Message,
+        title: title,
+        content: new sap.m.VBox({
+          items: [
+            new sap.m.Text({
+              text: helpText
+            }),
+            new sap.m.Text({
+              text: tutorialText,
+              layoutData: new sap.m.FlexItemData({ styleClass: "marginTopExtra boldText" })
+            }),
+            new sap.m.Text({
+              text: tutorialHelpText,
+              layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+            })
+          ]
+        }),
+        beginButton: new sap.m.Button({
+          text: "OK",
+          press: function () {
+            this.tutorial.close();
+          }.bind(this)
+        })
+      }).open();
+    },
+
+    getImproveHelp: function (checks) {
+      var improvments = [];
+      console.log(checks);
+      if (checks[0].version) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({ text: "Set a specific version", titleStyle: sap.ui.core.TitleLevel.H4 }),
+              new sap.m.Text({
+                text: "Currently there is only a min UI5 version set in the manifest file!",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Text({
+                text: "In order for this repository to pass the version check you have to set a specific version in the index.html file of this repo",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              }),
+              new sap.m.Button({
+                text: "Show me a tutorial how to do it",
+                press: function () {
+                  var title = "Set specific version - Tutorial";
+                  var helpText = "In order to set a specific version for your Project add such a line into the index.html file:";
+                  var tutorialText = "src='https://ui5.sap.com/1.120/resources/sap-ui-core.js'";
+                  var tutorialHelpText = "=> Change '1.120' to the desired version - Or let it be as it is ;)";
+                  DialogBuild.getTutorialDialog(title, helpText, tutorialText, tutorialHelpText);
+                },
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginBottom marginTop" })
+          })
+        );
+      }
+
+      return improvments;
+    },
+
+    getErrorDialog: function (selectedObject, issues, improvements) {
       this.error = new sap.m.Dialog({
         type: sap.m.Dialog.Message,
         title: selectedObject.repo,
@@ -128,6 +192,10 @@ var DialogBuild = (function () {
                 new sap.m.IconTabFilter({
                   text: "GitHub Issues",
                   content: [issues]
+                }),
+                new sap.m.IconTabFilter({
+                  text: "Improve Repository", // Titel des Tabs
+                  content: [improvements]
                 })
               ]
             })
@@ -152,7 +220,7 @@ var DialogBuild = (function () {
       return this.error;
     },
 
-    getInfoDialog: function (selectedObject, buildJobs, linterJobs, issues) {
+    getInfoDialog: function (selectedObject, buildJobs, linterJobs, issues, improvements) {
       this.messageDialog = new sap.m.Dialog({
         resizable: true,
         contentWidth: "70%",
@@ -192,6 +260,10 @@ var DialogBuild = (function () {
             new sap.m.IconTabFilter({
               text: "GitHub Issues", // Titel des Tabs
               content: [issues]
+            }),
+            new sap.m.IconTabFilter({
+              text: "Improve Repository", // Titel des Tabs
+              content: [improvements]
             })
           ]
         }),

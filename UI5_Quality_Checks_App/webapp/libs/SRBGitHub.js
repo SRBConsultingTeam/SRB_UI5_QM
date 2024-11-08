@@ -214,14 +214,13 @@ var SRBGitHub = (function () {
 
       var branches = ["develop", "master"];
       var allResponses = [];
-      var cdnAQuery = `org:SRBConsultingTeam filename:/srbui5_qm.yaml`;
+      var cdnAQuery = `org:SRBConsultingTeam filename:srbui5_qm.yaml OR filename:/srbui5_qm.yml`;
 
       var exists = await that.octokit.rest.search.code({
         q: cdnAQuery,
         type: "code"
         // eslint-disable-next-line camelcase
       });
-
       for (const file of exists.data.items) {
         for (const branch of branches) {
           var response = await that.octokit.rest.actions.listWorkflowRuns({
@@ -229,7 +228,7 @@ var SRBGitHub = (function () {
             repo: file.repository.name,
             branch: branch,
             // eslint-disable-next-line camelcase
-            workflow_id: "srbui5_qm.yaml" //<-- workflow_id or worflow file name
+            workflow_id: file.name //<-- workflow_id or worflow file name
           });
 
           if (response.data.workflow_runs.length !== 0) allResponses.push(response.data.workflow_runs[0]);
