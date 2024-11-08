@@ -147,6 +147,7 @@ var SRBGitHub = (function () {
         foundWorkflows: false,
         foundIssues: false,
         hasPassed: false,
+        isAssigned: false,
         issues: []
       };
     },
@@ -202,6 +203,7 @@ var SRBGitHub = (function () {
         foundWorkflows: false,
         foundIssues: false,
         hasPassed: false,
+        isAssigned: false,
         issues: []
       };
     },

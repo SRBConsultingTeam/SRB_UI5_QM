@@ -72,6 +72,7 @@ sap.ui.define(
         var loginBox = this.getView().byId("loginBox");
         var resultsList = this.getView().byId("list");
         var filterBar = this.getView().byId("filterbar");
+        var myIssues = this.getView().byId("myIssues");
 
         // var filterPanel = this.getView().byId("filterPanel");
 
@@ -81,15 +82,16 @@ sap.ui.define(
         var tokenValue = tokenInput.getValue().trim();
 
         await SRBGitHub.setup(tokenValue);
-        var userData = await SRBGitHub.getLoginData();
+        this.userData = await SRBGitHub.getLoginData();
 
-        userNameLabel.setText(userData.login);
-        userAvatar.setSrc(userData.avatar_url);
+        userNameLabel.setText(this.userData.login);
+        userAvatar.setSrc(this.userData.avatar_url);
 
         // filterPanel.setVisible(true);
         resultsList.setVisible(true);
         loginBox.setVisible(false);
         filterBar.setVisible(true);
+        myIssues.setVisible(true);
 
         var allResponses = await SRBGitHub.getLatestLintWorkflowRun();
         this.fetchData(allResponses);
@@ -142,7 +144,14 @@ sap.ui.define(
           } else {
             var issues = await SRBGitHub.getIssues(repoResult.repository.name);
             version.issues = issues.data;
-            if (issues.data.length !== 0) version.foundIssues = true;
+            if (issues.data.length !== 0) {
+              version.foundIssues = true;
+              issues.data.forEach(({ assignees }) => {
+                assignees.forEach(({ login }) => {
+                  if (that.userData.login === login) version.isAssigned = true;
+                });
+              });
+            }
             that.setResultData(resultRecord, version, file, false);
             that.addRow(resultRecord);
           }
@@ -185,7 +194,14 @@ sap.ui.define(
 
           var issues = await SRBGitHub.getIssues(manifestResult.repository.name);
           version.issues = issues.data;
-          if (issues.data.length !== 0) version.foundIssues = true;
+          if (issues.data.length !== 0) {
+            version.foundIssues = true;
+            issues.data.forEach(({ assignees }) => {
+              assignees.forEach(({ login }) => {
+                if (that.userData.login === login) version.isAssigned = true;
+              });
+            });
+          }
           that.setResultData(resultRecord, version, file, true);
 
           that.addRow(resultRecord);
@@ -231,6 +247,7 @@ sap.ui.define(
         resultRecord["issues"] = versionInfo.issues;
         resultRecord["foundIssues"] = versionInfo.foundIssues;
         resultRecord["qualityCheck"] = Math.round((allChecks.filter((el) => el).length / allChecks.length) * 100);
+        resultRecord["isAssigned"] = versionInfo.isAssigned;
 
         // console.log(resultRecord);
 
@@ -308,6 +325,7 @@ sap.ui.define(
         var bootstrapFilter = this.getView().byId("bootstrap").getProperty("value");
         var jobsFilter = this.getView().byId("lintJobs").getProperty("value");
         var issueFilter = this.getView().byId("issues").getProperty("value");
+        var myIssues = this.getView().byId("myIssues").getProperty("selected");
         var list = this.getView().byId("list");
 
         if (query && query.length > 0) {
@@ -322,6 +340,11 @@ sap.ui.define(
             var filter = new sap.ui.model.Filter("isMinVersion", sap.ui.model.FilterOperator.EQ, true);
             this.aFilters.push(filter);
           }
+        }
+
+        if (myIssues) {
+          var filter = new sap.ui.model.Filter("isAssigned", sap.ui.model.FilterOperator.EQ, true);
+          this.aFilters.push(filter);
         }
 
         if (bootstrapFilter) {

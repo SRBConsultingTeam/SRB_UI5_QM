@@ -18,6 +18,7 @@
 				class="sapUiTinyMargin"
 				press="onPress"/>
 		</OverflowToolbar>
+						<CheckBox id="myIssues" text="Only show Repos where I have assigned Issues" select="onSelectionChange" visible="false"/>
 						<fb:FilterBar showGoButton="false" id="filterbar" visible="false" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
 							<fb:filterGroupItems>
 								<fb:FilterGroupItem name="version" label="Specific Version" groupName="Group1" visibleInFilterBar="true">
