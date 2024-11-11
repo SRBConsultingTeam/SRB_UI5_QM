@@ -43,7 +43,7 @@ The main reason why I decided to make this change is that using async/await make
 * Who triggered the last WorkFlow run
 * Title of the WorkFlow run
 * Head Branch in which the WorkFlow run was triggered
-* Quality check % of the Repository (Criteria explained somewhere down here)
+* Quality check % of the Repository (Criteria explained at the bottom of the file)
 
 ### Added Detail Dialog
 
