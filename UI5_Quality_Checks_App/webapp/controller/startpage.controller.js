@@ -326,7 +326,7 @@ sap.ui.define(
         var buildJobs = DialogBuild.getAllJobInfos(selectedObject.allBuildJobs);
         var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
         var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
-        var improvements = DialogBuild.getImproveHelp(selectedObject.allChecksImprove, selectedObject.repo);
+        var improvements = DialogBuild.getImproveHelp(selectedObject.allChecksImprove, selectedObject.repo, selectedObject.allChecks);
 
         if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject, issue, improvements).open();
         else DialogBuild.getInfoDialog(selectedObject, buildJobs, linterJobs, issue, improvements).open();

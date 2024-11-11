@@ -113,15 +113,17 @@ var DialogBuild = (function () {
       return issueData;
     },
 
-    getImproveHelp: function (checks, repoName) {
+    getImproveHelp: function (checks, repoName, qualityChecks) {
       var improvments = [];
+      var currentPercent = Math.round((qualityChecks.filter((el) => el).length / qualityChecks.length) * 100);
+      var percentPerCheck = Math.round(((qualityChecks.filter((el) => el).length + 1) / qualityChecks.length) * 100 - currentPercent);
 
       if (!checks[0].version) {
         improvments.push(
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: "Set a specific version",
+                text: `Set a specific version - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -142,7 +144,7 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: "Work on open Issues",
+                text: `Work on open Issues - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -172,7 +174,7 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: "Setup Lint Jobs / Create srbui5_qm.yaml file",
+                text: `Setup Lint Jobs / Create srbui5_qm.yaml file - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -198,7 +200,7 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: "Setup Build Jobs / Create srbui5_qm.yaml file",
+                text: `Setup Build Jobs / Create srbui5_qm.yaml file - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -224,7 +226,7 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: "Follow the same instructions as in the 'Set a specific Version' section",
+                text: `Follow the same instructions as in the 'Set a specific Version' section - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -246,7 +248,7 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: `Visit the Action Part of this Repo and check the Build Errors - (+)`,
+                text: `Visit the Action Part of this Repo and check the Build Errors - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -276,7 +278,7 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: "Visit the Action Part of this Repo and check the Lint Errors",
+                text: `Visit the Action Part of this Repo and check the Lint Errors - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
@@ -294,6 +296,34 @@ var DialogBuild = (function () {
               new sap.m.Text({
                 text: "3. Fix the code according to the given errors",
                 layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginLeft marginBottomExtra" })
+              })
+            ],
+            layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
+          })
+        );
+      }
+
+      console.log(checks);
+
+      if (!checks[0].lintJobs || !checks[0].buildJobs) {
+        improvments.push(
+          new sap.m.VBox({
+            items: [
+              new sap.m.Title({
+                text: `Fix both the lint and build errors - (~ +${percentPerCheck}%)`,
+                titleStyle: sap.ui.core.TitleLevel.H4
+              }),
+              new sap.m.Text({
+                text: "1. Follow the instructions on how to fix the Workflow lint/build errors",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginLeft" })
+              }),
+              new sap.m.Text({
+                text: "2. Is fixed when both lint and build checks succeed",
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginLeft" })
+              }),
+              new sap.m.Link({
+                text: `https://github.com/SRBConsultingTeam/${repoName}/actions`,
+                layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginLeft boldText marginBottomExtra" })
               })
             ],
             layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
