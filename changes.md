@@ -73,4 +73,24 @@ It is now possible to filter the Repositories for the following fields:
 * Only show Repos where I have assigned Issues
 <img src="https://github.com/user-attachments/assets/530aed69-e09a-4ff1-97c2-73be99eac584" width="80%" />
 
+### Added the possibility to export a proof of Quality PDF
+The proof of Quality PDF contains the following informations:
+* Repository Description
+* Informations (Evergreen Bootstrap, Version, intern code checks, Issues)
+* Build Checks (If they exist then the details of it are displayed)
+* Lint Checks (If they exist then the details of it are displayed)
+* Quality Visualization (So the passed/not passed checks can be seen immediately
+* Text presenting the reached % in the intern checks (100 => all checks passed)
+
+<img src="https://github.com/user-attachments/assets/51487825-445d-4c84-aa49-4cb8175b8048" width="40%" />
+
+The following checks are used to determin the quality %:
+* Was Evergreen Bootstrap detected in the project
+* Was a specific Version detected in the project
+* Did the code in the Repository pass the lint checks
+* Did the code in the Repository pass the build checks
+* Did the code in the Repository pass both of these checks
+* Are there open Issues in the repository
+
+
 
