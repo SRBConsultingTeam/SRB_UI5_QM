@@ -34,7 +34,7 @@ The main reason why I decided to make this change is that using async/await make
 ## UI Adaptation
 ### Displaying Repository Details in a list
 
-![image](https://github.com/user-attachments/assets/6ee8c290-6af0-4f63-8924-42256b3a1581)
+<img src="https://github.com/user-attachments/assets/6ee8c290-6af0-4f63-8924-42256b3a1581" width="80%" />
 
 ##### Additioal fields added:
 * Min UI5 Version if no specific version is detected (detected in manifest file)
@@ -64,5 +64,13 @@ Based on the not met quality criteria this dialog section displays premade tips 
 
 <img src="https://github.com/user-attachments/assets/867d86f0-b3d7-4ecb-9c2b-9d7ced2655ea" width="40%" />
 
+### Added Filter for Repositories
+It is now possible to filter the Repositories for the following fields:
+* Version (Was a specific version found?)
+* Evergreen Bootstrap (Was the usage of Evergreen Bootstrap found?)
+* Workflow Jobs (Where they passed? Have they been found?)
+* Open Issues (Are there pen Issues in the Repository?)
+* Only show Repos where I have assigned Issues
+<img src="https://github.com/user-attachments/assets/530aed69-e09a-4ff1-97c2-73be99eac584" width="80%" />
 
 
