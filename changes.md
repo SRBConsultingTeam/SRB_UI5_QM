@@ -62,7 +62,7 @@ This Dialog dsiplays the informations of the currently open Issues in this Repos
 #### Display tips on how to improve the quality Rating of the Repository:
 Based on the not met quality criteria this dialog section displays premade tips on how to imporve the Repository
 
-<img src="https://github.com/user-attachments/assets/867d86f0-b3d7-4ecb-9c2b-9d7ced2655ea" width="40%" />
+<img src="https://github.com/user-attachments/assets/5fa51d08-7496-4dcd-931e-f3c5572bcd2b" width="40%" />
 
 ### Added Filter for Repositories
 It is now possible to filter the Repositories for the following fields:
