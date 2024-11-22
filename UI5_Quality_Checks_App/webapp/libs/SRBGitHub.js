@@ -51,17 +51,46 @@ var SRBGitHub = (function () {
 
       checkSetup();
 
-      var repoQuery = repos.map((repoName) => `repo:SRBConsultingTeam/${repoName}`).join(" OR ");
+      var startPart = "minUI5Version in:file ";
+      var endPart = " filename:/manifest.json";
+      var queries = [""];
+      var results = [];
 
-      var cdnAQuery = `minUI5Version in:file ${repoQuery} filename:/manifest.json`;
+      repos.forEach((r) => {
+        var x = 0;
 
-      var response = await that.octokit.rest.search.code({
-        q: cdnAQuery,
-        type: "code"
-        // eslint-disable-next-line camelcase
+        var isNotAdded = true;
+
+        while (isNotAdded) {
+          if (!queries[x]) queries.push("");
+          if (startPart.length + queries[x].length + r.length + endPart.length <= 800) {
+            queries[x] += `repo:SRBConsultingTeam/${r} `;
+            isNotAdded = false;
+          }
+          x += 1;
+        }
       });
 
-      return { result: response.data.items };
+      queries = queries.filter((el) => el !== "");
+
+      for (var i = 0; i < queries.length; i++) {
+        var splittedQueries = queries[i].split(" ").filter((el) => el !== "");
+        queries[i] = splittedQueries.join(" OR ");
+        queries[i] = startPart + queries[i] + endPart;
+      }
+
+      for (const q of queries) {
+        var response = await that.octokit.rest.search.code({
+          q: q,
+          type: "code"
+          // eslint-disable-next-line camelcase
+        });
+        if (results.length === 0) results = response.data.items;
+        else results = results.concat(response.data.items);
+      }
+
+      console.log(results);
+      return { result: results };
     },
 
     getFileOfRepo: async function (repo, path, owner) {
