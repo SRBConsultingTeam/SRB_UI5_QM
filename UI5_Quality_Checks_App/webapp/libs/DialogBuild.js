@@ -110,7 +110,7 @@ var DialogBuild = (function () {
         issueData.push(new sap.m.Text({ text: "Currently there are no open Issues in this Repository" }));
       }
 
-      return issueData;
+      return new sap.m.VBox({ items: [issueData] });
     },
 
     getImproveHelp: function (checks, repoName, qualityChecks) {
@@ -226,15 +226,15 @@ var DialogBuild = (function () {
           new sap.m.VBox({
             items: [
               new sap.m.Title({
-                text: `Follow the same instructions as in the 'Set a specific Version' section - (~ +${percentPerCheck}%)`,
+                text: `Include Evergreen Bootstrap into this Repository - (~ +${percentPerCheck}%)`,
                 titleStyle: sap.ui.core.TitleLevel.H4
               }),
               new sap.m.Text({
-                text: "1. Set a specific UI5 version for this project",
+                text: "1. If there is no specific UI5 version set for this repository => set one",
                 layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginLeft" })
               }),
               new sap.m.Text({
-                text: "2. Problem shall be solved",
+                text: "2. Make sure the version hat the following format => x.xxx (Only one . allowed)",
                 layoutData: new sap.m.FlexItemData({ styleClass: "marginTop marginBottomExtra marginLeft" })
               })
             ],
@@ -338,7 +338,7 @@ var DialogBuild = (function () {
       return improvments;
     },
 
-    getErrorDialog: function (selectedObject, issues, improvements) {
+    getErrorDialog: function (selectedObject, issuesParsed, improvements) {
       this.error = new sap.m.Dialog({
         type: sap.m.Dialog.Message,
         title: selectedObject.repo,
@@ -352,7 +352,27 @@ var DialogBuild = (function () {
                 }),
                 new sap.m.IconTabFilter({
                   text: "GitHub Issues",
-                  content: [issues]
+                  content: [
+                    new sap.m.CheckBox({
+                      text: "Show Issues assigned to me",
+                      visible: selectedObject.issues.length !== 0,
+                      select: async function (oEvent) {
+                        if (oEvent.getParameter("selected")) {
+                          var user = await SRBGitHub.getLoginData();
+                          var issues = selectedObject.issues.filter(({ assignees }) => assignees.map(({ login }) => login).includes(user.login));
+                          var updatedIssuesParsed = this.getAllIssueInfos(issues);
+
+                          issuesParsed.removeAllItems();
+                          issuesParsed.addItem(updatedIssuesParsed);
+                        } else {
+                          var updatedIssuesParsed = this.getAllIssueInfos(selectedObject.issues);
+                          issuesParsed.removeAllItems();
+                          issuesParsed.addItem(updatedIssuesParsed);
+                        }
+                      }.bind(this)
+                    }),
+                    issuesParsed
+                  ]
                 }),
                 new sap.m.IconTabFilter({
                   text: "Improve Repository", // Titel des Tabs
@@ -381,7 +401,7 @@ var DialogBuild = (function () {
       return this.error;
     },
 
-    getInfoDialog: function (selectedObject, buildJobs, linterJobs, issues, improvements) {
+    getInfoDialog: function (selectedObject, buildJobs, linterJobs, issuesParsed, improvements) {
       this.messageDialog = new sap.m.Dialog({
         resizable: true,
         contentWidth: "70%",
@@ -420,7 +440,28 @@ var DialogBuild = (function () {
             }),
             new sap.m.IconTabFilter({
               text: "GitHub Issues", // Titel des Tabs
-              content: [issues]
+              content: [
+                new sap.m.CheckBox({
+                  text: "Show Issues assigned to me",
+                  visible: selectedObject.issues.length !== 0,
+                  select: async function (oEvent) {
+                    if (oEvent.getParameter("selected")) {
+                      var user = await SRBGitHub.getLoginData();
+                      var issues = selectedObject.issues.filter(({ assignees }) => assignees.map(({ login }) => login).includes(user.login));
+                      var updatedIssuesParsed = this.getAllIssueInfos(issues);
+
+                      issuesParsed.removeAllItems();
+                      issuesParsed.addItem(updatedIssuesParsed);
+                      console.log(updatedIssuesParsed);
+                    } else {
+                      var updatedIssuesParsed = this.getAllIssueInfos(selectedObject.issues);
+                      issuesParsed.removeAllItems();
+                      issuesParsed.addItem(updatedIssuesParsed);
+                    }
+                  }.bind(this)
+                }),
+                issuesParsed
+              ]
             }),
             new sap.m.IconTabFilter({
               text: "Improve Repository", // Titel des Tabs

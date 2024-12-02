@@ -79,6 +79,8 @@ var SRBGitHub = (function () {
         queries[i] = startPart + queries[i] + endPart;
       }
 
+      console.log(queries);
+
       for (const q of queries) {
         var response = await that.octokit.rest.search.code({
           q: q,

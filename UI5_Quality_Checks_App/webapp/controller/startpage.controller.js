@@ -283,6 +283,9 @@ sap.ui.define(
       addRow: function (resultRecord) {
         var that = this;
         var tableData = that.resultsModel.getProperty("/results");
+        var list = this.getView().byId("list");
+        var currentItems = [];
+
         if (tableData.map(({ fileUrl }) => fileUrl).includes(resultRecord["fileUrl"]) === false) {
           tableData.push(resultRecord);
           that.resultsModel.setProperty("/results", tableData);
@@ -344,6 +347,7 @@ sap.ui.define(
         var issueFilter = this.getView().byId("issues").getProperty("value");
         var myIssues = this.getView().byId("myIssues").getProperty("selected");
         var list = this.getView().byId("list");
+        var currentItems = [];
 
         if (query && query.length > 0) {
           var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
