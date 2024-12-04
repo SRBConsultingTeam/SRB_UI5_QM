@@ -265,8 +265,6 @@ sap.ui.define(
         resultRecord["allChecksImprove"] = allChecksImprove;
         resultRecord["allChecks"] = allChecks;
 
-        // console.log(resultRecord);
-
         if (versionInfo.eocp === true) {
           problematic = true;
         }

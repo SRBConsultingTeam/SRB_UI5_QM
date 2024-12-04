@@ -41,8 +41,6 @@ var SRBGitHub = (function () {
         per_page: 100
       });
 
-      console.log(response);
-
       return { results: response.data.items, data: response.data };
     },
 
@@ -79,8 +77,6 @@ var SRBGitHub = (function () {
         queries[i] = startPart + queries[i] + endPart;
       }
 
-      console.log(queries);
-
       for (const q of queries) {
         var response = await that.octokit.rest.search.code({
           q: q,
@@ -91,7 +87,6 @@ var SRBGitHub = (function () {
         else results = results.concat(response.data.items);
       }
 
-      console.log(results);
       return { result: results };
     },
 
@@ -111,7 +106,6 @@ var SRBGitHub = (function () {
 
     detectUI5VersionInFileV2: async function (fileContentText) {
       var that = this;
-      // console.log(fileContentText);
 
       checkSetup();
 
@@ -287,6 +281,18 @@ var SRBGitHub = (function () {
         repo: repoName
       });
 
+      if (issues.data.length > 0) {
+        for (const issue of issues.data) {
+          if (issue.comments > 0) {
+            var issue_comments = await that.octokit.rest.issues.listComments({
+              owner: "SRBConsultingTeam",
+              repo: repoName,
+              issue_number: issue.number
+            });
+            issue.issue_comments = issue_comments.data;
+          }
+        }
+      }
       return issues;
     }
   };

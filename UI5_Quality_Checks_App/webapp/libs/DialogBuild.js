@@ -50,10 +50,20 @@ var DialogBuild = (function () {
         var asignees = [new sap.m.Text({ text: "No one is assigned to this Issue" })];
         var labels = [new sap.m.Text({ text: "There are no labels assigned to this Issue" })];
         var body = "<p>There is no description setup in this Issue</p>";
+        var commentBody = [];
 
-        // console.log(oIssue);
         if (oIssue.body) {
           body = marked.parse(oIssue.body);
+        }
+        if (oIssue.issue_comments) {
+          oIssue.issue_comments.forEach((comment) => {
+            commentBody.push(`<h3> Posted by ${comment.user.login} #${comment.id} </h3> ${marked.parse(comment.body)} <br>`);
+          });
+          commentBody = commentBody.join(" ");
+          // console.log(commentBody)
+        }
+        else{
+          commentBody = ['<p>There are no comments posted in this Issue</p>']
         }
         if (oIssue.assignees.length !== 0) {
           asignees = [new sap.m.Text({ text: oIssue.assignees.map(({ login }) => login).toString() })];
@@ -80,15 +90,32 @@ var DialogBuild = (function () {
                 items: [new sap.m.Text({ text: "Labels: ", layoutData: new sap.m.FlexItemData({ styleClass: "marginRight" }) }), labels],
                 layoutData: new sap.m.FlexItemData({ styleClass: "marginTop" })
               }),
-              new sap.m.VBox({
+              new sap.m.HBox({
                 items: [
                   new sap.m.Button({
-                    text: "Show the Issue description",
+                    icon: "sap-icon://post",
                     press: function () {
                       var bodyDialog = new sap.m.Dialog({
                         type: sap.m.Dialog.Message,
                         title: "Issue description",
                         content: new sap.ui.core.HTML({ content: body }),
+                        beginButton: new sap.m.Button({
+                          text: "OK",
+                          press: function () {
+                            bodyDialog.close();
+                          }.bind(this)
+                        })
+                      }).open();
+                    }
+                  }),
+                  new sap.m.Button({
+                    icon: "sap-icon://discussion",
+                    layoutData: new sap.m.FlexItemData({ styleClass: "sapUiSmallMarginBegin" }),
+                    press: function () {
+                      var bodyDialog = new sap.m.Dialog({
+                        type: sap.m.Dialog.Message,
+                        title: "Issue Comments",
+                        content: new sap.ui.core.HTML({ content: commentBody }),
                         beginButton: new sap.m.Button({
                           text: "OK",
                           press: function () {
@@ -303,8 +330,6 @@ var DialogBuild = (function () {
         );
       }
 
-      console.log(checks);
-
       if (!checks[0].lintJobs || !checks[0].buildJobs) {
         improvments.push(
           new sap.m.VBox({
@@ -452,7 +477,6 @@ var DialogBuild = (function () {
 
                       issuesParsed.removeAllItems();
                       issuesParsed.addItem(updatedIssuesParsed);
-                      console.log(updatedIssuesParsed);
                     } else {
                       var updatedIssuesParsed = this.getAllIssueInfos(selectedObject.issues);
                       issuesParsed.removeAllItems();
