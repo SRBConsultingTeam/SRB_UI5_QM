@@ -17,22 +17,29 @@
 				showBorder="true"
 				class="sapUiTinyMargin"
 				press="onPress"/>
+			<Button icon="sap-icon://dark-mode" press="changeTheme"/>
 		</OverflowToolbar>
-		<CheckBox id="myIssues" text="Only show Repos where I have assigned Issues" select="onSelectionChange" visible="false"/>
-		<fb:FilterBar showGoButton="false" id="filterbar" visible="false" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
-		 		<fb:filterGroupItems>
+		<Panel expandable="true" visible="false" id="filterPanel" class="sapUiSmallMarginTopBottom">
+			<headerToolbar>
+				<OverflowToolbar>
+					<Title text="Filter Repository List"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%"  />
+			<fb:FilterBar showGoButton="false" id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+				<fb:filterGroupItems>
 					<fb:FilterGroupItem name="version" label="Specific Version" groupName="Group1" visibleInFilterBar="true">
 						<fb:control>
-							<ComboBox
-								id="version"
-								name="version"
-								change="onSelectionChange"
-							>
-								<core:Item key="0" text="Found"/>
-								<core:Item key="1" text="Not found"/>
-							</ComboBox>
-						</fb:control>
-					</fb:FilterGroupItem>
+								<ComboBox
+									id="version"
+									name="version"
+									change="onSelectionChange"
+								>
+									<core:Item key="0" text="Found"/>
+									<core:Item key="1" text="Not found"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
 					<fb:FilterGroupItem name="bootstrap" label="Evergreen Bootstrap" groupName="Group1" visibleInFilterBar="true">
 						<fb:control>
 							<ComboBox
@@ -70,16 +77,43 @@
 							</ComboBox>
 						</fb:control>
 					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="myIssue" label="Show Repos" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="myIssue"
+								name="myIssue"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="All"/>
+								<core:Item key="1" text="I have Issues"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="company" label="Specific Company" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<Input
+								id="companyInput"
+								placeholder="Enter Company"
+								showSuggestion="true"
+								showValueHelp="true"
+								valueHelpRequest=".onValueHelpRequest"
+								suggestionItems="{/repoNames}">
+								<suggestionItems>
+									<core:Item text="{Name}" />
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
 				</fb:filterGroupItems>
-		</fb:FilterBar>
+			</fb:FilterBar>
+			<VBox width="100%">
+				<Label text="Percentage of quality" class="sapUiSmallMarginTop" />
+				<RangeSlider id="qualitySlider" showAdvancedTooltip="true" min="0" max="100" width="100%" class="sapUiMediumMarginBottom" change="onSelectionChange" />
+			</VBox>
+		</Panel>
 						
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
 				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
-			<headerToolbar>
-				<OverflowToolbar justifyContent="Center">
-					<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%"  />
-				</OverflowToolbar>
-			</headerToolbar>
 				<core:Fragment fragmentName="srbUI5QualityChecks.view.fragments.listItem" type="XML" />
 		</List>
 		<FlexBox id="loginBox" alignItems="Center" fitContainer="false" justifyContent="Center" direction="Column">

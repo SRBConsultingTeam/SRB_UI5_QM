@@ -33,7 +33,8 @@ sap.ui.define(
 
         this.resultsModel = new sap.ui.model.json.JSONModel({
           stillFetching: { status: true, indicationText: "", fetchedPercentage: 0 },
-          results: []
+          results: [],
+          repoNames: []
         });
 
         resultsList.setModel(this.resultsModel);
@@ -71,8 +72,7 @@ sap.ui.define(
         var userAvatar = this.getView().byId("myAvatar");
         var loginBox = this.getView().byId("loginBox");
         var resultsList = this.getView().byId("list");
-        var filterBar = this.getView().byId("filterbar");
-        var myIssues = this.getView().byId("myIssues");
+        var filterBar = this.getView().byId("filterPanel");
 
         // var filterPanel = this.getView().byId("filterPanel");
 
@@ -91,7 +91,6 @@ sap.ui.define(
         resultsList.setVisible(true);
         loginBox.setVisible(false);
         filterBar.setVisible(true);
-        myIssues.setVisible(true);
 
         var allResponses = await SRBGitHub.getLatestLintWorkflowRun();
         this.fetchData(allResponses);
@@ -282,10 +281,13 @@ sap.ui.define(
         var that = this;
         var tableData = that.resultsModel.getProperty("/results");
         var list = this.getView().byId("list");
-        var currentItems = [];
+        var currrentRepos = that.resultsModel.getProperty("/repoNames");
 
         if (tableData.map(({ fileUrl }) => fileUrl).includes(resultRecord["fileUrl"]) === false) {
           tableData.push(resultRecord);
+          if (!currrentRepos.map(({ repo }) => repo).includes(resultRecord.repo.split("_")[0])) {
+            currrentRepos.push({ repo: resultRecord.repo.split("_")[0] });
+          }
           that.resultsModel.setProperty("/results", tableData);
           this.getView().getModel().setProperty("/results", tableData);
           sap.ui.core.BusyIndicator.hide();
@@ -297,6 +299,7 @@ sap.ui.define(
                 indicationText: `(${tableData.length} / ${that.totalEntries})`,
                 fetchedPercentage: 100
               });
+            this.getView().getModel().setProperty("/repoNames", currrentRepos);
           } else {
             this.getView()
               .getModel()
@@ -305,6 +308,7 @@ sap.ui.define(
                 indicationText: `(${tableData.length} / ${that.totalEntries})`,
                 fetchedPercentage: Math.round((tableData.length / that.totalEntries) * 100)
               });
+            this.getView().getModel().setProperty("/repoNames", currrentRepos);
           }
         }
       },
@@ -343,12 +347,45 @@ sap.ui.define(
         var bootstrapFilter = this.getView().byId("bootstrap").getProperty("value");
         var jobsFilter = this.getView().byId("lintJobs").getProperty("value");
         var issueFilter = this.getView().byId("issues").getProperty("value");
-        var myIssues = this.getView().byId("myIssues").getProperty("selected");
+        var myIssues = this.getView().byId("myIssue").getProperty("value");
+        var ranges = this.getView().byId("qualitySlider").getProperty("range");
+        var companyCode = this.getView().byId("companyInput").getProperty("value");
         var list = this.getView().byId("list");
-        var currentItems = [];
+
+        console.log(companyCode)
+        if (companyCode) {
+          var alreadyExists = this.aFilters[this.aFilters.map(({ sPath }) => sPath).indexOf("repo")];
+          if (alreadyExists) {
+            var filter = new sap.ui.model.Filter({
+              filters: [alreadyExists, new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, companyCode)],
+              and: true
+            });
+          } else {
+            var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, companyCode);
+          }
+          this.aFilters.push(filter);
+        }
+        if (ranges) {
+          var min = ranges[0];
+          var max = ranges[1];
+          if (min > max) {
+            min = ranges[1];
+            max = ranges[0];
+          }
+          var filter = new sap.ui.model.Filter("qualityCheck", sap.ui.model.FilterOperator.BT, min, max);
+          this.aFilters.push(filter);
+        }
 
         if (query && query.length > 0) {
-          var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
+          var alreadyExists = this.aFilters[this.aFilters.map(({ sPath }) => sPath).indexOf("repo")];
+          if (alreadyExists) {
+            var filter = new sap.ui.model.Filter({
+              filters: [new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query), alreadyExists],
+              and: true
+            });
+          } else {
+            var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
+          }
           this.aFilters.push(filter);
         }
         if (versionFilter) {
@@ -362,8 +399,12 @@ sap.ui.define(
         }
 
         if (myIssues) {
-          var filter = new sap.ui.model.Filter("isAssigned", sap.ui.model.FilterOperator.EQ, true);
-          this.aFilters.push(filter);
+          if (myIssues === "All") {
+            this.aFilters = this.aFilters.filter((filter) => filter.sPath !== "isAssigned");
+          } else {
+            var filter = new sap.ui.model.Filter("isAssigned", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          }
         }
 
         if (bootstrapFilter) {
@@ -404,8 +445,66 @@ sap.ui.define(
             this.aFilters.push(filter);
           }
         }
+        console.log(this.aFilters);
         list.getBinding("items").filter(this.aFilters, "Application");
         this.aFilters = [];
+      },
+
+      onValueHelpRequest: function (oEvent) {
+        var sInputValue = oEvent.getSource().getValue(),
+          oView = this.getView();
+
+        if (!this._pValueHelpDialog) {
+          this._pValueHelpDialog = sap.ui.core.Fragment.load({
+            id: oView.getId(),
+            name: "srbUI5QualityChecks.view.fragments.ValueHelpDialog",
+            controller: this
+          }).then(function (oDialog) {
+            oView.addDependent(oDialog);
+            return oDialog;
+          });
+        }
+        this._pValueHelpDialog.then(function (oDialog) {
+          // Create a filter for the binding
+          oDialog.getBinding("items").filter([new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, sInputValue)]);
+          // Open ValueHelpDialog filtered by the input's value
+          oDialog.open(sInputValue);
+        });
+      },
+
+      onValueHelpSearch: function (oEvent) {
+        var sValue = oEvent.getParameter("value");
+        var oFilter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, sValue);
+
+        oEvent.getSource().getBinding("items").filter([oFilter]);
+      },
+
+      onValueHelpClose: function (oEvent) {
+        var oSelectedItem = oEvent.getParameter("selectedItem");
+        oEvent.getSource().getBinding("items").filter([]);
+
+        console.log(oSelectedItem)
+        if (!oSelectedItem) {
+          this.byId("companyInput").setValue("");
+          this.setFilter();
+          return
+        }
+
+        this.byId("companyInput").setValue(oSelectedItem.getTitle());
+        this.setFilter();
+      },
+
+      changeTheme: function (oEvent) {
+        var currentTheme = sap.ui.getCore().getConfiguration().getTheme();
+        var button = oEvent.getSource();
+        if (currentTheme === "sap_horizon_dark") {
+          sap.ui.getCore().applyTheme("sap_horizon");
+          button.setProperty("icon", "sap-icon://light-mode");
+        } else {
+          sap.ui.getCore().applyTheme("sap_horizon_dark");
+          button.setProperty("icon", "sap-icon://dark-mode");
+        }
+        console.log();
       }
     });
   }

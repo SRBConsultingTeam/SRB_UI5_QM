@@ -60,7 +60,6 @@ var DialogBuild = (function () {
             commentBody.push(`<h3> Posted by ${comment.user.login} #${comment.id} </h3> ${marked.parse(comment.body)} <br>`);
           });
           commentBody = commentBody.join(" ");
-          // console.log(commentBody)
         }
         else{
           commentBody = ['<p>There are no comments posted in this Issue</p>']

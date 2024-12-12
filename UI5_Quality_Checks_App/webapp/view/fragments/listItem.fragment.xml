@@ -2,10 +2,9 @@
 <CustomListItem id="masterItemTemplate" type="Navigation"
 					highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }" width="100%">
 					<layout:VerticalLayout class="sapUiSmallMarginBegin sapUiMediumMarginTop sapUiMediumMarginBottom gridWrapper" width="100%" height="100%"> 
-							<layout:Grid containerQuery="true" width="100%" defaultSpan="XL6 L6 M12 S12">
+							<layout:Grid containerQuery="true" width="100%" defaultSpan="XL6 L6 M6 S12">
 								<VBox class="sapUiSmallMarginTop">
-									<Text text="{repository/description}" visible="{= ${repository/description} !== undefined}"/>
-									<Text text="No description found" visible="{= ${repository/description} === null}"/>
+									<Text text="{= ${repository/description} ? ${repository/description} : 'No description found' }" />
 									<Text text="{filename}" class="sapUiSmallMarginTop"/>
 									<Text text="Version: {version} or higher" visible="{= ${isMinVersion} === true}"/>
 									<Text text="Version: {version}" visible="{= ${isMinVersion} === false}"/>
