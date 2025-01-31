@@ -22,7 +22,7 @@
 		<Panel expandable="true" visible="false" id="filterPanel" class="sapUiSmallMarginTopBottom">
 			<headerToolbar>
 				<OverflowToolbar>
-					<Title text="Filter Repository List"/>
+					<Title text="Filter/Sort Repository List"/>
 				</OverflowToolbar>
 			</headerToolbar>
 			<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%"  />
@@ -110,6 +110,11 @@
 				<Label text="Percentage of quality" class="sapUiSmallMarginTop" />
 				<RangeSlider id="qualitySlider" showAdvancedTooltip="true" min="0" max="100" width="100%" class="sapUiMediumMarginBottom" change="onSelectionChange" />
 			</VBox>
+			<HBox width="100%">
+				<Button
+					text="Open Sort Settings"
+					press="handleOpenDialog" />
+			</HBox>
 		</Panel>
 						
 		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"

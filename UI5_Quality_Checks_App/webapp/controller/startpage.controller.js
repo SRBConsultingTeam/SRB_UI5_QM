@@ -352,7 +352,6 @@ sap.ui.define(
         var companyCode = this.getView().byId("companyInput").getProperty("value");
         var list = this.getView().byId("list");
 
-        console.log(companyCode)
         if (companyCode) {
           var alreadyExists = this.aFilters[this.aFilters.map(({ sPath }) => sPath).indexOf("repo")];
           if (alreadyExists) {
@@ -445,7 +444,6 @@ sap.ui.define(
             this.aFilters.push(filter);
           }
         }
-        console.log(this.aFilters);
         list.getBinding("items").filter(this.aFilters, "Application");
         this.aFilters = [];
       },
@@ -483,7 +481,6 @@ sap.ui.define(
         var oSelectedItem = oEvent.getParameter("selectedItem");
         oEvent.getSource().getBinding("items").filter([]);
 
-        console.log(oSelectedItem)
         if (!oSelectedItem) {
           this.byId("companyInput").setValue("");
           this.setFilter();
@@ -504,7 +501,43 @@ sap.ui.define(
           sap.ui.getCore().applyTheme("sap_horizon_dark");
           button.setProperty("icon", "sap-icon://dark-mode");
         }
-        console.log();
+      },
+
+      handleOpenDialog: function () {
+        var oView = this.getView();
+  
+        if (!this._pDialog) {
+          this._pDialog = sap.ui.core.Fragment.load({
+            id: oView.getId(),
+            name: "srbUI5QualityChecks.view.fragments.sortDialog",
+            controller: this
+          }).then(function(oDialog) {
+            oView.addDependent(oDialog);
+            return oDialog;
+          });
+        }
+        this._pDialog.then(function(oDialog){
+          oDialog.setModel(oView.getModel());
+          oDialog.open();
+        });
+      },
+
+      handleConfirm: function(oEvent){
+        var list = this.getView().byId("list");
+        var oBinding = list.getBinding("items");
+        var sortKey = oEvent.getParameter("sortItem").getProperty("key");
+        var descending = oEvent.getParameter("sortDescending");
+
+        console.log(oBinding)
+        var sorter = new sap.ui.model.Sorter(sortKey, descending, function (oContext) {
+          var groupKey = oContext.getProperty("repo");
+          return {
+              key: groupKey,
+              text: groupKey
+          };
+        });
+
+        oBinding.sort(sorter);
       }
     });
   }

@@ -60,9 +60,8 @@ var DialogBuild = (function () {
             commentBody.push(`<h3> Posted by ${comment.user.login} #${comment.id} </h3> ${marked.parse(comment.body)} <br>`);
           });
           commentBody = commentBody.join(" ");
-        }
-        else{
-          commentBody = ['<p>There are no comments posted in this Issue</p>']
+        } else {
+          commentBody = ["<p>There are no comments posted in this Issue</p>"];
         }
         if (oIssue.assignees.length !== 0) {
           asignees = [new sap.m.Text({ text: oIssue.assignees.map(({ login }) => login).toString() })];
@@ -378,21 +377,19 @@ var DialogBuild = (function () {
                   text: "GitHub Issues",
                   content: [
                     new sap.m.CheckBox({
+                      id: "myIssuesCheck",
                       text: "Show Issues assigned to me",
                       visible: selectedObject.issues.length !== 0,
                       select: async function (oEvent) {
-                        if (oEvent.getParameter("selected")) {
-                          var user = await SRBGitHub.getLoginData();
-                          var issues = selectedObject.issues.filter(({ assignees }) => assignees.map(({ login }) => login).includes(user.login));
-                          var updatedIssuesParsed = this.getAllIssueInfos(issues);
-
-                          issuesParsed.removeAllItems();
-                          issuesParsed.addItem(updatedIssuesParsed);
-                        } else {
-                          var updatedIssuesParsed = this.getAllIssueInfos(selectedObject.issues);
-                          issuesParsed.removeAllItems();
-                          issuesParsed.addItem(updatedIssuesParsed);
-                        }
+                        this.filterHandler(selectedObject,issuesParsed);
+                      }.bind(this)
+                    }),
+                    new sap.m.CheckBox({
+                      id: "excludeCheck",
+                      text: "Exclude DevDone Issues",
+                      visible: selectedObject.issues.length !== 0,
+                      select: async function (oEvent) {
+                        this.filterHandler(selectedObject,issuesParsed);
                       }.bind(this)
                     }),
                     issuesParsed
@@ -409,7 +406,7 @@ var DialogBuild = (function () {
         beginButton: new sap.m.Button({
           text: "OK",
           press: function () {
-            this.error.close();
+            this.error.destroy();
           }.bind(this)
         }),
         endButton: new sap.m.Button({
@@ -466,21 +463,19 @@ var DialogBuild = (function () {
               text: "GitHub Issues", // Titel des Tabs
               content: [
                 new sap.m.CheckBox({
+                  id: "myIssuesCheck",
                   text: "Show Issues assigned to me",
                   visible: selectedObject.issues.length !== 0,
                   select: async function (oEvent) {
-                    if (oEvent.getParameter("selected")) {
-                      var user = await SRBGitHub.getLoginData();
-                      var issues = selectedObject.issues.filter(({ assignees }) => assignees.map(({ login }) => login).includes(user.login));
-                      var updatedIssuesParsed = this.getAllIssueInfos(issues);
-
-                      issuesParsed.removeAllItems();
-                      issuesParsed.addItem(updatedIssuesParsed);
-                    } else {
-                      var updatedIssuesParsed = this.getAllIssueInfos(selectedObject.issues);
-                      issuesParsed.removeAllItems();
-                      issuesParsed.addItem(updatedIssuesParsed);
-                    }
+                    this.filterHandler(selectedObject,issuesParsed);
+                  }.bind(this)
+                }),
+                new sap.m.CheckBox({
+                  id: "excludeCheck",
+                  text: "Exclude DevDone Issues",
+                  visible: selectedObject.issues.length !== 0,
+                  select: async function (oEvent) {
+                    this.filterHandler(selectedObject,issuesParsed);
                   }.bind(this)
                 }),
                 issuesParsed
@@ -495,7 +490,7 @@ var DialogBuild = (function () {
         beginButton: new sap.m.Button({
           text: "OK",
           press: function () {
-            this.messageDialog.close();
+            this.messageDialog.destroy();
           }.bind(this)
         }),
         endButton: new sap.m.Button({
@@ -509,6 +504,33 @@ var DialogBuild = (function () {
         })
       });
       return this.messageDialog;
+    },
+
+    filterHandler: async function(selectedObject,issuesParsed){
+      var issueCheckBox = sap.ui.getCore().byId("myIssuesCheck").getProperty("selected");
+      var excludeCheckBox = sap.ui.getCore().byId("excludeCheck").getProperty("selected");
+      var issues;
+
+      if (issueCheckBox) {
+        var user = await SRBGitHub.getLoginData();
+        issues = selectedObject.issues.filter(({ assignees }) => assignees.map(({ login }) => login).includes(user.login));
+      }
+      if(excludeCheckBox){
+        if(issues){
+          issues = issues.filter(({ labels }) => !labels.map(({name}) => name.split(" ").join("").toLowerCase()).includes("devdone"));
+        }
+        else{
+          issues = selectedObject.issues.filter(({ labels }) => !labels.map(({name}) => name.split(" ").join("").toLowerCase()).includes("devdone"));
+        }
+      }
+      if(!issueCheckBox && !excludeCheckBox){
+        issues = selectedObject.issues;
+      }
+
+      var updatedIssuesParsed = this.getAllIssueInfos(issues);
+
+      issuesParsed.removeAllItems();
+      issuesParsed.addItem(updatedIssuesParsed);
     }
   };
 })();
