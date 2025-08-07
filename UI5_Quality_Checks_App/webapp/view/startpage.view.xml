@@ -1,9 +1,12 @@
 <mvc:View controllerName="srbUI5QualityChecks.controller.startpage" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:layout="sap.ui.layout" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:tnt="sap.tnt" xmlns:fb="sap.ui.comp.filterbar" xmlns:f="sap.f" xmlns:card="sap.f.cards" 
 	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<Page id="startpage" showHeader="false">
 		<OverflowToolbar>
 			<Title text="SRB UI5 Apps Quality Checks" level="H2" />
+			<ObjectStatus class="lowerTitleText" text="{/stillFetching/indicationText}" state="Error" visible="{=${/stillFetching/fetchedPercentage} &lt; 50}" />
+			<ObjectStatus class="lowerTitleText" text="{/stillFetching/indicationText}" state="Warning" visible="{=${/stillFetching/fetchedPercentage} &gt; 49 &amp;&amp; ${/stillFetching/fetchedPercentage} !== 100}" />
+			<ObjectStatus class="lowerTitleText" text="{/stillFetching/indicationText}" state="Success" visible="{=${/stillFetching/fetchedPercentage} === 100}" />
 			<ToolbarSpacer />
 			<ToolbarSpacer />
 			<Label id="usernameLabel" />
@@ -14,128 +17,110 @@
 				showBorder="true"
 				class="sapUiTinyMargin"
 				press="onPress"/>
+			<Button icon="sap-icon://dark-mode" press="changeTheme"/>
 		</OverflowToolbar>
-		<Panel visible="false" id="filterPanel" width="auto" expandable="true" expanded="true">
-			<headerToolbar>
-				<Toolbar height="3rem">
-					<Title text="{i18n>filterAndSearch}"/>
-					<ToolbarSpacer></ToolbarSpacer>
-					<tnt:InfoLabel visible="false" id="filterInfo" text="{i18n>filterActive}" renderMode="Narrow" colorScheme="6"/>
-					<ToolbarSpacer></ToolbarSpacer>
-					<Button id="filterDelete" enabled="false" text="{i18n>deleteFilter}" press="filterDelete" type="Reject" icon="sap-icon://delete"/>
-				</Toolbar>
-			</headerToolbar>
-			<content>
-				<form:Form editable="true">
-					<form:layout>
-						<form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
-													emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
-					</form:layout>
-					<form:formContainers>
-						<form:FormContainer>
-							<form:formElements>
-								<form:FormElement label="{i18n>repoFilterLabel}">
-									<form:fields>
-										<MultiInput id="repoFilter" value="" submit="filterSubmit" showValueHelp="true" showClearIcon="true" change="filterSubmit"
-																	valueHelpRequest=".filters.repoFilter.valueHelpRequestRepoFilter" liveChange=".filters.repoFilter.liveChangeRepoFilter">
-											<layoutData>
-												<layout:GridData span="XL12 L12 M12 S12"/>
-											</layoutData>
-											<core:Item key="{name}" text="{name}" />
-										</MultiInput>
-									</form:fields>
-								</form:FormElement>
-							</form:formElements>
-						</form:FormContainer>
-					</form:formContainers>
-				</form:Form>
-			</content>
-		</Panel>
-		<Table visible="false" id="resultsTable" autoPopinMode="true" contextualWidth="Auto" popinChanged=".onPopinChanged" 
-		items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'}, groupHeaderFactory: '.getGroupHeader'}" sticky="ColumnHeaders">
+		<Panel expandable="true" visible="false" id="filterPanel" class="sapUiSmallMarginTopBottom">
 			<headerToolbar>
 				<OverflowToolbar>
-					<ToolbarSpacer />
-					<OverflowToolbarButton id="tableFilterButton" icon="sap-icon://filter" press="tableFilterButtonPressed"/>
-					<OverflowToolbarButton id="tableSortButton" icon="sap-icon://sort" press="tableSortButtonPressed"/>
+					<Title text="Filter/Sort Repository List"/>
 				</OverflowToolbar>
 			</headerToolbar>
-			<columns>
-				<Column visible="false" width="20%" importance="High" customData:dataField="repo">
-					<Text text="Repository" />
-				</Column>
-				<Column visible="false" width="20%" importance="High" customData:dataField="owner">
-					<Text text="Owner" />
-				</Column>
-				<Column width="20%" importance="None" customData:dataField="filename">
-					<Text text="File" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="version">
-					<Text text="Version" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="isEvergreenBootstrap">
-					<Text text="Evergreen Bootstrapping" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="eocp">
-					<Text text="End of maintenance" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="eom">
-					<Text text="End of cloud provisioning" />
-				</Column>
-				<Column width="8em" importance="Low" customData:dataField="linter/conclusion">
-					<Text text="Linter Status" />
-				</Column>
-			</columns>
-			<items>
-				<ColumnListItem vAlign="Middle" type="Navigation" press="listItemPressed" highlight="{= ${problematic} === true ? 'Indication02' : 'Indication04' }">
-					<cells>
-						<Text text="{repo}" />
-						<Text text="{owner}" />
-						<Text text="{filename}" />
-						<HBox>
-							<Text text="{version}" visible="{= ${detected} !== false }"  />
-							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="No specific version defined!"
-								icon="sap-icon://sys-enter-2"
-								state="Error"
-								visible="{= ${detected} === false }"
-								 />
-						</HBox>
-						<HBox >
-							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="Evergreen"
-								icon="sap-icon://sys-enter-2"
-								state="Success"
-								visible="{isEvergreenBootstrap}"
-								 />
-						</HBox>
-						<Text text="{eom}" />
-						<HBox>
-							<Text text="{eocp}" visible="{= ${eocp} !== true }"  />
-							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="Removed"
-								icon="sap-icon://status-error"
-								state="Error"
-								visible="{= ${eocp} === true }"
-								 />
-						</HBox>
-						<HBox>
-							<Text text="Not available" visible="{= ${linter} === undefined }"  />
-							<ObjectStatus
-								class="sapUiSmallMarginBottom"
-								text="{linter/conclusion}"
-								icon="sap-icon://sys-enter-2"
-								state="Success"
-								visible="{= ${linter} !== undefined }"
-								 />
-						</HBox>
-					</cells>
-				</ColumnListItem>
-			</items>
-		</Table>
+			<SearchField id="searchField" liveChange=".onSearch" placeholder="Search for Repository" width="100%"  />
+			<fb:FilterBar showGoButton="false" id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onSelectionChange" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem name="version" label="Specific Version" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+								<ComboBox
+									id="version"
+									name="version"
+									change="onSelectionChange"
+								>
+									<core:Item key="0" text="Found"/>
+									<core:Item key="1" text="Not found"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="bootstrap" label="Evergreen Bootstrap" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="bootstrap"
+								name="bootstrap"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Found"/>
+								<core:Item key="1" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="lintJobs" label="Workflow Jobs" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="lintJobs"
+								name="lintJobs"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Passed"/>
+								<core:Item key="1" text="Not Passed"/>
+								<core:Item key="2" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="issuesItem" label="Open Issues" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="issues"
+								name="issues"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="Found"/>
+								<core:Item key="1" text="Not found"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="myIssue" label="Show Repos" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<ComboBox
+								id="myIssue"
+								name="myIssue"
+								change="onSelectionChange"
+							>
+								<core:Item key="0" text="All"/>
+								<core:Item key="1" text="I have Issues"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem name="company" label="Specific Company" groupName="Group1" visibleInFilterBar="true">
+						<fb:control>
+							<Input
+								id="companyInput"
+								placeholder="Enter Company"
+								showSuggestion="true"
+								showValueHelp="true"
+								valueHelpRequest=".onValueHelpRequest"
+								suggestionItems="{/repoNames}">
+								<suggestionItems>
+									<core:Item text="{Name}" />
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+			<VBox width="100%">
+				<Label text="Percentage of quality" class="sapUiSmallMarginTop" />
+				<RangeSlider id="qualitySlider" showAdvancedTooltip="true" min="0" max="100" width="100%" class="sapUiMediumMarginBottom" change="onSelectionChange" />
+			</VBox>
+			<HBox width="100%">
+				<Button
+					text="Open Sort Settings"
+					press="handleOpenDialog" />
+			</HBox>
+		</Panel>
+						
+		<List id="list" width="auto" class="sapFDynamicPageAlignContent" visible="false"
+				items="{ path: '/results', sorter: { path: 'repo', descending: false, group: '.getRepo'},groupHeaderFactory: '.getGroupHeader' }" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar" itemPress="onItemDialogOpen">
+				<core:Fragment fragmentName="srbUI5QualityChecks.view.fragments.listItem" type="XML" />
+		</List>
 		<FlexBox id="loginBox" alignItems="Center" fitContainer="false" justifyContent="Center" direction="Column">
 			<f:Card class="sapUiMediumMarginTop sapUiMediumMarginBottom barcodeCard" width="100%" height="100%" >
 				<f:header>
@@ -150,7 +135,7 @@
 						width="300px"
 						value="" 
 						placeholder="GitHub Access Token" />
-						<Button type="Accept" press=".startPressed" text="Go go gadget" />
+						<Button type="Accept" press=".startPressed" text="Fetch GitHub repos" />
 					</FlexBox>
 				</f:content>
 			</f:Card>

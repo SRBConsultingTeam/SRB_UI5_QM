@@ -1,1 +1,39 @@
 /* Enter your custom styles here */
+.titleText {
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.lowerTitleText {
+  font-size: 90%;
+  font-weight: bold;
+}
+
+.boldText {
+  font-weight: bold;
+}
+
+.marginTop {
+  margin-top: 5px;
+}
+
+.marginTopExtra {
+  margin-top: 10px;
+}
+
+.marginBottomExtra {
+  margin-bottom: 40px;
+}
+.marginBottom {
+  margin-bottom: 20px;
+}
+
+.marginRight {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.marginLeft {
+  margin-left: 20px;
+}
+

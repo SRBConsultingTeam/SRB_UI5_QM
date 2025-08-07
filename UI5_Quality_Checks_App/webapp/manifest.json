@@ -63,7 +63,10 @@
         { "uri": "libs/AppConfig.js" },
         { "uri": "libs/ExternalLibs.js" },
         { "uri": "libs/SRBGitHub.js" },
-        { "uri": "libs/TableUtils.js" }
+        { "uri": "libs/TableUtils.js" },
+        { "uri": "libs/DialogBuild.js" },
+        { "uri": "libs/font/vfs_fonts.js" },
+        { "uri": "libs/PdfCreation.js" }
       ]
     }
   }

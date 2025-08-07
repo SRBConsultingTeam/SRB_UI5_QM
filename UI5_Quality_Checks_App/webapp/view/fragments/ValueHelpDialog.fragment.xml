@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="selectDialog"
+		title="Company"
+		items="{/repoNames}"
+		liveChange=".onValueHelpSearch"
+		confirm=".onValueHelpClose"
+		cancel=".onValueHelpClose">
+		<StandardListItem
+			iconDensityAware="false"
+			iconInset="false"
+			title="{repo}" />
+	</SelectDialog>
+</core:FragmentDefinition>

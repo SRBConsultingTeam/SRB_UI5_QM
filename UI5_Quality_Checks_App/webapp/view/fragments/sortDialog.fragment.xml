@@ -1,0 +1,13 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		id="mySettingsDialog"
+		confirm="handleConfirm">
+		<sortItems>
+			<ViewSettingsItem text="Quality" key="qualityCheck" />
+			<ViewSettingsItem text="Name" key="repo" />
+			<ViewSettingsItem text="Version" key="version" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

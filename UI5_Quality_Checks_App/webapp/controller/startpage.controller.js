@@ -6,314 +6,539 @@
 /* global TreeGenerator:true */
 /* global BreadcrumbsGenerator:true */
 /* global SRBGitHub:true */
+
+// const { text } = require("body-parser");
+
+// const { text } = require("body-parser");
+
 /* global TableUtils:true */
-sap.ui.define(["sap/ui/core/mvc/Controller"], function (Controller) {
-  "use strict";
+sap.ui.define(
+  ["sap/ui/core/mvc/Controller", "sap/m/Dialog", "sap/m/Button", "sap/m/library", "sap/m/Text", "sap/ui/core/library"],
+  function (Controller, Dialog, Button, library, Text, coreLibrary) {
+    "use strict";
 
-  return Controller.extend("srbUI5QualityChecks.controller.startpage", {
+    return Controller.extend("srbUI5QualityChecks.controller.startpage", {
+      /**
+       * This method is called upon initialization of the View. The controller can perform its internal setup in this hook.
+       * @public
+       * @memberOf srbUI5QualityChecks.controller.startpage
+       * @author Manuel Bogner - SRB Consulting Team
+       */
+      onInit: function () {
+        this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        this.aFilters = [];
 
-    /**
-     * This method is called upon initialization of the View. The controller can perform its internal setup in this hook.
-     * @public
-    * @memberOf srbUI5QualityChecks.controller.startpage
-     * @author Manuel Bogner - SRB Consulting Team
-     */
-    onInit: function () {
-      this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        SRBInfoAndSupport.init(this.getOwnerComponent());
+        var resultsList = this.getView().byId("list");
 
-      SRBInfoAndSupport.init(this.getOwnerComponent());
-    },
-
-    /**
-     * This method is called every time the View is rendered, after the HTML is placed in the DOM-Tree. It can be used to apply additional changes to the DOM after the Renderer has finished.
-     * @public
-     * @memberOf srbUI5QualityChecks.controller.startpage
-     * @author Manuel Bogner - SRB Consulting Team
-     */
-    onAfterRendering: function () {
-      document.title = SRBLib.checkI18n("i18n:title", AppConfig.i18n.bundleName);
-    },
-
-    getInfoForVersion: function (version) {
-      return {
-      };
-
-    },
-
-    getRepo: function (oContext) {
-      return oContext.getProperty('repo');
-    },
-
-    getGroupHeader: function (oGroup) {
-      return new sap.m.GroupHeaderListItem({
-        title: oGroup.key
-      }
-      );
-    },
-
-    startPressed: function () {
-      var that = this;
-      var userNameLabel = this.getView().byId("usernameLabel");
-      var userAvatar = this.getView().byId("myAvatar");
-      var loginBox = this.getView().byId("loginBox");
-
-      var filterPanel = this.getView().byId("filterPanel");
-      var resultsTable = this.getView().byId("resultsTable");
-
-      var resultsModel = new sap.ui.model.json.JSONModel({
-        results: []
-      });
-
-      sap.ui.core.BusyIndicator.show(0);
-
-      resultsTable.setModel(resultsModel);
-
-      var tokenInput = this.getView().byId("tokenInput");
-      var tokenValue = tokenInput.getValue().trim();
-
-      SRBGitHub.setup(tokenValue);
-      SRBGitHub.getLoginData().then(
-        (userData) => {
-          userNameLabel.setText(userData.login);
-          userAvatar.setSrc(userData.avatar_url);
-
-          filterPanel.setVisible(true);
-          resultsTable.setVisible(true);
-          loginBox.setVisible(false);
-
-        },
-        (error) => {
-          // Dummy
+        this.resultsModel = new sap.ui.model.json.JSONModel({
+          stillFetching: { status: true, indicationText: "", fetchedPercentage: 0 },
+          results: [],
+          repoNames: []
         });
 
-      var process = function (addRow, doneCb) {
-        SRBGitHub.getUI5BootstrappingFiles().then(function (repoResults) {
-          var numberOfBootstraps = repoResults.length;
-          var responseCounter = 0;
+        resultsList.setModel(this.resultsModel);
 
-          repoResults.forEach(function (repoResult) {
-            var problematic = false;
+        this.getView().setModel(this.resultsModel);
+      },
 
-            var resultRecord = {
-              repo: repoResult.repository.name,
-              repoUrl: "https://github.com/" + repoResult.repository.owner.login + "/" + repoResult.repository.name,
-              filename: repoResult.path,
-              fileUrl: repoResult.html_url,
-              owner: repoResult.repository.owner.login
-            };
+      /**
+       * This method is called every time the View is rendered, after the HTML is placed in the DOM-Tree. It can be used to apply additional changes to the DOM after the Renderer has finished.
+       * @public
+       * @memberOf srbUI5QualityChecks.controller.startpage
+       * @author Manuel Bogner - SRB Consulting Team
+       */
+      onAfterRendering: function () {
+        document.title = SRBLib.checkI18n("i18n:title", AppConfig.i18n.bundleName);
+      },
 
-            var getVersionData = new Promise(function (versionResolve, versionReject) {
-              SRBGitHub.getFileOfRepo(
-                repoResult.repository.name,
-                repoResult.path,
-                repoResult.repository.owner.login
-              ).then(function (fileContent) {
-                SRBGitHub.detectUI5VersionInFileV2(fileContent, repoResult.repository.name).then(function (versionInfo) {
+      getInfoForVersion: function (version) {
+        return {};
+      },
 
-                  resultRecord["fileContent"] = fileContent;
-                  resultRecord["version"] = versionInfo.version;
-                  resultRecord["isEvergreenBootstrap"] = versionInfo.isEvergreenBootstrap;
-                  resultRecord["eocp"] = versionInfo.eocp;
-                  resultRecord["eom"] = versionInfo.eom;
-                  resultRecord["detected"] = versionInfo.detected;
+      getRepo: function (oContext) {
+        return oContext.getProperty("repo");
+      },
 
-                  if (versionInfo.eocp === "removed") { //<-- This version is out of maintainance
-                    problematic = true;
-                  }
+      getGroupHeader: function (oGroup) {
+        return new sap.m.GroupHeaderListItem({
+          title: oGroup.key
+        });
+      },
 
-                  if (versionInfo.isEvergreenBootstrap !== true) { //<-- This version is out of maintainance
-                    problematic = true;
-                  }
+      startPressed: async function () {
+        var that = this;
+        var userNameLabel = this.getView().byId("usernameLabel");
+        var userAvatar = this.getView().byId("myAvatar");
+        var loginBox = this.getView().byId("loginBox");
+        var resultsList = this.getView().byId("list");
+        var filterBar = this.getView().byId("filterPanel");
 
-                  resultRecord["problematic"] = problematic;
+        // var filterPanel = this.getView().byId("filterPanel");
 
-                  versionResolve();
-                })
-              })
-            })
+        sap.ui.core.BusyIndicator.show(0);
 
-            var getLinterstatus = new Promise(function (linterResolve, linterReject) {
-              SRBGitHub
-                .getLatestLintWorkflowRun(repoResult.repository.name, "develop", repoResult.repository.owner.login)
-                .then(function (latestLinterResult) {
+        var tokenInput = this.getView().byId("tokenInput");
+        var tokenValue = tokenInput.getValue().trim();
 
-                  resultRecord["linter"] = latestLinterResult;
+        await SRBGitHub.setup(tokenValue);
+        this.userData = await SRBGitHub.getLoginData();
 
-                  if (latestLinterResult.conclusion !== "success") {
-                    problematic = true;
-                  }
+        userNameLabel.setText(this.userData.login);
+        userAvatar.setSrc(this.userData.avatar_url);
 
-                  resultRecord["problematic"] = problematic;
+        // filterPanel.setVisible(true);
+        resultsList.setVisible(true);
+        loginBox.setVisible(false);
+        filterBar.setVisible(true);
 
+        var allResponses = await SRBGitHub.getLatestLintWorkflowRun();
+        this.fetchData(allResponses);
+      },
 
-                  linterResolve();
-                }, function () {
-                  linterReject();
-                });
-            });
+      fetchData: async function (linter) {
+        var that = this;
 
-            Promise.allSettled([getVersionData, getLinterstatus]).then(() => {
-              addRow(resultRecord);
+        var { results, data } = await SRBGitHub.getUI5BootstrappingFiles();
+        that.totalEntries = data.total_count;
+        var noVersionsFound = await that.fetchIndexData(results, linter);
 
-              responseCounter++;
+        var { result: manifestFiles } = await SRBGitHub.getUI5ManifestFile(noVersionsFound);
+        await that.fetchManifestData(manifestFiles, linter);
+      },
 
+      fetchIndexData: async function (results, linter) {
+        var that = this;
+        var noVersionFound = [];
+        for (const repoResult of results) {
+          var resultRecord = {
+            repo: repoResult.repository.name,
+            repoUrl: "https://github.com/" + repoResult.repository.owner.login + "/" + repoResult.repository.name,
+            filename: repoResult.path,
+            fileUrl: repoResult.html_url,
+            owner: repoResult.repository.owner.login,
+            repository: repoResult.repository,
+            qualityCheck: 0,
+            allChecks: []
+          };
 
-              if (doneCb && numberOfBootstraps === responseCounter) {
-                doneCb()
+          var file = await SRBGitHub.getFileOfRepo(repoResult.repository.name, repoResult.path, repoResult.repository.owner.login);
+          var version = await SRBGitHub.detectUI5VersionInFileV2(file);
+
+          for (const lint of linter) {
+            if (lint) {
+              if (repoResult.repository.name === lint.head_repository.name) {
+                version.linter = lint;
+                version.foundWorkflows = true;
+                if (lint.conclusion === "success") version.hasPassed = true;
+                var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(repoResult.repository.name, lint.id);
+                for (const job of latestJobs) {
+                  if (job.name.includes("linter")) version.allLintJobs.push(job);
+                  else if (job.name.includes("build")) version.allBuildJobs.push(job);
+                }
               }
-            });
-          });
-
-        });
-
-      };
-
-      process(
-        // Add row to table. A row with all its meta has been loaded successfully
-        function (tableRowData) {
-          var tableData = resultsModel.getProperty("/results");
-
-          tableData.push(tableRowData)
-          resultsModel.setProperty("/results", tableData);
-          sap.ui.core.BusyIndicator.hide();
-        },
-        // Processing done
-        function () {
-          sap.ui.core.BusyIndicator.hide();
-        }
-      );
-
-    },
-
-    showSupportDialogPressed: function () {
-      SRBInfoAndSupport.showSupportDialog("Support dialog", {
-        captureScreenshot: true
-      });
-    },
-
-    showOverviewDialogPressed: function () {
-      SRBInfoAndSupport.showOverviewDialog("Overview dialog");
-    },
-
-    listItemPressed: function (oEvent) {
-      var that = this;
-      var listItem = oEvent.getSource();
-      var ctx = listItem.getBindingContext();
-      var model = ctx.getModel();
-      var path = ctx.getPath();
-
-      var listRecord = model.getProperty(path);
-
-      SRBLib.showDialog("Details", "Information", "",
-        {
-          beforeOpen: function (oEvent) {
-            var dialog = oEvent.getSource();
-
-            dialog.insertContent(that.getRepoDialogContent(listRecord));
-
-            dialog.setVerticalScrolling(false);
-
-            dialog.setContentHeight("50%");
-            dialog.setContentWidth("50%");
-            dialog.setStretch(true);
-            dialog.addStyleClass("sapUiNoContentPadding");
-
+            }
+          }
+          if (version.isMinVersion === true) {
+            noVersionFound.push(repoResult.repository.name);
+          } else {
+            var issues = await SRBGitHub.getIssues(repoResult.repository.name);
+            version.issues = issues.data;
+            if (issues.data.length !== 0) {
+              version.foundIssues = true;
+              issues.data.forEach(({ assignees }) => {
+                assignees.forEach(({ login }) => {
+                  if (that.userData.login === login) version.isAssigned = true;
+                });
+              });
+            }
+            that.setResultData(resultRecord, version, file, false);
+            that.addRow(resultRecord);
           }
         }
-      );
 
-    },
+        return noVersionFound;
+      },
 
-    tableFilterButtonPressed: function (oEvent) {
-      var resultsTable = this.getView().byId("resultsTable");
-      TableUtils.filter.openFilterDialog(resultsTable);
-    },
+      fetchManifestData: async function (manifestFiles, linter) {
+        var that = this;
 
-    tableSortButtonPressed: function (oEvent) {
-      var resultsTable = this.getView().byId("resultsTable");
-      TableUtils.sort.openSortDialog(resultsTable, oEvent.getSource());
-    },
+        for (const manifestResult of manifestFiles) {
+          var resultRecord = {
+            repo: manifestResult.repository.name,
+            repoUrl: "https://github.com/" + manifestResult.repository.owner.login + "/" + manifestResult.repository.name,
+            filename: manifestResult.path,
+            fileUrl: manifestResult.html_url,
+            owner: manifestResult.repository.owner.login,
+            repository: manifestResult.repository,
+            qualityCheck: 0,
+            allChecks: []
+          };
 
-    getRepoDialogContent: function (listRecord) {
-      return new sap.m.VBox({
-        alignItems: "Stretch",
-        alignContent: "Stretch",
-        fitContainer: false,
-        width: "100%",
-        items: [
-          new sap.m.ObjectHeader({
-            width: "100%",
-            responsive: true,
-            fullScreenOptimized: true,
-            //icon=""
-            intro: listRecord.filename,
-            introActive: true,
-            introPress: function (oEvent) {
-              window.open(listRecord.fileUrl, "_blank");
+          var file = await SRBGitHub.getFileOfRepo(manifestResult.repository.name, manifestResult.path, manifestResult.repository.owner.login);
+          var version = await SRBGitHub.detectUI5VersionInManifestFile(file);
 
-            },
-            title: listRecord.repo,
-            titleActive: true,
-            titlePress: function (oEvent) {
-              window.open(listRecord.repoUrl, "_blank");
+          for (const lint of linter) {
+            if (lint) {
+              if (manifestResult.repository.name === lint.head_repository.name) {
+                version.linter = lint;
+                version.foundWorkflows = true;
+                if (lint.conclusion === "success") version.hasPassed = true;
+                var latestJobs = await SRBGitHub.getLatestLintWorkflowJob(manifestResult.repository.name, lint.id);
+                for (const job of latestJobs) {
+                  if (job.name.includes("linter")) version.allLintJobs.push(job);
+                  else if (job.name.includes("build")) version.allBuildJobs.push(job);
+                }
+              }
+            }
+          }
 
-            },
-            backgroundDesign: "Translucent"
+          var issues = await SRBGitHub.getIssues(manifestResult.repository.name);
+          version.issues = issues.data;
+          if (issues.data.length !== 0) {
+            version.foundIssues = true;
+            issues.data.forEach(({ assignees }) => {
+              assignees.forEach(({ login }) => {
+                if (that.userData.login === login) version.isAssigned = true;
+              });
+            });
+          }
+          that.setResultData(resultRecord, version, file, true);
 
-          }).addStyleClass("sapUiResponsivePadding--header"),
-          new sap.f.GridContainer({
-            //layout: sap.f.GridContainerSettings({
-            //  rowSize: "84px", columnSize: "84px", gap: "8px"
-            //}),
-            items: [
-              new sap.m.GenericTile({
-                header: "Manage Activity Master Data Type", subheader: "Subtitle",
-                layoutData: new sap.f.GridContainerItemLayoutData({ minRows: 2, columns: 2 }),
-                content: new sap.m.TileContent()
-              })
-            ]
-          })
-
-        ]
-      })
-
-    },
-
-    filters: {
-      repoFilter: {
-        valueHelpRequestRepoFilter: function (oEvent) {
-          var resultsTable = this.getView().byId("resultsTable");
-          var repoFilterMultiInput = oEvent.getSource();
-
-          this.loadFragment({
-            name: "srbUI5QualityChecks.view.fragments.repoFilterDialog",
-            type: "JS"
-          }).then(function (valueHelpDialog) {
-            this.getView().addDependent(valueHelpDialog);
-            valueHelpDialog.open();
-
-            valueHelpDialog.attachConfirm({}, function (oEvent) {
-              var selCtxs = oEvent.getParameter("selectedContexts");
-
-              selCtxs.forEach(function (ctx) {
-                var model = ctx.getModel();
-                var path = ctx.getPath();
-
-                var prop = model.getProperty(path);
-
-                repoFilterMultiInput.addToken(new sap.m.Token({
-                  text: prop.name,
-                  key: prop.name
-                }));
-
-              })
-
-            })
-          }.bind(this));
-
+          that.addRow(resultRecord);
         }
-      }
-    }
+      },
 
-  });
-});
+      setResultData: function (resultRecord, versionInfo, fileContent, isMin) {
+        var problematic = false;
+        var allBuildJobsPassed = false;
+        var allLintJobsPassed = false;
+
+        versionInfo.allBuildJobs.forEach(({ conclusion }) => {
+          if (conclusion !== "success") false;
+          else allBuildJobsPassed = true;
+        });
+
+        versionInfo.allLintJobs.forEach(({ conclusion }) => {
+          if (conclusion !== "success") allLintJobsPassed = false;
+          else allLintJobsPassed = true;
+        });
+
+        var allChecks = [
+          !versionInfo.isMinVersion,
+          versionInfo.isEvergreenBootstrap,
+          versionInfo.hasPassed,
+          allBuildJobsPassed,
+          allLintJobsPassed,
+          !versionInfo.foundIssues
+        ];
+
+        var allChecksImprove = [
+          {
+            version: !versionInfo.isMinVersion,
+            bootstrap: versionInfo.isEvergreenBootstrap,
+            buildJobs: allBuildJobsPassed,
+            lintJobs: allLintJobsPassed,
+            issues: !versionInfo.foundIssues,
+            buildExist: versionInfo.allBuildJobs.length > 0,
+            lintExist: versionInfo.allLintJobs.length > 0
+          }
+        ];
+
+        resultRecord["fileContent"] = fileContent;
+        resultRecord["version"] = versionInfo.version;
+        resultRecord["isMinVersion"] = isMin;
+
+        resultRecord["isEvergreenBootstrap"] = versionInfo.isEvergreenBootstrap;
+        resultRecord["eocp"] = versionInfo.eocp;
+        resultRecord["eom"] = versionInfo.eom;
+        resultRecord["linter"] = versionInfo.linter;
+        resultRecord["hasPassed"] = versionInfo.hasPassed;
+        resultRecord["allBuildJobs"] = versionInfo.allBuildJobs;
+        resultRecord["allLintJobs"] = versionInfo.allLintJobs;
+        resultRecord["foundWorkflows"] = versionInfo.foundWorkflows;
+        resultRecord["issues"] = versionInfo.issues;
+        resultRecord["foundIssues"] = versionInfo.foundIssues;
+        resultRecord["qualityCheck"] = Math.round((allChecks.filter((el) => el).length / allChecks.length) * 100);
+        resultRecord["isAssigned"] = versionInfo.isAssigned;
+        resultRecord["allChecksImprove"] = allChecksImprove;
+        resultRecord["allChecks"] = allChecks;
+
+        if (versionInfo.eocp === true) {
+          problematic = true;
+        }
+
+        if (versionInfo.isEvergreenBootstrap !== true) {
+          problematic = true;
+        }
+
+        resultRecord["problematic"] = problematic;
+
+        return resultRecord;
+      },
+
+      addRow: function (resultRecord) {
+        var that = this;
+        var tableData = that.resultsModel.getProperty("/results");
+        var list = this.getView().byId("list");
+        var currrentRepos = that.resultsModel.getProperty("/repoNames");
+
+        if (tableData.map(({ fileUrl }) => fileUrl).includes(resultRecord["fileUrl"]) === false) {
+          tableData.push(resultRecord);
+          if (!currrentRepos.map(({ repo }) => repo).includes(resultRecord.repo.split("_")[0])) {
+            currrentRepos.push({ repo: resultRecord.repo.split("_")[0] });
+          }
+          that.resultsModel.setProperty("/results", tableData);
+          this.getView().getModel().setProperty("/results", tableData);
+          sap.ui.core.BusyIndicator.hide();
+          if (tableData.length === that.totalEntries) {
+            this.getView()
+              .getModel()
+              .setProperty("/stillFetching", {
+                status: false,
+                indicationText: `(${tableData.length} / ${that.totalEntries})`,
+                fetchedPercentage: 100
+              });
+            this.getView().getModel().setProperty("/repoNames", currrentRepos);
+          } else {
+            this.getView()
+              .getModel()
+              .setProperty("/stillFetching", {
+                status: true,
+                indicationText: `(${tableData.length} / ${that.totalEntries})`,
+                fetchedPercentage: Math.round((tableData.length / that.totalEntries) * 100)
+              });
+            this.getView().getModel().setProperty("/repoNames", currrentRepos);
+          }
+        }
+      },
+
+      onSearch: function (oEvent) {
+        this.setFilter();
+      },
+
+      onCreatePdf: function (oEvent) {
+        var oSource = oEvent.getSource();
+        var selectedObject = oSource.getBindingContext().getObject();
+
+        var { info, header, content, footer } = PdfCreation.create(selectedObject);
+        pdfMake.createPdf({ info: info, header: header, content: content, footer: footer, pageMargins: [40, 50, 40, 60] }).open({}, window.open());
+      },
+
+      onItemDialogOpen: function (oEvent) {
+        var selectedObject = oEvent.getParameter("listItem").getBindingContext().getObject();
+
+        var buildJobs = DialogBuild.getAllJobInfos(selectedObject.allBuildJobs);
+        var linterJobs = DialogBuild.getAllJobInfos(selectedObject.allLintJobs);
+        var issue = DialogBuild.getAllIssueInfos(selectedObject.issues);
+        var improvements = DialogBuild.getImproveHelp(selectedObject.allChecksImprove, selectedObject.repo, selectedObject.allChecks);
+
+        if (buildJobs.length === 0 || linterJobs.length === 0) DialogBuild.getErrorDialog(selectedObject, issue, improvements).open();
+        else DialogBuild.getInfoDialog(selectedObject, buildJobs, linterJobs, issue, improvements).open();
+      },
+
+      onSelectionChange: function (oEvent) {
+        this.setFilter();
+      },
+
+      setFilter: function () {
+        var query = this.getView().byId("searchField").getValue();
+        var versionFilter = this.getView().byId("version").getProperty("value");
+        var bootstrapFilter = this.getView().byId("bootstrap").getProperty("value");
+        var jobsFilter = this.getView().byId("lintJobs").getProperty("value");
+        var issueFilter = this.getView().byId("issues").getProperty("value");
+        var myIssues = this.getView().byId("myIssue").getProperty("value");
+        var ranges = this.getView().byId("qualitySlider").getProperty("range");
+        var companyCode = this.getView().byId("companyInput").getProperty("value");
+        var list = this.getView().byId("list");
+
+        if (companyCode) {
+          var alreadyExists = this.aFilters[this.aFilters.map(({ sPath }) => sPath).indexOf("repo")];
+          if (alreadyExists) {
+            var filter = new sap.ui.model.Filter({
+              filters: [alreadyExists, new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, companyCode)],
+              and: true
+            });
+          } else {
+            var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, companyCode);
+          }
+          this.aFilters.push(filter);
+        }
+        if (ranges) {
+          var min = ranges[0];
+          var max = ranges[1];
+          if (min > max) {
+            min = ranges[1];
+            max = ranges[0];
+          }
+          var filter = new sap.ui.model.Filter("qualityCheck", sap.ui.model.FilterOperator.BT, min, max);
+          this.aFilters.push(filter);
+        }
+
+        if (query && query.length > 0) {
+          var alreadyExists = this.aFilters[this.aFilters.map(({ sPath }) => sPath).indexOf("repo")];
+          if (alreadyExists) {
+            var filter = new sap.ui.model.Filter({
+              filters: [new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query), alreadyExists],
+              and: true
+            });
+          } else {
+            var filter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, query);
+          }
+          this.aFilters.push(filter);
+        }
+        if (versionFilter) {
+          if (versionFilter === "Found") {
+            var filter = new sap.ui.model.Filter("isMinVersion", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("isMinVersion", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (myIssues) {
+          if (myIssues === "All") {
+            this.aFilters = this.aFilters.filter((filter) => filter.sPath !== "isAssigned");
+          } else {
+            var filter = new sap.ui.model.Filter("isAssigned", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (bootstrapFilter) {
+          if (bootstrapFilter === "Found") {
+            var filter = new sap.ui.model.Filter("isEvergreenBootstrap", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("isEvergreenBootstrap", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (issueFilter) {
+          if (issueFilter === "Found") {
+            var filter = new sap.ui.model.Filter("foundIssues", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("foundIssues", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          }
+        }
+
+        if (jobsFilter) {
+          if (jobsFilter === "Passed") {
+            var filter = new sap.ui.model.Filter("hasPassed", sap.ui.model.FilterOperator.EQ, true);
+            this.aFilters.push(filter);
+          } else if (jobsFilter === "Not Passed") {
+            var filter = new sap.ui.model.Filter({
+              filters: [
+                new sap.ui.model.Filter("hasPassed", sap.ui.model.FilterOperator.EQ, false),
+                new sap.ui.model.Filter("foundWorkflows", sap.ui.model.FilterOperator.EQ, true)
+              ],
+              and: true
+            });
+            this.aFilters.push(filter);
+          } else {
+            var filter = new sap.ui.model.Filter("foundWorkflows", sap.ui.model.FilterOperator.EQ, false);
+            this.aFilters.push(filter);
+          }
+        }
+        list.getBinding("items").filter(this.aFilters, "Application");
+        this.aFilters = [];
+      },
+
+      onValueHelpRequest: function (oEvent) {
+        var sInputValue = oEvent.getSource().getValue(),
+          oView = this.getView();
+
+        if (!this._pValueHelpDialog) {
+          this._pValueHelpDialog = sap.ui.core.Fragment.load({
+            id: oView.getId(),
+            name: "srbUI5QualityChecks.view.fragments.ValueHelpDialog",
+            controller: this
+          }).then(function (oDialog) {
+            oView.addDependent(oDialog);
+            return oDialog;
+          });
+        }
+        this._pValueHelpDialog.then(function (oDialog) {
+          // Create a filter for the binding
+          oDialog.getBinding("items").filter([new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, sInputValue)]);
+          // Open ValueHelpDialog filtered by the input's value
+          oDialog.open(sInputValue);
+        });
+      },
+
+      onValueHelpSearch: function (oEvent) {
+        var sValue = oEvent.getParameter("value");
+        var oFilter = new sap.ui.model.Filter("repo", sap.ui.model.FilterOperator.Contains, sValue);
+
+        oEvent.getSource().getBinding("items").filter([oFilter]);
+      },
+
+      onValueHelpClose: function (oEvent) {
+        var oSelectedItem = oEvent.getParameter("selectedItem");
+        oEvent.getSource().getBinding("items").filter([]);
+
+        if (!oSelectedItem) {
+          this.byId("companyInput").setValue("");
+          this.setFilter();
+          return
+        }
+
+        this.byId("companyInput").setValue(oSelectedItem.getTitle());
+        this.setFilter();
+      },
+
+      changeTheme: function (oEvent) {
+        var currentTheme = sap.ui.getCore().getConfiguration().getTheme();
+        var button = oEvent.getSource();
+        if (currentTheme === "sap_horizon_dark") {
+          sap.ui.getCore().applyTheme("sap_horizon");
+          button.setProperty("icon", "sap-icon://light-mode");
+        } else {
+          sap.ui.getCore().applyTheme("sap_horizon_dark");
+          button.setProperty("icon", "sap-icon://dark-mode");
+        }
+      },
+
+      handleOpenDialog: function () {
+        var oView = this.getView();
+  
+        if (!this._pDialog) {
+          this._pDialog = sap.ui.core.Fragment.load({
+            id: oView.getId(),
+            name: "srbUI5QualityChecks.view.fragments.sortDialog",
+            controller: this
+          }).then(function(oDialog) {
+            oView.addDependent(oDialog);
+            return oDialog;
+          });
+        }
+        this._pDialog.then(function(oDialog){
+          oDialog.setModel(oView.getModel());
+          oDialog.open();
+        });
+      },
+
+      handleConfirm: function(oEvent){
+        var list = this.getView().byId("list");
+        var oBinding = list.getBinding("items");
+        var sortKey = oEvent.getParameter("sortItem").getProperty("key");
+        var descending = oEvent.getParameter("sortDescending");
+
+        console.log(oBinding)
+        var sorter = new sap.ui.model.Sorter(sortKey, descending, function (oContext) {
+          var groupKey = oContext.getProperty("repo");
+          return {
+              key: groupKey,
+              text: groupKey
+          };
+        });
+
+        oBinding.sort(sorter);
+      }
+    });
+  }
+);
