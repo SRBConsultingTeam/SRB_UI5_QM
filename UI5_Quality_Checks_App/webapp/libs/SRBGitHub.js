@@ -248,15 +248,20 @@ var SRBGitHub = (function () {
       });
       for (const file of exists.data.items) {
         for (const branch of branches) {
-          var response = await that.octokit.rest.actions.listWorkflowRuns({
-            owner: owner || "SRBConsultingTeam",
-            repo: file.repository.name,
-            branch: branch,
-            // eslint-disable-next-line camelcase
-            workflow_id: file.name //<-- workflow_id or worflow file name
-          });
+          try{
+            var response = await that.octokit.rest.actions.listWorkflowRuns({
+              owner: owner || "SRBConsultingTeam",
+              repo: file.repository.name,
+              branch: branch,
+              // eslint-disable-next-line camelcase
+              workflow_id: file.name //<-- workflow_id or worflow file name
+            });
 
-          if (response.data.workflow_runs.length !== 0) allResponses.push(response.data.workflow_runs[0]);
+            if (response.data.workflow_runs.length !== 0) allResponses.push(response.data.workflow_runs[0]);
+          }
+          catch(oError){
+            console.log(oError)
+          }
         }
       }
 
